@@ -30,9 +30,10 @@
 
 - (void)loadTabbarController {
     //TODO
+    UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
     UITabBarController *tabVC = [[UITabBarController alloc] init];
-    //TODO TodayViewController
-    TodayMeetingsViewController *todayMeetingsVC = [[TodayMeetingsViewController alloc] init];
+    TodayMeetingsViewController *todayMeetingsVC = [st instantiateViewControllerWithIdentifier:
+        kTodayMeetinViewControllerIdentifier];
     todayMeetingsVC.title = kTodayViewControllerTitle;
     UINavigationController *navTodayMeetingsVC = [[UINavigationController alloc] initWithRootViewController:todayMeetingsVC];
     //TODO PTMeetingViewController
