@@ -11,6 +11,7 @@
 #import "PTMeetingViewController.h"
 #import "MenuViewController.h"
 #import "TransactionsViewController.h"
+#import "LoginViewController.h"
 
 NSString *const kTodayViewControllerTitle = @"Today";
 NSString *const kPTMeetingViewControllerTitle = @"PT Meeting";
@@ -24,27 +25,32 @@ NSString *const kMenuViewControllerTitle = @"Menu";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    UITabBarController *tabVC = [[UITabBarController alloc] init];
-    //TODO TodayViewController
-    TodayMeetingsViewController *todayMeetingsVC = [[TodayMeetingsViewController alloc] init];
-    todayMeetingsVC.title = kTodayViewControllerTitle;
-    UINavigationController *navTodayMeetingsVC = [[UINavigationController alloc] initWithRootViewController:todayMeetingsVC];
-    //TODO PTMeetingViewController
-    PTMeetingViewController *ptMeetingVC = [[PTMeetingViewController alloc] init];
-    ptMeetingVC.title = kPTMeetingViewControllerTitle;
-    UINavigationController *navPTMeetingVC = [[UINavigationController alloc] initWithRootViewController:ptMeetingVC];
-    //TODO TransactionsViewController
-    TransactionsViewController *transVC = [[TransactionsViewController alloc] init];
-    transVC.title = kTransactionsViewControllerTitle;
-    UINavigationController *navTransactionVC = [[UINavigationController alloc] initWithRootViewController:transVC];
-    //TODO MenuViewController
-    MenuViewController *menuVC = [[MenuViewController alloc] init];
-    menuVC.title = kMenuViewControllerTitle;
-    UINavigationController *navMenuVC = [[UINavigationController alloc] initWithRootViewController:menuVC];
-    //TODO Set viewcontrollers for tabbar controller
-    [tabVC setViewControllers:[NSArray arrayWithObjects:navTodayMeetingsVC,navPTMeetingVC,navTransactionVC,navMenuVC, nil]];
-    self.window.rootViewController = tabVC;
+    UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
+    LoginViewController *loginVC = [st instantiateViewControllerWithIdentifier:kLoginViewControllerIdentifier];
+    self.window.rootViewController = loginVC;
     [self.window makeKeyAndVisible];
+    // TODO
+    //    UITabBarController *tabVC = [[UITabBarController alloc] init];
+    //    //TODO TodayViewController
+    //    TodayMeetingsViewController *todayMeetingsVC = [[TodayMeetingsViewController alloc] init];
+    //    todayMeetingsVC.title = kTodayViewControllerTitle;
+    //    UINavigationController *navTodayMeetingsVC = [[UINavigationController alloc] initWithRootViewController:todayMeetingsVC];
+    //    //TODO PTMeetingViewController
+    //    PTMeetingViewController *ptMeetingVC = [[PTMeetingViewController alloc] init];
+    //    ptMeetingVC.title = kPTMeetingViewControllerTitle;
+    //    UINavigationController *navPTMeetingVC = [[UINavigationController alloc] initWithRootViewController:ptMeetingVC];
+    //    //TODO TransactionsViewController
+    //    TransactionsViewController *transVC = [[TransactionsViewController alloc] init];
+    //    transVC.title = kTransactionsViewControllerTitle;
+    //    UINavigationController *navTransactionVC = [[UINavigationController alloc] initWithRootViewController:transVC];
+    //    //TODO MenuViewController
+    //    MenuViewController *menuVC = [[MenuViewController alloc] init];
+    //    menuVC.title = kMenuViewControllerTitle;
+    //    UINavigationController *navMenuVC = [[UINavigationController alloc] initWithRootViewController:menuVC];
+    //    //TODO Set viewcontrollers for tabbar controller
+    //    [tabVC setViewControllers:[NSArray arrayWithObjects:navTodayMeetingsVC,navPTMeetingVC,navTransactionVC,navMenuVC, nil]];
+    //    self.window.rootViewController = tabVC;
+    //    [self.window makeKeyAndVisible];
     return YES;
 }
 
