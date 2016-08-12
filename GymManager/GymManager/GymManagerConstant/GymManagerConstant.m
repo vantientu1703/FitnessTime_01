@@ -31,5 +31,6 @@ NSString *const kMessageReminder = @"Are you make sure delete?";
 NSString *const kOkActionTitle = @"Ok";
 NSString *const kCancelActionTitle = @"Cancel";
 CGFloat const kCornerRadiusButton = 20.0f;
+NSString *const kPTMeetingViewControllerIdentifier = @"PTMeetingViewController";
 
 @end
