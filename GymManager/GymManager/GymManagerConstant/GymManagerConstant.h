@@ -10,4 +10,7 @@
 
 @interface GymManagerConstant : NSObject
 
+extern NSString *const kNameStoryboard;
+extern NSString *const kLoginViewControllerIdentifier;
+
 @end

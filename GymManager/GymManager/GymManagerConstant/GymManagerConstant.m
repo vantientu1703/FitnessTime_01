@@ -10,4 +10,7 @@
 
 @implementation GymManagerConstant
 
+NSString *const kNameStoryboard = @"Main";
+NSString *const kLoginViewControllerIdentifier = @"LoginViewController";
+
 @end
