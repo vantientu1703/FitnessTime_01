@@ -37,7 +37,7 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
 }
 
 - (void)setupView {
-    //TODO
+    self.title = kPTMeetingViewControllerTitle;
     self.buttonAddNewMeeting.layer.cornerRadius = kCornerRadiusButtonAddNewMeeting;
     self.refreshReloadData = [[UIRefreshControl alloc] init];
     [self.refreshReloadData addTarget:self action:@selector(reloadDataCollectionView:)

@@ -13,11 +13,11 @@
 #import "PTMeetingViewController.h"
 #import "CalendarViewController.h"
 
-typedef NS_ENUM(NSInteger, MeetingDetailSection) {
-    MeetingDetailTrainer,
-    MeetingDetailCustomer,
-    MeetingDetailFromDate,
-    MeetingDetailToDate
+typedef NS_ENUM(NSInteger, MeetingDetailRows) {
+    MeetingDetailRowTrainer,
+    MeetingDetailRowCustomer,
+    MeetingDetailRowFromDate,
+    MeetingDetailRowToDate
 };
 
 NSInteger const kNumberOfRowsInSection = 4;
@@ -69,7 +69,7 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DateFormatter *dateFormatter = [[DateFormatter alloc] init];
     switch (indexPath.row) {
-        case MeetingDetailTrainer: {
+        case MeetingDetailRowTrainer: {
             CustomerOrTrainnerTableViewCell *trainerCell = (CustomerOrTrainnerTableViewCell *)[tableView
                 dequeueReusableCellWithIdentifier:kCustomerOrTrainnerTableViewCellIdentifier
                 forIndexPath:indexPath];
@@ -78,7 +78,7 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
             [trainerCell configCellWithName:kTrainnerTitle];
             return trainerCell;
         }
-        case MeetingDetailCustomer: {
+        case MeetingDetailRowCustomer: {
             CustomerOrTrainnerTableViewCell *customerCell = (CustomerOrTrainnerTableViewCell *)[tableView
                 dequeueReusableCellWithIdentifier:kCustomerOrTrainnerTableViewCellIdentifier
                 forIndexPath:indexPath];
@@ -87,16 +87,17 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
             [customerCell configCellWithName:kCustomerTitle];
             return customerCell;
         }
-        case MeetingDetailFromDate: {
+        case MeetingDetailRowFromDate: {
             DateMeetingTableViewCell *fromDateMeetingCell = (DateMeetingTableViewCell *)[tableView
                 dequeueReusableCellWithIdentifier:kDateMeetingTableViewCellIdentifier
                 forIndexPath:indexPath];
             fromDateMeetingCell.selectionStyle = UITableViewCellSelectionStyleNone;
             fromDateMeetingCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            [fromDateMeetingCell configCellWithDate:[dateFormatter dateFormatterDateMonthYear:[NSDate date]] andTitleFrom:kFromTitle];
+            [fromDateMeetingCell configCellWithDate:[dateFormatter dateFormatterDateMonthYear:[NSDate date]]
+                andTitleFrom:kFromTitle];
             return fromDateMeetingCell;
         }
-        case MeetingDetailToDate: {
+        case MeetingDetailRowToDate: {
             DateMeetingTableViewCell *toDateMeetingCell = (DateMeetingTableViewCell *)[tableView
                 dequeueReusableCellWithIdentifier:kDateMeetingTableViewCellIdentifier
                 forIndexPath:indexPath];
@@ -127,17 +128,17 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
         //TODO
     }];
     switch (indexPath.row) {
-        case MeetingDetailTrainer:
+        case MeetingDetailRowTrainer:
             [self.navigationController pushViewController:ptMeetingVC animated:true];
             ptMeetingVC.statusAddNewMeeting = kStatusAddNewMeeting;
             break;
-        case MeetingDetailCustomer:
+        case MeetingDetailRowCustomer:
             //TODO
             break;
-        case MeetingDetailFromDate:
+        case MeetingDetailRowFromDate:
             [self.navigationController pushViewController:calendarVC animated:true];
             break;
-        case MeetingDetailToDate:
+        case MeetingDetailRowToDate:
             [self.navigationController pushViewController:calendarVC animated:true];
             break;
         default:

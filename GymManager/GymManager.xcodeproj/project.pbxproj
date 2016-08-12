@@ -27,7 +27,6 @@
 		40B8A7321D640C12007AB6BF /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40B8A7301D640C12007AB6BF /* CategoryCell.xib */; };
 		40EA22E91D5E26FF00B08942 /* HeaderViewContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40EA22E81D5E26FE00B08942 /* HeaderViewContent.xib */; };
 		40EA22EC1D5E27C700B08942 /* HeaderViewContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EA22EB1D5E27C700B08942 /* HeaderViewContent.m */; };
-		EF08095E1D5C8261007A8EAE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EF08095D1D5C8261007A8EAE /* main.m */; };
 		EF0809671D5C8261007A8EAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF0809651D5C8261007A8EAE /* Main.storyboard */; };
 		EF0809691D5C8261007A8EAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF0809681D5C8261007A8EAE /* Assets.xcassets */; };
 		EF08096C1D5C8261007A8EAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF08096A1D5C8261007A8EAE /* LaunchScreen.storyboard */; };
@@ -43,6 +42,14 @@
 		EF870A871D5DBA9F00118D7C /* ic_user.png in Resources */ = {isa = PBXBuildFile; fileRef = EF870A851D5DBA9F00118D7C /* ic_user.png */; settings = {ASSET_TAGS = (); }; };
 		EF870A8B1D5DC69400118D7C /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF870A8A1D5DC69400118D7C /* RegisterViewController.m */; };
 		EF870A971D5DFEFE00118D7C /* PTMeetingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF870A961D5DFEFE00118D7C /* PTMeetingCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		EFF19FA21D61ED8400EAD1D1 /* ic_customer.png in Resources */ = {isa = PBXBuildFile; fileRef = EFF19F9E1D61ED8400EAD1D1 /* ic_customer.png */; settings = {ASSET_TAGS = (); }; };
+		EFF19FA31D61ED8400EAD1D1 /* ic_logout.png in Resources */ = {isa = PBXBuildFile; fileRef = EFF19F9F1D61ED8400EAD1D1 /* ic_logout.png */; settings = {ASSET_TAGS = (); }; };
+		EFF19FA41D61ED8400EAD1D1 /* ic_myprofile.png in Resources */ = {isa = PBXBuildFile; fileRef = EFF19FA01D61ED8400EAD1D1 /* ic_myprofile.png */; settings = {ASSET_TAGS = (); }; };
+		EFF19FA51D61ED8400EAD1D1 /* ic_ptmanager.png in Resources */ = {isa = PBXBuildFile; fileRef = EFF19FA11D61ED8400EAD1D1 /* ic_ptmanager.png */; settings = {ASSET_TAGS = (); }; };
+		EFF19FA91D61FA7A00EAD1D1 /* MyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF19FA81D61FA7A00EAD1D1 /* MyProfileViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EFF19FAD1D62064000EAD1D1 /* EditMyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF19FAC1D62064000EAD1D1 /* EditMyProfileViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EFF1B2FD1D65FC0F002919DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EF08095D1D5C8261007A8EAE /* main.m */; };
+		EFF1B3011D660EA2002919DB /* AlertManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF1B3001D660EA2002919DB /* AlertManager.m */; settings = {ASSET_TAGS = (); }; };
 		EFF28BB31D655C10000F9B27 /* ic_calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = EFF28BB11D655C10000F9B27 /* ic_calendar.png */; settings = {ASSET_TAGS = (); }; };
 		EFF28BB41D655C10000F9B27 /* ic_threedots.png in Resources */ = {isa = PBXBuildFile; fileRef = EFF28BB21D655C10000F9B27 /* ic_threedots.png */; settings = {ASSET_TAGS = (); }; };
 		EFF28BB71D655D07000F9B27 /* TodayMeetingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF28BB61D655D07000F9B27 /* TodayMeetingTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -50,6 +57,7 @@
 		EFF28BD91D657397000F9B27 /* DateMeetingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF28BD81D657397000F9B27 /* DateMeetingTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		EFF28BDC1D657640000F9B27 /* CustomerOrTrainnerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF28BDB1D657640000F9B27 /* CustomerOrTrainnerTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		EFF28BE31D6585BA000F9B27 /* DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF28BE21D6585BA000F9B27 /* DateFormatter.m */; settings = {ASSET_TAGS = (); }; };
+		EFFD8D3E1D66AC2800994CC5 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = EFFD8D3D1D66AC2800994CC5 /* Utils.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +126,16 @@
 		EF870A8A1D5DC69400118D7C /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterViewController.m; path = ViewControllers/RegisterViewController/RegisterViewController.m; sourceTree = "<group>"; };
 		EF870A951D5DFEFE00118D7C /* PTMeetingCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTMeetingCollectionViewCell.h; path = Cell/PTMeetingCollectionViewCell/PTMeetingCollectionViewCell.h; sourceTree = "<group>"; };
 		EF870A961D5DFEFE00118D7C /* PTMeetingCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PTMeetingCollectionViewCell.m; path = Cell/PTMeetingCollectionViewCell/PTMeetingCollectionViewCell.m; sourceTree = "<group>"; };
+		EFF19F9E1D61ED8400EAD1D1 /* ic_customer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_customer.png; path = Resources/ic_customer.png; sourceTree = "<group>"; };
+		EFF19F9F1D61ED8400EAD1D1 /* ic_logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_logout.png; path = Resources/ic_logout.png; sourceTree = "<group>"; };
+		EFF19FA01D61ED8400EAD1D1 /* ic_myprofile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_myprofile.png; path = Resources/ic_myprofile.png; sourceTree = "<group>"; };
+		EFF19FA11D61ED8400EAD1D1 /* ic_ptmanager.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_ptmanager.png; path = Resources/ic_ptmanager.png; sourceTree = "<group>"; };
+		EFF19FA71D61FA7A00EAD1D1 /* MyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyProfileViewController.h; path = ViewControllers/MyProfileViewController/MyProfileViewController.h; sourceTree = "<group>"; };
+		EFF19FA81D61FA7A00EAD1D1 /* MyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyProfileViewController.m; path = ViewControllers/MyProfileViewController/MyProfileViewController.m; sourceTree = "<group>"; };
+		EFF19FAB1D62064000EAD1D1 /* EditMyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditMyProfileViewController.h; path = ViewControllers/EdiMyProfileViewController/EditMyProfileViewController.h; sourceTree = "<group>"; };
+		EFF19FAC1D62064000EAD1D1 /* EditMyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditMyProfileViewController.m; path = ViewControllers/EdiMyProfileViewController/EditMyProfileViewController.m; sourceTree = "<group>"; };
+		EFF1B2FF1D660EA2002919DB /* AlertManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlertManager.h; path = ViewControllers/AlertController/AlertManager.h; sourceTree = "<group>"; };
+		EFF1B3001D660EA2002919DB /* AlertManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlertManager.m; path = ViewControllers/AlertController/AlertManager.m; sourceTree = "<group>"; };
 		EFF28BB11D655C10000F9B27 /* ic_calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_calendar.png; path = Resources/ic_calendar.png; sourceTree = "<group>"; };
 		EFF28BB21D655C10000F9B27 /* ic_threedots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_threedots.png; path = Resources/ic_threedots.png; sourceTree = "<group>"; };
 		EFF28BB51D655D07000F9B27 /* TodayMeetingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TodayMeetingTableViewCell.h; path = Cell/TodayMeetingTableViewCell/TodayMeetingTableViewCell.h; sourceTree = "<group>"; };
@@ -130,6 +148,8 @@
 		EFF28BDB1D657640000F9B27 /* CustomerOrTrainnerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomerOrTrainnerTableViewCell.m; path = Cell/CustomerOrTrainerTableViewCell/CustomerOrTrainnerTableViewCell.m; sourceTree = "<group>"; };
 		EFF28BE11D6585BA000F9B27 /* DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DateFormatter.h; path = DateFormatter/DateFormatter.h; sourceTree = "<group>"; };
 		EFF28BE21D6585BA000F9B27 /* DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DateFormatter.m; path = DateFormatter/DateFormatter.m; sourceTree = "<group>"; };
+		EFFD8D3C1D66AC2800994CC5 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = Utils/Utils.h; sourceTree = "<group>"; };
+		EFFD8D3D1D66AC2800994CC5 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = Utils/Utils.m; sourceTree = "<group>"; };
 		F5306E0927E6108D1261CCE5 /* Pods-GymManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GymManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GymManager/Pods-GymManager.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -288,6 +308,7 @@
 		EF08095B1D5C8261007A8EAE /* GymManager */ = {
 			isa = PBXGroup;
 			children = (
+				EFFD8D3B1D66ABFB00994CC5 /* Utils */,
 				EFF28BDD1D6584AC000F9B27 /* DateFormatter */,
 				40AB312B1D5DD7D800341359 /* Library */,
 				EF870A6F1D5D8A9800118D7C /* GymManagerConstant */,
@@ -325,6 +346,7 @@
 		EF0809771D5C8730007A8EAE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				EFF1B2FE1D660E81002919DB /* AlertController */,
 				406E247E1D62C7A100F013FB /* CalendarViewController */,
 				EF08097C1D5C88B2007A8EAE /* AppDelegate */,
 				EF0809861D5C8D03007A8EAE /* BaseViewController */,
@@ -335,6 +357,8 @@
 				EFF28BCE1D6572A7000F9B27 /* MeetingDetailViewController */,
 				EF0809941D5C975E007A8EAE /* TransactionsViewController */,
 				EF0809951D5C976D007A8EAE /* MenuViewController */,
+				EFF19FA61D61FA4E00EAD1D1 /* MyProfileViewController */,
+				EFF19FAA1D62061500EAD1D1 /* EditMyProfileViewController */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -344,6 +368,10 @@
 			children = (
 				EFF28BB11D655C10000F9B27 /* ic_calendar.png */,
 				EFF28BB21D655C10000F9B27 /* ic_threedots.png */,
+				EFF19F9E1D61ED8400EAD1D1 /* ic_customer.png */,
+				EFF19F9F1D61ED8400EAD1D1 /* ic_logout.png */,
+				EFF19FA01D61ED8400EAD1D1 /* ic_myprofile.png */,
+				EFF19FA11D61ED8400EAD1D1 /* ic_ptmanager.png */,
 				EF870A841D5DBA9F00118D7C /* ic_key.png */,
 				EF870A851D5DBA9F00118D7C /* ic_user.png */,
 			);
@@ -489,6 +517,33 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
+		EFF19FA61D61FA4E00EAD1D1 /* MyProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EFF19FA71D61FA7A00EAD1D1 /* MyProfileViewController.h */,
+				EFF19FA81D61FA7A00EAD1D1 /* MyProfileViewController.m */,
+			);
+			name = MyProfileViewController;
+			sourceTree = "<group>";
+		};
+		EFF19FAA1D62061500EAD1D1 /* EditMyProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EFF19FAB1D62064000EAD1D1 /* EditMyProfileViewController.h */,
+				EFF19FAC1D62064000EAD1D1 /* EditMyProfileViewController.m */,
+			);
+			name = EditMyProfileViewController;
+			sourceTree = "<group>";
+		};
+		EFF1B2FE1D660E81002919DB /* AlertController */ = {
+			isa = PBXGroup;
+			children = (
+				EFF1B2FF1D660EA2002919DB /* AlertManager.h */,
+				EFF1B3001D660EA2002919DB /* AlertManager.m */,
+			);
+			name = AlertController;
+			sourceTree = "<group>";
+		};
 		EFF28BCE1D6572A7000F9B27 /* MeetingDetailViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -523,6 +578,15 @@
 				EFF28BE21D6585BA000F9B27 /* DateFormatter.m */,
 			);
 			name = DateFormatter;
+			sourceTree = "<group>";
+		};
+		EFFD8D3B1D66ABFB00994CC5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				EFFD8D3C1D66AC2800994CC5 /* Utils.h */,
+				EFFD8D3D1D66AC2800994CC5 /* Utils.m */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -587,8 +651,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF08096C1D5C8261007A8EAE /* LaunchScreen.storyboard in Resources */,
+				EFF19FA51D61ED8400EAD1D1 /* ic_ptmanager.png in Resources */,
+				EFF19FA21D61ED8400EAD1D1 /* ic_customer.png in Resources */,
+				EFF19FA31D61ED8400EAD1D1 /* ic_logout.png in Resources */,
 				EF870A861D5DBA9F00118D7C /* ic_key.png in Resources */,
 				EF0809691D5C8261007A8EAE /* Assets.xcassets in Resources */,
+				EFF19FA41D61ED8400EAD1D1 /* ic_myprofile.png in Resources */,
 				EF0809671D5C8261007A8EAE /* Main.storyboard in Resources */,
 				EF870A871D5DBA9F00118D7C /* ic_user.png in Resources */,
 				EFF28BB41D655C10000F9B27 /* ic_threedots.png in Resources */,
@@ -655,7 +723,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFF1B2FD1D65FC0F002919DB /* main.m in Sources */,
 				EF08098B1D5C8D69007A8EAE /* TodayMeetingsViewController.m in Sources */,
+				EFF1B3011D660EA2002919DB /* AlertManager.m in Sources */,
 				408933171D646B050081511C /* Trainer.m in Sources */,
 				408933151D646B050081511C /* Customer.m in Sources */,
 				408933161D646B050081511C /* Person.m in Sources */,
@@ -681,10 +751,12 @@
 				4089331C1D646B1D0081511C /* Transaction.m in Sources */,
 				40AB31311D5DD81000341359 /* ExpandableTableView.m in Sources */,
 				EFF28BDC1D657640000F9B27 /* CustomerOrTrainnerTableViewCell.m in Sources */,
-				EF08095E1D5C8261007A8EAE /* main.m in Sources */,
 				406E24811D62C7AD00F013FB /* CalendarViewController.m in Sources */,
 				EFF28BE31D6585BA000F9B27 /* DateFormatter.m in Sources */,
+				EFF19FAD1D62064000EAD1D1 /* EditMyProfileViewController.m in Sources */,
+				EFF19FA91D61FA7A00EAD1D1 /* MyProfileViewController.m in Sources */,
 				EF0809801D5C89AB007A8EAE /* AppDelegate.m in Sources */,
+				EFFD8D3E1D66AC2800994CC5 /* Utils.m in Sources */,
 				EF870A971D5DFEFE00118D7C /* PTMeetingCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -803,14 +875,17 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F5306E0927E6108D1261CCE5 /* Pods-GymManager.debug.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/GymManager-PrefixHeader.pch";
 				INFOPLIST_FILE = GymManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vantientu.GymManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -821,14 +896,17 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DE00B44097AD55AB45E9DCEA /* Pods-GymManager.release.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/GymManager-PrefixHeader.pch";
 				INFOPLIST_FILE = GymManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vantientu.GymManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

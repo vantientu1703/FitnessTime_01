@@ -35,5 +35,14 @@ NSString *const kPTMeetingViewControllerIdentifier = @"PTMeetingViewController";
 NSString *const kMeetingDetailViewControllerIdentifier = @"MeetingDetailViewController";
 NSString *const kStatusAddNewMeeting = @"status add new meeting";
 NSString *const kStatusViewMeetingDetail = @"status view meeting detail";
+NSString *const kMenuViewControllerIdentifier = @"MenuViewController";
+NSString *const kMyProfileViewControllerIdentifier = @"MyProfileViewController";
+NSString *const kEditMyProfileViewControllerIdentifier = @"EditMyProfileViewController";
+NSString *const kChoosenTypeTitle = @"Choosen type";
+NSString *const kChoseFromLibraryTitle = @"Choose from library";
+NSString *const kChoseFromCameraTitle = @"Choose from camera";
+NSString *const kCancelTitle = @"Cancel";
+NSString *const kNotFoundCamera = @"Not found camera";
+NSString *const kOkTitle = @"Ok";
 
 @end

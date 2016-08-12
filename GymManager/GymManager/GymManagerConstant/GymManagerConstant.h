@@ -35,5 +35,14 @@ extern NSString *const kPTMeetingViewControllerIdentifier;
 extern NSString *const kMeetingDetailViewControllerIdentifier;
 extern NSString *const kStatusAddNewMeeting;
 extern NSString *const kStatusViewMeetingDetail;
+extern NSString *const kMenuViewControllerIdentifier;
+extern NSString *const kMyProfileViewControllerIdentifier;
+extern NSString *const kEditMyProfileViewControllerIdentifier;
+extern NSString *const kChoosenTypeTitle;
+extern NSString *const kChoseFromLibraryTitle;
+extern NSString *const kChoseFromCameraTitle;
+extern NSString *const kCancelTitle;
+extern NSString *const kNotFoundCamera;
+extern NSString *const kOkTitle;
 
 @end
