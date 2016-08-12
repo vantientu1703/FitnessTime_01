@@ -1,0 +1,25 @@
+//
+//  GymManager-PrefixHeader.pch
+//  GymManager
+//
+//  Created by Văn Tiến Tú on 8/11/16.
+//  Copyright © 2016 vantientu. All rights reserved.
+//
+#import <Availability.h>
+
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+#ifdef DEBUG
+#   define DebugLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#else
+#   define DebugLog(...)
+#endif
+#endif
+
+#ifndef GymManager_PrefixHeader_pch
+#define GymManager_PrefixHeader_pch
+#import "GymManagerConstant.h"
+#endif /* GymManager_PrefixHeader_pch */
