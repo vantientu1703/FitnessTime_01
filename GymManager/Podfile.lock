@@ -15,18 +15,21 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - MBProgressHUD (1.0.0)
+  - TPKeyboardAvoiding (1.3)
   - UICKeyChainStore (2.1.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - MBProgressHUD (~> 1.0.0)
+  - TPKeyboardAvoiding
   - UICKeyChainStore
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  TPKeyboardAvoiding: a5138f318c06fb3e151f886e18ce4a72695d9cbe
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
 
-PODFILE CHECKSUM: e6af6b35268f611863f69bbb1ddbdb9097b67fb8
+PODFILE CHECKSUM: 5fcdf249d87b54c1a7792bf11f6e0c6d290b13fa
 
 COCOAPODS: 1.0.1
