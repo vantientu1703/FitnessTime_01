@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-const CGFloat kTableViewHeaderHeight = 60.0;
-
 @protocol ExpandableTableViewDelegate <NSObject>
 
 - (void)didEndAnimationWithNumberOffCellChange:(NSInteger)numberOfCell;

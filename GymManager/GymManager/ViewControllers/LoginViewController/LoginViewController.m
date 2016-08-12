@@ -7,6 +7,14 @@
 //
 
 #import "LoginViewController.h"
+#import "PTMeetingViewController.h"
+#import "TransactionsViewController.h"
+#import "MenuViewController.h"
+#import "TodayMeetingsViewController.h"
+#import "RegisterViewController.h"
+#import "AppDelegate.h"
+
+NSString *const kLoginVCTitle = @"Login";
 
 @interface LoginViewController ()<UITextFieldDelegate>
 
@@ -22,14 +30,19 @@
     [super viewDidLoad];
     self.textFieldPassword.delegate = self;
     self.textFieldUserName.delegate = self;
+    self.title = kLoginVCTitle;
 }
 
 - (IBAction)loginPress:(id)sender {
-    //TODO
+//    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetRootViewWindowTitle object:nil];
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    [appDelegate loadTabbarController];
 }
 
 - (IBAction)registerPress:(id)sender {
-    //TODO
+    UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
+    RegisterViewController *registerVC = [st instantiateViewControllerWithIdentifier:kRegisterViewControllerIdentifier];
+    [self.navigationController pushViewController:registerVC animated:true];
 }
 
 - (IBAction)forgetPasswordPress:(id)sender {
