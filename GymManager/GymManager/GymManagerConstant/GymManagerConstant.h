@@ -12,5 +12,6 @@
 
 extern NSString *const kNameStoryboard;
 extern NSString *const kLoginViewControllerIdentifier;
+extern NSString *const kMeetingDetailViewControllerIdentifier;
 
 @end

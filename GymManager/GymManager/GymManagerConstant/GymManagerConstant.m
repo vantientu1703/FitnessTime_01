@@ -12,5 +12,6 @@
 
 NSString *const kNameStoryboard = @"Main";
 NSString *const kLoginViewControllerIdentifier = @"LoginViewController";
+NSString *const kMeetingDetailViewControllerIdentifier = @"MeetingDetailViewController";
 
 @end

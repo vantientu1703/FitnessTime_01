@@ -21,5 +21,8 @@
 
 #ifndef GymManager_PrefixHeader_pch
 #define GymManager_PrefixHeader_pch
+
 #import "GymManagerConstant.h"
+#import "DateFormatter.h"
+
 #endif /* GymManager_PrefixHeader_pch */

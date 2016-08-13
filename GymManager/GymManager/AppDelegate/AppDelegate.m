@@ -12,6 +12,7 @@
 #import "MenuViewController.h"
 #import "TransactionsViewController.h"
 #import "LoginViewController.h"
+#import "MeetingDetailViewController.h"
 
 NSString *const kTodayViewControllerTitle = @"Today";
 NSString *const kPTMeetingViewControllerTitle = @"PT Meeting";

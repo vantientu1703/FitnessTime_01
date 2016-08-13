@@ -18,6 +18,10 @@
 		EF0809931D5C954A007A8EAE /* PTMeetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0809921D5C954A007A8EAE /* PTMeetingViewController.m */; settings = {ASSET_TAGS = (); }; };
 		EF0809981D5C97B6007A8EAE /* TransactionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0809971D5C97B6007A8EAE /* TransactionsViewController.m */; settings = {ASSET_TAGS = (); }; };
 		EF08099B1D5C97C9007A8EAE /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF08099A1D5C97C9007A8EAE /* MenuViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EF0E28891D5F8F4F007BD892 /* MeetingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0E28881D5F8F4F007BD892 /* MeetingDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EF0E288D1D5F9272007BD892 /* CustomerOrTrainnerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0E288C1D5F9272007BD892 /* CustomerOrTrainnerTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		EF0E28921D5F92BA007BD892 /* DateMeetingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0E28911D5F92BA007BD892 /* DateMeetingTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		EF0E28961D5FA008007BD892 /* DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0E28951D5FA008007BD892 /* DateFormatter.m */; settings = {ASSET_TAGS = (); }; };
 		EF870A751D5DA11200118D7C /* GymManagerConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = EF870A741D5DA11200118D7C /* GymManagerConstant.m */; settings = {ASSET_TAGS = (); }; };
 		EF870A831D5DB66700118D7C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF870A821D5DB66700118D7C /* LoginViewController.m */; settings = {ASSET_TAGS = (); }; };
 		EF870A861D5DBA9F00118D7C /* ic_key.png in Resources */ = {isa = PBXBuildFile; fileRef = EF870A841D5DBA9F00118D7C /* ic_key.png */; settings = {ASSET_TAGS = (); }; };
@@ -46,6 +50,14 @@
 		EF0809971D5C97B6007A8EAE /* TransactionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransactionsViewController.m; path = ViewControllers/TransactionsViewController/TransactionsViewController.m; sourceTree = "<group>"; };
 		EF0809991D5C97C9007A8EAE /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuViewController.h; path = ViewControllers/MenuViewController/MenuViewController.h; sourceTree = "<group>"; };
 		EF08099A1D5C97C9007A8EAE /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuViewController.m; path = ViewControllers/MenuViewController/MenuViewController.m; sourceTree = "<group>"; };
+		EF0E28871D5F8F4F007BD892 /* MeetingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeetingDetailViewController.h; path = ViewControllers/MeetingDetailViewController/MeetingDetailViewController.h; sourceTree = "<group>"; };
+		EF0E28881D5F8F4F007BD892 /* MeetingDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeetingDetailViewController.m; path = ViewControllers/MeetingDetailViewController/MeetingDetailViewController.m; sourceTree = "<group>"; };
+		EF0E288B1D5F9272007BD892 /* CustomerOrTrainnerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomerOrTrainnerTableViewCell.h; path = ViewControllers/Cell/CustomerOrTrainerTableViewCell/CustomerOrTrainnerTableViewCell.h; sourceTree = "<group>"; };
+		EF0E288C1D5F9272007BD892 /* CustomerOrTrainnerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomerOrTrainnerTableViewCell.m; path = ViewControllers/Cell/CustomerOrTrainerTableViewCell/CustomerOrTrainnerTableViewCell.m; sourceTree = "<group>"; };
+		EF0E28901D5F92BA007BD892 /* DateMeetingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DateMeetingTableViewCell.h; path = Cell/DateMeetingTableViewCell/DateMeetingTableViewCell.h; sourceTree = "<group>"; };
+		EF0E28911D5F92BA007BD892 /* DateMeetingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DateMeetingTableViewCell.m; path = Cell/DateMeetingTableViewCell/DateMeetingTableViewCell.m; sourceTree = "<group>"; };
+		EF0E28941D5FA008007BD892 /* DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DateFormatter.h; path = DateFormatter/DateFormatter.h; sourceTree = "<group>"; };
+		EF0E28951D5FA008007BD892 /* DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DateFormatter.m; path = DateFormatter/DateFormatter.m; sourceTree = "<group>"; };
 		EF870A731D5DA11200118D7C /* GymManagerConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GymManagerConstant.h; path = GymManagerConstant/GymManagerConstant.h; sourceTree = "<group>"; };
 		EF870A741D5DA11200118D7C /* GymManagerConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GymManagerConstant.m; path = GymManagerConstant/GymManagerConstant.m; sourceTree = "<group>"; };
 		EF870A811D5DB66700118D7C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ViewControllers/LoginViewController/LoginViewController.h; sourceTree = "<group>"; };
@@ -105,9 +117,11 @@
 		EF08095B1D5C8261007A8EAE /* GymManager */ = {
 			isa = PBXGroup;
 			children = (
+				EF0E28931D5F9FB9007BD892 /* DateFormatter */,
 				EF870A6F1D5D8A9800118D7C /* GymManagerConstant */,
 				EF0809731D5C8558007A8EAE /* HandleAPI */,
 				EF0809771D5C8730007A8EAE /* ViewControllers */,
+				EF0E288A1D5F9221007BD892 /* Cell */,
 				EF0809851D5C8C1B007A8EAE /* Service */,
 				EF0809791D5C874B007A8EAE /* Model */,
 				EF08097B1D5C8890007A8EAE /* Storyboard */,
@@ -144,6 +158,7 @@
 				EF870A801D5DB64D00118D7C /* LoginViewController */,
 				EF08097A1D5C8881007A8EAE /* TodayMettingViewController */,
 				EF0809901D5C94C2007A8EAE /* PTMeetingViewController */,
+				EF0E28861D5F8F21007BD892 /* MeetingDetailViewController */,
 				EF0809941D5C975E007A8EAE /* TransactionsViewController */,
 				EF0809951D5C976D007A8EAE /* MenuViewController */,
 			);
@@ -233,6 +248,51 @@
 				EF08099A1D5C97C9007A8EAE /* MenuViewController.m */,
 			);
 			name = MenuViewController;
+			sourceTree = "<group>";
+		};
+		EF0E28861D5F8F21007BD892 /* MeetingDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EF0E28871D5F8F4F007BD892 /* MeetingDetailViewController.h */,
+				EF0E28881D5F8F4F007BD892 /* MeetingDetailViewController.m */,
+			);
+			name = MeetingDetailViewController;
+			sourceTree = "<group>";
+		};
+		EF0E288A1D5F9221007BD892 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EF0E288E1D5F9278007BD892 /* CustomerOrTrainerTableViewCell */,
+				EF0E288F1D5F928B007BD892 /* DateCell */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		EF0E288E1D5F9278007BD892 /* CustomerOrTrainerTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				EF0E288B1D5F9272007BD892 /* CustomerOrTrainnerTableViewCell.h */,
+				EF0E288C1D5F9272007BD892 /* CustomerOrTrainnerTableViewCell.m */,
+			);
+			name = CustomerOrTrainerTableViewCell;
+			sourceTree = "<group>";
+		};
+		EF0E288F1D5F928B007BD892 /* DateCell */ = {
+			isa = PBXGroup;
+			children = (
+				EF0E28901D5F92BA007BD892 /* DateMeetingTableViewCell.h */,
+				EF0E28911D5F92BA007BD892 /* DateMeetingTableViewCell.m */,
+			);
+			name = DateCell;
+			sourceTree = "<group>";
+		};
+		EF0E28931D5F9FB9007BD892 /* DateFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				EF0E28941D5FA008007BD892 /* DateFormatter.h */,
+				EF0E28951D5FA008007BD892 /* DateFormatter.m */,
+			);
+			name = DateFormatter;
 			sourceTree = "<group>";
 		};
 		EF870A6F1D5D8A9800118D7C /* GymManagerConstant */ = {
@@ -379,12 +439,16 @@
 				EF08098B1D5C8D69007A8EAE /* TodayMeetingsViewController.m in Sources */,
 				EF870A751D5DA11200118D7C /* GymManagerConstant.m in Sources */,
 				EF0809891D5C8D3F007A8EAE /* BaseViewController.m in Sources */,
+				EF0E28891D5F8F4F007BD892 /* MeetingDetailViewController.m in Sources */,
 				EF0809931D5C954A007A8EAE /* PTMeetingViewController.m in Sources */,
+				EF0E28961D5FA008007BD892 /* DateFormatter.m in Sources */,
 				EF08099B1D5C97C9007A8EAE /* MenuViewController.m in Sources */,
 				EF870A831D5DB66700118D7C /* LoginViewController.m in Sources */,
 				EF0809981D5C97B6007A8EAE /* TransactionsViewController.m in Sources */,
+				EF0E288D1D5F9272007BD892 /* CustomerOrTrainnerTableViewCell.m in Sources */,
 				EF08095E1D5C8261007A8EAE /* main.m in Sources */,
 				EF0809801D5C89AB007A8EAE /* AppDelegate.m in Sources */,
+				EF0E28921D5F92BA007BD892 /* DateMeetingTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
