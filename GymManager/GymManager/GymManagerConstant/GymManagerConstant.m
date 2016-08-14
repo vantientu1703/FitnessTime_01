@@ -12,5 +12,8 @@
 
 NSString *const kNameStoryboard = @"Main";
 NSString *const kLoginViewControllerIdentifier = @"LoginViewController";
+NSString *const kCustomerManagerViewControllerIdentifier = @"CustomerManagerViewController";
+NSString *const kAddNewCustomerViewControllerIdentifier = @"AddNewCustomerViewController";
+NSString *const kMessageEditCustomer = @"Edit customer";
 
 @end

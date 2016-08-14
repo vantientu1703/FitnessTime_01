@@ -12,5 +12,8 @@
 
 extern NSString *const kNameStoryboard;
 extern NSString *const kLoginViewControllerIdentifier;
+extern NSString *const kCustomerManagerViewControllerIdentifier;
+extern NSString *const kAddNewCustomerViewControllerIdentifier;
+extern NSString *const kMessageEditCustomer;
 
 @end
