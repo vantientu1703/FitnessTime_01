@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="69" id="KGk-i7-Jjw" customClass="TransactionCell">
+            <rect key="frame" x="0.0" y="0.0" width="342" height="69"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="342" height="68"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ldq-3G-mZK">
+                        <rect key="frame" x="13" y="23" width="71" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99.000Đ" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dU8-Uq-9Ki">
+                        <rect key="frame" x="263" y="23" width="68" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.057294889129999999" green="0.8350560897" blue="0.050325691460000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="dU8-Uq-9Ki" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="1AN-cc-pO8"/>
+                    <constraint firstItem="ldq-3G-mZK" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Rck-IX-D74"/>
+                    <constraint firstItem="dU8-Uq-9Ki" firstAttribute="leading" secondItem="ldq-3G-mZK" secondAttribute="trailing" priority="250" id="n9C-AI-jft"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="dU8-Uq-9Ki" secondAttribute="trailing" constant="3" id="qO0-GQ-tMi"/>
+                    <constraint firstItem="ldq-3G-mZK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="xln-MM-agO"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="lbCategory" destination="ldq-3G-mZK" id="yUr-QU-aXm"/>
+                <outlet property="lbCost" destination="dU8-Uq-9Ki" id="BLa-9d-hGl"/>
+            </connections>
+            <point key="canvasLocation" x="295" y="196.5"/>
+        </tableViewCell>
+    </objects>
+</document>

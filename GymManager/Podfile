@@ -6,4 +6,5 @@ target 'GymManager' do
   pod 'MBProgressHUD', '~> 1.0.0'
   pod 'UICKeyChainStore'
   pod 'TPKeyboardAvoiding'
+  pod 'CCBottomRefreshControl'
 end
