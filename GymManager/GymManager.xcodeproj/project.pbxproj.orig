@@ -637,7 +637,11 @@
 				EF0809931D5C954A007A8EAE /* PTMeetingViewController.m in Sources */,
 				EF08099B1D5C97C9007A8EAE /* MenuViewController.m in Sources */,
 				EF870A8B1D5DC69400118D7C /* RegisterViewController.m in Sources */,
+<<<<<<< cf66e52df0033a61bdea6ae46b37097c9b5e494a
 				EFF28BB71D655D07000F9B27 /* TodayMeetingTableViewCell.m in Sources */,
+=======
+				404241241D6552D000111B97 /* TodayMeetingTableViewCell.m in Sources */,
+>>>>>>> calendar_mockup
 				40B8A7311D640C12007AB6BF /* CategoryCell.m in Sources */,
 				EF870A831D5DB66700118D7C /* LoginViewController.m in Sources */,
 				40B8A72B1D640C04007AB6BF /* ListCategoryViewController.m in Sources */,

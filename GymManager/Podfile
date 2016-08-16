@@ -7,4 +7,5 @@ target 'GymManager' do
   pod 'UICKeyChainStore'
   pod 'TPKeyboardAvoiding'
   pod 'CCBottomRefreshControl'
+  pod 'RSDayFlow'
 end
