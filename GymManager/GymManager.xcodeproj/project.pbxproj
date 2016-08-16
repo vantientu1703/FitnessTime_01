@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		09E77F40D442DD862B0308B4 /* libPods-GymManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7A8174D3CFE4CB610F82E6 /* libPods-GymManager.a */; };
 		4017EDF61D6175A30033E0AE /* AddTransactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4017EDF51D6175A30033E0AE /* AddTransactionViewController.m */; };
+		408933151D646B050081511C /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4089330E1D646B050081511C /* Customer.m */; };
+		408933161D646B050081511C /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 408933101D646B050081511C /* Person.m */; };
+		408933171D646B050081511C /* Trainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 408933121D646B050081511C /* Trainer.m */; };
+		408933181D646B050081511C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 408933141D646B050081511C /* User.m */; };
+		4089331C1D646B1D0081511C /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4089331B1D646B1D0081511C /* Transaction.m */; };
+		408933211D646B300081511C /* Meeting.m in Sources */ = {isa = PBXBuildFile; fileRef = 408933201D646B300081511C /* Meeting.m */; };
+		408933241D646B370081511C /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 408933231D646B370081511C /* Item.m */; };
 		40AB31241D5DB47400341359 /* Transaction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40AB31221D5DB47400341359 /* Transaction.storyboard */; };
 		40AB31291D5DC4E700341359 /* TransactionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AB31271D5DC4E700341359 /* TransactionCell.m */; };
 		40AB312A1D5DC4E700341359 /* TransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40AB31281D5DC4E700341359 /* TransactionCell.xib */; };
@@ -23,29 +30,36 @@
 		EF0809671D5C8261007A8EAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF0809651D5C8261007A8EAE /* Main.storyboard */; };
 		EF0809691D5C8261007A8EAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF0809681D5C8261007A8EAE /* Assets.xcassets */; };
 		EF08096C1D5C8261007A8EAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF08096A1D5C8261007A8EAE /* LaunchScreen.storyboard */; };
+		EF0809801D5C89AB007A8EAE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EF08097F1D5C89AB007A8EAE /* AppDelegate.m */; };
 		EF0809891D5C8D3F007A8EAE /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0809881D5C8D3F007A8EAE /* BaseViewController.m */; };
+		EF08098B1D5C8D69007A8EAE /* TodayMeetingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF08098A1D5C8D69007A8EAE /* TodayMeetingsViewController.m */; };
+		EF0809931D5C954A007A8EAE /* PTMeetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0809921D5C954A007A8EAE /* PTMeetingViewController.m */; };
 		EF0809981D5C97B6007A8EAE /* TransactionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0809971D5C97B6007A8EAE /* TransactionsViewController.m */; };
 		EF08099B1D5C97C9007A8EAE /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF08099A1D5C97C9007A8EAE /* MenuViewController.m */; };
+		EF870A751D5DA11200118D7C /* GymManagerConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = EF870A741D5DA11200118D7C /* GymManagerConstant.m */; };
+		EF870A831D5DB66700118D7C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF870A821D5DB66700118D7C /* LoginViewController.m */; };
 		EF870A861D5DBA9F00118D7C /* ic_key.png in Resources */ = {isa = PBXBuildFile; fileRef = EF870A841D5DBA9F00118D7C /* ic_key.png */; };
 		EF870A871D5DBA9F00118D7C /* ic_user.png in Resources */ = {isa = PBXBuildFile; fileRef = EF870A851D5DBA9F00118D7C /* ic_user.png */; };
-		EF0809801D5C89AB007A8EAE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EF08097F1D5C89AB007A8EAE /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
-		EF08098B1D5C8D69007A8EAE /* TodayMeetingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF08098A1D5C8D69007A8EAE /* TodayMeetingsViewController.m */; settings = {ASSET_TAGS = (); }; };
-		EF0809931D5C954A007A8EAE /* PTMeetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0809921D5C954A007A8EAE /* PTMeetingViewController.m */; settings = {ASSET_TAGS = (); }; };
-		EF0809981D5C97B6007A8EAE /* TransactionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0809971D5C97B6007A8EAE /* TransactionsViewController.m */; settings = {ASSET_TAGS = (); }; };
-		EF08099B1D5C97C9007A8EAE /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF08099A1D5C97C9007A8EAE /* MenuViewController.m */; settings = {ASSET_TAGS = (); }; };
-		EF0E28851D5F8216007BD892 /* ic_calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = EF0E28841D5F8216007BD892 /* ic_calendar.png */; settings = {ASSET_TAGS = (); }; };
-		EF0E28981D5FA662007BD892 /* ic_threedots.png in Resources */ = {isa = PBXBuildFile; fileRef = EF0E28971D5FA662007BD892 /* ic_threedots.png */; settings = {ASSET_TAGS = (); }; };
-		EF870A751D5DA11200118D7C /* GymManagerConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = EF870A741D5DA11200118D7C /* GymManagerConstant.m */; settings = {ASSET_TAGS = (); }; };
-		EF870A831D5DB66700118D7C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF870A821D5DB66700118D7C /* LoginViewController.m */; settings = {ASSET_TAGS = (); }; };
-		EF870A861D5DBA9F00118D7C /* ic_key.png in Resources */ = {isa = PBXBuildFile; fileRef = EF870A841D5DBA9F00118D7C /* ic_key.png */; settings = {ASSET_TAGS = (); }; };
-		EF870A871D5DBA9F00118D7C /* ic_user.png in Resources */ = {isa = PBXBuildFile; fileRef = EF870A851D5DBA9F00118D7C /* ic_user.png */; settings = {ASSET_TAGS = (); }; };
-		EF870A8B1D5DC69400118D7C /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF870A8A1D5DC69400118D7C /* RegisterViewController.m */; settings = {ASSET_TAGS = (); }; };
-		EF870A931D5DF03700118D7C /* TodayMeetingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF870A921D5DF03700118D7C /* TodayMeetingTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		EF870A8B1D5DC69400118D7C /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF870A8A1D5DC69400118D7C /* RegisterViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4017EDF41D6175A30033E0AE /* AddTransactionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddTransactionViewController.h; path = ViewControllers/TransactionsViewController/AddTransactionViewController/AddTransactionViewController.h; sourceTree = "<group>"; };
 		4017EDF51D6175A30033E0AE /* AddTransactionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddTransactionViewController.m; path = ViewControllers/TransactionsViewController/AddTransactionViewController/AddTransactionViewController.m; sourceTree = "<group>"; };
+		4089330D1D646B050081511C /* Customer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Customer.h; path = Modal/User/Customer.h; sourceTree = "<group>"; };
+		4089330E1D646B050081511C /* Customer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Customer.m; path = Modal/User/Customer.m; sourceTree = "<group>"; };
+		4089330F1D646B050081511C /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = Modal/User/Person.h; sourceTree = "<group>"; };
+		408933101D646B050081511C /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = Modal/User/Person.m; sourceTree = "<group>"; };
+		408933111D646B050081511C /* Trainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Trainer.h; path = Modal/User/Trainer.h; sourceTree = "<group>"; };
+		408933121D646B050081511C /* Trainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Trainer.m; path = Modal/User/Trainer.m; sourceTree = "<group>"; };
+		408933131D646B050081511C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Modal/User/User.h; sourceTree = "<group>"; };
+		408933141D646B050081511C /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Modal/User/User.m; sourceTree = "<group>"; };
+		4089331A1D646B1D0081511C /* Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Transaction.h; path = Modal/Transaction/Transaction.h; sourceTree = "<group>"; };
+		4089331B1D646B1D0081511C /* Transaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Transaction.m; path = Modal/Transaction/Transaction.m; sourceTree = "<group>"; };
+		4089331F1D646B300081511C /* Meeting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Meeting.h; path = Modal/Meeing/Meeting.h; sourceTree = "<group>"; };
+		408933201D646B300081511C /* Meeting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Meeting.m; path = Modal/Meeing/Meeting.m; sourceTree = "<group>"; };
+		408933221D646B370081511C /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Item.h; path = Modal/Category/Item.h; sourceTree = "<group>"; };
+		408933231D646B370081511C /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Item.m; path = Modal/Category/Item.m; sourceTree = "<group>"; };
 		40AB31231D5DB47400341359 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Transaction.storyboard; sourceTree = "<group>"; };
 		40AB31261D5DC4E700341359 /* TransactionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransactionCell.h; path = ViewControllers/TransactionsViewController/TransactionCell/TransactionCell.h; sourceTree = "<group>"; };
 		40AB31271D5DC4E700341359 /* TransactionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransactionCell.m; path = ViewControllers/TransactionsViewController/TransactionCell/TransactionCell.m; sourceTree = "<group>"; };
@@ -83,8 +97,6 @@
 		EF0809971D5C97B6007A8EAE /* TransactionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransactionsViewController.m; path = ViewControllers/TransactionsViewController/TransactionsViewController.m; sourceTree = "<group>"; };
 		EF0809991D5C97C9007A8EAE /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuViewController.h; path = ViewControllers/MenuViewController/MenuViewController.h; sourceTree = "<group>"; };
 		EF08099A1D5C97C9007A8EAE /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuViewController.m; path = ViewControllers/MenuViewController/MenuViewController.m; sourceTree = "<group>"; };
-		EF0E28841D5F8216007BD892 /* ic_calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_calendar.png; path = Resources/ic_calendar.png; sourceTree = "<group>"; };
-		EF0E28971D5FA662007BD892 /* ic_threedots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_threedots.png; path = Resources/ic_threedots.png; sourceTree = "<group>"; };
 		EF870A731D5DA11200118D7C /* GymManagerConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GymManagerConstant.h; path = GymManagerConstant/GymManagerConstant.h; sourceTree = "<group>"; };
 		EF870A741D5DA11200118D7C /* GymManagerConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GymManagerConstant.m; path = GymManagerConstant/GymManagerConstant.m; sourceTree = "<group>"; };
 		EF870A811D5DB66700118D7C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ViewControllers/LoginViewController/LoginViewController.h; sourceTree = "<group>"; };
@@ -93,8 +105,6 @@
 		EF870A851D5DBA9F00118D7C /* ic_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_user.png; path = Resources/ic_user.png; sourceTree = "<group>"; };
 		EF870A891D5DC69400118D7C /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterViewController.h; path = ViewControllers/RegisterViewController/RegisterViewController.h; sourceTree = "<group>"; };
 		EF870A8A1D5DC69400118D7C /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterViewController.m; path = ViewControllers/RegisterViewController/RegisterViewController.m; sourceTree = "<group>"; };
-		EF870A911D5DF03700118D7C /* TodayMeetingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TodayMeetingTableViewCell.h; path = Cell/TodayMeetingTableViewCell/TodayMeetingTableViewCell.h; sourceTree = "<group>"; };
-		EF870A921D5DF03700118D7C /* TodayMeetingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TodayMeetingTableViewCell.m; path = Cell/TodayMeetingTableViewCell/TodayMeetingTableViewCell.m; sourceTree = "<group>"; };
 		F5306E0927E6108D1261CCE5 /* Pods-GymManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GymManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GymManager/Pods-GymManager.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,6 +149,48 @@
 				4017EDF51D6175A30033E0AE /* AddTransactionViewController.m */,
 			);
 			name = AddTransactionViewController;
+			sourceTree = "<group>";
+		};
+		4089330C1D646AED0081511C /* User */ = {
+			isa = PBXGroup;
+			children = (
+				4089330F1D646B050081511C /* Person.h */,
+				408933101D646B050081511C /* Person.m */,
+				4089330D1D646B050081511C /* Customer.h */,
+				4089330E1D646B050081511C /* Customer.m */,
+				408933111D646B050081511C /* Trainer.h */,
+				408933121D646B050081511C /* Trainer.m */,
+				408933131D646B050081511C /* User.h */,
+				408933141D646B050081511C /* User.m */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		408933191D646B130081511C /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				4089331A1D646B1D0081511C /* Transaction.h */,
+				4089331B1D646B1D0081511C /* Transaction.m */,
+			);
+			name = Transaction;
+			sourceTree = "<group>";
+		};
+		4089331D1D646B200081511C /* Meeing */ = {
+			isa = PBXGroup;
+			children = (
+				4089331F1D646B300081511C /* Meeting.h */,
+				408933201D646B300081511C /* Meeting.m */,
+			);
+			name = Meeing;
+			sourceTree = "<group>";
+		};
+		4089331E1D646B290081511C /* item */ = {
+			isa = PBXGroup;
+			children = (
+				408933221D646B370081511C /* Item.h */,
+				408933231D646B370081511C /* Item.m */,
+			);
+			name = item;
 			sourceTree = "<group>";
 		};
 		40AB31251D5DC1B300341359 /* TransactionCell */ = {
@@ -206,7 +258,6 @@
 				EF870A6F1D5D8A9800118D7C /* GymManagerConstant */,
 				EF0809731D5C8558007A8EAE /* HandleAPI */,
 				EF0809771D5C8730007A8EAE /* ViewControllers */,
-				EF870A8C1D5DEF8700118D7C /* Cell */,
 				EF0809851D5C8C1B007A8EAE /* Service */,
 				EF0809791D5C874B007A8EAE /* Model */,
 				EF08097B1D5C8890007A8EAE /* Storyboard */,
@@ -253,8 +304,6 @@
 		EF0809781D5C8743007A8EAE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				EF0E28971D5FA662007BD892 /* ic_threedots.png */,
-				EF0E28841D5F8216007BD892 /* ic_calendar.png */,
 				EF870A841D5DBA9F00118D7C /* ic_key.png */,
 				EF870A851D5DBA9F00118D7C /* ic_user.png */,
 			);
@@ -264,6 +313,10 @@
 		EF0809791D5C874B007A8EAE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4089331E1D646B290081511C /* item */,
+				4089331D1D646B200081511C /* Meeing */,
+				408933191D646B130081511C /* Transaction */,
+				4089330C1D646AED0081511C /* User */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -367,23 +420,6 @@
 			name = RegisterViewController;
 			sourceTree = "<group>";
 		};
-		EF870A8C1D5DEF8700118D7C /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				EF870A8D1D5DEFBB00118D7C /* TodayMeetingTableViewCell */,
-			);
-			name = Cell;
-			sourceTree = "<group>";
-		};
-		EF870A8D1D5DEFBB00118D7C /* TodayMeetingTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				EF870A911D5DF03700118D7C /* TodayMeetingTableViewCell.h */,
-				EF870A921D5DF03700118D7C /* TodayMeetingTableViewCell.m */,
-			);
-			name = TodayMeetingTableViewCell;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -445,7 +481,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF0E28981D5FA662007BD892 /* ic_threedots.png in Resources */,
 				EF08096C1D5C8261007A8EAE /* LaunchScreen.storyboard in Resources */,
 				EF870A861D5DBA9F00118D7C /* ic_key.png in Resources */,
 				EF0809691D5C8261007A8EAE /* Assets.xcassets in Resources */,
@@ -455,7 +490,6 @@
 				40AB31241D5DB47400341359 /* Transaction.storyboard in Resources */,
 				40B8A7321D640C12007AB6BF /* CategoryCell.xib in Resources */,
 				40AB312A1D5DC4E700341359 /* TransactionCell.xib in Resources */,
-				EF0E28851D5F8216007BD892 /* ic_calendar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,12 +549,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF08098B1D5C8D69007A8EAE /* TodayMeetingsViewController.m in Sources */,
+				408933171D646B050081511C /* Trainer.m in Sources */,
+				408933151D646B050081511C /* Customer.m in Sources */,
+				408933161D646B050081511C /* Person.m in Sources */,
 				4017EDF61D6175A30033E0AE /* AddTransactionViewController.m in Sources */,
 				40EA22EC1D5E27C700B08942 /* HeaderViewContent.m in Sources */,
+				408933211D646B300081511C /* Meeting.m in Sources */,
 				EF870A751D5DA11200118D7C /* GymManagerConstant.m in Sources */,
 				EF0809891D5C8D3F007A8EAE /* BaseViewController.m in Sources */,
+				408933181D646B050081511C /* User.m in Sources */,
 				EF0809931D5C954A007A8EAE /* PTMeetingViewController.m in Sources */,
-				EF870A931D5DF03700118D7C /* TodayMeetingTableViewCell.m in Sources */,
 				EF08099B1D5C97C9007A8EAE /* MenuViewController.m in Sources */,
 				EF870A8B1D5DC69400118D7C /* RegisterViewController.m in Sources */,
 				40B8A7311D640C12007AB6BF /* CategoryCell.m in Sources */,
@@ -529,6 +567,8 @@
 				40AB31291D5DC4E700341359 /* TransactionCell.m in Sources */,
 				40B8A72C1D640C04007AB6BF /* PopoverQuatityViewController.m in Sources */,
 				EF0809981D5C97B6007A8EAE /* TransactionsViewController.m in Sources */,
+				408933241D646B370081511C /* Item.m in Sources */,
+				4089331C1D646B1D0081511C /* Transaction.m in Sources */,
 				40AB31311D5DD81000341359 /* ExpandableTableView.m in Sources */,
 				EF08095E1D5C8261007A8EAE /* main.m in Sources */,
 				EF0809801D5C89AB007A8EAE /* AppDelegate.m in Sources */,

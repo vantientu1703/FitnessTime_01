@@ -22,4 +22,5 @@
 #ifndef GymManager_PrefixHeader_pch
 #define GymManager_PrefixHeader_pch
 #import "GymManagerConstant.h"
+#import "Person.h"
 #endif /* GymManager_PrefixHeader_pch */
