@@ -40,7 +40,7 @@
     ptMeetingVC.title = kPTMeetingViewControllerTitle;
     UINavigationController *navPTMeetingVC = [[UINavigationController alloc] initWithRootViewController:ptMeetingVC];
     //TODO TransactionsViewController
-    TransactionsViewController *transVC = [[TransactionsViewController alloc] init];
+    TransactionsViewController *transVC = [[UIStoryboard storyboardWithName:kNameStoryboardTransaction bundle:nil] instantiateInitialViewController];
     transVC.title = kTransactionsViewControllerTitle;
     UINavigationController *navTransactionVC = [[UINavigationController alloc] initWithRootViewController:transVC];
     //TODO MenuViewController

@@ -10,4 +10,11 @@
 
 @interface AddTransactionViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contraintTableViewHeight;
+@property (weak, nonatomic) IBOutlet UILabel *lbCustomerName;
+@property (weak, nonatomic) IBOutlet UIView *viewCustomer;
+@property (weak, nonatomic) IBOutlet UILabel *lbDate;
+@property (weak, nonatomic) IBOutlet UIView *viewDate;
+@property (weak, nonatomic) IBOutlet UILabel *lbTotalCost;
+
 @end
