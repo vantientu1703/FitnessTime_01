@@ -22,4 +22,14 @@ NSString *const kNotificationSetRootViewWindowTitle = @"Set root view window";
 const CGFloat kTableViewCellHeight = 40.0;
 const CGFloat kTableViewHeaderHeight = 60.0;
 NSString *const kTransactionCellIndentifier = @"CategoryCell";
+NSString *const kTodayMeetinViewControllerIdentifier = @"TodayMeetingsViewController";
+NSString *const kIconCalendar = @"ic_calendar";
+NSString *const kEditActionTitle = @"Edit";
+NSString *const kDeleteActionTitle = @"Delete";
+NSString *const kReminderTitle = @"Reminder";
+NSString *const kMessageReminder = @"Are you make sure delete?";
+NSString *const kOkActionTitle = @"Ok";
+NSString *const kCancelActionTitle = @"Cancel";
+CGFloat const kCornerRadiusButton = 20.0f;
+
 @end

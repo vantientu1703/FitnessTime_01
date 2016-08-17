@@ -22,5 +22,14 @@ extern NSString *const kNotificationSetRootViewWindowTitle;
 extern const CGFloat kTableViewCellHeight;
 extern const CGFloat kTableViewHeaderHeight;
 extern NSString *const kTransactionCellIndentifier;
+extern NSString *const kTodayMeetinViewControllerIdentifier;
+extern NSString *const kIconCalendar;
+extern NSString *const kEditActionTitle;
+extern NSString *const kDeleteActionTitle;
+extern NSString *const kReminderTitle;
+extern NSString *const kMessageReminder;
+extern NSString *const kOkActionTitle;
+extern NSString *const kCancelActionTitle;
+extern CGFloat const kCornerRadiusButton;
 
 @end

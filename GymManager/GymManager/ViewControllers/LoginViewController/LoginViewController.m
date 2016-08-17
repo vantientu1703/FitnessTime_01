@@ -42,8 +42,7 @@ NSString *const kLoginVCTitle = @"Login";
 - (IBAction)registerPress:(id)sender {
     UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
     RegisterViewController *registerVC = [st instantiateViewControllerWithIdentifier:kRegisterViewControllerIdentifier];
-    [self.navigationController pushViewController:registerVC animated:true];
-}
+    [self.navigationController pushViewController:registerVC animated:true];}
 
 - (IBAction)forgetPasswordPress:(id)sender {
     //TODO
