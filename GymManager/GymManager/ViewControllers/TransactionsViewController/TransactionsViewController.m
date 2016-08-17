@@ -10,7 +10,6 @@
 #import "TransactionCell.h"
 
 NSString *const kAddTransactionSegue = @"AddTransactionSegue";
-const CGFloat kTableViewCellHeight = 40.0;
 
 @interface TransactionsViewController () <UITableViewDelegate,UITableViewDataSource,ExpandableTableViewDelegate>
 
@@ -35,19 +34,20 @@ const CGFloat kTableViewCellHeight = 40.0;
 
 - (void)setupView {
     //Setup Tableview
-    NSMutableArray *arr1 = [NSMutableArray arrayWithObjects:@"1", @"2", nil];
-    NSMutableArray *arr2 = [NSMutableArray arrayWithObjects:@"3", @"4", @"5", nil];
-    self.arrTrans = [NSMutableArray arrayWithObjects:arr1, arr2, nil];
+    NSMutableArray *arr1 = @[@"1", @"2"].mutableCopy;
+    NSMutableArray *arr2 = @[@"3", @"4", @"5"].mutableCopy;
+    self.arrTrans = @[arr1, arr2].mutableCopy;
     [self.tableView setAllHeadersInitiallyCollapsed:NO];
     [self.tableView setScrollEnabled:NO];
     self.tableView.expandableDelegate = self;
-    [self.tableView registerNib:[UINib nibWithNibName:@"TransactionCell" bundle:nil] forCellReuseIdentifier:@"TransactionCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:kTransactionCellIndentifier bundle:nil]
+        forCellReuseIdentifier:kTransactionCellIndentifier];
     [self.tableView reloadData];
     self.contraintTableViewCell.constant = self.tableView.contentSize.height;
     //Pull to rrefresh
     self.refresh = [[UIRefreshControl alloc] init];
     [self.refresh addTarget:self action:@selector(reloadDataForWholeView)
-           forControlEvents:UIControlEventValueChanged];
+        forControlEvents:UIControlEventValueChanged];
     [self.scrollView insertSubview:self.refresh atIndex:0];
     [self.scrollView setAlwaysBounceVertical:YES];
     [self.indicaLoadMore setHidden:YES];
@@ -57,9 +57,9 @@ const CGFloat kTableViewCellHeight = 40.0;
 - (void)reloadDataForWholeView {
     //TODO refresh data here
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSMutableArray *arr1 = [NSMutableArray arrayWithObjects:@"1", @"2", nil];
-        NSMutableArray *arr2 = [NSMutableArray arrayWithObjects:@"3", @"4", @"5", nil];
-        self.arrTrans = [NSMutableArray arrayWithObjects:arr1, arr2, nil];
+        NSMutableArray *arr1 = @[@"1", @"2"].mutableCopy;
+        NSMutableArray *arr2 = @[@"3", @"4", @"5"].mutableCopy;
+        self.arrTrans = @[arr1, arr2,].mutableCopy;
         [self.tableView reloadData];
         self.contraintTableViewCell.constant = self.tableView.contentSize.height;
         [self.refresh endRefreshing];
@@ -68,12 +68,11 @@ const CGFloat kTableViewCellHeight = 40.0;
 
 #pragma mark - TableView Implementation
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [self.arrTrans count];
+    return self.arrTrans.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.tableView totalNumberOfRows:[[self.arrTrans objectAtIndex:section] count]
-                                   inSection:section];
+    return [self.tableView totalNumberOfRows:[self.arrTrans[section] count] inSection:section];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -85,21 +84,21 @@ const CGFloat kTableViewCellHeight = 40.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TransactionCell *cell = (TransactionCell*)[tableView dequeueReusableCellWithIdentifier:@"TransactionCell"
-                                                                              forIndexPath:indexPath];
+    TransactionCell *cell = (TransactionCell*)[tableView dequeueReusableCellWithIdentifier:kTransactionCellIndentifier
+        forIndexPath:indexPath];
     return cell;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    return [self.tableView headerWithTitle:@"asd" totalRows:[[self.arrTrans objectAtIndex:section] count]
-                                 inSection:section];
+    return [self.tableView headerWithTitle:@"asd" totalRows:[self.arrTrans[section] count]
+        inSection:section];
 }
 
 - (void)didDeleteSection:(NSUInteger)section {
     [self.arrTrans removeObjectAtIndex:section];
     [self.tableView beginUpdates];
     [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:section]
-                  withRowAnimation:UITableViewRowAnimationTop];
+        withRowAnimation:UITableViewRowAnimationTop];
     [self.tableView endUpdates];
     [self.tableView reloadData];
     [UIView animateWithDuration:0.3 animations:^{
@@ -110,21 +109,19 @@ const CGFloat kTableViewCellHeight = 40.0;
 
 - (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewRowAction *ac1 = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal
-                                                                   title:@"Edit"
-                                                                 handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-                                                                        NSLog(@"edit");
-                                                                 }];
+        title:@"Edit" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+            //Todo
+    }];
     UITableViewRowAction *ac2 = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive
-                                                                   title:@"Delete"
-                                                                 handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-                                                                     NSLog(@"delete");
-                                                                     [[self.arrTrans objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.row];
-                                                                     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
-                                                                     //Update Tableview height contraint
-                                                                     [self.tableView reloadData];
-                                                                     self.contraintTableViewCell.constant = self.tableView.contentSize.height;
-                                                                 }];
-    return [NSArray arrayWithObjects:ac2, ac1, nil];
+        title:@"Delete" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        [self.arrTrans[indexPath.section] removeObjectAtIndex:indexPath.row];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:
+            UITableViewRowAnimationFade];
+        //Update Tableview height contraint
+        [self.tableView reloadData];
+        self.contraintTableViewCell.constant = self.tableView.contentSize.height;
+    }];
+    return @[ac2, ac1];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

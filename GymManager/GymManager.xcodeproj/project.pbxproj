@@ -13,6 +13,10 @@
 		40AB31291D5DC4E700341359 /* TransactionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AB31271D5DC4E700341359 /* TransactionCell.m */; };
 		40AB312A1D5DC4E700341359 /* TransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40AB31281D5DC4E700341359 /* TransactionCell.xib */; };
 		40AB31311D5DD81000341359 /* ExpandableTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AB312E1D5DD81000341359 /* ExpandableTableView.m */; };
+		40B8A72B1D640C04007AB6BF /* ListCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B8A7281D640C04007AB6BF /* ListCategoryViewController.m */; };
+		40B8A72C1D640C04007AB6BF /* PopoverQuatityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B8A72A1D640C04007AB6BF /* PopoverQuatityViewController.m */; };
+		40B8A7311D640C12007AB6BF /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B8A72F1D640C12007AB6BF /* CategoryCell.m */; };
+		40B8A7321D640C12007AB6BF /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40B8A7301D640C12007AB6BF /* CategoryCell.xib */; };
 		40EA22E91D5E26FF00B08942 /* HeaderViewContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40EA22E81D5E26FE00B08942 /* HeaderViewContent.xib */; };
 		40EA22EC1D5E27C700B08942 /* HeaderViewContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EA22EB1D5E27C700B08942 /* HeaderViewContent.m */; };
 		EF08095E1D5C8261007A8EAE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EF08095D1D5C8261007A8EAE /* main.m */; };
@@ -43,6 +47,13 @@
 		40AB31281D5DC4E700341359 /* TransactionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TransactionCell.xib; path = ViewControllers/TransactionsViewController/TransactionCell/TransactionCell.xib; sourceTree = "<group>"; };
 		40AB312D1D5DD81000341359 /* ExpandableTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpandableTableView.h; path = Library/ExpandableTableView/ExpandableTableView.h; sourceTree = "<group>"; };
 		40AB312E1D5DD81000341359 /* ExpandableTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpandableTableView.m; path = Library/ExpandableTableView/ExpandableTableView.m; sourceTree = "<group>"; };
+		40B8A7271D640C04007AB6BF /* ListCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListCategoryViewController.h; path = ViewControllers/TransactionsViewController/AddTransactionViewController/ListCategoryViewController.h; sourceTree = "<group>"; };
+		40B8A7281D640C04007AB6BF /* ListCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListCategoryViewController.m; path = ViewControllers/TransactionsViewController/AddTransactionViewController/ListCategoryViewController.m; sourceTree = "<group>"; };
+		40B8A7291D640C04007AB6BF /* PopoverQuatityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopoverQuatityViewController.h; path = ViewControllers/TransactionsViewController/AddTransactionViewController/PopoverQuatityViewController.h; sourceTree = "<group>"; };
+		40B8A72A1D640C04007AB6BF /* PopoverQuatityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopoverQuatityViewController.m; path = ViewControllers/TransactionsViewController/AddTransactionViewController/PopoverQuatityViewController.m; sourceTree = "<group>"; };
+		40B8A72E1D640C12007AB6BF /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryCell.h; path = ViewControllers/TransactionsViewController/AddTransactionViewController/CategoryCell/CategoryCell.h; sourceTree = "<group>"; };
+		40B8A72F1D640C12007AB6BF /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryCell.m; path = ViewControllers/TransactionsViewController/AddTransactionViewController/CategoryCell/CategoryCell.m; sourceTree = "<group>"; };
+		40B8A7301D640C12007AB6BF /* CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CategoryCell.xib; path = ViewControllers/TransactionsViewController/AddTransactionViewController/CategoryCell/CategoryCell.xib; sourceTree = "<group>"; };
 		40EA22E81D5E26FE00B08942 /* HeaderViewContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HeaderViewContent.xib; path = Library/ExpandableTableView/HeaderViewContent.xib; sourceTree = "<group>"; };
 		40EA22EA1D5E27C700B08942 /* HeaderViewContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeaderViewContent.h; path = Library/ExpandableTableView/HeaderViewContent.h; sourceTree = "<group>"; };
 		40EA22EB1D5E27C700B08942 /* HeaderViewContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeaderViewContent.m; path = Library/ExpandableTableView/HeaderViewContent.m; sourceTree = "<group>"; };
@@ -110,6 +121,11 @@
 		4017EDF31D6175650033E0AE /* AddTransactionViewController */ = {
 			isa = PBXGroup;
 			children = (
+				40B8A72D1D640C0A007AB6BF /* CategoryCell */,
+				40B8A7271D640C04007AB6BF /* ListCategoryViewController.h */,
+				40B8A7281D640C04007AB6BF /* ListCategoryViewController.m */,
+				40B8A7291D640C04007AB6BF /* PopoverQuatityViewController.h */,
+				40B8A72A1D640C04007AB6BF /* PopoverQuatityViewController.m */,
 				4017EDF41D6175A30033E0AE /* AddTransactionViewController.h */,
 				4017EDF51D6175A30033E0AE /* AddTransactionViewController.m */,
 			);
@@ -144,6 +160,16 @@
 				40EA22EB1D5E27C700B08942 /* HeaderViewContent.m */,
 			);
 			name = ExpandableTableView;
+			sourceTree = "<group>";
+		};
+		40B8A72D1D640C0A007AB6BF /* CategoryCell */ = {
+			isa = PBXGroup;
+			children = (
+				40B8A72E1D640C12007AB6BF /* CategoryCell.h */,
+				40B8A72F1D640C12007AB6BF /* CategoryCell.m */,
+				40B8A7301D640C12007AB6BF /* CategoryCell.xib */,
+			);
+			name = CategoryCell;
 			sourceTree = "<group>";
 		};
 		EF0809501D5C8261007A8EAE = {
@@ -397,6 +423,7 @@
 				EF870A871D5DBA9F00118D7C /* ic_user.png in Resources */,
 				40EA22E91D5E26FF00B08942 /* HeaderViewContent.xib in Resources */,
 				40AB31241D5DB47400341359 /* Transaction.storyboard in Resources */,
+				40B8A7321D640C12007AB6BF /* CategoryCell.xib in Resources */,
 				40AB312A1D5DC4E700341359 /* TransactionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,8 +491,11 @@
 				EF0809931D5C954A007A8EAE /* PTMeetingViewController.m in Sources */,
 				EF08099B1D5C97C9007A8EAE /* MenuViewController.m in Sources */,
 				EF870A8B1D5DC69400118D7C /* RegisterViewController.m in Sources */,
+				40B8A7311D640C12007AB6BF /* CategoryCell.m in Sources */,
 				EF870A831D5DB66700118D7C /* LoginViewController.m in Sources */,
+				40B8A72B1D640C04007AB6BF /* ListCategoryViewController.m in Sources */,
 				40AB31291D5DC4E700341359 /* TransactionCell.m in Sources */,
+				40B8A72C1D640C04007AB6BF /* PopoverQuatityViewController.m in Sources */,
 				EF0809981D5C97B6007A8EAE /* TransactionsViewController.m in Sources */,
 				40AB31311D5DD81000341359 /* ExpandableTableView.m in Sources */,
 				EF08095E1D5C8261007A8EAE /* main.m in Sources */,

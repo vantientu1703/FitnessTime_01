@@ -11,13 +11,16 @@
 @interface GymManagerConstant : NSObject
 
 extern NSString *const kNameStoryboard;
+extern NSString *const kNameStoryboardTransaction;
 extern NSString *const kLoginViewControllerIdentifier;
 extern NSString *const kTodayViewControllerTitle;
 extern NSString *const kPTMeetingViewControllerTitle;
 extern NSString *const kTransactionsViewControllerTitle;
 extern NSString *const kMenuViewControllerTitle;
 extern NSString *const kRegisterViewControllerIdentifier;
-extern const CGFloat kTableViewHeaderHeight;
 extern NSString *const kNotificationSetRootViewWindowTitle;
+extern const CGFloat kTableViewCellHeight;
+extern const CGFloat kTableViewHeaderHeight;
+extern NSString *const kTransactionCellIndentifier;
 
 @end
