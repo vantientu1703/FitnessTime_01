@@ -32,5 +32,8 @@ extern NSString *const kOkActionTitle;
 extern NSString *const kCancelActionTitle;
 extern CGFloat const kCornerRadiusButton;
 extern NSString *const kPTMeetingViewControllerIdentifier;
+extern NSString *const kMeetingDetailViewControllerIdentifier;
+extern NSString *const kStatusAddNewMeeting;
+extern NSString *const kStatusViewMeetingDetail;
 
 @end

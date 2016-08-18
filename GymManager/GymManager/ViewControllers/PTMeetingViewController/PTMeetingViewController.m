@@ -9,6 +9,7 @@
 #import "PTMeetingViewController.h"
 #import "PTMeetingCollectionViewCell.h"
 #import <CCBottomRefreshControl/UIScrollView+BottomRefreshControl.h>
+#import "MeetingDetailViewController.h"
 
 NSString *const kPTMeetingCollectionViewCellIdentifier = @"MeetingCollectionViewCell";
 NSString *const kIconUser = @"ic_user";
@@ -70,7 +71,8 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     //TODO
     PTMeetingCollectionViewCell *cell = (PTMeetingCollectionViewCell *)[collectionView
-        dequeueReusableCellWithReuseIdentifier:kPTMeetingCollectionViewCellIdentifier forIndexPath:indexPath];
+        dequeueReusableCellWithReuseIdentifier:kPTMeetingCollectionViewCellIdentifier
+        forIndexPath:indexPath];
     [cell initWithImageName:[UIImage imageNamed:kIconUser] withNameTrainer:kNameTrainer];
     return cell;
 }
@@ -87,7 +89,10 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
 
 #pragma mark - Add new meeting
 - (IBAction)buttonAddNewMeetingPress:(id)sender {
-    //TODO
+    UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
+    MeetingDetailViewController *meetingDetailViewController = [st
+        instantiateViewControllerWithIdentifier:kMeetingDetailViewControllerIdentifier];
+    [self.navigationController pushViewController:meetingDetailViewController animated:true];
 }
 
 @end
