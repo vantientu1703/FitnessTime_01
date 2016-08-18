@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		09E77F40D442DD862B0308B4 /* libPods-GymManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7A8174D3CFE4CB610F82E6 /* libPods-GymManager.a */; };
 		4017EDF61D6175A30033E0AE /* AddTransactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4017EDF51D6175A30033E0AE /* AddTransactionViewController.m */; };
-		404241241D6552D000111B97 /* TodayMeetingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 404241231D6552D000111B97 /* TodayMeetingTableViewCell.m */; };
 		406E24811D62C7AD00F013FB /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 406E24801D62C7AD00F013FB /* CalendarViewController.m */; };
 		408933151D646B050081511C /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4089330E1D646B050081511C /* Customer.m */; };
 		408933161D646B050081511C /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 408933101D646B050081511C /* Person.m */; };
@@ -47,13 +46,15 @@
 		EFF28BB31D655C10000F9B27 /* ic_calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = EFF28BB11D655C10000F9B27 /* ic_calendar.png */; settings = {ASSET_TAGS = (); }; };
 		EFF28BB41D655C10000F9B27 /* ic_threedots.png in Resources */ = {isa = PBXBuildFile; fileRef = EFF28BB21D655C10000F9B27 /* ic_threedots.png */; settings = {ASSET_TAGS = (); }; };
 		EFF28BB71D655D07000F9B27 /* TodayMeetingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF28BB61D655D07000F9B27 /* TodayMeetingTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		EFF28BD11D65730F000F9B27 /* MeetingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF28BD01D65730F000F9B27 /* MeetingDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EFF28BD91D657397000F9B27 /* DateMeetingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF28BD81D657397000F9B27 /* DateMeetingTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		EFF28BDC1D657640000F9B27 /* CustomerOrTrainnerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF28BDB1D657640000F9B27 /* CustomerOrTrainnerTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		EFF28BE31D6585BA000F9B27 /* DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF28BE21D6585BA000F9B27 /* DateFormatter.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4017EDF41D6175A30033E0AE /* AddTransactionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddTransactionViewController.h; path = ViewControllers/TransactionsViewController/AddTransactionViewController/AddTransactionViewController.h; sourceTree = "<group>"; };
 		4017EDF51D6175A30033E0AE /* AddTransactionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddTransactionViewController.m; path = ViewControllers/TransactionsViewController/AddTransactionViewController/AddTransactionViewController.m; sourceTree = "<group>"; };
-		404241221D6552D000111B97 /* TodayMeetingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TodayMeetingTableViewCell.h; path = Cell/TodayMeetingTableViewCell/TodayMeetingTableViewCell.h; sourceTree = "<group>"; };
-		404241231D6552D000111B97 /* TodayMeetingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TodayMeetingTableViewCell.m; path = Cell/TodayMeetingTableViewCell/TodayMeetingTableViewCell.m; sourceTree = "<group>"; };
 		406E247F1D62C7AD00F013FB /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalendarViewController.h; path = ViewControllers/CalendarViewController/CalendarViewController.h; sourceTree = "<group>"; };
 		406E24801D62C7AD00F013FB /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalendarViewController.m; path = ViewControllers/CalendarViewController/CalendarViewController.m; sourceTree = "<group>"; };
 		4089330D1D646B050081511C /* Customer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Customer.h; path = Modal/User/Customer.h; sourceTree = "<group>"; };
@@ -121,6 +122,14 @@
 		EFF28BB21D655C10000F9B27 /* ic_threedots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_threedots.png; path = Resources/ic_threedots.png; sourceTree = "<group>"; };
 		EFF28BB51D655D07000F9B27 /* TodayMeetingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TodayMeetingTableViewCell.h; path = Cell/TodayMeetingTableViewCell/TodayMeetingTableViewCell.h; sourceTree = "<group>"; };
 		EFF28BB61D655D07000F9B27 /* TodayMeetingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TodayMeetingTableViewCell.m; path = Cell/TodayMeetingTableViewCell/TodayMeetingTableViewCell.m; sourceTree = "<group>"; };
+		EFF28BCF1D65730F000F9B27 /* MeetingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeetingDetailViewController.h; path = ViewControllers/MeetingDetailViewController/MeetingDetailViewController.h; sourceTree = "<group>"; };
+		EFF28BD01D65730F000F9B27 /* MeetingDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeetingDetailViewController.m; path = ViewControllers/MeetingDetailViewController/MeetingDetailViewController.m; sourceTree = "<group>"; };
+		EFF28BD71D657397000F9B27 /* DateMeetingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DateMeetingTableViewCell.h; path = Cell/DateMeetingTableViewCell/DateMeetingTableViewCell.h; sourceTree = "<group>"; };
+		EFF28BD81D657397000F9B27 /* DateMeetingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DateMeetingTableViewCell.m; path = Cell/DateMeetingTableViewCell/DateMeetingTableViewCell.m; sourceTree = "<group>"; };
+		EFF28BDA1D657640000F9B27 /* CustomerOrTrainnerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomerOrTrainnerTableViewCell.h; path = Cell/CustomerOrTrainerTableViewCell/CustomerOrTrainnerTableViewCell.h; sourceTree = "<group>"; };
+		EFF28BDB1D657640000F9B27 /* CustomerOrTrainnerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomerOrTrainnerTableViewCell.m; path = Cell/CustomerOrTrainerTableViewCell/CustomerOrTrainnerTableViewCell.m; sourceTree = "<group>"; };
+		EFF28BE11D6585BA000F9B27 /* DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DateFormatter.h; path = DateFormatter/DateFormatter.h; sourceTree = "<group>"; };
+		EFF28BE21D6585BA000F9B27 /* DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DateFormatter.m; path = DateFormatter/DateFormatter.m; sourceTree = "<group>"; };
 		F5306E0927E6108D1261CCE5 /* Pods-GymManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GymManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GymManager/Pods-GymManager.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,23 +174,6 @@
 				4017EDF51D6175A30033E0AE /* AddTransactionViewController.m */,
 			);
 			name = AddTransactionViewController;
-			sourceTree = "<group>";
-		};
-		404241201D6552BC00111B97 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				404241211D6552CA00111B97 /* TodayMeetingTableViewCell */,
-			);
-			name = Cell;
-			sourceTree = "<group>";
-		};
-		404241211D6552CA00111B97 /* TodayMeetingTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				404241221D6552D000111B97 /* TodayMeetingTableViewCell.h */,
-				404241231D6552D000111B97 /* TodayMeetingTableViewCell.m */,
-			);
-			name = TodayMeetingTableViewCell;
 			sourceTree = "<group>";
 		};
 		406E247E1D62C7A100F013FB /* CalendarViewController */ = {
@@ -296,6 +288,7 @@
 		EF08095B1D5C8261007A8EAE /* GymManager */ = {
 			isa = PBXGroup;
 			children = (
+				EFF28BDD1D6584AC000F9B27 /* DateFormatter */,
 				40AB312B1D5DD7D800341359 /* Library */,
 				EF870A6F1D5D8A9800118D7C /* GymManagerConstant */,
 				EF0809731D5C8558007A8EAE /* HandleAPI */,
@@ -332,7 +325,6 @@
 		EF0809771D5C8730007A8EAE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				404241201D6552BC00111B97 /* Cell */,
 				406E247E1D62C7A100F013FB /* CalendarViewController */,
 				EF08097C1D5C88B2007A8EAE /* AppDelegate */,
 				EF0809861D5C8D03007A8EAE /* BaseViewController */,
@@ -340,6 +332,7 @@
 				EF870A881D5DC67700118D7C /* RegisterViewController */,
 				EF08097A1D5C8881007A8EAE /* TodayMettingViewController */,
 				EF0809901D5C94C2007A8EAE /* PTMeetingViewController */,
+				EFF28BCE1D6572A7000F9B27 /* MeetingDetailViewController */,
 				EF0809941D5C975E007A8EAE /* TransactionsViewController */,
 				EF0809951D5C976D007A8EAE /* MenuViewController */,
 			);
@@ -488,10 +481,48 @@
 		EF870A941D5DFE9B00118D7C /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				EFF28BD31D65732B000F9B27 /* DateMeetingTableViewCell */,
+				EFF28BD21D657319000F9B27 /* CustomerOrTrainerTableViewCell */,
 				EF870A8D1D5DEFBB00118D7C /* TodayMeetingTableViewCell */,
 				EF7F2C3D1D647D1700E3D19B /* PTMeetingCollectionViewCell */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		EFF28BCE1D6572A7000F9B27 /* MeetingDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EFF28BCF1D65730F000F9B27 /* MeetingDetailViewController.h */,
+				EFF28BD01D65730F000F9B27 /* MeetingDetailViewController.m */,
+			);
+			name = MeetingDetailViewController;
+			sourceTree = "<group>";
+		};
+		EFF28BD21D657319000F9B27 /* CustomerOrTrainerTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				EFF28BDA1D657640000F9B27 /* CustomerOrTrainnerTableViewCell.h */,
+				EFF28BDB1D657640000F9B27 /* CustomerOrTrainnerTableViewCell.m */,
+			);
+			name = CustomerOrTrainerTableViewCell;
+			sourceTree = "<group>";
+		};
+		EFF28BD31D65732B000F9B27 /* DateMeetingTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				EFF28BD71D657397000F9B27 /* DateMeetingTableViewCell.h */,
+				EFF28BD81D657397000F9B27 /* DateMeetingTableViewCell.m */,
+			);
+			name = DateMeetingTableViewCell;
+			sourceTree = "<group>";
+		};
+		EFF28BDD1D6584AC000F9B27 /* DateFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				EFF28BE11D6585BA000F9B27 /* DateFormatter.h */,
+				EFF28BE21D6585BA000F9B27 /* DateFormatter.m */,
+			);
+			name = DateFormatter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -639,16 +670,20 @@
 				EF870A8B1D5DC69400118D7C /* RegisterViewController.m in Sources */,
 				EFF28BB71D655D07000F9B27 /* TodayMeetingTableViewCell.m in Sources */,
 				40B8A7311D640C12007AB6BF /* CategoryCell.m in Sources */,
+				EFF28BD11D65730F000F9B27 /* MeetingDetailViewController.m in Sources */,
 				EF870A831D5DB66700118D7C /* LoginViewController.m in Sources */,
 				40B8A72B1D640C04007AB6BF /* ListCategoryViewController.m in Sources */,
 				40AB31291D5DC4E700341359 /* TransactionCell.m in Sources */,
 				40B8A72C1D640C04007AB6BF /* PopoverQuatityViewController.m in Sources */,
 				EF0809981D5C97B6007A8EAE /* TransactionsViewController.m in Sources */,
 				408933241D646B370081511C /* Item.m in Sources */,
+				EFF28BD91D657397000F9B27 /* DateMeetingTableViewCell.m in Sources */,
 				4089331C1D646B1D0081511C /* Transaction.m in Sources */,
 				40AB31311D5DD81000341359 /* ExpandableTableView.m in Sources */,
+				EFF28BDC1D657640000F9B27 /* CustomerOrTrainnerTableViewCell.m in Sources */,
 				EF08095E1D5C8261007A8EAE /* main.m in Sources */,
 				406E24811D62C7AD00F013FB /* CalendarViewController.m in Sources */,
+				EFF28BE31D6585BA000F9B27 /* DateFormatter.m in Sources */,
 				EF0809801D5C89AB007A8EAE /* AppDelegate.m in Sources */,
 				EF870A971D5DFEFE00118D7C /* PTMeetingCollectionViewCell.m in Sources */,
 			);

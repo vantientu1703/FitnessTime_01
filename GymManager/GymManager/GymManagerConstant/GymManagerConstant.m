@@ -32,5 +32,8 @@ NSString *const kOkActionTitle = @"Ok";
 NSString *const kCancelActionTitle = @"Cancel";
 CGFloat const kCornerRadiusButton = 20.0f;
 NSString *const kPTMeetingViewControllerIdentifier = @"PTMeetingViewController";
+NSString *const kMeetingDetailViewControllerIdentifier = @"MeetingDetailViewController";
+NSString *const kStatusAddNewMeeting = @"status add new meeting";
+NSString *const kStatusViewMeetingDetail = @"status view meeting detail";
 
 @end

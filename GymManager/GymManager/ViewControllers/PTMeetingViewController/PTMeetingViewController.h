@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface PTMeetingViewController : UIViewController
-
+@property (strong, nonatomic) NSString *statusAddNewMeeting;
 @end

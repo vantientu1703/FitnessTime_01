@@ -39,6 +39,7 @@
 - (void)datePickerView:(RSDFDatePickerView *)view didSelectDate:(NSDate *)date {
     //TODO callback after picked date
     self.callBackBlock(date);
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didPickDateWithCompletionBlock:(void(^)(NSDate* dateSelected))callBackBlock {
