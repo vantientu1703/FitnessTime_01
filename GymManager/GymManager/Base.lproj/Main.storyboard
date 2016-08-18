@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Today Meetings View Controller-->
@@ -639,6 +640,111 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HjR-k6-cbH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1036.5" y="183.5"/>
+        </scene>
+        <!--Meeting View Controller-->
+        <scene sceneID="xvc-iD-gVl">
+            <objects>
+                <viewController storyboardIdentifier="PTMeetingViewController" id="gyK-YL-M3A" customClass="PTMeetingViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qN4-V2-1Sg"/>
+                        <viewControllerLayoutGuide type="bottom" id="Eb7-EH-No8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Hy2-sZ-qoV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Boy-ld-bUf">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6HW-PR-LfP">
+                                    <size key="itemSize" width="100" height="112"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="PTMeetingCollectionViewCell" reuseIdentifier="MeetingCollectionViewCell" id="9nQ-0r-ezB" customClass="PTMeetingCollectionViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="112"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="112"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nguyen Văn Văn Dương" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJO-pf-Gh7">
+                                                    <rect key="frame" x="4" y="74" width="92" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_user.png" translatesAutoresizingMaskIntoConstraints="NO" id="BJm-k8-otN">
+                                                    <rect key="frame" x="20" y="8" width="60" height="60"/>
+                                                    <color key="backgroundColor" red="1" green="0.43529412150382996" blue="0.81176471710205078" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="aQB-45-yDu"/>
+                                                        <constraint firstAttribute="height" constant="60" id="cBo-sz-vlK"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="hJO-pf-Gh7" secondAttribute="trailing" constant="4" id="79z-vS-STx"/>
+                                            <constraint firstItem="hJO-pf-Gh7" firstAttribute="top" secondItem="BJm-k8-otN" secondAttribute="bottom" constant="6" id="jVy-gA-1Wy"/>
+                                            <constraint firstItem="BJm-k8-otN" firstAttribute="top" secondItem="9nQ-0r-ezB" secondAttribute="topMargin" id="jt7-dI-Zwf"/>
+                                            <constraint firstItem="hJO-pf-Gh7" firstAttribute="leading" secondItem="9nQ-0r-ezB" secondAttribute="leading" constant="4" id="k47-Kx-seb"/>
+                                            <constraint firstAttribute="bottom" secondItem="hJO-pf-Gh7" secondAttribute="bottom" constant="8" id="nmQ-in-Cwl"/>
+                                            <constraint firstItem="BJm-k8-otN" firstAttribute="centerX" secondItem="9nQ-0r-ezB" secondAttribute="centerX" id="zxV-1S-rPt"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageViewPTMeetingCell" destination="BJm-k8-otN" id="OrT-4k-c83"/>
+                                            <outlet property="labelNameTrainer" destination="hJO-pf-Gh7" id="flO-uD-aDb"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="gyK-YL-M3A" id="h0l-4n-8xa"/>
+                                    <outlet property="delegate" destination="gyK-YL-M3A" id="P2b-zQ-ooB"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HzN-3k-AEm">
+                                <rect key="frame" x="325" y="617" width="40" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="IeN-TP-MFG"/>
+                                    <constraint firstAttribute="height" constant="40" id="oOi-Pq-9en"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="40"/>
+                                <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="buttonAddNewMeetingPress:" destination="gyK-YL-M3A" eventType="touchUpInside" id="akt-G6-d1G"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Eb7-EH-No8" firstAttribute="top" secondItem="Boy-ld-bUf" secondAttribute="bottom" id="95h-yf-peb"/>
+                            <constraint firstItem="Boy-ld-bUf" firstAttribute="top" secondItem="Hy2-sZ-qoV" secondAttribute="top" id="D1r-oC-744"/>
+                            <constraint firstAttribute="trailing" secondItem="Boy-ld-bUf" secondAttribute="trailing" id="QFB-bO-UqS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HzN-3k-AEm" secondAttribute="trailing" constant="10" id="QxK-oH-uD9"/>
+                            <constraint firstItem="Boy-ld-bUf" firstAttribute="leading" secondItem="Hy2-sZ-qoV" secondAttribute="leading" id="Xui-0S-6US"/>
+                            <constraint firstItem="Eb7-EH-No8" firstAttribute="top" secondItem="HzN-3k-AEm" secondAttribute="bottom" constant="10" id="dyJ-uf-BjF"/>
+                            <constraint firstAttribute="trailing" secondItem="HzN-3k-AEm" secondAttribute="trailing" constant="10" id="ubk-nH-CJo"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="QxK-oH-uD9"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="buttonAddNewMeeting" destination="HzN-3k-AEm" id="IGC-ja-JHD"/>
+                        <outlet property="collectionView" destination="Boy-ld-bUf" id="aCA-6G-XIC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="as2-D6-I5E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1432.5" y="183.5"/>
         </scene>
     </scenes>
     <resources>

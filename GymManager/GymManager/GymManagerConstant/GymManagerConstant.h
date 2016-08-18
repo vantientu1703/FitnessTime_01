@@ -31,5 +31,6 @@ extern NSString *const kMessageReminder;
 extern NSString *const kOkActionTitle;
 extern NSString *const kCancelActionTitle;
 extern CGFloat const kCornerRadiusButton;
+extern NSString *const kPTMeetingViewControllerIdentifier;
 
 @end

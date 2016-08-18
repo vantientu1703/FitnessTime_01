@@ -34,7 +34,6 @@ NSString *const kLoginVCTitle = @"Login";
 }
 
 - (IBAction)loginPress:(id)sender {
-//    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetRootViewWindowTitle object:nil];
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     [appDelegate loadTabbarController];
 }
@@ -42,7 +41,8 @@ NSString *const kLoginVCTitle = @"Login";
 - (IBAction)registerPress:(id)sender {
     UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
     RegisterViewController *registerVC = [st instantiateViewControllerWithIdentifier:kRegisterViewControllerIdentifier];
-    [self.navigationController pushViewController:registerVC animated:true];}
+    [self.navigationController pushViewController:registerVC animated:true];
+}
 
 - (IBAction)forgetPasswordPress:(id)sender {
     //TODO

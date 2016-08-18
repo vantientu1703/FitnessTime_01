@@ -36,8 +36,8 @@
         kTodayMeetinViewControllerIdentifier];
     todayMeetingsVC.title = kTodayViewControllerTitle;
     UINavigationController *navTodayMeetingsVC = [[UINavigationController alloc] initWithRootViewController:todayMeetingsVC];
-    //TODO PTMeetingViewController
-    PTMeetingViewController *ptMeetingVC = [[PTMeetingViewController alloc] init];
+    PTMeetingViewController *ptMeetingVC = [st instantiateViewControllerWithIdentifier:
+        kPTMeetingViewControllerIdentifier];
     ptMeetingVC.title = kPTMeetingViewControllerTitle;
     UINavigationController *navPTMeetingVC = [[UINavigationController alloc] initWithRootViewController:ptMeetingVC];
     //TODO TransactionsViewController
