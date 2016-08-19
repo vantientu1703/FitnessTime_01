@@ -51,5 +51,9 @@ extern NSString *const kMessageEditCustomer;
 extern NSString *const kIconUser;
 extern NSString *const kCustomerManagerTitle;
 extern NSString *const kInfoCustomerManagerViewControllerIdentifier;
+extern CGFloat const kCornerRadiusViewBackground;
+extern NSString *const kDetailPTManagerViewControllerIdentifier;
+extern NSString *const kEditPTManagerViewControllerIdentifier;
+extern NSString *const kMessageNotFoundCamera;
 
 @end

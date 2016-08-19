@@ -10,6 +10,7 @@
 #import "PTMeetingCollectionViewCell.h"
 #import <CCBottomRefreshControl/UIScrollView+BottomRefreshControl.h>
 #import "MeetingDetailViewController.h"
+#import "DetailPTManagerViewController.h"
 
 NSString *const kPTMeetingCollectionViewCellIdentifier = @"MeetingCollectionViewCell";
 CGFloat const kTriggerVerticalOffset = 100.0f;
@@ -80,6 +81,10 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:true];
     //TODO
+    UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
+    DetailPTManagerViewController *detailPTManagerVC = [st
+        instantiateViewControllerWithIdentifier:kDetailPTManagerViewControllerIdentifier];
+    [self.navigationController pushViewController:detailPTManagerVC animated:true];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {

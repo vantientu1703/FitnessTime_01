@@ -15,9 +15,7 @@ NSString *const kMessageSelectTypeTitle = @"Select Type";
 NSString *const kAcionChooseFromLibraryTtile = @"Choose from library";
 NSString *const kAcionChooseFromCameraTtile = @"Choose from camera";
 NSString *const kCancelButtonTitle = @"Cancel";
-NSString *const kMessageNotFoundCamera = @"Not found camera";
 CGFloat const kCornerRadiusImageView = 40.0f;
-CGFloat const kCornerRadiusViewBackground = 5.0f;
 
 @interface AddNewCustomerViewController ()<UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 

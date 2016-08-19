@@ -51,5 +51,9 @@ NSString *const kMessageEditCustomer = @"Edit customer";
 NSString *const kIconUser = @"ic_user";
 NSString *const kCustomerManagerTitle = @"Customer Manager";
 NSString *const kInfoCustomerManagerViewControllerIdentifier = @"InfoCustomerManagerViewController";
+CGFloat const kCornerRadiusViewBackground = 5.0f;
+NSString *const kDetailPTManagerViewControllerIdentifier = @"DetailPTManagerViewController";
+NSString *const kEditPTManagerViewControllerIdentifier = @"EditPTManagerViewController";
+NSString *const kMessageNotFoundCamera = @"Not found camera";
 
 @end
