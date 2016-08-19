@@ -36,6 +36,10 @@
 		EF0809931D5C954A007A8EAE /* PTMeetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0809921D5C954A007A8EAE /* PTMeetingViewController.m */; settings = {ASSET_TAGS = (); }; };
 		EF0809981D5C97B6007A8EAE /* TransactionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0809971D5C97B6007A8EAE /* TransactionsViewController.m */; };
 		EF08099B1D5C97C9007A8EAE /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF08099A1D5C97C9007A8EAE /* MenuViewController.m */; };
+		EF7E23E71D672A3600B613FD /* AddNewCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7E23E61D672A3600B613FD /* AddNewCategoryViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EF7E23EB1D6740A400B613FD /* EditNumberOfCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7E23EA1D6740A400B613FD /* EditNumberOfCategoryViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EF7E23ED1D67429800B613FD /* ic_down.png in Resources */ = {isa = PBXBuildFile; fileRef = EF7E23EC1D67429800B613FD /* ic_down.png */; settings = {ASSET_TAGS = (); }; };
+		EF7E23EF1D674B4D00B613FD /* ic_up.png in Resources */ = {isa = PBXBuildFile; fileRef = EF7E23EE1D674B4D00B613FD /* ic_up.png */; settings = {ASSET_TAGS = (); }; };
 		EF870A751D5DA11200118D7C /* GymManagerConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = EF870A741D5DA11200118D7C /* GymManagerConstant.m */; settings = {ASSET_TAGS = (); }; };
 		EF870A831D5DB66700118D7C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF870A821D5DB66700118D7C /* LoginViewController.m */; };
 		EF870A861D5DBA9F00118D7C /* ic_key.png in Resources */ = {isa = PBXBuildFile; fileRef = EF870A841D5DBA9F00118D7C /* ic_key.png */; settings = {ASSET_TAGS = (); }; };
@@ -65,6 +69,9 @@
 		EFFD8D511D66BBD900994CC5 /* CustomerManagerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFFD8D4F1D66BBD900994CC5 /* CustomerManagerStoryboard.storyboard */; settings = {ASSET_TAGS = (); }; };
 		EFFD8D581D66CE4A00994CC5 /* DetailPTManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFFD8D571D66CE4A00994CC5 /* DetailPTManagerViewController.m */; settings = {ASSET_TAGS = (); }; };
 		EFFD8D5C1D66D9C000994CC5 /* EditPTManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFFD8D5B1D66D9C000994CC5 /* EditPTManagerViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EFFD8D601D66FB4D00994CC5 /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFFD8D5F1D66FB4D00994CC5 /* CategoryViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EFFD8D641D66FFB900994CC5 /* CategoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFFD8D631D66FFB900994CC5 /* CategoryTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		EFFD8D661D67092800994CC5 /* ic_category.png in Resources */ = {isa = PBXBuildFile; fileRef = EFFD8D651D67092800994CC5 /* ic_category.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,6 +130,12 @@
 		EF0809971D5C97B6007A8EAE /* TransactionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransactionsViewController.m; path = ViewControllers/TransactionsViewController/TransactionsViewController.m; sourceTree = "<group>"; };
 		EF0809991D5C97C9007A8EAE /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuViewController.h; path = ViewControllers/MenuViewController/MenuViewController.h; sourceTree = "<group>"; };
 		EF08099A1D5C97C9007A8EAE /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuViewController.m; path = ViewControllers/MenuViewController/MenuViewController.m; sourceTree = "<group>"; };
+		EF7E23E51D672A3600B613FD /* AddNewCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddNewCategoryViewController.h; path = ViewControllers/AddNewCategoryViewController/AddNewCategoryViewController.h; sourceTree = "<group>"; };
+		EF7E23E61D672A3600B613FD /* AddNewCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddNewCategoryViewController.m; path = ViewControllers/AddNewCategoryViewController/AddNewCategoryViewController.m; sourceTree = "<group>"; };
+		EF7E23E91D6740A400B613FD /* EditNumberOfCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditNumberOfCategoryViewController.h; path = ViewControllers/EditNumberOfCategoryViewController/EditNumberOfCategoryViewController.h; sourceTree = "<group>"; };
+		EF7E23EA1D6740A400B613FD /* EditNumberOfCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditNumberOfCategoryViewController.m; path = ViewControllers/EditNumberOfCategoryViewController/EditNumberOfCategoryViewController.m; sourceTree = "<group>"; };
+		EF7E23EC1D67429800B613FD /* ic_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_down.png; path = Resources/ic_down.png; sourceTree = "<group>"; };
+		EF7E23EE1D674B4D00B613FD /* ic_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_up.png; path = Resources/ic_up.png; sourceTree = "<group>"; };
 		EF870A731D5DA11200118D7C /* GymManagerConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GymManagerConstant.h; path = GymManagerConstant/GymManagerConstant.h; sourceTree = "<group>"; };
 		EF870A741D5DA11200118D7C /* GymManagerConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GymManagerConstant.m; path = GymManagerConstant/GymManagerConstant.m; sourceTree = "<group>"; };
 		EF870A811D5DB66700118D7C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ViewControllers/LoginViewController/LoginViewController.h; sourceTree = "<group>"; };
@@ -170,6 +183,11 @@
 		EFFD8D571D66CE4A00994CC5 /* DetailPTManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailPTManagerViewController.m; path = ViewControllers/DetailPTManagerViewController/DetailPTManagerViewController.m; sourceTree = "<group>"; };
 		EFFD8D5A1D66D9C000994CC5 /* EditPTManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditPTManagerViewController.h; path = ViewControllers/EditPTManagerViewController/EditPTManagerViewController.h; sourceTree = "<group>"; };
 		EFFD8D5B1D66D9C000994CC5 /* EditPTManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditPTManagerViewController.m; path = ViewControllers/EditPTManagerViewController/EditPTManagerViewController.m; sourceTree = "<group>"; };
+		EFFD8D5E1D66FB4D00994CC5 /* CategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryViewController.h; path = ViewControllers/CategoryViewController/CategoryViewController.h; sourceTree = "<group>"; };
+		EFFD8D5F1D66FB4D00994CC5 /* CategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryViewController.m; path = ViewControllers/CategoryViewController/CategoryViewController.m; sourceTree = "<group>"; };
+		EFFD8D621D66FFB900994CC5 /* CategoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryTableViewCell.h; path = Cell/CategoryCell/CategoryTableViewCell.h; sourceTree = "<group>"; };
+		EFFD8D631D66FFB900994CC5 /* CategoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryTableViewCell.m; path = Cell/CategoryCell/CategoryTableViewCell.m; sourceTree = "<group>"; };
+		EFFD8D651D67092800994CC5 /* ic_category.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_category.png; path = Resources/ic_category.png; sourceTree = "<group>"; };
 		F5306E0927E6108D1261CCE5 /* Pods-GymManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GymManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GymManager/Pods-GymManager.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -379,6 +397,9 @@
 				EFF28BCE1D6572A7000F9B27 /* MeetingDetailViewController */,
 				EF0809941D5C975E007A8EAE /* TransactionsViewController */,
 				EF0809951D5C976D007A8EAE /* MenuViewController */,
+				EFFD8D5D1D66FB1300994CC5 /* CategoryViewController */,
+				EF7E23E81D67404700B613FD /* EditNumberOfCategoryViewController */,
+				EF7E23E41D672A0000B613FD /* AddNewCategoryViewController */,
 				EFF19FA61D61FA4E00EAD1D1 /* MyProfileViewController */,
 				EFF19FAA1D62061500EAD1D1 /* EditMyProfileViewController */,
 				EFFD8D3F1D66BA6F00994CC5 /* CustomerManagerViewController */,
@@ -391,6 +412,9 @@
 		EF0809781D5C8743007A8EAE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EF7E23EE1D674B4D00B613FD /* ic_up.png */,
+				EF7E23EC1D67429800B613FD /* ic_down.png */,
+				EFFD8D651D67092800994CC5 /* ic_category.png */,
 				EFF28BB11D655C10000F9B27 /* ic_calendar.png */,
 				EFF28BB21D655C10000F9B27 /* ic_threedots.png */,
 				EFF19F9E1D61ED8400EAD1D1 /* ic_customer.png */,
@@ -487,6 +511,24 @@
 			name = MenuViewController;
 			sourceTree = "<group>";
 		};
+		EF7E23E41D672A0000B613FD /* AddNewCategoryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EF7E23E51D672A3600B613FD /* AddNewCategoryViewController.h */,
+				EF7E23E61D672A3600B613FD /* AddNewCategoryViewController.m */,
+			);
+			name = AddNewCategoryViewController;
+			sourceTree = "<group>";
+		};
+		EF7E23E81D67404700B613FD /* EditNumberOfCategoryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EF7E23E91D6740A400B613FD /* EditNumberOfCategoryViewController.h */,
+				EF7E23EA1D6740A400B613FD /* EditNumberOfCategoryViewController.m */,
+			);
+			name = EditNumberOfCategoryViewController;
+			sourceTree = "<group>";
+		};
 		EF7F2C3D1D647D1700E3D19B /* PTMeetingCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -535,6 +577,7 @@
 		EF870A941D5DFE9B00118D7C /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				EFFD8D611D66FF9900994CC5 /* CategoryCell */,
 				EFFD8D431D66BAB700994CC5 /* CustomerTableViewCell */,
 				EFF28BD31D65732B000F9B27 /* DateMeetingTableViewCell */,
 				EFF28BD21D657319000F9B27 /* CustomerOrTrainerTableViewCell */,
@@ -670,6 +713,24 @@
 			name = EditPTManagerViewController;
 			sourceTree = "<group>";
 		};
+		EFFD8D5D1D66FB1300994CC5 /* CategoryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EFFD8D5E1D66FB4D00994CC5 /* CategoryViewController.h */,
+				EFFD8D5F1D66FB4D00994CC5 /* CategoryViewController.m */,
+			);
+			name = CategoryViewController;
+			sourceTree = "<group>";
+		};
+		EFFD8D611D66FF9900994CC5 /* CategoryCell */ = {
+			isa = PBXGroup;
+			children = (
+				EFFD8D621D66FFB900994CC5 /* CategoryTableViewCell.h */,
+				EFFD8D631D66FFB900994CC5 /* CategoryTableViewCell.m */,
+			);
+			name = CategoryCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -734,14 +795,17 @@
 				EF08096C1D5C8261007A8EAE /* LaunchScreen.storyboard in Resources */,
 				EFFD8D511D66BBD900994CC5 /* CustomerManagerStoryboard.storyboard in Resources */,
 				EFF19FA51D61ED8400EAD1D1 /* ic_ptmanager.png in Resources */,
+				EF7E23ED1D67429800B613FD /* ic_down.png in Resources */,
 				EFF19FA21D61ED8400EAD1D1 /* ic_customer.png in Resources */,
 				EFF19FA31D61ED8400EAD1D1 /* ic_logout.png in Resources */,
+				EFFD8D661D67092800994CC5 /* ic_category.png in Resources */,
 				EF870A861D5DBA9F00118D7C /* ic_key.png in Resources */,
 				EF0809691D5C8261007A8EAE /* Assets.xcassets in Resources */,
 				EFF19FA41D61ED8400EAD1D1 /* ic_myprofile.png in Resources */,
 				EF0809671D5C8261007A8EAE /* Main.storyboard in Resources */,
 				EF870A871D5DBA9F00118D7C /* ic_user.png in Resources */,
 				EFF28BB41D655C10000F9B27 /* ic_threedots.png in Resources */,
+				EF7E23EF1D674B4D00B613FD /* ic_up.png in Resources */,
 				40EA22E91D5E26FF00B08942 /* HeaderViewContent.xib in Resources */,
 				40AB31241D5DB47400341359 /* Transaction.storyboard in Resources */,
 				EFF28BB31D655C10000F9B27 /* ic_calendar.png in Resources */,
@@ -810,6 +874,7 @@
 				EFF1B3011D660EA2002919DB /* AlertManager.m in Sources */,
 				408933171D646B050081511C /* Trainer.m in Sources */,
 				408933151D646B050081511C /* Customer.m in Sources */,
+				EF7E23E71D672A3600B613FD /* AddNewCategoryViewController.m in Sources */,
 				408933161D646B050081511C /* Person.m in Sources */,
 				4017EDF61D6175A30033E0AE /* AddTransactionViewController.m in Sources */,
 				40EA22EC1D5E27C700B08942 /* HeaderViewContent.m in Sources */,
@@ -821,6 +886,7 @@
 				EFFD8D4A1D66BB1D00994CC5 /* AddNewCustomerViewController.m in Sources */,
 				EF08099B1D5C97C9007A8EAE /* MenuViewController.m in Sources */,
 				EF870A8B1D5DC69400118D7C /* RegisterViewController.m in Sources */,
+				EFFD8D601D66FB4D00994CC5 /* CategoryViewController.m in Sources */,
 				EFF28BB71D655D07000F9B27 /* TodayMeetingTableViewCell.m in Sources */,
 				40B8A7311D640C12007AB6BF /* CategoryCell.m in Sources */,
 				EFFD8D461D66BAD400994CC5 /* CustomerManagerCollectionViewCell.m in Sources */,
@@ -831,6 +897,7 @@
 				EFFD8D5C1D66D9C000994CC5 /* EditPTManagerViewController.m in Sources */,
 				40AB31291D5DC4E700341359 /* TransactionCell.m in Sources */,
 				40B8A72C1D640C04007AB6BF /* PopoverQuatityViewController.m in Sources */,
+				EFFD8D641D66FFB900994CC5 /* CategoryTableViewCell.m in Sources */,
 				EF0809981D5C97B6007A8EAE /* TransactionsViewController.m in Sources */,
 				408933241D646B370081511C /* Item.m in Sources */,
 				EFF28BD91D657397000F9B27 /* DateMeetingTableViewCell.m in Sources */,
@@ -841,6 +908,7 @@
 				EFF28BDC1D657640000F9B27 /* CustomerOrTrainnerTableViewCell.m in Sources */,
 				406E24811D62C7AD00F013FB /* CalendarViewController.m in Sources */,
 				EFF28BE31D6585BA000F9B27 /* DateFormatter.m in Sources */,
+				EF7E23EB1D6740A400B613FD /* EditNumberOfCategoryViewController.m in Sources */,
 				EFF19FAD1D62064000EAD1D1 /* EditMyProfileViewController.m in Sources */,
 				EFF19FA91D61FA7A00EAD1D1 /* MyProfileViewController.m in Sources */,
 				EF0809801D5C89AB007A8EAE /* AppDelegate.m in Sources */,

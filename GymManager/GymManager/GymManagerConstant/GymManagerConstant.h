@@ -55,5 +55,8 @@ extern CGFloat const kCornerRadiusViewBackground;
 extern NSString *const kDetailPTManagerViewControllerIdentifier;
 extern NSString *const kEditPTManagerViewControllerIdentifier;
 extern NSString *const kMessageNotFoundCamera;
+extern NSString *const kCategoryViewControllerIdentifier;
+extern NSString *const kAddNewCategoryViewControllerIdentifier;
+extern NSString *const kEditNumberOfCategoryViewControllerIdentifier;
 
 @end

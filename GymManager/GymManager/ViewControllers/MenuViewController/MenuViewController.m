@@ -11,22 +11,26 @@
 #import "PTMeetingViewController.h"
 #import "AppDelegate.h"
 #import "CustomerManagerViewController.h"
+#import "CategoryViewController.h"
 
 typedef NS_ENUM(NSInteger, MenuDetailRows) {
     MenuDetailRowMyProfile,
     MenuDetailRowPTManager,
     MenuDetailRowCustomerManager,
+    MenuDetailRowCategory,
     MenuDetailRowLogOut
 };
 
 NSString *const kMyProfileTitle = @"My Profile";
 NSString *const kPTManagerTitle = @"PT Manager";
 NSString *const kLogoutTitle = @"Logout";
+NSString *const kCategoryTitle = @"Category";
 NSString *const kIconMyProfile = @"ic_myprofile";
 NSString *const kIconPTManager = @"ic_ptmanager";
 NSString *const kIconCustomerManager = @"ic_customer";
 NSString *const kIconLogout = @"ic_logout";
-NSInteger const kNumberOfRowsInSectionMenu = 4;
+NSString *const kIconCategory = @"ic_category";
+NSInteger const kNumberOfRowsInSectionMenu = 5;
 CGFloat const kHeightCellMenu = 50.0f;
 static NSString *const kCellDefault = @"CellDefault";
 
@@ -87,6 +91,12 @@ static NSString *const kCellDefault = @"CellDefault";
             [self.navigationController pushViewController:customerManagerVC animated:true];
             break;
         }
+        case MenuDetailRowCategory: {
+            CategoryViewController *categoryVC = [customerManagerStoryboard
+                instantiateViewControllerWithIdentifier:kCategoryViewControllerIdentifier];
+            [self.navigationController pushViewController:categoryVC animated:true];
+            break;
+        }
         case MenuDetailRowLogOut: {
             AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
             [appDelegate loadLoginViewController];
@@ -106,6 +116,8 @@ static NSString *const kCellDefault = @"CellDefault";
             return kPTManagerTitle;
         case MenuDetailRowCustomerManager:
             return kCustomerManagerTitle;
+        case MenuDetailRowCategory:
+            return kCategoryTitle;
         case MenuDetailRowLogOut:
             return kLogoutTitle;
         default:
@@ -122,6 +134,8 @@ static NSString *const kCellDefault = @"CellDefault";
             return kIconPTManager;
         case MenuDetailRowCustomerManager:
             return kIconCustomerManager;
+        case MenuDetailRowCategory:
+            return kIconCategory;
         case MenuDetailRowLogOut:
             return kIconLogout;
         default:
