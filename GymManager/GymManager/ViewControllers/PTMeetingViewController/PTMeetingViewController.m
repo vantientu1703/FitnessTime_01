@@ -12,7 +12,6 @@
 #import "MeetingDetailViewController.h"
 
 NSString *const kPTMeetingCollectionViewCellIdentifier = @"MeetingCollectionViewCell";
-NSString *const kIconUser = @"ic_user";
 CGFloat const kTriggerVerticalOffset = 100.0f;
 CGFloat const kCornerRadiusButtonAddNewMeeting = 20.0f;
 //TODO

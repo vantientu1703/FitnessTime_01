@@ -10,6 +10,7 @@
 #import "MyProfileViewController.h"
 #import "PTMeetingViewController.h"
 #import "AppDelegate.h"
+#import "CustomerManagerViewController.h"
 
 typedef NS_ENUM(NSInteger, MenuDetailRows) {
     MenuDetailRowMyProfile,
@@ -20,7 +21,6 @@ typedef NS_ENUM(NSInteger, MenuDetailRows) {
 
 NSString *const kMyProfileTitle = @"My Profile";
 NSString *const kPTManagerTitle = @"PT Manager";
-NSString *const kCustomerManagerTitle = @"Customer Manager";
 NSString *const kLogoutTitle = @"Logout";
 NSString *const kIconMyProfile = @"ic_myprofile";
 NSString *const kIconPTManager = @"ic_ptmanager";
@@ -66,22 +66,27 @@ static NSString *const kCellDefault = @"CellDefault";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:true];
     UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
-    MyProfileViewController *myProfileVC = [st
-        instantiateViewControllerWithIdentifier:kMyProfileViewControllerIdentifier];
+    UIStoryboard *customerManagerStoryboard = [UIStoryboard
+        storyboardWithName:kCustomerManagerStoryboard bundle:nil];
     switch (indexPath.row) {
-        case MenuDetailRowMyProfile:
+        case MenuDetailRowMyProfile: {
+            MyProfileViewController *myProfileVC = [st
+                instantiateViewControllerWithIdentifier:kMyProfileViewControllerIdentifier];
             [self.navigationController pushViewController:myProfileVC animated:true];
             break;
+        }
         case MenuDetailRowPTManager: {
-            UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
             PTMeetingViewController *ptPTMeetingVC = [st
                 instantiateViewControllerWithIdentifier:kPTMeetingViewControllerIdentifier];
             [self.navigationController pushViewController:ptPTMeetingVC animated:true];
             break;
         }
-        case MenuDetailRowCustomerManager:
-            //TODO
+        case MenuDetailRowCustomerManager: {
+            CustomerManagerViewController *customerManagerVC = [customerManagerStoryboard
+                instantiateViewControllerWithIdentifier:kCustomerManagerViewControllerIdentifier];
+            [self.navigationController pushViewController:customerManagerVC animated:true];
             break;
+        }
         case MenuDetailRowLogOut: {
             AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
             [appDelegate loadLoginViewController];

@@ -44,5 +44,12 @@ NSString *const kChoseFromCameraTitle = @"Choose from camera";
 NSString *const kCancelTitle = @"Cancel";
 NSString *const kNotFoundCamera = @"Not found camera";
 NSString *const kOkTitle = @"Ok";
+NSString *const kCustomerManagerStoryboard = @"CustomerManagerStoryboard";
+NSString *const kCustomerManagerViewControllerIdentifier = @"CustomerManagerViewController";
+NSString *const kAddNewCustomerViewControllerIdentifier = @"AddNewCustomerViewController";
+NSString *const kMessageEditCustomer = @"Edit customer";
+NSString *const kIconUser = @"ic_user";
+NSString *const kCustomerManagerTitle = @"Customer Manager";
+NSString *const kInfoCustomerManagerViewControllerIdentifier = @"InfoCustomerManagerViewController";
 
 @end
