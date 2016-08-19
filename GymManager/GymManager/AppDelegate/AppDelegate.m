@@ -20,12 +20,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    [self loadLoginViewController];
+    [self.window makeKeyAndVisible];
+    return YES;
+}
+
+- (void)loadLoginViewController {
     UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
     LoginViewController *loginVC = [st instantiateViewControllerWithIdentifier:kLoginViewControllerIdentifier];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginVC];
     self.window.rootViewController = nav;
-    [self.window makeKeyAndVisible];
-    return YES;
 }
 
 - (void)loadTabbarController {
@@ -40,15 +44,13 @@
         kPTMeetingViewControllerIdentifier];
     ptMeetingVC.title = kPTMeetingViewControllerTitle;
     UINavigationController *navPTMeetingVC = [[UINavigationController alloc] initWithRootViewController:ptMeetingVC];
-    //TODO TransactionsViewController
     TransactionsViewController *transVC = [[UIStoryboard storyboardWithName:kNameStoryboardTransaction bundle:nil] instantiateInitialViewController];
     transVC.title = kTransactionsViewControllerTitle;
     UINavigationController *navTransactionVC = [[UINavigationController alloc] initWithRootViewController:transVC];
-    //TODO MenuViewController
-    MenuViewController *menuVC = [[MenuViewController alloc] init];
+    MenuViewController *menuVC = [st instantiateViewControllerWithIdentifier:kMenuViewControllerIdentifier];
     menuVC.title = kMenuViewControllerTitle;
     UINavigationController *navMenuVC = [[UINavigationController alloc] initWithRootViewController:menuVC];
-    //TODO Set viewcontrollers for tabbar controller
+    //Set viewcontrollers for tabbar controller
     [tabVC setViewControllers:@[navTodayMeetingsVC,navPTMeetingVC,navTransactionVC,navMenuVC]];
     self.window.rootViewController = tabVC;
 }
