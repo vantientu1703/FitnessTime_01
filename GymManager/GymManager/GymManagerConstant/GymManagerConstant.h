@@ -59,4 +59,9 @@ extern NSString *const kCategoryViewControllerIdentifier;
 extern NSString *const kAddNewCategoryViewControllerIdentifier;
 extern NSString *const kEditNumberOfCategoryViewControllerIdentifier;
 
+#pragma mark - API
+extern NSString *const URLRequest;
+extern NSString *const kLoginRequest;
+extern NSString *const kRegisterRequest;
+
 @end

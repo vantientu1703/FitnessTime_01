@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, CalendarType) {
+    CalendarTypeDay,
+    CalendarTypeMonth,
+    CalendarTypeYear
+};
+
 @interface CalendarViewController : UIViewController
+
+@property (nonatomic) CalendarType calendarType;
 
 - (void)didPickDateWithCompletionBlock:(void(^)(NSDate* dateSelected))callBackBlock;
 

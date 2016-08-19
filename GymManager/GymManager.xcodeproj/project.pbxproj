@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		09E77F40D442DD862B0308B4 /* libPods-GymManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7A8174D3CFE4CB610F82E6 /* libPods-GymManager.a */; };
 		4017EDF61D6175A30033E0AE /* AddTransactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4017EDF51D6175A30033E0AE /* AddTransactionViewController.m */; };
+		404241271D65888C00111B97 /* LoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 404241261D65888C00111B97 /* LoginManager.m */; };
+		4042412A1D65BA4D00111B97 /* RegisterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 404241291D65BA4D00111B97 /* RegisterManager.m */; };
+		4042412D1D65BCCB00111B97 /* Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4042412C1D65BCCB00111B97 /* Manager.m */; };
 		406E24811D62C7AD00F013FB /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 406E24801D62C7AD00F013FB /* CalendarViewController.m */; };
 		408933151D646B050081511C /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4089330E1D646B050081511C /* Customer.m */; };
 		408933161D646B050081511C /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 408933101D646B050081511C /* Person.m */; };
@@ -30,28 +33,24 @@
 		EF0809671D5C8261007A8EAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF0809651D5C8261007A8EAE /* Main.storyboard */; };
 		EF0809691D5C8261007A8EAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF0809681D5C8261007A8EAE /* Assets.xcassets */; };
 		EF08096C1D5C8261007A8EAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF08096A1D5C8261007A8EAE /* LaunchScreen.storyboard */; };
-		EF0809801D5C89AB007A8EAE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EF08097F1D5C89AB007A8EAE /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
+		EF0809801D5C89AB007A8EAE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EF08097F1D5C89AB007A8EAE /* AppDelegate.m */; };
 		EF0809891D5C8D3F007A8EAE /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0809881D5C8D3F007A8EAE /* BaseViewController.m */; };
-		EF08098B1D5C8D69007A8EAE /* TodayMeetingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF08098A1D5C8D69007A8EAE /* TodayMeetingsViewController.m */; settings = {ASSET_TAGS = (); }; };
-		EF0809931D5C954A007A8EAE /* PTMeetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0809921D5C954A007A8EAE /* PTMeetingViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EF08098B1D5C8D69007A8EAE /* TodayMeetingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF08098A1D5C8D69007A8EAE /* TodayMeetingsViewController.m */; };
+		EF0809931D5C954A007A8EAE /* PTMeetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0809921D5C954A007A8EAE /* PTMeetingViewController.m */; };
 		EF0809981D5C97B6007A8EAE /* TransactionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0809971D5C97B6007A8EAE /* TransactionsViewController.m */; };
 		EF08099B1D5C97C9007A8EAE /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF08099A1D5C97C9007A8EAE /* MenuViewController.m */; };
-		EF7E23E71D672A3600B613FD /* AddNewCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7E23E61D672A3600B613FD /* AddNewCategoryViewController.m */; settings = {ASSET_TAGS = (); }; };
-		EF7E23EB1D6740A400B613FD /* EditNumberOfCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7E23EA1D6740A400B613FD /* EditNumberOfCategoryViewController.m */; settings = {ASSET_TAGS = (); }; };
-		EF7E23ED1D67429800B613FD /* ic_down.png in Resources */ = {isa = PBXBuildFile; fileRef = EF7E23EC1D67429800B613FD /* ic_down.png */; settings = {ASSET_TAGS = (); }; };
-		EF7E23EF1D674B4D00B613FD /* ic_up.png in Resources */ = {isa = PBXBuildFile; fileRef = EF7E23EE1D674B4D00B613FD /* ic_up.png */; settings = {ASSET_TAGS = (); }; };
-		EF870A751D5DA11200118D7C /* GymManagerConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = EF870A741D5DA11200118D7C /* GymManagerConstant.m */; settings = {ASSET_TAGS = (); }; };
+		EF870A751D5DA11200118D7C /* GymManagerConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = EF870A741D5DA11200118D7C /* GymManagerConstant.m */; };
 		EF870A831D5DB66700118D7C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF870A821D5DB66700118D7C /* LoginViewController.m */; };
-		EF870A861D5DBA9F00118D7C /* ic_key.png in Resources */ = {isa = PBXBuildFile; fileRef = EF870A841D5DBA9F00118D7C /* ic_key.png */; settings = {ASSET_TAGS = (); }; };
-		EF870A871D5DBA9F00118D7C /* ic_user.png in Resources */ = {isa = PBXBuildFile; fileRef = EF870A851D5DBA9F00118D7C /* ic_user.png */; settings = {ASSET_TAGS = (); }; };
+		EF870A861D5DBA9F00118D7C /* ic_key.png in Resources */ = {isa = PBXBuildFile; fileRef = EF870A841D5DBA9F00118D7C /* ic_key.png */; };
+		EF870A871D5DBA9F00118D7C /* ic_user.png in Resources */ = {isa = PBXBuildFile; fileRef = EF870A851D5DBA9F00118D7C /* ic_user.png */; };
 		EF870A8B1D5DC69400118D7C /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF870A8A1D5DC69400118D7C /* RegisterViewController.m */; };
-		EF870A971D5DFEFE00118D7C /* PTMeetingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF870A961D5DFEFE00118D7C /* PTMeetingCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		EFF19FA21D61ED8400EAD1D1 /* ic_customer.png in Resources */ = {isa = PBXBuildFile; fileRef = EFF19F9E1D61ED8400EAD1D1 /* ic_customer.png */; settings = {ASSET_TAGS = (); }; };
-		EFF19FA31D61ED8400EAD1D1 /* ic_logout.png in Resources */ = {isa = PBXBuildFile; fileRef = EFF19F9F1D61ED8400EAD1D1 /* ic_logout.png */; settings = {ASSET_TAGS = (); }; };
-		EFF19FA41D61ED8400EAD1D1 /* ic_myprofile.png in Resources */ = {isa = PBXBuildFile; fileRef = EFF19FA01D61ED8400EAD1D1 /* ic_myprofile.png */; settings = {ASSET_TAGS = (); }; };
-		EFF19FA51D61ED8400EAD1D1 /* ic_ptmanager.png in Resources */ = {isa = PBXBuildFile; fileRef = EFF19FA11D61ED8400EAD1D1 /* ic_ptmanager.png */; settings = {ASSET_TAGS = (); }; };
-		EFF19FA91D61FA7A00EAD1D1 /* MyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF19FA81D61FA7A00EAD1D1 /* MyProfileViewController.m */; settings = {ASSET_TAGS = (); }; };
-		EFF19FAD1D62064000EAD1D1 /* EditMyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF19FAC1D62064000EAD1D1 /* EditMyProfileViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EF870A971D5DFEFE00118D7C /* PTMeetingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF870A961D5DFEFE00118D7C /* PTMeetingCollectionViewCell.m */; };
+		EFF19FA21D61ED8400EAD1D1 /* ic_customer.png in Resources */ = {isa = PBXBuildFile; fileRef = EFF19F9E1D61ED8400EAD1D1 /* ic_customer.png */; };
+		EFF19FA31D61ED8400EAD1D1 /* ic_logout.png in Resources */ = {isa = PBXBuildFile; fileRef = EFF19F9F1D61ED8400EAD1D1 /* ic_logout.png */; };
+		EFF19FA41D61ED8400EAD1D1 /* ic_myprofile.png in Resources */ = {isa = PBXBuildFile; fileRef = EFF19FA01D61ED8400EAD1D1 /* ic_myprofile.png */; };
+		EFF19FA51D61ED8400EAD1D1 /* ic_ptmanager.png in Resources */ = {isa = PBXBuildFile; fileRef = EFF19FA11D61ED8400EAD1D1 /* ic_ptmanager.png */; };
+		EFF19FA91D61FA7A00EAD1D1 /* MyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF19FA81D61FA7A00EAD1D1 /* MyProfileViewController.m */; };
+		EFF19FAD1D62064000EAD1D1 /* EditMyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF19FAC1D62064000EAD1D1 /* EditMyProfileViewController.m */; };
 		EFF1B2FD1D65FC0F002919DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EF08095D1D5C8261007A8EAE /* main.m */; };
 		EFF1B3011D660EA2002919DB /* AlertManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF1B3001D660EA2002919DB /* AlertManager.m */; settings = {ASSET_TAGS = (); }; };
 		EFF28BB31D655C10000F9B27 /* ic_calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = EFF28BB11D655C10000F9B27 /* ic_calendar.png */; settings = {ASSET_TAGS = (); }; };
@@ -77,6 +76,12 @@
 /* Begin PBXFileReference section */
 		4017EDF41D6175A30033E0AE /* AddTransactionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddTransactionViewController.h; path = ViewControllers/TransactionsViewController/AddTransactionViewController/AddTransactionViewController.h; sourceTree = "<group>"; };
 		4017EDF51D6175A30033E0AE /* AddTransactionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddTransactionViewController.m; path = ViewControllers/TransactionsViewController/AddTransactionViewController/AddTransactionViewController.m; sourceTree = "<group>"; };
+		404241251D65888C00111B97 /* LoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginManager.h; path = HandleAPI/LoginManager.h; sourceTree = "<group>"; };
+		404241261D65888C00111B97 /* LoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginManager.m; path = HandleAPI/LoginManager.m; sourceTree = "<group>"; };
+		404241281D65BA4D00111B97 /* RegisterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterManager.h; path = HandleAPI/RegisterManager.h; sourceTree = "<group>"; };
+		404241291D65BA4D00111B97 /* RegisterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterManager.m; path = HandleAPI/RegisterManager.m; sourceTree = "<group>"; };
+		4042412B1D65BCCB00111B97 /* Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Manager.h; path = HandleAPI/Manager.h; sourceTree = "<group>"; };
+		4042412C1D65BCCB00111B97 /* Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Manager.m; path = HandleAPI/Manager.m; sourceTree = "<group>"; };
 		406E247F1D62C7AD00F013FB /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalendarViewController.h; path = ViewControllers/CalendarViewController/CalendarViewController.h; sourceTree = "<group>"; };
 		406E24801D62C7AD00F013FB /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalendarViewController.m; path = ViewControllers/CalendarViewController/CalendarViewController.m; sourceTree = "<group>"; };
 		4089330D1D646B050081511C /* Customer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Customer.h; path = Modal/User/Customer.h; sourceTree = "<group>"; };
@@ -377,6 +382,12 @@
 		EF0809731D5C8558007A8EAE /* HandleAPI */ = {
 			isa = PBXGroup;
 			children = (
+				4042412B1D65BCCB00111B97 /* Manager.h */,
+				4042412C1D65BCCB00111B97 /* Manager.m */,
+				404241251D65888C00111B97 /* LoginManager.h */,
+				404241261D65888C00111B97 /* LoginManager.m */,
+				404241281D65BA4D00111B97 /* RegisterManager.h */,
+				404241291D65BA4D00111B97 /* RegisterManager.m */,
 			);
 			name = HandleAPI;
 			sourceTree = "<group>";
@@ -877,6 +888,7 @@
 				EF7E23E71D672A3600B613FD /* AddNewCategoryViewController.m in Sources */,
 				408933161D646B050081511C /* Person.m in Sources */,
 				4017EDF61D6175A30033E0AE /* AddTransactionViewController.m in Sources */,
+				404241271D65888C00111B97 /* LoginManager.m in Sources */,
 				40EA22EC1D5E27C700B08942 /* HeaderViewContent.m in Sources */,
 				408933211D646B300081511C /* Meeting.m in Sources */,
 				EF870A751D5DA11200118D7C /* GymManagerConstant.m in Sources */,
@@ -885,6 +897,7 @@
 				EF0809931D5C954A007A8EAE /* PTMeetingViewController.m in Sources */,
 				EFFD8D4A1D66BB1D00994CC5 /* AddNewCustomerViewController.m in Sources */,
 				EF08099B1D5C97C9007A8EAE /* MenuViewController.m in Sources */,
+				4042412D1D65BCCB00111B97 /* Manager.m in Sources */,
 				EF870A8B1D5DC69400118D7C /* RegisterViewController.m in Sources */,
 				EFFD8D601D66FB4D00994CC5 /* CategoryViewController.m in Sources */,
 				EFF28BB71D655D07000F9B27 /* TodayMeetingTableViewCell.m in Sources */,
@@ -906,6 +919,7 @@
 				EFFD8D4E1D66BB9C00994CC5 /* InfoCustomerManagerViewController.m in Sources */,
 				40AB31311D5DD81000341359 /* ExpandableTableView.m in Sources */,
 				EFF28BDC1D657640000F9B27 /* CustomerOrTrainnerTableViewCell.m in Sources */,
+				4042412A1D65BA4D00111B97 /* RegisterManager.m in Sources */,
 				406E24811D62C7AD00F013FB /* CalendarViewController.m in Sources */,
 				EFF28BE31D6585BA000F9B27 /* DateFormatter.m in Sources */,
 				EF7E23EB1D6740A400B613FD /* EditNumberOfCategoryViewController.m in Sources */,

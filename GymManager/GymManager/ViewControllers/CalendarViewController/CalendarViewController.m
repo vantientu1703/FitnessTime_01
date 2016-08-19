@@ -8,6 +8,7 @@
 
 #import "CalendarViewController.h"
 #import "RSDFDatePickerView.h"
+#import "NTMonthYearPicker.h"
 
 @interface CalendarViewController () <RSDFDatePickerViewDelegate>
 
@@ -22,9 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"Calendar";
-    self.datePickerView = [[RSDFDatePickerView alloc] init];
-    self.datePickerView.delegate = self;
-    [self.view addSubview:self.datePickerView];
+    [self setupView];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -36,6 +35,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)setupView {
+    self.datePickerView = [[RSDFDatePickerView alloc] initWithFrame:self.view.bounds];
+    self.datePickerView.delegate = self;
+    self.view = self.datePickerView;
+}
+
+#pragma mark - Calendar Delegate
 - (void)datePickerView:(RSDFDatePickerView *)view didSelectDate:(NSDate *)date {
     //TODO callback after picked date
     self.callBackBlock(date);

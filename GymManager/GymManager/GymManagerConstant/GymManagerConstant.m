@@ -59,4 +59,9 @@ NSString *const kCategoryViewControllerIdentifier = @"CategoryViewController";
 NSString *const kAddNewCategoryViewControllerIdentifier = @"AddNewCategoryViewController";
 NSString *const kEditNumberOfCategoryViewControllerIdentifier = @"EditNumberOfCategoryViewController";
 
+#pragma mark - API
+NSString *const URLRequest = @"http://localhost/HotOnFB/web/app_dev.php/api/";
+NSString *const kLoginRequest = @"login";
+NSString *const kRegisterRequest = @"register";
+
 @end

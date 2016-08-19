@@ -8,4 +8,6 @@ target 'GymManager' do
   pod 'TPKeyboardAvoiding'
   pod 'CCBottomRefreshControl'
   pod 'RSDayFlow'
+  pod 'NTMonthYearPicker'
+  pod 'JSONModel'
 end
