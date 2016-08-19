@@ -44,5 +44,12 @@ extern NSString *const kChoseFromCameraTitle;
 extern NSString *const kCancelTitle;
 extern NSString *const kNotFoundCamera;
 extern NSString *const kOkTitle;
+extern NSString *const kCustomerManagerStoryboard;
+extern NSString *const kCustomerManagerViewControllerIdentifier;
+extern NSString *const kAddNewCustomerViewControllerIdentifier;
+extern NSString *const kMessageEditCustomer;
+extern NSString *const kIconUser;
+extern NSString *const kCustomerManagerTitle;
+extern NSString *const kInfoCustomerManagerViewControllerIdentifier;
 
 @end

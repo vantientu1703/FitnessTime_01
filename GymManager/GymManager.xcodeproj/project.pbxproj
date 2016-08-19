@@ -58,6 +58,11 @@
 		EFF28BDC1D657640000F9B27 /* CustomerOrTrainnerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF28BDB1D657640000F9B27 /* CustomerOrTrainnerTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		EFF28BE31D6585BA000F9B27 /* DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF28BE21D6585BA000F9B27 /* DateFormatter.m */; settings = {ASSET_TAGS = (); }; };
 		EFFD8D3E1D66AC2800994CC5 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = EFFD8D3D1D66AC2800994CC5 /* Utils.m */; settings = {ASSET_TAGS = (); }; };
+		EFFD8D421D66BAA700994CC5 /* CustomerManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFFD8D411D66BAA700994CC5 /* CustomerManagerViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EFFD8D461D66BAD400994CC5 /* CustomerManagerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFFD8D451D66BAD400994CC5 /* CustomerManagerCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		EFFD8D4A1D66BB1D00994CC5 /* AddNewCustomerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFFD8D491D66BB1D00994CC5 /* AddNewCustomerViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EFFD8D4E1D66BB9C00994CC5 /* InfoCustomerManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFFD8D4D1D66BB9C00994CC5 /* InfoCustomerManagerViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EFFD8D511D66BBD900994CC5 /* CustomerManagerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFFD8D4F1D66BBD900994CC5 /* CustomerManagerStoryboard.storyboard */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -150,6 +155,15 @@
 		EFF28BE21D6585BA000F9B27 /* DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DateFormatter.m; path = DateFormatter/DateFormatter.m; sourceTree = "<group>"; };
 		EFFD8D3C1D66AC2800994CC5 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = Utils/Utils.h; sourceTree = "<group>"; };
 		EFFD8D3D1D66AC2800994CC5 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = Utils/Utils.m; sourceTree = "<group>"; };
+		EFFD8D401D66BAA700994CC5 /* CustomerManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomerManagerViewController.h; path = ViewControllers/CustomerManagerViewController/CustomerManagerViewController.h; sourceTree = "<group>"; };
+		EFFD8D411D66BAA700994CC5 /* CustomerManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomerManagerViewController.m; path = ViewControllers/CustomerManagerViewController/CustomerManagerViewController.m; sourceTree = "<group>"; };
+		EFFD8D441D66BAD400994CC5 /* CustomerManagerCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomerManagerCollectionViewCell.h; path = Cell/CustomerManageTableViewCell/CustomerManagerCollectionViewCell.h; sourceTree = "<group>"; };
+		EFFD8D451D66BAD400994CC5 /* CustomerManagerCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomerManagerCollectionViewCell.m; path = Cell/CustomerManageTableViewCell/CustomerManagerCollectionViewCell.m; sourceTree = "<group>"; };
+		EFFD8D481D66BB1D00994CC5 /* AddNewCustomerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddNewCustomerViewController.h; path = ViewControllers/AddNewCustomerViewController/AddNewCustomerViewController.h; sourceTree = "<group>"; };
+		EFFD8D491D66BB1D00994CC5 /* AddNewCustomerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddNewCustomerViewController.m; path = ViewControllers/AddNewCustomerViewController/AddNewCustomerViewController.m; sourceTree = "<group>"; };
+		EFFD8D4C1D66BB9C00994CC5 /* InfoCustomerManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfoCustomerManagerViewController.h; path = ViewControllers/InfoCustomerViewController/InfoCustomerManagerViewController.h; sourceTree = "<group>"; };
+		EFFD8D4D1D66BB9C00994CC5 /* InfoCustomerManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfoCustomerManagerViewController.m; path = ViewControllers/InfoCustomerViewController/InfoCustomerManagerViewController.m; sourceTree = "<group>"; };
+		EFFD8D501D66BBD900994CC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CustomerManagerStoryboard.storyboard; sourceTree = "<group>"; };
 		F5306E0927E6108D1261CCE5 /* Pods-GymManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GymManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GymManager/Pods-GymManager.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -359,6 +373,9 @@
 				EF0809951D5C976D007A8EAE /* MenuViewController */,
 				EFF19FA61D61FA4E00EAD1D1 /* MyProfileViewController */,
 				EFF19FAA1D62061500EAD1D1 /* EditMyProfileViewController */,
+				EFFD8D3F1D66BA6F00994CC5 /* CustomerManagerViewController */,
+				EFFD8D471D66BAF900994CC5 /* AddNewCustomerViewController */,
+				EFFD8D4B1D66BB5B00994CC5 /* InfoCustomerViewController */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -403,6 +420,7 @@
 			children = (
 				EF0809651D5C8261007A8EAE /* Main.storyboard */,
 				40AB31221D5DB47400341359 /* Transaction.storyboard */,
+				EFFD8D4F1D66BBD900994CC5 /* CustomerManagerStoryboard.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -509,6 +527,7 @@
 		EF870A941D5DFE9B00118D7C /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				EFFD8D431D66BAB700994CC5 /* CustomerTableViewCell */,
 				EFF28BD31D65732B000F9B27 /* DateMeetingTableViewCell */,
 				EFF28BD21D657319000F9B27 /* CustomerOrTrainerTableViewCell */,
 				EF870A8D1D5DEFBB00118D7C /* TodayMeetingTableViewCell */,
@@ -589,6 +608,42 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
+		EFFD8D3F1D66BA6F00994CC5 /* CustomerManagerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EFFD8D401D66BAA700994CC5 /* CustomerManagerViewController.h */,
+				EFFD8D411D66BAA700994CC5 /* CustomerManagerViewController.m */,
+			);
+			name = CustomerManagerViewController;
+			sourceTree = "<group>";
+		};
+		EFFD8D431D66BAB700994CC5 /* CustomerTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				EFFD8D441D66BAD400994CC5 /* CustomerManagerCollectionViewCell.h */,
+				EFFD8D451D66BAD400994CC5 /* CustomerManagerCollectionViewCell.m */,
+			);
+			name = CustomerTableViewCell;
+			sourceTree = "<group>";
+		};
+		EFFD8D471D66BAF900994CC5 /* AddNewCustomerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EFFD8D481D66BB1D00994CC5 /* AddNewCustomerViewController.h */,
+				EFFD8D491D66BB1D00994CC5 /* AddNewCustomerViewController.m */,
+			);
+			name = AddNewCustomerViewController;
+			sourceTree = "<group>";
+		};
+		EFFD8D4B1D66BB5B00994CC5 /* InfoCustomerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EFFD8D4C1D66BB9C00994CC5 /* InfoCustomerManagerViewController.h */,
+				EFFD8D4D1D66BB9C00994CC5 /* InfoCustomerManagerViewController.m */,
+			);
+			name = InfoCustomerViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -651,6 +706,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF08096C1D5C8261007A8EAE /* LaunchScreen.storyboard in Resources */,
+				EFFD8D511D66BBD900994CC5 /* CustomerManagerStoryboard.storyboard in Resources */,
 				EFF19FA51D61ED8400EAD1D1 /* ic_ptmanager.png in Resources */,
 				EFF19FA21D61ED8400EAD1D1 /* ic_customer.png in Resources */,
 				EFF19FA31D61ED8400EAD1D1 /* ic_logout.png in Resources */,
@@ -736,10 +792,12 @@
 				EF0809891D5C8D3F007A8EAE /* BaseViewController.m in Sources */,
 				408933181D646B050081511C /* User.m in Sources */,
 				EF0809931D5C954A007A8EAE /* PTMeetingViewController.m in Sources */,
+				EFFD8D4A1D66BB1D00994CC5 /* AddNewCustomerViewController.m in Sources */,
 				EF08099B1D5C97C9007A8EAE /* MenuViewController.m in Sources */,
 				EF870A8B1D5DC69400118D7C /* RegisterViewController.m in Sources */,
 				EFF28BB71D655D07000F9B27 /* TodayMeetingTableViewCell.m in Sources */,
 				40B8A7311D640C12007AB6BF /* CategoryCell.m in Sources */,
+				EFFD8D461D66BAD400994CC5 /* CustomerManagerCollectionViewCell.m in Sources */,
 				EFF28BD11D65730F000F9B27 /* MeetingDetailViewController.m in Sources */,
 				EF870A831D5DB66700118D7C /* LoginViewController.m in Sources */,
 				40B8A72B1D640C04007AB6BF /* ListCategoryViewController.m in Sources */,
@@ -749,6 +807,8 @@
 				408933241D646B370081511C /* Item.m in Sources */,
 				EFF28BD91D657397000F9B27 /* DateMeetingTableViewCell.m in Sources */,
 				4089331C1D646B1D0081511C /* Transaction.m in Sources */,
+				EFFD8D421D66BAA700994CC5 /* CustomerManagerViewController.m in Sources */,
+				EFFD8D4E1D66BB9C00994CC5 /* InfoCustomerManagerViewController.m in Sources */,
 				40AB31311D5DD81000341359 /* ExpandableTableView.m in Sources */,
 				EFF28BDC1D657640000F9B27 /* CustomerOrTrainnerTableViewCell.m in Sources */,
 				406E24811D62C7AD00F013FB /* CalendarViewController.m in Sources */,
@@ -786,6 +846,14 @@
 				EF08096B1D5C8261007A8EAE /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		EFFD8D4F1D66BBD900994CC5 /* CustomerManagerStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EFFD8D501D66BBD900994CC5 /* Base */,
+			);
+			name = CustomerManagerStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
