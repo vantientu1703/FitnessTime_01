@@ -8,12 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
-@interface AlertManager : NSObject
+@protocol AlertManagerDelegate <NSObject>
+- (void)showImagePickerController:(UIImagePickerController *)imagePickerController;
+@end
 
+@interface AlertManager : NSObject<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+
+@property (weak, nonatomic) id<AlertManagerDelegate> delegate;
 + (void)showAlertWithTitle:(NSString *)title
                    message:(NSString *)message
              viewControler:(UIViewController *)viewController
       takePhotoFromLibrary:(void(^)())takePhotoFromLibrary
        takePhotoFromCamera:(void(^)())takePhotoFromCamera;
-
+- (void)showChooseImageAlertWithTitle:(NSString *)title
+                              message:(NSString *)message
+                        vieController:(UIViewController *)viewController;
 @end

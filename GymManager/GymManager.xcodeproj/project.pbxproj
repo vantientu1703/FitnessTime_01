@@ -63,6 +63,8 @@
 		EFFD8D4A1D66BB1D00994CC5 /* AddNewCustomerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFFD8D491D66BB1D00994CC5 /* AddNewCustomerViewController.m */; settings = {ASSET_TAGS = (); }; };
 		EFFD8D4E1D66BB9C00994CC5 /* InfoCustomerManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFFD8D4D1D66BB9C00994CC5 /* InfoCustomerManagerViewController.m */; settings = {ASSET_TAGS = (); }; };
 		EFFD8D511D66BBD900994CC5 /* CustomerManagerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFFD8D4F1D66BBD900994CC5 /* CustomerManagerStoryboard.storyboard */; settings = {ASSET_TAGS = (); }; };
+		EFFD8D581D66CE4A00994CC5 /* DetailPTManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFFD8D571D66CE4A00994CC5 /* DetailPTManagerViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EFFD8D5C1D66D9C000994CC5 /* EditPTManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFFD8D5B1D66D9C000994CC5 /* EditPTManagerViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -164,6 +166,10 @@
 		EFFD8D4C1D66BB9C00994CC5 /* InfoCustomerManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfoCustomerManagerViewController.h; path = ViewControllers/InfoCustomerViewController/InfoCustomerManagerViewController.h; sourceTree = "<group>"; };
 		EFFD8D4D1D66BB9C00994CC5 /* InfoCustomerManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfoCustomerManagerViewController.m; path = ViewControllers/InfoCustomerViewController/InfoCustomerManagerViewController.m; sourceTree = "<group>"; };
 		EFFD8D501D66BBD900994CC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CustomerManagerStoryboard.storyboard; sourceTree = "<group>"; };
+		EFFD8D561D66CE4A00994CC5 /* DetailPTManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailPTManagerViewController.h; path = ViewControllers/DetailPTManagerViewController/DetailPTManagerViewController.h; sourceTree = "<group>"; };
+		EFFD8D571D66CE4A00994CC5 /* DetailPTManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailPTManagerViewController.m; path = ViewControllers/DetailPTManagerViewController/DetailPTManagerViewController.m; sourceTree = "<group>"; };
+		EFFD8D5A1D66D9C000994CC5 /* EditPTManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditPTManagerViewController.h; path = ViewControllers/EditPTManagerViewController/EditPTManagerViewController.h; sourceTree = "<group>"; };
+		EFFD8D5B1D66D9C000994CC5 /* EditPTManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditPTManagerViewController.m; path = ViewControllers/EditPTManagerViewController/EditPTManagerViewController.m; sourceTree = "<group>"; };
 		F5306E0927E6108D1261CCE5 /* Pods-GymManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GymManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GymManager/Pods-GymManager.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -368,6 +374,8 @@
 				EF870A881D5DC67700118D7C /* RegisterViewController */,
 				EF08097A1D5C8881007A8EAE /* TodayMettingViewController */,
 				EF0809901D5C94C2007A8EAE /* PTMeetingViewController */,
+				EFFD8D551D66CDD400994CC5 /* DetailPTManagerViewController */,
+				EFFD8D591D66D98100994CC5 /* EditPTManagerViewController */,
 				EFF28BCE1D6572A7000F9B27 /* MeetingDetailViewController */,
 				EF0809941D5C975E007A8EAE /* TransactionsViewController */,
 				EF0809951D5C976D007A8EAE /* MenuViewController */,
@@ -644,6 +652,24 @@
 			name = InfoCustomerViewController;
 			sourceTree = "<group>";
 		};
+		EFFD8D551D66CDD400994CC5 /* DetailPTManagerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EFFD8D561D66CE4A00994CC5 /* DetailPTManagerViewController.h */,
+				EFFD8D571D66CE4A00994CC5 /* DetailPTManagerViewController.m */,
+			);
+			name = DetailPTManagerViewController;
+			sourceTree = "<group>";
+		};
+		EFFD8D591D66D98100994CC5 /* EditPTManagerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EFFD8D5A1D66D9C000994CC5 /* EditPTManagerViewController.h */,
+				EFFD8D5B1D66D9C000994CC5 /* EditPTManagerViewController.m */,
+			);
+			name = EditPTManagerViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -798,9 +824,11 @@
 				EFF28BB71D655D07000F9B27 /* TodayMeetingTableViewCell.m in Sources */,
 				40B8A7311D640C12007AB6BF /* CategoryCell.m in Sources */,
 				EFFD8D461D66BAD400994CC5 /* CustomerManagerCollectionViewCell.m in Sources */,
+				EFFD8D581D66CE4A00994CC5 /* DetailPTManagerViewController.m in Sources */,
 				EFF28BD11D65730F000F9B27 /* MeetingDetailViewController.m in Sources */,
 				EF870A831D5DB66700118D7C /* LoginViewController.m in Sources */,
 				40B8A72B1D640C04007AB6BF /* ListCategoryViewController.m in Sources */,
+				EFFD8D5C1D66D9C000994CC5 /* EditPTManagerViewController.m in Sources */,
 				40AB31291D5DC4E700341359 /* TransactionCell.m in Sources */,
 				40B8A72C1D640C04007AB6BF /* PopoverQuatityViewController.m in Sources */,
 				EF0809981D5C97B6007A8EAE /* TransactionsViewController.m in Sources */,

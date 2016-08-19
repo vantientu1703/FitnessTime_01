@@ -23,4 +23,7 @@
 #define GymManager_PrefixHeader_pch
 #import "GymManagerConstant.h"
 #import "Person.h"
+#import "CalendarViewController.h"
+#import "Utils.h"
+#import "AlertManager.h"
 #endif /* GymManager_PrefixHeader_pch */
