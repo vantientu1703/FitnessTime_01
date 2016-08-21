@@ -55,5 +55,8 @@ CGFloat const kCornerRadiusViewBackground = 5.0f;
 NSString *const kDetailPTManagerViewControllerIdentifier = @"DetailPTManagerViewController";
 NSString *const kEditPTManagerViewControllerIdentifier = @"EditPTManagerViewController";
 NSString *const kMessageNotFoundCamera = @"Not found camera";
+NSString *const kCategoryViewControllerIdentifier = @"CategoryViewController";
+NSString *const kAddNewCategoryViewControllerIdentifier = @"AddNewCategoryViewController";
+NSString *const kEditNumberOfCategoryViewControllerIdentifier = @"EditNumberOfCategoryViewController";
 
 @end
