@@ -71,5 +71,6 @@ NSString *const kCustomerManagerVCTitle = @"customer manager view controller tit
 NSString *const URLRequest = @"https://fit-ness-backend.herokuapp.com/api/auth/";
 NSString *const kLoginRequest = @"login";
 NSString *const kRegisterRequest = @"register";
+NSString *const kGetAllTransactionRequest = @"transaction";
 
 @end

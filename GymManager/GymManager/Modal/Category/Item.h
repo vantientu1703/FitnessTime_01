@@ -8,11 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Item : NSObject
+//This protocol is requied by JSONModel
+@protocol Item
+@end
 
-@property (strong, nonatomic) NSString *ID;
+@interface Item : JSONModel
+
+@property (strong, nonatomic) NSString *id;
 @property (strong, nonatomic) NSString *name;
 @property (nonatomic) double price;
-@property (nonatomic) NSUInteger quantity;
+@property (nonatomic) NSInteger quantity;
 
 @end

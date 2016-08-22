@@ -15,6 +15,9 @@
 @property (nonatomic, assign) id<HeaderViewDelegate> delegate;
 @property (nonatomic, readonly) NSInteger section;
 @property (nonatomic, readonly) NSInteger totalRows;
+@property (weak, nonatomic) IBOutlet UILabel *lbCusName;
+@property (weak, nonatomic) IBOutlet UILabel *lbTotalCost;
+@property (weak, nonatomic) IBOutlet UILabel *lbDate;
 
 - (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier andFrame:(CGRect)frame;
 - (void)drawView;

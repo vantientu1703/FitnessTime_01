@@ -7,7 +7,13 @@
 //
 
 #import "Transaction.h"
+#import "DateFormatter.h"
 
 @implementation Transaction
+
+- (void)setDateWithNSString:(NSString*)string {
+    DateFormatter *formatter = [[DateFormatter alloc] init];
+    self.date = [formatter dateWithMonthYearFormatterFromString:string];
+}
 
 @end

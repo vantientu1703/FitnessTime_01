@@ -7,15 +7,19 @@
 //
 
 #import "TransactionsViewController.h"
-#import "TransactionCell.h"
+#import "CategoryCell.h"
+#import "CalendarViewController.h"
+#import "TransactionManager.h"
+#import "MBProgressHUD.h"
 
 NSString *const kAddTransactionSegue = @"AddTransactionSegue";
 
-@interface TransactionsViewController () <UITableViewDelegate,UITableViewDataSource,ExpandableTableViewDelegate>
+@interface TransactionsViewController () <UITableViewDelegate,UITableViewDataSource,ExpandableTableViewDelegate,TransactionManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet ExpandableTableView *tableView;
 @property (strong, nonatomic) NSMutableArray *arrTrans;
 @property (strong, nonatomic) UIRefreshControl *refresh;
+@property (strong, nonatomic) TransactionManager *manager;
 
 @end
 
@@ -24,7 +28,10 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.manager = [[TransactionManager alloc] init];
+    self.manager.delegate = self;
     [self setupView];
+    [self reloadDataForWholeView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,10 +40,12 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
 }
 
 - (void)setupView {
+    //Setup Navigation bar
+    UIBarButtonItem *calendarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:kIconCalendar]
+        style:UIBarButtonItemStylePlain target:self action:@selector(showCalendar)];
+    self.navigationItem.rightBarButtonItem = calendarButton;
     //Setup Tableview
-    NSMutableArray *arr1 = @[@"1", @"2"].mutableCopy;
-    NSMutableArray *arr2 = @[@"3", @"4", @"5"].mutableCopy;
-    self.arrTrans = @[arr1, arr2].mutableCopy;
+    self.arrTrans = @[].mutableCopy;
     [self.tableView setAllHeadersInitiallyCollapsed:NO];
     [self.tableView setScrollEnabled:NO];
     self.tableView.expandableDelegate = self;
@@ -55,15 +64,8 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
 
 #pragma mark - Load Data 
 - (void)reloadDataForWholeView {
-    //TODO refresh data here
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSMutableArray *arr1 = @[@"1", @"2"].mutableCopy;
-        NSMutableArray *arr2 = @[@"3", @"4", @"5"].mutableCopy;
-        self.arrTrans = @[arr1, arr2,].mutableCopy;
-        [self.tableView reloadData];
-        self.contraintTableViewCell.constant = self.tableView.contentSize.height;
-        [self.refresh endRefreshing];
-    });
+    [self.manager fetchAllTransaction];
+    [self.refresh beginRefreshing];
 }
 
 #pragma mark - TableView Implementation
@@ -72,7 +74,7 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.tableView totalNumberOfRows:[self.arrTrans[section] count] inSection:section];
+    return [self.tableView totalNumberOfRows:((Transaction*)self.arrTrans[section]).items.count inSection:section];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -84,14 +86,32 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TransactionCell *cell = (TransactionCell*)[tableView dequeueReusableCellWithIdentifier:kTransactionCellIndentifier
+    CategoryCell *cell = (CategoryCell*)[tableView dequeueReusableCellWithIdentifier:kTransactionCellIndentifier
         forIndexPath:indexPath];
+    Transaction *tran = self.arrTrans[indexPath.section];
+    Item *item = tran.items[indexPath.row];
+    NSString *name;
+    NSString *price;
+    NSString *quantity;
+    if ([item isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *itemtDic = (NSDictionary*)item;
+        name = itemtDic[@"name"];
+        price = [NSString stringWithFormat:@"%@", itemtDic[@"price"]];
+        quantity = [NSString stringWithFormat:@"x%@", itemtDic[@"quantity"]];
+    } else {
+        name = item.name;
+        price = [NSString stringWithFormat:@"%.0fĐ", item.price];
+        quantity = [NSString stringWithFormat:@"x%d", item.quantity];
+    }
+    cell.lbCategory.text = name;
+    cell.lbCost.text = price;
+    cell.lbQuantity.text = quantity;
     return cell;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    return [self.tableView headerWithTitle:@"asd" totalRows:[self.arrTrans[section] count]
-        inSection:section];
+    return [self.tableView headerWithTransaction:self.arrTrans[section]
+        totalRows:((Transaction*)self.arrTrans[section]).items.count inSection:section];
 }
 
 - (void)didDeleteSection:(NSUInteger)section {
@@ -153,6 +173,30 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
 
 - (IBAction)btnAddTranClick:(id)sender {
     [self performSegueWithIdentifier:kAddTransactionSegue sender:nil];
+}
+
+- (void)showCalendar {
+    CalendarViewController *calVC = [[UIStoryboard storyboardWithName:@"Calendar" bundle:nil]
+        instantiateInitialViewController];
+    [calVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {
+        //TODO
+    }];
+    [self.navigationController pushViewController:calVC animated:YES];
+}
+
+#pragma mark - Data handler
+- (void)didFetchAllTransctionWithMessage:(NSString *)message withError:(NSError *)error returnTransactions:(NSArray *)transactions {
+    [self.refresh endRefreshing];
+    if (error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:error.description delegate:nil
+            cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    } else {
+        [self.arrTrans removeAllObjects];
+        self.arrTrans = transactions.mutableCopy;
+        [self.tableView reloadData];
+        self.contraintTableViewCell.constant = self.tableView.contentSize.height;
+    }
 }
 
 @end

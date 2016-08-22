@@ -71,5 +71,6 @@ extern NSString *const kCustomerManagerVCTitle;
 extern NSString *const URLRequest;
 extern NSString *const kLoginRequest;
 extern NSString *const kRegisterRequest;
+extern NSString *const kGetAllTransactionRequest;
 
 @end

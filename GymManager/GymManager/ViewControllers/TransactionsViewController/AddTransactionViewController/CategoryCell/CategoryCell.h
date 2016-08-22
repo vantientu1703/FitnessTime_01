@@ -12,6 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lbCategory;
 @property (weak, nonatomic) IBOutlet UILabel *lbCost;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *lbNumber;
+@property (weak, nonatomic) IBOutlet UILabel *lbQuantity;
 
 @end

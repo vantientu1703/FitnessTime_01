@@ -5,7 +5,13 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeaderViewContent"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeaderViewContent">
+            <connections>
+                <outlet property="lbCusName" destination="S8T-SE-5Sh" id="oUI-N0-lge"/>
+                <outlet property="lbDate" destination="LSt-Vc-9VG" id="gni-bL-Zsm"/>
+                <outlet property="lbTotalCost" destination="45C-ra-dgu" id="86V-aE-Zyd"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="311" height="89"/>
