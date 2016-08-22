@@ -7,10 +7,11 @@
 //
 
 #import "RegisterViewController.h"
+#import "RegisterManager.h"
 
 NSString *const kRegisterVCTitle = @"Register";
 
-@interface RegisterViewController ()<UITextFieldDelegate>
+@interface RegisterViewController ()<UITextFieldDelegate, RegisterManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *textFieldUserName;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldPassword;
@@ -27,28 +28,45 @@ NSString *const kRegisterVCTitle = @"Register";
 #pragma mark - View's life
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupView];
+}
+
+- (void)setupView {
+    self.title = kRegisterVCTitle;
     self.textFieldAddress.delegate = self;
     self.textFieldConfirmPassword.delegate = self;
     self.textFieldDateOfBirth.delegate = self;
     self.textFieldEmail.delegate = self;
     self.textFieldPassword.delegate = self;
     self.textFieldUserName.delegate = self;
-    [self setupView];
 }
 
-- (void)setupView {
-    self.title = kRegisterVCTitle;
-}
-
+#pragma mark - Register
 - (IBAction)registerPress:(id)sender {
     //TODO
-    [self dismissViewControllerAnimated:true completion:nil];
+}
+
+- (void)doRegister {
+    User *user = [self setUser];
+    RegisterManager *registerManager = [[RegisterManager alloc] init];
+    registerManager.delegate = self;
+    [registerManager doRegisterWithUser:user];
+}
+
+- (User *)setUser {
+    User *user = [[User alloc] init];
+    return user;
 }
 
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
+}
+
+#pragma mark - RegisterManagerDelegate
+- (void)didResponseWithMessage:(NSString *)message withError:(NSError *)error returnUser:(User *)user {
+    //TODO
 }
 
 @end

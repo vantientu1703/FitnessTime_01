@@ -13,7 +13,7 @@
 
 - (void)doLoginWithEmail:(NSString *)email password:(NSString *)password {
     //TODO check input before request
-    NSDictionary *params = @{@"username": email, @"password": password};
+    NSDictionary *params = @{@"email": email, @"password": password};
     NSString *url = [NSString stringWithFormat:@"%@%@", URLRequest, kLoginRequest];
     [self.manager POST:url parameters:params progress:nil
         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

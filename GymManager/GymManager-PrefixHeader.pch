@@ -26,4 +26,5 @@
 #import "CalendarViewController.h"
 #import "Utils.h"
 #import "AlertManager.h"
+#import "MBProgressHUD.h"
 #endif /* GymManager_PrefixHeader_pch */

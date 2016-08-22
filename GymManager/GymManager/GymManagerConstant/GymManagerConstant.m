@@ -68,7 +68,7 @@ NSString *const kDetailMeetingsTrainerVCTitle = @"Detail Meeting Trainner";
 NSString *const kCustomerManagerVCTitle = @"customer manager view controller title";
 
 #pragma mark - API
-NSString *const URLRequest = @"http://localhost/HotOnFB/web/app_dev.php/api/";
+NSString *const URLRequest = @"https://fit-ness-backend.herokuapp.com/api/auth/";
 NSString *const kLoginRequest = @"login";
 NSString *const kRegisterRequest = @"register";
 
