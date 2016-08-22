@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface CustomerManagerViewController : UIViewController
-
+@property (strong, nonatomic) NSString *statusCustomerManagerTitle;
 @end

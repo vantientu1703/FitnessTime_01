@@ -39,9 +39,11 @@
     TodayMeetingsViewController *todayMeetingsVC = [st instantiateViewControllerWithIdentifier:
         kTodayMeetinViewControllerIdentifier];
     todayMeetingsVC.title = kTodayViewControllerTitle;
+    todayMeetingsVC.statusDetailMeeting = kTodayMeetingsVCTitle;
     UINavigationController *navTodayMeetingsVC = [[UINavigationController alloc] initWithRootViewController:todayMeetingsVC];
     PTMeetingViewController *ptMeetingVC = [st instantiateViewControllerWithIdentifier:
         kPTMeetingViewControllerIdentifier];
+    ptMeetingVC.statusAddNewMeeting = kDetailMeetingTitle;
     ptMeetingVC.title = kPTMeetingViewControllerTitle;
     UINavigationController *navPTMeetingVC = [[UINavigationController alloc] initWithRootViewController:ptMeetingVC];
     TransactionsViewController *transVC = [[UIStoryboard storyboardWithName:kNameStoryboardTransaction bundle:nil] instantiateInitialViewController];

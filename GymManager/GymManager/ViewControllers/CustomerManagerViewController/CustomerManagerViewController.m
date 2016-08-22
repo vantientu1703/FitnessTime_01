@@ -59,9 +59,14 @@ NSString *const kNameCustomer = @"Ngo Van Van Duong";
     //TODO
     UIStoryboard *customerStoryboard = [UIStoryboard
         storyboardWithName:kCustomerManagerStoryboard bundle:nil];
-    InfoCustomerManagerViewController *infoCustomerVC = [customerStoryboard
-        instantiateViewControllerWithIdentifier:kInfoCustomerManagerViewControllerIdentifier];
-    [self.navigationController pushViewController:infoCustomerVC animated:true];
+    if ([self.statusCustomerManagerTitle isEqualToString:kCustomerManagerVCTitle]) {
+        InfoCustomerManagerViewController *infoCustomerVC = [customerStoryboard
+            instantiateViewControllerWithIdentifier:kInfoCustomerManagerViewControllerIdentifier];
+        [self.navigationController pushViewController:infoCustomerVC animated:true];
+    } else {
+        [self.navigationController popViewControllerAnimated:true];
+    }
+    
 }
 
 #pragma mark - Button add new customer

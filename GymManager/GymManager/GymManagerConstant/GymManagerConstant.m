@@ -58,5 +58,13 @@ NSString *const kMessageNotFoundCamera = @"Not found camera";
 NSString *const kCategoryViewControllerIdentifier = @"CategoryViewController";
 NSString *const kAddNewCategoryViewControllerIdentifier = @"AddNewCategoryViewController";
 NSString *const kEditNumberOfCategoryViewControllerIdentifier = @"EditNumberOfCategoryViewController";
+NSString *const kDetailMeetingTitle = @"show detail meeting";
+NSString *const kDetailPTManagerTitle = @"show detail pt manager";
+NSString *const kPTManagerVCTitle = @"PT Manager";
+NSString *const kAddNewMeetingTitle = @"Add new meeting";
+NSString *const kEditMeetingTitle = @"Edit meeting";
+NSString *const kTodayMeetingsVCTitle = @"Today Meeting";
+NSString *const kDetailMeetingsTrainerVCTitle = @"Detail Meeting Trainner";
+NSString *const kCustomerManagerVCTitle = @"customer manager view controller title";
 
 @end
