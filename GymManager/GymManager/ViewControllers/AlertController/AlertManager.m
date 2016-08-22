@@ -8,14 +8,16 @@
 
 #import "AlertManager.h"
 
+NSString *const kActionReload = @"Reload";
+NSString *const kActionQuit = @"Quit";
+
 @implementation AlertManager
 {
     UIImagePickerController *_imagePickerController;
 }
 + (void)showAlertWithTitle:(NSString *)title message:(NSString *)message
-               viewControler:(UIViewController *)viewController
-        takePhotoFromLibrary:(void(^)())takePhotoFromLibrary
-         takePhotoFromCamera:(void(^)())takePhotoFromCamera {
+    viewControler:(UIViewController *)viewController takePhotoFromLibrary:(void(^)())takePhotoFromLibrary
+    takePhotoFromCamera:(void(^)())takePhotoFromCamera {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@""
         message:kChoosenTypeTitle preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *chooseFromLibrary = [UIAlertAction actionWithTitle:kChoseFromLibraryTitle
@@ -86,5 +88,24 @@
     }
 }
 
++ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message
+    viewControler:(UIViewController *)viewController reloadAction:(void(^)())complete {
+    UIAlertController *alerController;
+    alerController = [UIAlertController alertControllerWithTitle:title
+        message:message preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *reloadAction = [UIAlertAction actionWithTitle:kActionReload
+        style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if (complete) {
+            complete();
+        }
+    }];
+    UIAlertAction *quitAction = [UIAlertAction actionWithTitle:kActionQuit
+        style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        exit(0);
+    }];
+    [alerController addAction:reloadAction];
+    [alerController addAction:quitAction];
+    [viewController presentViewController:alerController animated:YES completion:nil];
+}
 
 @end

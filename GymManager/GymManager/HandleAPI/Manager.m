@@ -14,7 +14,6 @@
     self = [super init];
     if (self) {
         self.manager = [AFHTTPSessionManager manager];
-        self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     }
     return self;
 }
