@@ -47,7 +47,7 @@
             <connections>
                 <outlet property="lbCategory" destination="Kwb-ZD-vYn" id="la6-b6-X79"/>
                 <outlet property="lbCost" destination="ibs-aR-jka" id="UdF-be-eIg"/>
-                <outlet property="lbNumber" destination="Uc1-rI-fo1" id="Gcr-ZE-JS4"/>
+                <outlet property="lbQuantity" destination="qlz-6T-hFi" id="3Rc-Sb-X47"/>
             </connections>
             <point key="canvasLocation" x="143" y="221.5"/>
         </tableViewCell>

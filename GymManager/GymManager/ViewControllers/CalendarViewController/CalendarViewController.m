@@ -79,6 +79,7 @@ NSInteger const kYearPickerRange = 20;
 #pragma mark - Day picker implementation
 - (void)datePickerView:(RSDFDatePickerView *)view didSelectDate:(NSDate *)date {
     self.callBackBlock(date, CalendarPickerStateDay);
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - action hanlder
@@ -96,6 +97,7 @@ NSInteger const kYearPickerRange = 20;
             break;
     }
     self.callBackBlock(date, state);
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)segmentClicked:(id)sender {

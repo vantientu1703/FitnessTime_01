@@ -11,5 +11,7 @@
 @interface DateFormatter : NSObject
 
 - (NSString *)dateFormatterDateMonthYear:(NSDate *)date;
+- (NSDate *)dateWithMonthYearFormatterFromString:(NSString*)string;
+- (NSString *)dateFormatterFullInfo:(NSDate *)date;
 
 @end

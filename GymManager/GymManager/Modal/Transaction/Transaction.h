@@ -7,13 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Item.h"
 #import "Customer.h"
 
-@interface Transaction : NSObject
+@interface Transaction : JSONModel
 
-@property (strong, nonatomic) NSString *ID;
+@property (strong, nonatomic) NSString *id;
 @property (strong, nonatomic) NSDate *date;
-@property (strong, nonatomic) NSArray *items;
-@property (strong, nonatomic) Customer *customer;
+@property (strong, nonatomic) NSArray<Item> *items;
+@property (strong, nonatomic) NSString *customerName;
+@property (nonatomic) NSInteger totalCost;
 
 @end

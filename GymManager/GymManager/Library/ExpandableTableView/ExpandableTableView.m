@@ -7,7 +7,7 @@
 //
 
 #import "ExpandableTableView.h"
-//#import "HeaderView.h"
+#import "DateFormatter.h"
 #import "HeaderViewContent.h"
 
 @interface ExpandableTableView () <HeaderViewDelegate>
@@ -53,10 +53,13 @@
     return ([self collapsedForSection:section]) ? 0 : total;
 }
 
-- (UIView *)headerWithTitle:(NSString *)title totalRows:(NSInteger)row inSection:(NSInteger)section {
+- (UIView *)headerWithTransaction:(Transaction *)transaction totalRows:(NSInteger)row inSection:(NSInteger)section {
     BOOL isCollapsed = [self collapsedForSection:section];
     HeaderViewContent *headerView = self.headerView;
-    [headerView updateWithTitle:title isCollapsed:isCollapsed totalRows:row andSection:section];
+    headerView.lbCusName.text = transaction.customerName;
+    headerView.lbTotalCost.text = [NSString stringWithFormat:@"%dĐ", transaction.totalCost];
+    headerView.lbDate.text = [[[DateFormatter alloc] init] dateFormatterFullInfo:transaction.date];
+    [headerView updateWithTitle:@"" isCollapsed:isCollapsed totalRows:row andSection:section];
     [headerView drawView];
     return headerView;
 }

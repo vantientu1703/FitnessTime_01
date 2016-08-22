@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Transaction.h"
 
 @protocol ExpandableTableViewDelegate <NSObject>
 
@@ -22,6 +23,6 @@
 @property (nonatomic, strong) id<ExpandableTableViewDelegate> expandableDelegate;
 
 - (NSInteger)totalNumberOfRows:(NSInteger)total inSection:(NSInteger)section;
-- (UIView *)headerWithTitle:(NSString *)title totalRows:(NSInteger)row inSection:(NSInteger)section;
+- (UIView *)headerWithTransaction:(Transaction *)transaction totalRows:(NSInteger)row inSection:(NSInteger)section;
 
 @end
