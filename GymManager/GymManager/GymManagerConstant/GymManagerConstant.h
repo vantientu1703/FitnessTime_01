@@ -58,6 +58,14 @@ extern NSString *const kMessageNotFoundCamera;
 extern NSString *const kCategoryViewControllerIdentifier;
 extern NSString *const kAddNewCategoryViewControllerIdentifier;
 extern NSString *const kEditNumberOfCategoryViewControllerIdentifier;
+extern NSString *const kDetailMeetingTitle;
+extern NSString *const kDetailPTManagerTitle;
+extern NSString *const kPTManagerVCTitle;
+extern NSString *const kAddNewMeetingTitle;
+extern NSString *const kEditMeetingTitle;
+extern NSString *const kTodayMeetingsVCTitle;
+extern NSString *const kDetailMeetingsTrainerVCTitle;
+extern NSString *const kCustomerManagerVCTitle;
 
 #pragma mark - API
 extern NSString *const URLRequest;

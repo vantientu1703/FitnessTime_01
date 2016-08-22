@@ -8,6 +8,7 @@
 
 #import "TodayMeetingsViewController.h"
 #import "TodayMeetingTableViewCell.h"
+#import "MeetingDetailViewController.h"
 
 NSString *const kTodayMeetingTableViewCellIdentifier = @"TodayMeetingTableViewCell";
 CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
@@ -28,14 +29,26 @@ CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
 }
 
 - (void)setupView {
-    UIBarButtonItem *calendarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:kIconCalendar] style:UIBarButtonItemStylePlain target:self action:@selector(showCalendar:)];
-    self.navigationItem.rightBarButtonItem = calendarButton;
+    if ([self.statusDetailMeeting isEqualToString:kTodayMeetingsVCTitle]) {
+        self.title = kTodayMeetingsVCTitle;
+    } else {
+        self.title = kDetailMeetingsTrainerVCTitle;
+    }
+    if (![self.statusDetailMeeting isEqualToString:kDetailMeetingsTrainerVCTitle]) {
+        UIBarButtonItem *calendarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:kIconCalendar]
+            style:UIBarButtonItemStylePlain target:self action:@selector(showCalendar:)];
+        self.navigationItem.rightBarButtonItem = calendarButton;
+    }
     self.buttonAddMeeting.layer.cornerRadius = kCornerRadiusButton;
 }
 
 #pragma mark - Show calendar
 - (IBAction)showCalendar:(id)sender {
-    //TODO
+    CalendarViewController *calendarVC = [[CalendarViewController alloc] init];
+    [self.navigationController pushViewController:calendarVC animated:true];
+    [calendarVC didPickDateWithCompletionBlock:^(NSDate *dateSelected) {
+      //TODO
+    }];
 }
 
 #pragma mark - UITableViewDataSources
@@ -60,7 +73,11 @@ CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
 - (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewRowAction *editAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal
         title:kEditActionTitle handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-       //TODO
+            UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
+            MeetingDetailViewController *meetingDetailVC = [st
+                instantiateViewControllerWithIdentifier:kMeetingDetailViewControllerIdentifier];
+            meetingDetailVC.statusEditMeeting = kEditMeetingTitle;
+            [self.navigationController pushViewController:meetingDetailVC animated:true];
     }];
     UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault
         title:kDeleteActionTitle handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
@@ -71,7 +88,11 @@ CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
 
 #pragma mark - Button add new meeting
 - (IBAction)buttonAddMeetingPress:(id)sender {
-    //TODO
+    UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
+    MeetingDetailViewController *meetingDetailVC = [st
+        instantiateViewControllerWithIdentifier:kMeetingDetailViewControllerIdentifier];
+    meetingDetailVC.statusEditMeeting = kAddNewMeetingTitle;
+    [self.navigationController pushViewController:meetingDetailVC animated:true];
 }
 
 #pragma mark - Show alert controller

@@ -11,6 +11,8 @@
 #import <CCBottomRefreshControl/UIScrollView+BottomRefreshControl.h>
 #import "MeetingDetailViewController.h"
 #import "DetailPTManagerViewController.h"
+#import "TodayMeetingsViewController.h"
+#import "EditPTManagerViewController.h"
 
 NSString *const kPTMeetingCollectionViewCellIdentifier = @"MeetingCollectionViewCell";
 CGFloat const kTriggerVerticalOffset = 100.0f;
@@ -37,7 +39,11 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
 }
 
 - (void)setupView {
-    self.title = kPTMeetingViewControllerTitle;
+    if ([self.statusAddNewMeeting isEqualToString:kDetailMeetingTitle]) {
+        self.title = kPTMeetingViewControllerTitle;
+    } else {
+        self.title = kPTManagerVCTitle;
+    }
     self.buttonAddNewMeeting.layer.cornerRadius = kCornerRadiusButtonAddNewMeeting;
     self.refreshReloadData = [[UIRefreshControl alloc] init];
     [self.refreshReloadData addTarget:self action:@selector(reloadDataCollectionView:)
@@ -82,9 +88,18 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
     [collectionView deselectItemAtIndexPath:indexPath animated:true];
     //TODO
     UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
-    DetailPTManagerViewController *detailPTManagerVC = [st
-        instantiateViewControllerWithIdentifier:kDetailPTManagerViewControllerIdentifier];
-    [self.navigationController pushViewController:detailPTManagerVC animated:true];
+    if ([self.statusAddNewMeeting isEqualToString:kDetailMeetingTitle]) {
+        TodayMeetingsViewController *todayMeetingsVC = [st
+            instantiateViewControllerWithIdentifier:kTodayMeetinViewControllerIdentifier];
+        todayMeetingsVC.statusDetailMeeting = kDetailMeetingsTrainerVCTitle;
+        [self.navigationController pushViewController:todayMeetingsVC animated:true];
+    } else if ([self.statusAddNewMeeting isEqualToString:kDetailPTManagerTitle]) {
+        DetailPTManagerViewController *detailPTManagerVC = [st
+            instantiateViewControllerWithIdentifier:kDetailPTManagerViewControllerIdentifier];
+        [self.navigationController pushViewController:detailPTManagerVC animated:true];
+    } else if ([self.statusAddNewMeeting isEqualToString:kStatusAddNewMeeting]) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -94,9 +109,16 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
 #pragma mark - Add new meeting
 - (IBAction)buttonAddNewMeetingPress:(id)sender {
     UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
-    MeetingDetailViewController *meetingDetailViewController = [st
-        instantiateViewControllerWithIdentifier:kMeetingDetailViewControllerIdentifier];
-    [self.navigationController pushViewController:meetingDetailViewController animated:true];
+    if ([self.statusAddNewMeeting isEqualToString:kDetailMeetingTitle]) {
+        MeetingDetailViewController *meetingDetailViewController = [st
+            instantiateViewControllerWithIdentifier:kMeetingDetailViewControllerIdentifier];
+        meetingDetailViewController.statusEditMeeting = kAddNewMeetingTitle;
+        [self.navigationController pushViewController:meetingDetailViewController animated:true];
+    } else {
+        EditPTManagerViewController *editPTManagerVC = [st
+            instantiateViewControllerWithIdentifier:kEditPTManagerViewControllerIdentifier];
+        [self.navigationController pushViewController:editPTManagerVC animated:true];
+    }
 }
 
 @end

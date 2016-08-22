@@ -82,12 +82,14 @@ static NSString *const kCellDefault = @"CellDefault";
         case MenuDetailRowPTManager: {
             PTMeetingViewController *ptPTMeetingVC = [st
                 instantiateViewControllerWithIdentifier:kPTMeetingViewControllerIdentifier];
+            ptPTMeetingVC.statusAddNewMeeting = kDetailPTManagerTitle;
             [self.navigationController pushViewController:ptPTMeetingVC animated:true];
             break;
         }
         case MenuDetailRowCustomerManager: {
             CustomerManagerViewController *customerManagerVC = [customerManagerStoryboard
                 instantiateViewControllerWithIdentifier:kCustomerManagerViewControllerIdentifier];
+            customerManagerVC.statusCustomerManagerTitle = kCustomerManagerVCTitle;
             [self.navigationController pushViewController:customerManagerVC animated:true];
             break;
         }

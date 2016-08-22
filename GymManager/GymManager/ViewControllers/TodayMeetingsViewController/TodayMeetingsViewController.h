@@ -11,6 +11,6 @@
 #import "PTMeetingViewController.h"
 
 @interface TodayMeetingsViewController : BaseViewController
-
+@property (strong, nonatomic) NSString *statusDetailMeeting;
 @end
 

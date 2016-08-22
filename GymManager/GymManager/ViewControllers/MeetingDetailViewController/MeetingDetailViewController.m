@@ -12,6 +12,7 @@
 #import "DateFormatter.h"
 #import "PTMeetingViewController.h"
 #import "CalendarViewController.h"
+#import "CustomerManagerViewController.h"
 
 typedef NS_ENUM(NSInteger, MeetingDetailRows) {
     MeetingDetailRowTrainer,
@@ -56,6 +57,11 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
 
 - (void)setupView {
     //TODO
+    if ([self.statusEditMeeting isEqualToString:kAddNewMeetingTitle]) {
+        self.title = kAddNewMeetingTitle;
+    } else {
+        self.title = kEditMeetingTitle;
+    }
     self.edgesForExtendedLayout = UIRectEdgeNone;
     _nameCustomer = @"";
     _nameTrainer = @"";
@@ -119,7 +125,6 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
 - (void)tableView:(UITableView *)tableView
     didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:true];
-    //TODO
     UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
     PTMeetingViewController *ptMeetingVC = [st
         instantiateViewControllerWithIdentifier:kPTMeetingViewControllerIdentifier];
@@ -132,9 +137,14 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
             [self.navigationController pushViewController:ptMeetingVC animated:true];
             ptMeetingVC.statusAddNewMeeting = kStatusAddNewMeeting;
             break;
-        case MeetingDetailRowCustomer:
-            //TODO
+        case MeetingDetailRowCustomer: {
+            UIStoryboard *st = [UIStoryboard storyboardWithName:kCustomerManagerStoryboard bundle:nil];
+            CustomerManagerViewController *customerManagerVC = [st
+                instantiateViewControllerWithIdentifier:kCustomerManagerViewControllerIdentifier];
+            customerManagerVC.statusCustomerManagerTitle = kStatusAddNewMeeting;
+            [self.navigationController pushViewController:customerManagerVC animated:true];
             break;
+        }
         case MeetingDetailRowFromDate:
             [self.navigationController pushViewController:calendarVC animated:true];
             break;

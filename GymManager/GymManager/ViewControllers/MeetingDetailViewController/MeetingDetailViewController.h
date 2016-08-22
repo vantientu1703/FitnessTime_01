@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MeetingDetailViewController : UIViewController
-
+@property (strong, nonatomic) NSString *statusEditMeeting;
 @end
