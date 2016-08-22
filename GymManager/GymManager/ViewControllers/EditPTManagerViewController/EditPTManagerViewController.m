@@ -69,7 +69,7 @@ NSString *const kNoFillIncomShifTitle = @"Fill income per shif,please!";
     //TODO
     CalendarViewController *calendarVC = [[CalendarViewController alloc] init];
     [self.navigationController pushViewController:calendarVC animated:true];
-    [calendarVC didPickDateWithCompletionBlock:^(NSDate *dateSelected) {
+    [calendarVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {
         //TODO
     }];
 }

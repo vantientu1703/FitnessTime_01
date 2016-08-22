@@ -129,7 +129,7 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
     PTMeetingViewController *ptMeetingVC = [st
         instantiateViewControllerWithIdentifier:kPTMeetingViewControllerIdentifier];
     CalendarViewController *calendarVC = [[CalendarViewController alloc] init];
-    [calendarVC didPickDateWithCompletionBlock:^(NSDate *dateSelected) {
+    [calendarVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {
         //TODO
     }];
     switch (indexPath.row) {

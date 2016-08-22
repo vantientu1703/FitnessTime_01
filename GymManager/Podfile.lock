@@ -19,8 +19,8 @@ PODS:
   - JSONModel (1.4.0)
   - Masonry (0.6.4)
   - MBProgressHUD (1.0.0)
-  - NTMonthYearPicker (1.0.0)
   - RSDayFlow (1.5.2)
+  - SRMonthPicker (0.2.10)
   - TPKeyboardAvoiding (1.3)
   - UICKeyChainStore (2.1.0)
 
@@ -29,8 +29,8 @@ DEPENDENCIES:
   - CCBottomRefreshControl
   - JSONModel
   - MBProgressHUD (~> 1.0.0)
-  - NTMonthYearPicker
   - RSDayFlow
+  - SRMonthPicker
   - TPKeyboardAvoiding
   - UICKeyChainStore
 
@@ -40,11 +40,11 @@ SPEC CHECKSUMS:
   JSONModel: 58fe3f8c29ff95ed94e7ee7dde87e807f5da5371
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
-  NTMonthYearPicker: 27e1739d6e29428628c8275a7c1a9e4835c352f4
   RSDayFlow: 5b9b519adaa4a261d41d3efaa724544ea0019160
+  SRMonthPicker: d3c639e82f525f1c10d1ad7f4bbdf180d404942b
   TPKeyboardAvoiding: a5138f318c06fb3e151f886e18ce4a72695d9cbe
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
 
-PODFILE CHECKSUM: 4d54c7982c89eb1d899a55463432baac800d85a3
+PODFILE CHECKSUM: 897c42e51819cfa7c8d498e29247c8d34e28a1a9
 
 COCOAPODS: 1.0.1

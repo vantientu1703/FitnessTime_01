@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		09E77F40D442DD862B0308B4 /* libPods-GymManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7A8174D3CFE4CB610F82E6 /* libPods-GymManager.a */; };
+		400C78DB1D67465F00CEE19B /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 400C78D91D67465F00CEE19B /* Calendar.storyboard */; };
 		4017EDF61D6175A30033E0AE /* AddTransactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4017EDF51D6175A30033E0AE /* AddTransactionViewController.m */; };
 		404241271D65888C00111B97 /* LoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 404241261D65888C00111B97 /* LoginManager.m */; };
 		4042412A1D65BA4D00111B97 /* RegisterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 404241291D65BA4D00111B97 /* RegisterManager.m */; };
@@ -74,6 +75,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		400C78DA1D67465F00CEE19B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Calendar.storyboard; sourceTree = "<group>"; };
 		4017EDF41D6175A30033E0AE /* AddTransactionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddTransactionViewController.h; path = ViewControllers/TransactionsViewController/AddTransactionViewController/AddTransactionViewController.h; sourceTree = "<group>"; };
 		4017EDF51D6175A30033E0AE /* AddTransactionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddTransactionViewController.m; path = ViewControllers/TransactionsViewController/AddTransactionViewController/AddTransactionViewController.m; sourceTree = "<group>"; };
 		404241251D65888C00111B97 /* LoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginManager.h; path = HandleAPI/LoginManager.h; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 				EF0809651D5C8261007A8EAE /* Main.storyboard */,
 				40AB31221D5DB47400341359 /* Transaction.storyboard */,
 				EFFD8D4F1D66BBD900994CC5 /* CustomerManagerStoryboard.storyboard */,
+				400C78D91D67465F00CEE19B /* Calendar.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -807,6 +810,7 @@
 				EFFD8D511D66BBD900994CC5 /* CustomerManagerStoryboard.storyboard in Resources */,
 				EFF19FA51D61ED8400EAD1D1 /* ic_ptmanager.png in Resources */,
 				EF7E23ED1D67429800B613FD /* ic_down.png in Resources */,
+				400C78DB1D67465F00CEE19B /* Calendar.storyboard in Resources */,
 				EFF19FA21D61ED8400EAD1D1 /* ic_customer.png in Resources */,
 				EFF19FA31D61ED8400EAD1D1 /* ic_logout.png in Resources */,
 				EFFD8D661D67092800994CC5 /* ic_category.png in Resources */,
@@ -934,6 +938,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		400C78D91D67465F00CEE19B /* Calendar.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				400C78DA1D67465F00CEE19B /* Base */,
+			);
+			name = Calendar.storyboard;
+			sourceTree = "<group>";
+		};
 		40AB31221D5DB47400341359 /* Transaction.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
