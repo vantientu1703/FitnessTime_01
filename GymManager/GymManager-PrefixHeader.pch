@@ -29,4 +29,6 @@
 #import "MBProgressHUD.h"
 #import "DataValidation.h"
 #import "DateFormatter.h"
+#import <MagicalRecord/MagicalRecord.h>
+#import "UserManager.h"
 #endif /* GymManager_PrefixHeader_pch */

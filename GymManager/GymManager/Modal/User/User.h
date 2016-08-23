@@ -10,8 +10,8 @@
 
 @interface User : Person
 
-@property (strong, nonatomic) NSString *userName;
-@property (strong, nonatomic) NSString *password;
-@property (strong, nonatomic) NSString *token;
+@property (strong, nonatomic) NSString<Optional> *userName;
+@property (strong, nonatomic) NSString<Optional> *password;
+@property (strong, nonatomic) NSString<Optional> *authToken;
 
 @end

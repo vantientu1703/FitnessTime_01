@@ -68,10 +68,17 @@ NSString *const kDetailMeetingsTrainerVCTitle = @"Detail Meeting Trainner";
 NSString *const kCustomerManagerVCTitle = @"customer manager view controller title";
 NSString *const kCalendarIdentifier = @"Calendar";
 
+#pragma mark - CoreData
+NSString *const kCoreDataModel = @"GymManager";
+NSString *const kBundleID = @"com.vantientu.GymManager";
+
 #pragma mark - API
 NSString *const URLRequest = @"https://fit-ness-backend.herokuapp.com/api/auth/";
 NSString *const kLoginRequest = @"login";
 NSString *const kRegisterRequest = @"register";
 NSString *const kGetAllTransactionRequest = @"transaction";
+
+#pragma mark - Message
+NSString *const kMessageFailLogin = @"Login is fail";
 
 @end

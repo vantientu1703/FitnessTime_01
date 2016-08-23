@@ -15,7 +15,7 @@
     NSString *url = [NSString stringWithFormat:@"%@%@", URLRequest, kRegisterRequest];
     //TODO : Params
     NSDictionary *params = @{@"email": user.email, @"password": user.password, @"user_name": user.userName,
-                             @"birthday": user.dateOfBirth, @"address": user.address};
+                             @"birthday": user.birthday, @"address": user.address};
     [self.manager POST:url parameters:params progress:nil
         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //TODO Catch Network error, handle data

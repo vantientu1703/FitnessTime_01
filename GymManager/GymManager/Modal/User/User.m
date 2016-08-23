@@ -10,4 +10,8 @@
 
 @implementation User
 
++ (JSONKeyMapper*)keyMapper {
+    return [JSONKeyMapper mapperFromUnderscoreCaseToCamelCase];
+}
+
 @end
