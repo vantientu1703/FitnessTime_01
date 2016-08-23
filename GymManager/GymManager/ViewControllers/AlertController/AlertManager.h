@@ -22,4 +22,6 @@
     vieController:(UIViewController *)viewController;
 + (void)showAlertWithTitle:(NSString *)title message:(NSString *)message
     viewControler:(UIViewController *)viewController reloadAction:(void(^)())complete;
++ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message
+    viewControler:(UIViewController *)viewController okAction:(void(^)())complete;
 @end

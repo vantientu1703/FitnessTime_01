@@ -66,6 +66,7 @@ extern NSString *const kEditMeetingTitle;
 extern NSString *const kTodayMeetingsVCTitle;
 extern NSString *const kDetailMeetingsTrainerVCTitle;
 extern NSString *const kCustomerManagerVCTitle;
+extern NSString *const kCalendarIdentifier;
 
 #pragma mark - API
 extern NSString *const URLRequest;

@@ -44,7 +44,8 @@ CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
 
 #pragma mark - Show calendar
 - (IBAction)showCalendar:(id)sender {
-    CalendarViewController *calendarVC = [[CalendarViewController alloc] init];
+    UIStoryboard *st = [UIStoryboard storyboardWithName:kCalendarIdentifier bundle:nil];
+    CalendarViewController *calendarVC = [st instantiateInitialViewController];
     [self.navigationController pushViewController:calendarVC animated:true];
     [calendarVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {
         //TODO

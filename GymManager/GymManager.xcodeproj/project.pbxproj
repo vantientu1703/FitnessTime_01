@@ -39,6 +39,7 @@
 		EF0809931D5C954A007A8EAE /* PTMeetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0809921D5C954A007A8EAE /* PTMeetingViewController.m */; };
 		EF0809981D5C97B6007A8EAE /* TransactionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0809971D5C97B6007A8EAE /* TransactionsViewController.m */; };
 		EF08099B1D5C97C9007A8EAE /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF08099A1D5C97C9007A8EAE /* MenuViewController.m */; };
+		EF5FA7AE1D6AE22200E4B95F /* DataValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5FA7AD1D6AE22200E4B95F /* DataValidation.m */; settings = {ASSET_TAGS = (); }; };
 		EF870A751D5DA11200118D7C /* GymManagerConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = EF870A741D5DA11200118D7C /* GymManagerConstant.m */; };
 		EF870A831D5DB66700118D7C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF870A821D5DB66700118D7C /* LoginViewController.m */; };
 		EF870A861D5DBA9F00118D7C /* ic_key.png in Resources */ = {isa = PBXBuildFile; fileRef = EF870A841D5DBA9F00118D7C /* ic_key.png */; };
@@ -135,6 +136,8 @@
 		EF0809971D5C97B6007A8EAE /* TransactionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransactionsViewController.m; path = ViewControllers/TransactionsViewController/TransactionsViewController.m; sourceTree = "<group>"; };
 		EF0809991D5C97C9007A8EAE /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuViewController.h; path = ViewControllers/MenuViewController/MenuViewController.h; sourceTree = "<group>"; };
 		EF08099A1D5C97C9007A8EAE /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuViewController.m; path = ViewControllers/MenuViewController/MenuViewController.m; sourceTree = "<group>"; };
+		EF5FA7AC1D6AE22200E4B95F /* DataValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataValidation.h; path = DataValidation/DataValidation.h; sourceTree = "<group>"; };
+		EF5FA7AD1D6AE22200E4B95F /* DataValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataValidation.m; path = DataValidation/DataValidation.m; sourceTree = "<group>"; };
 		EF7E23E51D672A3600B613FD /* AddNewCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddNewCategoryViewController.h; path = ViewControllers/AddNewCategoryViewController/AddNewCategoryViewController.h; sourceTree = "<group>"; };
 		EF7E23E61D672A3600B613FD /* AddNewCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddNewCategoryViewController.m; path = ViewControllers/AddNewCategoryViewController/AddNewCategoryViewController.m; sourceTree = "<group>"; };
 		EF7E23E91D6740A400B613FD /* EditNumberOfCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditNumberOfCategoryViewController.h; path = ViewControllers/EditNumberOfCategoryViewController/EditNumberOfCategoryViewController.h; sourceTree = "<group>"; };
@@ -656,6 +659,8 @@
 		EFFD8D3B1D66ABFB00994CC5 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				EF5FA7AC1D6AE22200E4B95F /* DataValidation.h */,
+				EF5FA7AD1D6AE22200E4B95F /* DataValidation.m */,
 				EFFD8D3C1D66AC2800994CC5 /* Utils.h */,
 				EFFD8D3D1D66AC2800994CC5 /* Utils.m */,
 			);
@@ -798,7 +803,6 @@
 				EF08096C1D5C8261007A8EAE /* LaunchScreen.storyboard in Resources */,
 				EFFD8D511D66BBD900994CC5 /* CustomerManagerStoryboard.storyboard in Resources */,
 				EFF19FA51D61ED8400EAD1D1 /* ic_ptmanager.png in Resources */,
-				EF7E23ED1D67429800B613FD /* ic_down.png in Resources */,
 				400C78DB1D67465F00CEE19B /* Calendar.storyboard in Resources */,
 				EFF19FA21D61ED8400EAD1D1 /* ic_customer.png in Resources */,
 				EFF19FA31D61ED8400EAD1D1 /* ic_logout.png in Resources */,
@@ -874,6 +878,7 @@
 				EFF1B2FD1D65FC0F002919DB /* main.m in Sources */,
 				EF08098B1D5C8D69007A8EAE /* TodayMeetingsViewController.m in Sources */,
 				EFF1B3011D660EA2002919DB /* AlertManager.m in Sources */,
+				EF5FA7AE1D6AE22200E4B95F /* DataValidation.m in Sources */,
 				408933171D646B050081511C /* Trainer.m in Sources */,
 				408933151D646B050081511C /* Customer.m in Sources */,
 				408933161D646B050081511C /* Person.m in Sources */,
