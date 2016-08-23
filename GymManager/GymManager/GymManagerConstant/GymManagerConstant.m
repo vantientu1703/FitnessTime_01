@@ -66,6 +66,7 @@ NSString *const kEditMeetingTitle = @"Edit meeting";
 NSString *const kTodayMeetingsVCTitle = @"Today Meeting";
 NSString *const kDetailMeetingsTrainerVCTitle = @"Detail Meeting Trainner";
 NSString *const kCustomerManagerVCTitle = @"customer manager view controller title";
+NSString *const kCalendarIdentifier = @"Calendar";
 
 #pragma mark - API
 NSString *const URLRequest = @"https://fit-ness-backend.herokuapp.com/api/auth/";

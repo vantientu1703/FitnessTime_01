@@ -24,7 +24,7 @@
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if ([self.delegate respondsToSelector:@selector(didResponseWithMessage:withError:returnUser:)]) {
-            [self.delegate didResponseWithMessage:error.description withError:error returnUser:nil];
+            [self.delegate didResponseWithMessage:error.localizedDescription withError:error returnUser:nil];
         }
     }];
 }

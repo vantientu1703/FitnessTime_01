@@ -16,6 +16,9 @@
 #import "LoginManager.h"
 
 NSString *const kLoginVCTitle = @"Login";
+NSString *const kEmailError = @"Email error";
+NSString *const kPasswordError = @"Password error";
+NSString *const kErrorEmailOrPassword = @"Error email or password";
 
 @interface LoginViewController ()<UITextFieldDelegate, LoginManagerDelegate>
 
@@ -36,14 +39,21 @@ NSString *const kLoginVCTitle = @"Login";
 
 #pragma mark - Login
 - (IBAction)loginPress:(id)sender {
+    [self.view endEditing:true];
     [self doLogin];
 }
 
 - (void)doLogin {
     LoginManager *loginManager = [[LoginManager alloc] init];
     loginManager.delegate = self;
-    [loginManager doLoginWithEmail:self.textFieldUserName.text password:self.textFieldPassword.text];
-    [MBProgressHUD showHUDAddedTo:self.view animated:true];
+    if (!self.textFieldUserName.text.length) {
+        self.labelNotes.text = kEmailError;
+    } else if (!self.textFieldPassword.text.length) {
+        self.labelNotes.text = kPasswordError;
+    } else {
+        [loginManager doLoginWithEmail:self.textFieldUserName.text password:self.textFieldPassword.text];
+        [MBProgressHUD showHUDAddedTo:self.view animated:true];
+    }
 }
 
 #pragma mark - Register
@@ -68,8 +78,9 @@ NSString *const kLoginVCTitle = @"Login";
 - (void)didResponseWithMessage:(NSString *)message withError:(NSError *)error returnUser:(User *)user {
     if (error) {
         [AlertManager showAlertWithTitle:kReminderTitle message:message
-            viewControler:self reloadAction:^{
-            [self doLogin];
+            viewControler:self okAction:^{
+            self.labelNotes.text = kErrorEmailOrPassword;
+            [MBProgressHUD hideHUDForView:self.view animated:true];
         }];
     } else {
         [MBProgressHUD hideHUDForView:self.view animated:true];

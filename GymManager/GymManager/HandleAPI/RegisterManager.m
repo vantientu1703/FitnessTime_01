@@ -14,7 +14,8 @@
      //TODO check input before request
     NSString *url = [NSString stringWithFormat:@"%@%@", URLRequest, kRegisterRequest];
     //TODO : Params
-    NSDictionary *params = @{@"userName": user.userName, @"password": user.password};
+    NSDictionary *params = @{@"email": user.email, @"password": user.password, @"user_name": user.userName,
+                             @"birthday": user.dateOfBirth, @"address": user.address};
     [self.manager POST:url parameters:params progress:nil
         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //TODO Catch Network error, handle data
@@ -24,7 +25,7 @@
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if ([self.delegate respondsToSelector:@selector(didResponseWithMessage:withError:returnUser:)]) {
-            [self.delegate didResponseWithMessage:error.description withError:error returnUser:nil];
+            [self.delegate didResponseWithMessage:error.localizedDescription withError:error returnUser:nil];
         }
     }];
 }
