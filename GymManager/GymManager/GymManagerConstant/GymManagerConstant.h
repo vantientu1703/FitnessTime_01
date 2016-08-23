@@ -68,10 +68,17 @@ extern NSString *const kDetailMeetingsTrainerVCTitle;
 extern NSString *const kCustomerManagerVCTitle;
 extern NSString *const kCalendarIdentifier;
 
+#pragma mark - CoreData
+extern NSString *const kCoreDataModel;
+extern NSString *const kBundleID;
+
 #pragma mark - API
 extern NSString *const URLRequest;
 extern NSString *const kLoginRequest;
 extern NSString *const kRegisterRequest;
 extern NSString *const kGetAllTransactionRequest;
+
+#pragma mark - Message
+extern NSString *const kMessageFailLogin;
 
 @end

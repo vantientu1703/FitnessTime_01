@@ -14,6 +14,7 @@
 #import "RegisterViewController.h"
 #import "AppDelegate.h"
 #import "LoginManager.h"
+#import "DataStore.h"
 
 NSString *const kLoginVCTitle = @"Login";
 NSString *const kEmailError = @"Email error";
@@ -83,9 +84,18 @@ NSString *const kErrorEmailOrPassword = @"Error email or password";
             [MBProgressHUD hideHUDForView:self.view animated:true];
         }];
     } else {
-        [MBProgressHUD hideHUDForView:self.view animated:true];
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [appDelegate loadTabbarController];
+        [[DataStore sharedDataStore] setNewUserManagefromUser:user WithCompletionblock:^(BOOL success) {
+            if (success) {
+                AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                [appDelegate loadTabbarController];
+            } else {
+                [AlertManager showAlertWithTitle:kReminderTitle message:kMessageFailLogin
+                    viewControler:self reloadAction:^{
+                    [self doLogin];
+                }];
+            }
+        }];
     }
+    [MBProgressHUD hideHUDForView:self.view animated:true];
 }
 @end

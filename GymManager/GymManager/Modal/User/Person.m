@@ -7,7 +7,17 @@
 //
 
 #import "Person.h"
+#import "DateFormatter.h"
 
 @implementation Person
+
++ (JSONKeyMapper *)keyMapper {
+    return [JSONKeyMapper mapperFromUnderscoreCaseToCamelCase];
+}
+
+- (void)setBirthdayWithNSString:(NSString *)string {
+    DateFormatter *formatter = [[DateFormatter alloc] init];
+    self.birthday = [formatter dateWithMonthYearFormatterFromString:string];
+}
 
 @end

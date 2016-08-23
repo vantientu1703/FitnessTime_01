@@ -10,4 +10,5 @@ target 'GymManager' do
   pod 'RSDayFlow'
   pod 'JSONModel'
   pod "SRMonthPicker"
+  pod "MagicalRecord"
 end

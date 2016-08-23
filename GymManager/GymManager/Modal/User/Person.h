@@ -11,12 +11,12 @@
 
 @interface Person : JSONModel
 
-@property (strong, nonatomic) NSString *fullName;
-@property (strong, nonatomic) NSString *ID;
-@property (strong, nonatomic) NSString *phoneNumber;
-@property (strong, nonatomic) NSString *address;
-@property (strong, nonatomic) NSString *email;
-@property (strong, nonatomic) NSDate *dateOfBirth;
-@property (strong, nonatomic) NSString *avatar;
+@property (strong, nonatomic) NSString *id;
+@property (strong, nonatomic) NSString<Optional> *fullName;
+@property (strong, nonatomic) NSString<Optional> *telNumber;
+@property (strong, nonatomic) NSString<Optional> *address;
+@property (strong, nonatomic) NSString<Optional> *email;
+@property (strong, nonatomic) NSDate<Optional> *birthday;
+@property (strong, nonatomic) NSString<Optional> *avatar;
 
 @end

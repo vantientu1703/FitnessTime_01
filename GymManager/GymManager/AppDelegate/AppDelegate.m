@@ -19,6 +19,8 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    //Setup Coredata
+    [MagicalRecord setupCoreDataStackWithStoreNamed:kCoreDataModel];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self loadLoginViewController];
     [self.window makeKeyAndVisible];

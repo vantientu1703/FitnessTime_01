@@ -93,7 +93,7 @@ NSString *const kFillAddress = @"Fill address";
         user.userName = self.textFieldUserName.text;
         user.email = self.textFieldEmail.text;
         user.address = self.textFieldAddress.text;
-        user.dateOfBirth = _dateOfBirth;
+        user.birthday = _dateOfBirth;
         user.password = self.textFieldPassword.text;
         return user;
     }
