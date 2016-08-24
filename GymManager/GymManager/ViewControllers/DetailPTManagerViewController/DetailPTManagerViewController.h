@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailPTManagerViewController : UIViewController
+@protocol DetailPTManagerViewControllerDelegate <NSObject>
 
+- (void)reloadDataCollectionView:(Trainer *)trainer;
+
+@end
+
+@interface DetailPTManagerViewController : UIViewController
+@property (weak, nonatomic) id<DetailPTManagerViewControllerDelegate> delegate;
+@property (strong, nonatomic) Trainer *trainer;
 @end

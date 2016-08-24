@@ -11,4 +11,5 @@ target 'GymManager' do
   pod 'JSONModel'
   pod "SRMonthPicker"
   pod "MagicalRecord"
+  pod "SDWebImage"
 end

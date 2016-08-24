@@ -10,7 +10,8 @@
 
 @interface Trainer : Person
 
-@property (strong, nonatomic) NSDate *startWorkDate;
-@property (strong, nonatomic) NSArray *meetings;
+@property (strong, nonatomic) NSDate<Optional> *startWorkDate;
+@property (strong, nonatomic) NSArray<Optional> *meetings;
+@property (assign, nonatomic) CGFloat meetingMoney;
 
 @end

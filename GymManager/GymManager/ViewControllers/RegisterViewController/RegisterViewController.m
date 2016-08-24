@@ -129,7 +129,6 @@ NSString *const kFillAddress = @"Fill address";
         DateFormatter *dateFormatter = [[DateFormatter alloc] init];
         NSString *dateString = [dateFormatter dateFormatterDateMonthYear:_dateOfBirth];
         [self.buttonSelecDateOfBirth setTitle:dateString forState:UIControlStateNormal];
-        [self.navigationController popViewControllerAnimated:YES];
     }];
 }
 

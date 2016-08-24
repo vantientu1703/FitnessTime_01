@@ -32,4 +32,10 @@
 #import <MagicalRecord/MagicalRecord.h>
 #import "UserManager.h"
 #import "DataStore.h"
+#import "UIImageView+WebCache.h"
+#import "User.h"
+#import "Trainer.h"
+#import "Transaction.h"
+#import "Customer.h"
+#import "UIIMageConstant.h"
 #endif /* GymManager_PrefixHeader_pch */

@@ -23,6 +23,9 @@ PODS:
   - Masonry (0.6.4)
   - MBProgressHUD (1.0.0)
   - RSDayFlow (1.5.2)
+  - SDWebImage (3.8.1):
+    - SDWebImage/Core (= 3.8.1)
+  - SDWebImage/Core (3.8.1)
   - SRMonthPicker (0.2.10)
   - TPKeyboardAvoiding (1.3)
   - UICKeyChainStore (2.1.0)
@@ -34,6 +37,7 @@ DEPENDENCIES:
   - MagicalRecord
   - MBProgressHUD (~> 1.0.0)
   - RSDayFlow
+  - SDWebImage
   - SRMonthPicker
   - TPKeyboardAvoiding
   - UICKeyChainStore
@@ -46,10 +50,11 @@ SPEC CHECKSUMS:
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   RSDayFlow: 5b9b519adaa4a261d41d3efaa724544ea0019160
+  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   SRMonthPicker: d3c639e82f525f1c10d1ad7f4bbdf180d404942b
   TPKeyboardAvoiding: a5138f318c06fb3e151f886e18ce4a72695d9cbe
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
 
-PODFILE CHECKSUM: f6ceb95907c0c9fccc49e883b6791ea6c06648bb
+PODFILE CHECKSUM: 73bd3975e15544a0cadd5000f8ca01c20b92fadb
 
 COCOAPODS: 1.0.1
