@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface UIIMageConstant : NSObject
+@interface UIImageConstant : NSObject
 + (UIImage *)imageUserConstant;
 @end

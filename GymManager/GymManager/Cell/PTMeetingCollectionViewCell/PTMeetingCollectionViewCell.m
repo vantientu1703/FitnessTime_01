@@ -17,9 +17,10 @@ CGFloat const kCornerRadiusImageViewCell = 30.0f;
     self.imageViewPTMeetingCell.layer.cornerRadius = kCornerRadiusImageViewCell;
     self.imageViewPTMeetingCell.layer.masksToBounds = YES;
     NSURL *urlImage = [NSURL URLWithString:trainer.avatar];
-    [self.imageViewPTMeetingCell sd_setImageWithURL:urlImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    [self.imageViewPTMeetingCell sd_setImageWithURL:urlImage
+        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         if (!image) {
-            self.imageViewPTMeetingCell.image = [UIIMageConstant imageUserConstant];
+            self.imageViewPTMeetingCell.image = [UIImageConstant imageUserConstant];
         }
     }];
     self.labelNameTrainer.text = trainer.fullName;

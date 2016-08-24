@@ -68,6 +68,8 @@ NSString *const kDetailMeetingsTrainerVCTitle = @"Detail Meeting Trainner";
 NSString *const kCustomerManagerVCTitle = @"customer manager view controller title";
 NSString *const kCalendarIdentifier = @"Calendar";
 NSString *const kEditTrainerTitle = @"Edit trainer";
+NSString *const kCreateSuccess = @"Create success";
+NSString *const kCreateFail = @"Create fail";
 
 #pragma mark - CoreData
 NSString *const kCoreDataModel = @"GymManager";

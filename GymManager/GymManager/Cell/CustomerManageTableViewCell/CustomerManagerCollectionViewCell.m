@@ -12,11 +12,17 @@ CGFloat const kCornerRadiusImageViewCustomer = 30.0f;
 
 @implementation CustomerManagerCollectionViewCell
 
-- (void)cellWithName:(NSString *)nameCustomer avatar:(UIImage *)image {
+- (void)cellWithCustomer:(Customer *)customer {
     self.imageViewCustomer.layer.cornerRadius = kCornerRadiusImageViewCustomer;
     self.imageViewCustomer.layer.masksToBounds = YES;
-    self.imageViewCustomer.image = image;
-    self.labelNameCustomer.text = nameCustomer;
+    NSURL *url = [NSURL URLWithString:customer.avatar];
+    [self.imageViewCustomer sd_setImageWithURL:url
+        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        if (!image) {
+            self.imageViewCustomer.image = [UIImageConstant imageUserConstant];
+        }
+    }];
+    self.labelNameCustomer.text = customer.fullName;
 }
 
 @end

@@ -12,6 +12,7 @@
 NSString *const kInfoCustomerVCTitle = @"Info customer";
 CGFloat const kCornerRadiusViewBackgroundCustomer = 5.0f;
 CGFloat const kCornerRadiusImageViewCustomers = 40.0f;
+NSString *const kEdiCustomerTitle = @"Edit customer";
 
 @interface InfoCustomerManagerViewController ()
 
@@ -33,6 +34,17 @@ CGFloat const kCornerRadiusImageViewCustomers = 40.0f;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setupView];
+    [self setupInfoCustomer];
+}
+
+- (void)setupInfoCustomer {
+    DateFormatter *dateFormatter = [[DateFormatter alloc] init];
+    self.labelAddress.text = self.customer.address;
+    self.labelDateOfBirth.text = [dateFormatter dateFormatterDateMonthYear:self.customer.birthday];
+    self.labelExprityDate.text = [dateFormatter dateFormatterDateMonthYear:self.customer.expiryDate];
+    self.labelNameCustomer.text = self.customer.fullName;
+    self.labelPhoneNumber.text = self.customer.telNumber;
+    self.labelRegisterDate.text = [dateFormatter dateFormatterDateMonthYear:self.customer.registryDate];
 }
 
 #pragma mark - Setup view
@@ -54,6 +66,7 @@ CGFloat const kCornerRadiusImageViewCustomers = 40.0f;
     AddNewCustomerViewController *addNewCustomerVC = [st
         instantiateViewControllerWithIdentifier:kAddNewCustomerViewControllerIdentifier];
     addNewCustomerVC.messageEditCustomer = kMessageEditCustomer;
+    addNewCustomerVC.customer = self.customer;
     [self.navigationController pushViewController:addNewCustomerVC animated:true];
 }
 

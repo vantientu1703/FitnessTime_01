@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol AddNewCustomerViewControllerDelegate <NSObject>
+
+- (void)addNewCustomer:(Customer *)customer;
+
+@end
+
 @interface AddNewCustomerViewController : UIViewController
 
+@property (weak, nonatomic) id<AddNewCustomerViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSString *messageEditCustomer;
+@property (strong, nonatomic) Customer *customer;
 
 @end
