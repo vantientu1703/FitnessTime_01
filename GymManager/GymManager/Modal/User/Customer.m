@@ -9,5 +9,7 @@
 #import "Customer.h"
 
 @implementation Customer
-
++ (JSONKeyMapper *)keyMapper {
+    return [JSONKeyMapper mapperFromUnderscoreCaseToCamelCase];
+}
 @end

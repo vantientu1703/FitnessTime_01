@@ -12,6 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewCustomer;
 @property (weak, nonatomic) IBOutlet UILabel *labelNameCustomer;
-- (void)cellWithName:(NSString *)nameCustomer avatar:(UIImage *)image;
+- (void)cellWithCustomer:(Customer *)customer;
 
 @end

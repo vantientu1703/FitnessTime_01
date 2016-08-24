@@ -15,8 +15,6 @@ NSString *const kNoFillEmailTitle = @"Fill email,please!";
 NSString *const kNoFillFullNameTitle = @"Fill full name,please!";
 NSString *const kNoFillPhoneNumberTitle = @"Fill phone number,please";
 NSString *const kNoFillIncomShifTitle = @"Fill income per shif,please!";
-NSString *const kCreateSucces = @"Create success";
-NSString *const kCreateFail = @"Create fail";
 NSString *const kSelectDateOfBirth = @"Select date of birth,please";
 NSString *const kSelectAvatar = @"Select avatar,please";
 NSString *const kUpdateSuccess = @"Update success";
@@ -122,7 +120,7 @@ NSString *const kUpdateFail = @"Update fail";
     if (success) {
         [MBProgressHUD hideHUDForView:self.view animated:true];
         [self.delegate createNewTrainer:trainer];
-        self.labelNotes.text = kCreateSucces;
+        self.labelNotes.text = kCreateSuccess;
     } else {
         [AlertManager showAlertWithTitle:kRegisterRequest message:error.localizedDescription
             viewControler:self reloadAction:^{

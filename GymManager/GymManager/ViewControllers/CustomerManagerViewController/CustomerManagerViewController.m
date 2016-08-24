@@ -16,10 +16,11 @@ CGFloat const kCornerRadiusAddNewCustomer = 20.0f;
 //TODO
 NSString *const kNameCustomer = @"Ngo Van Van Duong";
 
-@interface CustomerManagerViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
+@interface CustomerManagerViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, AddNewCustomerViewControllerDelegate, CustomerManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonAddNewCustomer;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) NSMutableArray *arrCustomers;
 
 @end
 
@@ -29,6 +30,28 @@ NSString *const kNameCustomer = @"Ngo Van Van Duong";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setupView];
+    [self getAllCustomers];
+}
+
+- (void)getAllCustomers {
+    [MBProgressHUD showHUDAddedTo:self.view animated:true];
+    CustomerManager *customerManager = [[CustomerManager alloc] init];
+    customerManager.delegate = self;
+    [customerManager getAllCustomers];
+}
+
+#pragma mark - CustomerManagerDelegate 
+- (void)didResponseWithMessage:(NSString *)message withError:(NSError *)error returnArray:(NSArray *)arrCustomers {
+    if (error) {
+        [MBProgressHUD hideHUDForView:self.view animated:true];
+        [AlertManager showAlertWithTitle:kRegisterRequest message:message viewControler:self reloadAction:^{
+            [self getAllCustomers];
+        }];
+    } else {
+        [MBProgressHUD hideHUDForView:self.view animated:true];
+        self.arrCustomers = arrCustomers.mutableCopy;
+        [self.collectionView reloadData];
+    }
 }
 
 #pragma mark - Set up view
@@ -40,16 +63,14 @@ NSString *const kNameCustomer = @"Ngo Van Van Duong";
 
 #pragma mark - UICollectionViewDataSources
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    //TODO
-    return 15;
+    return self.arrCustomers.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CustomerManagerCollectionViewCell *cell = (CustomerManagerCollectionViewCell *)[collectionView
         dequeueReusableCellWithReuseIdentifier:kCustomerManagerCollectionViewCellIdentifier
         forIndexPath:indexPath];
-    //TODO
-    [cell cellWithName:kNameCustomer avatar:[UIImage imageNamed:kIconUser]];
+    [cell cellWithCustomer:self.arrCustomers[indexPath.row]];
     return cell;
 }
 
@@ -62,6 +83,8 @@ NSString *const kNameCustomer = @"Ngo Van Van Duong";
     if ([self.statusCustomerManagerTitle isEqualToString:kCustomerManagerVCTitle]) {
         InfoCustomerManagerViewController *infoCustomerVC = [customerStoryboard
             instantiateViewControllerWithIdentifier:kInfoCustomerManagerViewControllerIdentifier];
+        infoCustomerVC.customer = self.arrCustomers[indexPath.row];
+        NSLog(@"%@", self.arrCustomers[indexPath.row]);
         [self.navigationController pushViewController:infoCustomerVC animated:true];
     } else {
         [self.navigationController popViewControllerAnimated:true];
@@ -75,7 +98,17 @@ NSString *const kNameCustomer = @"Ngo Van Van Duong";
     UIStoryboard *st = [UIStoryboard storyboardWithName:kCustomerManagerStoryboard bundle:nil];
     AddNewCustomerViewController *addNewCustomerVC = [st
         instantiateViewControllerWithIdentifier:kAddNewCustomerViewControllerIdentifier];
+    addNewCustomerVC.delegate = self;
     [self.navigationController pushViewController:addNewCustomerVC animated:true];
+}
+
+#pragma mark - AddNewCustomerViewControllerDelegate
+- (void)addNewCustomer:(Customer *)customer {
+    if (!self.arrCustomers) {
+        self.arrCustomers = [NSMutableArray array];
+    }
+    [self.arrCustomers addObject:customer];
+    [self.collectionView reloadData];
 }
 
 @end

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface InfoCustomerManagerViewController : UIViewController
-
+@property (strong, nonatomic) Customer *customer;
 @end

@@ -6,9 +6,9 @@
 //  Copyright © 2016 vantientu. All rights reserved.
 //
 
-#import "UIIMageConstant.h"
+#import "UIImageConstant.h"
 
-@implementation UIIMageConstant
+@implementation UIImageConstant
 
 + (UIImage *)imageUserConstant {
     return [UIImage imageNamed:kIconUser];

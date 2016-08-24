@@ -36,9 +36,10 @@ CGFloat const kCornerRadiusImageViewPT = 40.0f;
 
 - (void)setupInfoTrainer {
     NSURL *url = [NSURL URLWithString:self.trainer.avatar];
-    [self.imageViewPT sd_setImageWithURL:url completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    [self.imageViewPT sd_setImageWithURL:url
+        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         if (!image) {
-            self.imageViewPT.image = [UIIMageConstant imageUserConstant];
+            self.imageViewPT.image = [UIImageConstant imageUserConstant];
         }
     }];
     DateFormatter *dateFormatter = [[DateFormatter alloc] init];

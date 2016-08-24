@@ -160,6 +160,9 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
 
 #pragma mark - EditPTManagerViewControllerDelegate
 - (void)createNewTrainer:(Trainer *)trainer {
+    if (!self.arrTrainers) {
+        self.arrTrainers = [NSMutableArray array];
+    }
     [self.arrTrainers addObject:trainer];
     [self.collectionView reloadData];
 }
