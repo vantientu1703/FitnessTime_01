@@ -17,8 +17,6 @@ NSString *const kNoFillPhoneNumberTitle = @"Fill phone number,please";
 NSString *const kNoFillIncomShifTitle = @"Fill income per shif,please!";
 NSString *const kSelectDateOfBirth = @"Select date of birth,please";
 NSString *const kSelectAvatar = @"Select avatar,please";
-NSString *const kUpdateSuccess = @"Update success";
-NSString *const kUpdateFail = @"Update fail";
 
 @interface EditPTManagerViewController ()<AlertManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, TrainerManagerDelegate, UITextFieldDelegate>
 

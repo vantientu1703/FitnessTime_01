@@ -12,5 +12,6 @@
 @interface Utils : NSObject
 
 + (UIImage *)convertImageToThumbnailImage:(UIImage *)image withSize:(CGSize)size;
++ (UIImage *)decodeBase64ToImage:(NSString *)strEncodeData;
 
 @end
