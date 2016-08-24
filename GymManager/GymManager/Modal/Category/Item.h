@@ -17,6 +17,6 @@
 @property (strong, nonatomic) NSString *id;
 @property (strong, nonatomic) NSString *name;
 @property (nonatomic) double price;
-@property (nonatomic) NSInteger quantity;
+@property (nonatomic) NSNumber<Optional> *quantity;
 
 @end

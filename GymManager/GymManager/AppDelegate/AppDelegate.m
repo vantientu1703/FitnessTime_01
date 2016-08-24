@@ -22,7 +22,11 @@
     //Setup Coredata
     [MagicalRecord setupCoreDataStackWithStoreNamed:kCoreDataModel];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    [self loadLoginViewController];
+    if ([[DataStore sharedDataStore] isLoged]) {
+        [self loadTabbarController];
+    } else {
+        [self loadLoginViewController];
+    }
     [self.window makeKeyAndVisible];
     return YES;
 }
