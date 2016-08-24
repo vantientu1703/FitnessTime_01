@@ -31,4 +31,5 @@
 #import "DateFormatter.h"
 #import <MagicalRecord/MagicalRecord.h>
 #import "UserManager.h"
+#import "DataStore.h"
 #endif /* GymManager_PrefixHeader_pch */

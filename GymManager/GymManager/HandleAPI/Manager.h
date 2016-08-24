@@ -12,5 +12,7 @@
 @interface Manager : NSObject
 
 @property (strong, nonatomic) AFHTTPSessionManager *manager;
+@property (strong, nonatomic) UIAlertView *alert;
+- (void)showAlertByMessage:(NSString *)message title:(NSString *)title;
 
 @end

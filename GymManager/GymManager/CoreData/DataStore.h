@@ -16,5 +16,7 @@
 + (instancetype)sharedDataStore;
 - (void)setNewUserManagefromUser:(User *)user WithCompletionblock:(void(^)(BOOL success))completion;
 - (UserManager *)getUserManage;
+- (BOOL)isLoged;
+- (void)clearUser;
 
 @end

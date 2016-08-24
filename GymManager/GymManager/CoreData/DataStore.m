@@ -9,6 +9,7 @@
 #import "DataStore.h"
 
 NSString *const kTokenChainKey = @"auth_token";
+NSString *const kUserDefaultLoginCheck = @"loged";
 
 @interface DataStore ()
 
@@ -68,6 +69,10 @@ NSString *const kTokenChainKey = @"auth_token";
         [mange MR_deleteEntity];
     }
     [self.keychain removeItemForKey:kTokenChainKey];
+}
+
+- (BOOL)isLoged {
+    return [self.keychain stringForKey:kTokenChainKey].length;
 }
 
 @end
