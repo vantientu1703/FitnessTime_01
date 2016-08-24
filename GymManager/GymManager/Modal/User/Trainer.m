@@ -10,4 +10,8 @@
 
 @implementation Trainer
 
++ (JSONKeyMapper*)keyMapper {
+    return [JSONKeyMapper mapperFromUnderscoreCaseToCamelCase];
+}
+
 @end

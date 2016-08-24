@@ -13,6 +13,7 @@
 #import "DetailPTManagerViewController.h"
 #import "TodayMeetingsViewController.h"
 #import "EditPTManagerViewController.h"
+#import "TrainerManager.h"
 
 NSString *const kPTMeetingCollectionViewCellIdentifier = @"MeetingCollectionViewCell";
 CGFloat const kTriggerVerticalOffset = 100.0f;
@@ -20,22 +21,33 @@ CGFloat const kCornerRadiusButtonAddNewMeeting = 20.0f;
 //TODO
 NSString *const kNameTrainer = @"Nguyen Van Van Duong";
 
-@interface PTMeetingViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
+@interface PTMeetingViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, TrainerManagerDelegate, EditPTManagerViewControllerDelegate, DetailPTManagerViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) UIRefreshControl *refreshReloadData;
 @property (strong, nonatomic) UIRefreshControl *refreshLoadMoreData;
 @property (weak, nonatomic) IBOutlet UIButton *buttonAddNewMeeting;
+@property (strong, nonatomic) NSMutableArray *arrTrainers;
 
 @end
 
 @implementation PTMeetingViewController
-
+{
+    NSIndexPath *_indexPath;
+}
 #pragma mark - View's life
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setupView];
+    [self getAllTrainers];
+}
+
+- (void)getAllTrainers {
+    [MBProgressHUD showHUDAddedTo:self.view animated:true];
+    TrainerManager *trainerManager = [[TrainerManager alloc] init];
+    trainerManager.delegate = self;
+    [trainerManager getAllTrainers];
 }
 
 - (void)setupView {
@@ -46,15 +58,30 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
     }
     self.buttonAddNewMeeting.layer.cornerRadius = kCornerRadiusButtonAddNewMeeting;
     self.refreshReloadData = [[UIRefreshControl alloc] init];
-    [self.refreshReloadData addTarget:self action:@selector(reloadDataCollectionView:)
+    [self.refreshReloadData addTarget:self action:@selector(reloadDataCollectionViews:)
         forControlEvents:UIControlEventValueChanged];
     [self.collectionView insertSubview:self.refreshReloadData atIndex:0];
-    
-    self.refreshLoadMoreData = [[UIRefreshControl alloc] init];
-    [self.refreshLoadMoreData addTarget:self action:@selector(loadMoreData:)
-        forControlEvents:UIControlEventValueChanged];
-    self.refreshLoadMoreData.triggerVerticalOffset = kTriggerVerticalOffset;
-    self.collectionView.bottomRefreshControl = self.refreshLoadMoreData;
+    //TODO
+//    self.refreshLoadMoreData = [[UIRefreshControl alloc] init];
+//    [self.refreshLoadMoreData addTarget:self action:@selector(loadMoreData:)
+//        forControlEvents:UIControlEventValueChanged];
+//    self.refreshLoadMoreData.triggerVerticalOffset = kTriggerVerticalOffset;
+//    self.collectionView.bottomRefreshControl = self.refreshLoadMoreData;
+}
+
+#pragma mark - TrainerManagerDelegate
+- (void)didResponseWithMessage:(NSString *)message withError:(NSError *)error returnArray:(NSArray *)arrTrainer {
+    if (error) {
+        [AlertManager showAlertWithTitle:kReminderTitle message:message viewControler:self reloadAction:^{
+            [self getAllTrainers];
+        }];
+    } else {
+        if (arrTrainer) {
+            [MBProgressHUD hideHUDForView:self.view animated:true];
+            self.arrTrainers = arrTrainer.mutableCopy;
+            [self.collectionView reloadData];
+        }
+    }
 }
 
 #pragma mark - Load data from server
@@ -63,15 +90,14 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
     [self.refreshLoadMoreData endRefreshing];
 }
 
-- (IBAction)reloadDataCollectionView:(id)sender {
+- (IBAction)reloadDataCollectionViews:(id)sender {
     //TODO
     [self.refreshReloadData endRefreshing];
 }
 
 #pragma mark - UICollectionViewDataSources
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    //TODO
-    return 12;
+    return self.arrTrainers.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -79,7 +105,8 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
     PTMeetingCollectionViewCell *cell = (PTMeetingCollectionViewCell *)[collectionView
         dequeueReusableCellWithReuseIdentifier:kPTMeetingCollectionViewCellIdentifier
         forIndexPath:indexPath];
-    [cell initWithImageName:[UIImage imageNamed:kIconUser] withNameTrainer:kNameTrainer];
+    Trainer *trainer = self.arrTrainers[indexPath.row];
+    [cell cellWithTrainer:trainer];
     return cell;
 }
 
@@ -96,6 +123,9 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
     } else if ([self.statusAddNewMeeting isEqualToString:kDetailPTManagerTitle]) {
         DetailPTManagerViewController *detailPTManagerVC = [st
             instantiateViewControllerWithIdentifier:kDetailPTManagerViewControllerIdentifier];
+        detailPTManagerVC.trainer = self.arrTrainers[indexPath.row];
+        _indexPath = indexPath;
+        detailPTManagerVC.delegate = self;
         [self.navigationController pushViewController:detailPTManagerVC animated:true];
     } else if ([self.statusAddNewMeeting isEqualToString:kStatusAddNewMeeting]) {
         [self.navigationController popViewControllerAnimated:YES];
@@ -104,6 +134,12 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     //TODO
+}
+
+#pragma mark - DetailPTManagerViewControllerDelegate
+- (void)reloadDataCollectionView:(Trainer *)trainer {
+    [self.arrTrainers replaceObjectAtIndex:_indexPath.row withObject:trainer];
+    [self.collectionView reloadData];
 }
 
 #pragma mark - Add new meeting
@@ -117,8 +153,15 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
     } else {
         EditPTManagerViewController *editPTManagerVC = [st
             instantiateViewControllerWithIdentifier:kEditPTManagerViewControllerIdentifier];
+        editPTManagerVC.delegate = self;
         [self.navigationController pushViewController:editPTManagerVC animated:true];
     }
+}
+
+#pragma mark - EditPTManagerViewControllerDelegate
+- (void)createNewTrainer:(Trainer *)trainer {
+    [self.arrTrainers addObject:trainer];
+    [self.collectionView reloadData];
 }
 
 @end

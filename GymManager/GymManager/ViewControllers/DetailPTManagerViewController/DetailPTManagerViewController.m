@@ -11,7 +11,7 @@
 
 CGFloat const kCornerRadiusImageViewPT = 40.0f;
 
-@interface DetailPTManagerViewController ()
+@interface DetailPTManagerViewController ()<EditPTManagerViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *viewBackground;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewPT;
@@ -31,6 +31,22 @@ CGFloat const kCornerRadiusImageViewPT = 40.0f;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setupView];
+    [self setupInfoTrainer];
+}
+
+- (void)setupInfoTrainer {
+    NSURL *url = [NSURL URLWithString:self.trainer.avatar];
+    [self.imageViewPT sd_setImageWithURL:url completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        if (!image) {
+            self.imageViewPT.image = [UIIMageConstant imageUserConstant];
+        }
+    }];
+    DateFormatter *dateFormatter = [[DateFormatter alloc] init];
+    self.labelAddress.text = self.trainer.address;
+    self.labelDateOfBirth.text = [dateFormatter dateFormatterDateMonthYear:self.trainer.birthday];
+    self.labelEmail.text = self.trainer.email;
+    self.labelNamePT.text = self.trainer.fullName;
+    self.labelPhoneNumber.text = self.trainer.telNumber;
 }
 
 - (void)setupView {
@@ -55,12 +71,24 @@ CGFloat const kCornerRadiusImageViewPT = 40.0f;
     UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
     EditPTManagerViewController *editPTManagerVC = [st
         instantiateViewControllerWithIdentifier:kEditPTManagerViewControllerIdentifier];
+    editPTManagerVC.trainer = self.trainer;
+    editPTManagerVC.statusEditString = kEditTrainerTitle;
+    editPTManagerVC.delegate = self;
     [self.navigationController pushViewController:editPTManagerVC animated:true];
 }
 
 #pragma mark - Show income this month
 - (IBAction)showIncomeThisMonth:(id)sender {
     //TODO
+}
+
+#pragma mark - EditPTManagerViewControllerDelegate
+- (void)updateTrainer:(Trainer *)trainer {
+    self.trainer = trainer;
+    [self setupInfoTrainer];
+    if ([self.delegate respondsToSelector:@selector(reloadDataCollectionView:)]) {
+        [self.delegate reloadDataCollectionView:trainer];
+    }
 }
 
 @end

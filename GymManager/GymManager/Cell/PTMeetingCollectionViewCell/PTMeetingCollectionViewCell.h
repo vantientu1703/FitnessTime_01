@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Trainer.h"
 
 @interface PTMeetingCollectionViewCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewPTMeetingCell;
 @property (weak, nonatomic) IBOutlet UILabel *labelNameTrainer;
-- (void)initWithImageName:(UIImage *)image withNameTrainer:(NSString *)nameTrainer;
+- (void)cellWithTrainer:(Trainer *)trainer;
 
 @end

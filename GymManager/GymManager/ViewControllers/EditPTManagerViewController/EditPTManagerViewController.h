@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol EditPTManagerViewControllerDelegate <NSObject>
+
+- (void)createNewTrainer:(Trainer *)trainer;
+- (void)updateTrainer:(Trainer *)trainer;
+
+@end
 
 @interface EditPTManagerViewController : UIViewController
-
+@property (weak, nonatomic) id<EditPTManagerViewControllerDelegate> delegate;
+@property (strong, nonatomic) Trainer *trainer;
+@property (strong, nonatomic) NSString *statusEditString;
 @end

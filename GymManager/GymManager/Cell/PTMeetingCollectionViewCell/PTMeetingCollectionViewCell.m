@@ -8,15 +8,21 @@
 
 #import "PTMeetingCollectionViewCell.h"
 
+NSString *const kIconUserImageName = @"ic_user";
 CGFloat const kCornerRadiusImageViewCell = 30.0f;
 
 @implementation PTMeetingCollectionViewCell
 
-- (void)initWithImageName:(UIImage *)image withNameTrainer:(NSString *)nameTrainer {
+- (void)cellWithTrainer:(Trainer *)trainer {
     self.imageViewPTMeetingCell.layer.cornerRadius = kCornerRadiusImageViewCell;
     self.imageViewPTMeetingCell.layer.masksToBounds = YES;
-    self.imageViewPTMeetingCell.image = image;
-    self.labelNameTrainer.text = nameTrainer;
+    NSURL *urlImage = [NSURL URLWithString:trainer.avatar];
+    [self.imageViewPTMeetingCell sd_setImageWithURL:urlImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        if (!image) {
+            self.imageViewPTMeetingCell.image = [UIIMageConstant imageUserConstant];
+        }
+    }];
+    self.labelNameTrainer.text = trainer.fullName;
 }
 
 @end
