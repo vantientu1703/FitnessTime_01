@@ -17,6 +17,7 @@
 		4017EDF61D6175A30033E0AE /* AddTransactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4017EDF51D6175A30033E0AE /* AddTransactionViewController.m */; };
 		402637261D6CA68E006E71AD /* PopoverEditItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402637251D6CA68E006E71AD /* PopoverEditItemViewController.m */; };
 		4026372C1D6CA945006E71AD /* CategoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4026372B1D6CA945006E71AD /* CategoryManager.m */; };
+		4026372F1D6D9FB0006E71AD /* AddTransactionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4026372E1D6D9FB0006E71AD /* AddTransactionManager.m */; };
 		404241271D65888C00111B97 /* LoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 404241261D65888C00111B97 /* LoginManager.m */; };
 		4042412A1D65BA4D00111B97 /* RegisterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 404241291D65BA4D00111B97 /* RegisterManager.m */; };
 		4042412D1D65BCCB00111B97 /* Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4042412C1D65BCCB00111B97 /* Manager.m */; };
@@ -101,6 +102,8 @@
 		402637251D6CA68E006E71AD /* PopoverEditItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopoverEditItemViewController.m; path = ViewControllers/TransactionsViewController/AddTransactionViewController/PopoverEditItemViewController.m; sourceTree = "<group>"; };
 		4026372A1D6CA945006E71AD /* CategoryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryManager.h; path = HandleAPI/CategoryManager.h; sourceTree = "<group>"; };
 		4026372B1D6CA945006E71AD /* CategoryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryManager.m; path = HandleAPI/CategoryManager.m; sourceTree = "<group>"; };
+		4026372D1D6D9FB0006E71AD /* AddTransactionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddTransactionManager.h; path = HandleAPI/AddTransactionManager.h; sourceTree = "<group>"; };
+		4026372E1D6D9FB0006E71AD /* AddTransactionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddTransactionManager.m; path = HandleAPI/AddTransactionManager.m; sourceTree = "<group>"; };
 		404241251D65888C00111B97 /* LoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginManager.h; path = HandleAPI/LoginManager.h; sourceTree = "<group>"; };
 		404241261D65888C00111B97 /* LoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginManager.m; path = HandleAPI/LoginManager.m; sourceTree = "<group>"; };
 		404241281D65BA4D00111B97 /* RegisterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterManager.h; path = HandleAPI/RegisterManager.h; sourceTree = "<group>"; };
@@ -441,6 +444,8 @@
 				EF635C041D6D878000BEB9A1 /* CustomerManager.m */,
 				EF635C061D6DD46E00BEB9A1 /* ProfileManager.h */,
 				EF635C071D6DD46E00BEB9A1 /* ProfileManager.m */,
+				4026372D1D6D9FB0006E71AD /* AddTransactionManager.h */,
+				4026372E1D6D9FB0006E71AD /* AddTransactionManager.m */,
 			);
 			name = HandleAPI;
 			sourceTree = "<group>";
@@ -979,6 +984,7 @@
 				EFF28BD91D657397000F9B27 /* DateMeetingTableViewCell.m in Sources */,
 				4089331C1D646B1D0081511C /* Transaction.m in Sources */,
 				EFFD8D421D66BAA700994CC5 /* CustomerManagerViewController.m in Sources */,
+				4026372F1D6D9FB0006E71AD /* AddTransactionManager.m in Sources */,
 				EFFD8D4E1D66BB9C00994CC5 /* InfoCustomerManagerViewController.m in Sources */,
 				40AB31311D5DD81000341359 /* ExpandableTableView.m in Sources */,
 				EFF28BDC1D657640000F9B27 /* CustomerOrTrainnerTableViewCell.m in Sources */,

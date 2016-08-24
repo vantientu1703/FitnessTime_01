@@ -8,11 +8,20 @@
 
 #import "AddTransactionViewController.h"
 #import "CategoryCell.h"
+#import "AddTransactionManager.h"
+#import "CustomerManagerViewController.h"
+#import "CalendarViewController.h"
+#import "ListCategoryViewController.h"
+#import "PopoverQuatityViewController.h"
+#import "DateFormatter.h"
 
-@interface AddTransactionViewController () <UITableViewDelegate, UITableViewDataSource>
+NSString *const kCategoryListSegue = @"CategoryListSegue";
+
+@interface AddTransactionViewController () <UITableViewDelegate, UITableViewDataSource, AddTransactionManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *arrCategory;
+@property (strong, nonatomic) AddTransactionManager *manager;
 
 @end
 
@@ -22,6 +31,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setupView];
+    self.manager = [[AddTransactionManager alloc] init];
+    self.manager.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,11 +42,32 @@
 
 - (void)setupView {
     //TableView with fake data
-    self.arrCategory = @[@"1", @"2", @"3"].mutableCopy;
+    self.arrCategory = @[].mutableCopy;
     [self.tableView registerNib:[UINib nibWithNibName:kTransactionCellIndentifier bundle:nil]
          forCellReuseIdentifier:kTransactionCellIndentifier];
+    self.tableView.scrollEnabled = NO;
+    [self reloadTableView];
+}
+
+- (void)reloadTableView {
     [self.tableView reloadData];
     self.contraintTableViewHeight.constant = self.tableView.contentSize.height;
+}
+
+- (void)reloadSumTotal {
+    NSInteger sum = 0;
+    for (Item *item in self.arrCategory) {
+        sum += (item.price * item.quantity.integerValue);
+    }
+    self.lbTotalCost.text = [NSString stringWithFormat:@"%ld Đ", (long)sum];
+}
+
+- (Transaction *)genarateTransaction {
+    Transaction *tran = [[Transaction alloc] init];
+    //TODO change customerId after customer pick viewcontroller has done
+    tran.customerId = @"1";
+    tran.items = self.arrCategory.copy;
+    return tran;
 }
 
 #pragma mark - TableView implementation
@@ -51,17 +83,22 @@
     CategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:kTransactionCellIndentifier
         forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.lbCategory.text = self.arrCategory[indexPath.row];
+    Item *item = self.arrCategory[indexPath.row];
+    cell.lbCategory.text = item.name;
+    cell.lbCost.text = [NSString stringWithFormat:@"%.0f",item.price];
+    cell.lbQuantity.text = [NSString stringWithFormat:@" x %@", item.quantity.stringValue];
     return cell;
 }
 
 - (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewRowAction *ac1 = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal
         title:@"Edit" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-            //Todo
+        [self performSegueWithIdentifier:kShowQuantitySegue sender:indexPath];
     }];
     UITableViewRowAction *ac2 = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Delete" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-            //Todo
+        [self.arrCategory removeObjectAtIndex:indexPath.row];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+        [self reloadTableView];
     }];
     return @[ac2, ac1];
 }
@@ -80,9 +117,57 @@
 }
 
 - (IBAction)btnSubmitClick:(id)sender {
-    //TODO
-    //send request here
-    [self.navigationController popViewControllerAnimated:YES];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self.manager createTransaction:[self genarateTransaction] byUser:[[DataStore sharedDataStore] getUserManage]];
+}
+
+- (IBAction)didTapCustomer:(id)sender {
+    CustomerManagerViewController *cusVC = [[UIStoryboard storyboardWithName:kCustomerManagerStoryboard bundle:nil]
+        instantiateViewControllerWithIdentifier:kCustomerManagerViewControllerIdentifier];
+    [self.navigationController pushViewController:cusVC animated:YES];
+}
+
+- (IBAction)didTapDate:(id)sender {
+    CalendarViewController *calVC = [[UIStoryboard storyboardWithName:kCalendarIdentifier bundle:nil]
+        instantiateInitialViewController];
+    [calVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {
+        DateFormatter *formater = [[DateFormatter alloc] init];
+        self.lbDate.text = [formater dateFormatterFullInfo:dateSelected];
+    }];
+    [self.navigationController pushViewController:calVC animated:YES];
+}
+
+#pragma mark - Api delegate
+- (void)didCreateTransaction:(Transaction *)transaction withMessage:(NSString *)message withError:(NSError *)error {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    if (error) {
+        [self.manager showAlertByMessage:message title:kCreateFail];
+    } else {
+        [self.manager showAlertByMessage:message title:kCreateSuccess];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:kCategoryListSegue]) {
+        ListCategoryViewController *listVC = ((UINavigationController*)[segue
+            destinationViewController]).viewControllers.firstObject;
+        [listVC didAddItemWithCompletionBlock:^(Item *item) {
+            [self.arrCategory addObject:item];
+            [self reloadTableView];
+            [self reloadSumTotal];
+        }];
+    }
+    if ([segue.identifier isEqualToString:kShowQuantitySegue]) {
+        PopoverQuatityViewController *quantityVC = [segue destinationViewController];
+        NSIndexPath *path = (NSIndexPath*)sender;
+        Item *item = self.arrCategory[path.row];
+        quantityVC.item = item;
+        [quantityVC didEnterQuantityWithCompletionBlock:^(NSUInteger quantity) {
+            item.quantity = [NSNumber numberWithInteger:quantity];
+            [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationTop];
+            [self reloadSumTotal];
+        }];
+    }
 }
 
 @end

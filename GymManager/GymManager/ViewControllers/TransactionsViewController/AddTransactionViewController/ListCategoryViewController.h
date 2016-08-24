@@ -16,5 +16,6 @@ typedef NS_ENUM (NSUInteger, ItemListMode) {
 @interface ListCategoryViewController : UIViewController
 
 @property (nonatomic) ItemListMode mode;
+- (void)didAddItemWithCompletionBlock:(void(^)(Item *item))block;
 
 @end

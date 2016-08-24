@@ -12,7 +12,6 @@
 #import "PopoverEditItemViewController.h"
 #import "CategoryManager.h"
 
-NSString *const kShowQuantitySegue = @"ShowQuatitySegue";
 NSString *const kShowEditSegue = @"ShowEditSegue";
 
 @interface ListCategoryViewController () <UITableViewDelegate, UITableViewDataSource, CategoryManagerDelegate>
@@ -25,6 +24,7 @@ NSString *const kShowEditSegue = @"ShowEditSegue";
 @property (strong, nonatomic) PopoverQuatityViewController *quantityView;
 @property (strong, nonatomic) CategoryManager *manager;
 @property (strong, nonatomic) DataStore *dataStore;
+@property (copy, nonatomic) void(^completionBlock)(Item *item);
 
 @end
 
@@ -172,7 +172,12 @@ NSString *const kShowEditSegue = @"ShowEditSegue";
     if ([segue.identifier isEqualToString:kShowQuantitySegue]) {
         PopoverQuatityViewController *quantityVC = segue.destinationViewController;
         [quantityVC didEnterQuantityWithCompletionBlock:^(NSUInteger quantity) {
-            [self dismissViewControllerAnimated:YES completion:nil];
+            Item *item;
+            NSIndexPath *path = (NSIndexPath*)sender;
+            item = [self.arrCategory[path.row] copy];
+            item.quantity = @(quantity);
+            self.completionBlock(item);
+            [self btnCancelClick:sender];
         }];
     }
     if ([segue.identifier isEqualToString:kShowEditSegue]) {
@@ -190,6 +195,10 @@ NSString *const kShowEditSegue = @"ShowEditSegue";
             }
         }];
     }
+}
+
+- (void)didAddItemWithCompletionBlock:(void(^)(Item *item))block {
+    self.completionBlock = block;
 }
 
 @end

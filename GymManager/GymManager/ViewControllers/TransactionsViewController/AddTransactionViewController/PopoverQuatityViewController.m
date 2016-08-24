@@ -28,6 +28,10 @@
         UIControlEventEditingChanged];
     self.currentQuantity = 0;
     self.txtFieldQuantity.text = [NSString stringWithFormat:@"%lu",(unsigned long)self.currentQuantity];
+    if (self.item) {
+        self.txtFieldQuantity.text = self.item.quantity.stringValue;
+        self.currentQuantity = self.item.quantity.integerValue;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,8 +78,16 @@
 }
 
 - (IBAction)btnSubmitClick:(id)sender {
-    self.completionBlock(self.currentQuantity);
     [self didTapBackGround];
+    if (self.item) {
+        if (self.currentQuantity != self.item.quantity.integerValue) {
+            self.completionBlock(self.currentQuantity);
+        }
+    } else {
+        if (self.currentQuantity > 0) {
+            self.completionBlock(self.currentQuantity);
+        }
+    }
 }
 
 - (IBAction)btnCancelClick:(id)sender {

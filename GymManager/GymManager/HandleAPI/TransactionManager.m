@@ -11,7 +11,7 @@
 @implementation TransactionManager
 
 - (void)fetchAllTransaction {
-    NSString *url = [NSString stringWithFormat:@"%@%@", URLRequest, kGetAllTransactionRequest];
+    NSString *url = [NSString stringWithFormat:@"%@%@", URLRequest, kTransactionRequest];
     NSDictionary *params = @{};
     [self.manager POST:url parameters:params progress:nil
         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

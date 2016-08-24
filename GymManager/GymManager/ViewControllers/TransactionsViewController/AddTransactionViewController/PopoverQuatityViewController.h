@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "ListCategoryViewController.h"
+#import "Item.h"
 
 @interface PopoverQuatityViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIView *viewBackGround;
+@property (strong, nonatomic) Item *item;
 @property (weak, nonatomic) IBOutlet UITextField *txtFieldQuantity;
 
 - (void)didEnterQuantityWithCompletionBlock:(void(^)(NSUInteger quantity))block;

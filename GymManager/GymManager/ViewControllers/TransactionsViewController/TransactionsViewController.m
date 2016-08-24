@@ -97,11 +97,11 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
         NSDictionary *itemtDic = (NSDictionary*)item;
         name = itemtDic[@"name"];
         price = [NSString stringWithFormat:@"%@", itemtDic[@"price"]];
-        quantity = [NSString stringWithFormat:@"x%@", itemtDic[@"quantity"]];
+        quantity = [NSString stringWithFormat:@"x %@", itemtDic[@"quantity"]];
     } else {
         name = item.name;
         price = [NSString stringWithFormat:@"%.0fĐ", item.price];
-        quantity = [NSString stringWithFormat:@"x%d", item.quantity];
+        quantity = [NSString stringWithFormat:@"x %ld", (long)item.quantity.integerValue];
     }
     cell.lbCategory.text = name;
     cell.lbCost.text = price;
