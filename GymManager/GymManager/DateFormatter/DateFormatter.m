@@ -44,7 +44,12 @@
     return [_dateFormatter stringFromDate:date];
 }
 
-- (NSDate *)dateWithMonthYearFormatterFromString:(NSString *)string {
+- (NSDate *)dateByServerFormatFromString:(NSString *)string {
+    _dateFormatter.dateFormat = @"YYYY-MM-dd'T'HH:mm:ss.SSS'Z'";
+    return [_dateFormatter dateFromString:string];
+}
+
+- (NSDate *)dateWithMonthYearFormatterFromString:(NSString*)string {
     _dateFormatter.dateFormat = @"dd/MM/yyyy";
     return [_dateFormatter dateFromString:string];
 }

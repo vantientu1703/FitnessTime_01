@@ -11,9 +11,13 @@
 
 @implementation Transaction
 
-- (void)setDateWithNSString:(NSString*)string {
++ (JSONKeyMapper *)keyMapper {
+    return [JSONKeyMapper baseMapper:[JSONKeyMapper mapperFromUnderscoreCaseToCamelCase] withModelToJSONExceptions:@{@"customer":@"user"}];
+}
+
+- (void)setCreatedAtWithNSString:(NSString *)string {
     DateFormatter *formatter = [[DateFormatter alloc] init];
-    self.date = [formatter dateWithMonthYearFormatterFromString:string];
+    self.createdAt = [formatter dateByServerFormatFromString:string];
 }
 
 @end
