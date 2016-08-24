@@ -9,13 +9,22 @@
 #import "ListCategoryViewController.h"
 #import "CategoryCell.h"
 #import "PopoverQuatityViewController.h"
+#import "PopoverEditItemViewController.h"
+#import "CategoryManager.h"
 
 NSString *const kShowQuantitySegue = @"ShowQuatitySegue";
+NSString *const kShowEditSegue = @"ShowEditSegue";
 
-@interface ListCategoryViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface ListCategoryViewController () <UITableViewDelegate, UITableViewDataSource, CategoryManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) UIRefreshControl *refresh;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnCancel;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnEdit;
 @property (strong, nonatomic) NSMutableArray *arrCategory;
+@property (strong, nonatomic) PopoverQuatityViewController *quantityView;
+@property (strong, nonatomic) CategoryManager *manager;
+@property (strong, nonatomic) DataStore *dataStore;
 
 @end
 
@@ -25,17 +34,29 @@ NSString *const kShowQuantitySegue = @"ShowQuatitySegue";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.refresh = [[UIRefreshControl alloc] init];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self.navigationController setNavigationBarHidden:NO];
-    self.arrCategory = @[@"1", @"2", @"3"].mutableCopy;
+    self.arrCategory = @[].mutableCopy;
     [self.tableView registerNib:[UINib nibWithNibName:kTransactionCellIndentifier bundle:nil]
          forCellReuseIdentifier:kTransactionCellIndentifier];
-    [self.tableView reloadData];
+    self.tableView.allowsSelectionDuringEditing = YES;
+    [self.refresh addTarget:self action:@selector(reloadData) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refresh atIndex:0];
+    self.manager = [[CategoryManager alloc] init];
+    self.dataStore = [DataStore sharedDataStore];
+    self.manager.delegate = self;
+    [self reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)reloadData {
+    [self.refresh beginRefreshing];
+    [self.manager getAllItemsByUser:[self.dataStore getUserManage]];
 }
 
 #pragma mark - TableView implementation
@@ -50,17 +71,100 @@ NSString *const kShowQuantitySegue = @"ShowQuatitySegue";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:kTransactionCellIndentifier
         forIndexPath:indexPath];
-    cell.lbCategory.text = self.arrCategory[indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+    Item *item = self.arrCategory[indexPath.row];
+    cell.lbCategory.text = item.name;
+    cell.lbCost.text = [NSString stringWithFormat:@"%.0fĐ", item.price];
+    [cell.lbQuantity setHidden:YES];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:kShowQuantitySegue sender:indexPath];
+    if (tableView.isEditing) {
+        [self performSegueWithIdentifier:kShowEditSegue sender:indexPath];
+    } else {
+        [self performSegueWithIdentifier:kShowQuantitySegue sender:indexPath];
+    }
+}
+
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewRowAction *ac1 = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive
+        title:@"Delete" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        [self.manager deleteItem:self.arrCategory[indexPath.row] ByUser:[self.dataStore getUserManage]
+            atIndexPath:indexPath];
+        [MBProgressHUD showHUDAddedTo:[self.tableView cellForRowAtIndexPath:indexPath] animated:YES];
+    }];
+    return @[ac1];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
 }
 
 #pragma mark - Button Hanlder
 - (IBAction)btnCancelClick:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if (self.tableView.isEditing) {
+        [self performSegueWithIdentifier:kShowEditSegue sender:nil];
+    } else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+- (IBAction)btnEdit:(id)sender {
+    if (self.tableView.isEditing) {
+        self.mode = ItemListModeEdit;
+        [self.tableView setEditing:NO animated:YES];
+        [self.btnCancel setTitle:@"Cancel"];
+        [self.btnEdit setTitle:@"Done"];
+    } else {
+        self.mode = ItemListModeNormal;
+        [self.tableView setEditing:YES animated:YES];
+        [self.btnCancel setTitle:@"Add"];
+        [self.btnEdit setTitle:@"Edit"];
+    }
+}
+
+#pragma mark - APi delegate
+- (void)didFetchAllItemsWithMessage:(NSString *)message withError:(NSError *)error returnItems:(NSArray *)items {
+    if (error) {
+        [self.manager showAlertByMessage:message title:@"Error"];
+    } else {
+        [self.arrCategory removeAllObjects];
+        self.arrCategory = items.mutableCopy;
+        [self.tableView reloadData];
+    }
+    [self.refresh endRefreshing];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+
+- (void)didCreateItem:(Item*)item WithMessage:(NSString *)message withError:(NSError *)error {
+    if (error) {
+        [self.manager showAlertByMessage:message title:@"Error"];
+    } else {
+        [self.arrCategory addObject:item];
+        [self.tableView reloadData];
+    }
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+
+- (void)didUpdateItem:(Item *)item WithMessage:(NSString *)message withError:(NSError *)error atIndexPath:(NSIndexPath *)indexPath {
+    if (error) {
+        [self.manager showAlertByMessage:message title:@"Error"];
+    } else {
+        self.arrCategory[indexPath.row] = item;
+        [self.tableView reloadData];
+    }
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+
+- (void)didDeleteItemWithMessage:(NSString *)message withError:(NSError *)error atIndexPath:(NSIndexPath *)indexPath{
+    if (error) {
+        [self.manager showAlertByMessage:message title:@"Error"];
+    } else {
+        [self.arrCategory removeObjectAtIndex:indexPath.row];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+    }
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 #pragma mark - navigation
@@ -69,6 +173,21 @@ NSString *const kShowQuantitySegue = @"ShowQuatitySegue";
         PopoverQuatityViewController *quantityVC = segue.destinationViewController;
         [quantityVC didEnterQuantityWithCompletionBlock:^(NSUInteger quantity) {
             [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+    }
+    if ([segue.identifier isEqualToString:kShowEditSegue]) {
+        PopoverEditItemViewController *editVC = [segue destinationViewController];
+        NSIndexPath *path = (NSIndexPath*)sender;
+        if (path) {
+            editVC.item = self.arrCategory[path.row];
+        }
+        [editVC didEditItemWithCompletionBlock:^(Item *item) {
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            if (sender) {
+                [self.manager updateItem:item ByUser:[self.dataStore getUserManage]atIndexPath:path];
+            } else {
+                [self.manager createItem:item ByUser:[self.dataStore getUserManage]];
+            }
         }];
     }
 }

@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM (NSUInteger, ItemListMode) {
+    ItemListModeEdit,
+    ItemListModeNormal
+};
+
 @interface ListCategoryViewController : UIViewController
+
+@property (nonatomic) ItemListMode mode;
 
 @end

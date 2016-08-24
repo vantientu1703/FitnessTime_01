@@ -74,12 +74,13 @@ NSString *const kCoreDataModel = @"GymManager";
 NSString *const kBundleID = @"com.vantientu.GymManager";
 
 #pragma mark - API
-NSString *const URLRequest = @"https://fit-ness-backend.herokuapp.com/api/auth/";
-NSString *const kLoginRequest = @"login";
-NSString *const kRegisterRequest = @"register";
+NSString *const URLRequest = @"https://fit-ness-backend.herokuapp.com/api/";
+NSString *const kLoginRequest = @"auth/login";
+NSString *const kRegisterRequest = @"auth/register";
 NSString *const kGetAllTransactionRequest = @"transaction";
 NSString *const kURLAPI = @"https://fit-ness-backend.herokuapp.com/api/";
 NSString *const kAPIUser = @"users";
+NSString *const kGetAllItemsRequest = @"items";
 
 #pragma mark - Message
 NSString *const kMessageFailLogin = @"Login is fail";
