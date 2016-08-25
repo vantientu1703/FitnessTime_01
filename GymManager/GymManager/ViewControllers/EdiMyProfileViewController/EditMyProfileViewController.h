@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EditMyProfileViewController : UIViewController
+@protocol EditMyProfileViewControllerDelegate <NSObject>
 
+- (void)updateUser:(User *)user;
+
+@end
+
+@interface EditMyProfileViewController : UIViewController
+@property (weak, nonatomic) id<EditMyProfileViewControllerDelegate> delegate;
+@property (strong, nonatomic) User *user;
 @end

@@ -12,7 +12,7 @@
 - (void)getAllTrainers {
     NSString *url = [NSString stringWithFormat:@"%@%@", kURLAPI, kAPIUser];
     User *user = (User *)[[DataStore sharedDataStore] getUserManage];
-    NSDictionary *params = @{@"auth_token": user.authToken, @"role": @"0"};
+    NSDictionary *params = @{@"auth_token": user.authToken, @"role": @"trainer"};
     [self.manager GET:url parameters:params progress:nil
         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSError *error;

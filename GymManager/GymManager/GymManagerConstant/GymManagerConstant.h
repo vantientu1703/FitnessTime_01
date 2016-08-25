@@ -72,6 +72,7 @@ extern NSString *const kCreateSuccess;
 extern NSString *const kCreateFail;
 extern NSString *const kUpdateSuccess;
 extern NSString *const kUpdateFail;
+extern NSString *const kSelectDate;
 
 #pragma mark - CoreData
 extern NSString *const kCoreDataModel;
@@ -86,6 +87,7 @@ extern NSString *const kGetAllTransactionRequest;
 extern NSString *const kURLAPI;
 extern NSString *const kAPIUser;
 extern NSString *const kGetAllItemsRequest;
+extern NSString *const kManager;
 
 #pragma mark - Message
 extern NSString *const kMessageFailLogin;

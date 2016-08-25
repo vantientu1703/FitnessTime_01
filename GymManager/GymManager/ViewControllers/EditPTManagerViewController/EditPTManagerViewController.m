@@ -56,11 +56,19 @@ NSString *const kSelectAvatar = @"Select avatar,please";
         target:self action:@selector(savePTInfo:)];
     self.navigationItem.rightBarButtonItem = doneButton;
     if ([self.statusEditString isEqualToString:kEditTrainerTitle]) {
+        DateFormatter *dateFormatter = [[DateFormatter alloc] init];
         self.textFieldAddress.text = self.trainer.address;
         self.textFieldEmail.text = self.trainer.email;
         self.textFieldFullName.text = self.trainer.fullName;
         self.textFieldPhoneNumber.text = self.trainer.telNumber;
         self.textFiledIncomeShif.text = [NSString stringWithFormat:@"%0.2f", self.trainer.meetingMoney];
+        if (self.trainer.birthday) {
+            [self.buttonDateOfBirth setTitle:[dateFormatter dateFormatterDateMonthYear:self.trainer.birthday]
+                forState:UIControlStateNormal];
+        } else {
+            [self.buttonDateOfBirth setTitle:kSelectDate forState:UIControlStateNormal];
+        }
+        
         _dateOfBirth = self.trainer.birthday;
         _imageString = self.trainer.avatar;
     }
