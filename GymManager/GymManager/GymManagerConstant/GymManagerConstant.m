@@ -72,6 +72,7 @@ NSString *const kCreateSuccess = @"Create success";
 NSString *const kCreateFail = @"Create fail";
 NSString *const kUpdateSuccess = @"Update success";
 NSString *const kUpdateFail = @"Update fail";
+NSString *const kSelectDate = @"Select date";
 
 #pragma mark - CoreData
 NSString *const kCoreDataModel = @"GymManager";
@@ -85,6 +86,7 @@ NSString *const kGetAllTransactionRequest = @"transaction";
 NSString *const kURLAPI = @"https://fit-ness-backend.herokuapp.com/api/";
 NSString *const kAPIUser = @"users";
 NSString *const kGetAllItemsRequest = @"items";
+NSString *const kManager = @"managers";
 
 #pragma mark - Message
 NSString *const kMessageFailLogin = @"Login is fail";

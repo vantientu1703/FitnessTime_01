@@ -35,6 +35,22 @@ NSString *const kUserDefaultLoginCheck = @"loged";
     return sharedDataStore;
 }
 
+- (void)updateProfile:(User *)user complete:(void(^)(BOOL success))complete {
+    UserManager *userManager = [UserManager MR_findFirst];
+    userManager.id = user.id;
+    userManager.telNumber = user.telNumber;
+    userManager.birthday = user.birthday;
+    userManager.address = user.address;
+    userManager.email = user.email;
+    userManager.avatar = user.avatar;
+    userManager.userName = user.userName;
+    [self.keychain setString:user.authToken forKey:kTokenChainKey];
+    [[NSManagedObjectContext MR_defaultContext]
+     MR_saveToPersistentStoreWithCompletion:^(BOOL contextDidSave, NSError * _Nullable error) {
+        complete(contextDidSave);
+     }];
+}
+
 - (User*)getUserManage {
     UserManager *mangerManage = [UserManager MR_findFirst];
     User *user = [[User alloc] init];

@@ -39,4 +39,5 @@
 #import "Customer.h"
 #import "UIImageConstant.h"
 #import "CustomerManager.h"
+#import "ProfileManager.h"
 #endif /* GymManager_PrefixHeader_pch */

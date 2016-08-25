@@ -50,6 +50,7 @@
 		EF635BFF1D6CB21900BEB9A1 /* TrainerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF635BFE1D6CB21900BEB9A1 /* TrainerManager.m */; settings = {ASSET_TAGS = (); }; };
 		EF635C021D6D79BC00BEB9A1 /* UIImageConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = EF635C011D6D79BC00BEB9A1 /* UIImageConstant.m */; settings = {ASSET_TAGS = (); }; };
 		EF635C051D6D878000BEB9A1 /* CustomerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF635C041D6D878000BEB9A1 /* CustomerManager.m */; settings = {ASSET_TAGS = (); }; };
+		EF635C081D6DD46F00BEB9A1 /* ProfileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF635C071D6DD46E00BEB9A1 /* ProfileManager.m */; settings = {ASSET_TAGS = (); }; };
 		EF870A751D5DA11200118D7C /* GymManagerConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = EF870A741D5DA11200118D7C /* GymManagerConstant.m */; };
 		EF870A831D5DB66700118D7C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF870A821D5DB66700118D7C /* LoginViewController.m */; };
 		EF870A861D5DBA9F00118D7C /* ic_key.png in Resources */ = {isa = PBXBuildFile; fileRef = EF870A841D5DBA9F00118D7C /* ic_key.png */; };
@@ -166,6 +167,8 @@
 		EF635C011D6D79BC00BEB9A1 /* UIImageConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIImageConstant.m; path = GymManagerConstant/UIImageConstant.m; sourceTree = "<group>"; };
 		EF635C031D6D877F00BEB9A1 /* CustomerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomerManager.h; path = HandleAPI/CustomerManager.h; sourceTree = "<group>"; };
 		EF635C041D6D878000BEB9A1 /* CustomerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomerManager.m; path = HandleAPI/CustomerManager.m; sourceTree = "<group>"; };
+		EF635C061D6DD46E00BEB9A1 /* ProfileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileManager.h; path = HandleAPI/ProfileManager.h; sourceTree = "<group>"; };
+		EF635C071D6DD46E00BEB9A1 /* ProfileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileManager.m; path = HandleAPI/ProfileManager.m; sourceTree = "<group>"; };
 		EF7E23E51D672A3600B613FD /* AddNewCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddNewCategoryViewController.h; path = ViewControllers/AddNewCategoryViewController/AddNewCategoryViewController.h; sourceTree = "<group>"; };
 		EF7E23E61D672A3600B613FD /* AddNewCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddNewCategoryViewController.m; path = ViewControllers/AddNewCategoryViewController/AddNewCategoryViewController.m; sourceTree = "<group>"; };
 		EF7E23E91D6740A400B613FD /* EditNumberOfCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditNumberOfCategoryViewController.h; path = ViewControllers/EditNumberOfCategoryViewController/EditNumberOfCategoryViewController.h; sourceTree = "<group>"; };
@@ -436,6 +439,8 @@
 				4026372B1D6CA945006E71AD /* CategoryManager.m */,
 				EF635C031D6D877F00BEB9A1 /* CustomerManager.h */,
 				EF635C041D6D878000BEB9A1 /* CustomerManager.m */,
+				EF635C061D6DD46E00BEB9A1 /* ProfileManager.h */,
+				EF635C071D6DD46E00BEB9A1 /* ProfileManager.m */,
 			);
 			name = HandleAPI;
 			sourceTree = "<group>";
@@ -964,6 +969,7 @@
 				EFFD8D581D66CE4A00994CC5 /* DetailPTManagerViewController.m in Sources */,
 				EFF28BD11D65730F000F9B27 /* MeetingDetailViewController.m in Sources */,
 				EF870A831D5DB66700118D7C /* LoginViewController.m in Sources */,
+				EF635C081D6DD46F00BEB9A1 /* ProfileManager.m in Sources */,
 				40B8A72B1D640C04007AB6BF /* ListCategoryViewController.m in Sources */,
 				EFFD8D5C1D66D9C000994CC5 /* EditPTManagerViewController.m in Sources */,
 				40B8A72C1D640C04007AB6BF /* PopoverQuatityViewController.m in Sources */,

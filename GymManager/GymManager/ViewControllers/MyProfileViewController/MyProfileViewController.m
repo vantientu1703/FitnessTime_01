@@ -11,13 +11,14 @@
 
 CGFloat const kCornerRadiusProfile = 50.0f;
 
-@interface MyProfileViewController ()
+@interface MyProfileViewController ()<EditMyProfileViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewMyProfile;
 @property (weak, nonatomic) IBOutlet UILabel *labelFullName;
 @property (weak, nonatomic) IBOutlet UILabel *labelDateOfBirth;
 @property (weak, nonatomic) IBOutlet UILabel *labelAddress;
 @property (weak, nonatomic) IBOutlet UILabel *labelEmail;
+@property (strong, nonatomic) User *user;
 
 @end
 
@@ -26,6 +27,17 @@ CGFloat const kCornerRadiusProfile = 50.0f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupView];
+    [self setupProfile];
+}
+
+- (void)setupProfile {
+    DateFormatter *dateFormatter = [[DateFormatter alloc] init];
+    self.user = (User *)[[DataStore sharedDataStore] getUserManage];
+    self.labelFullName.text = self.user.fullName;
+    self.labelEmail.text = self.user.email;
+    self.labelDateOfBirth.text = [dateFormatter
+        dateFormatterDateMonthYear:self.user.birthday];
+    self.labelAddress.text = self.user.address;
 }
 
 #pragma mark - Setup view
@@ -41,7 +53,15 @@ CGFloat const kCornerRadiusProfile = 50.0f;
     UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
     EditMyProfileViewController *editMyProfileVC = [st
         instantiateViewControllerWithIdentifier:kEditMyProfileViewControllerIdentifier];
+    editMyProfileVC.user = self.user;
+    editMyProfileVC.delegate = self;
     [self.navigationController pushViewController:editMyProfileVC animated:true];
+}
+
+#pragma mark - EditProfileViewControlerDelegate
+- (void)updateUser:(User *)user {
+    self.user = user;
+    [self setupProfile];
 }
 
 @end
