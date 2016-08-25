@@ -163,7 +163,11 @@ NSString *const kSelectImages = @"Select avatar,please";
     } else {
         [MBProgressHUD showHUDAddedTo:self.view animated:true];
         Customer *customer;
-        customer = [[Customer alloc] init];
+        if ([self.messageEditCustomer isEqualToString:kMessageEditCustomer]) {
+            customer = self.customer;
+        } else {
+            customer = [[Customer alloc] init];
+        }
         customer.fullName = self.textFieldNameCustomer.text;
         customer.telNumber = self.textFieldPhoneNumber.text;
         customer.address = self.textFieldAddress.text;
@@ -173,7 +177,11 @@ NSString *const kSelectImages = @"Select avatar,please";
         customer.avatar = _imageAvatar;
         CustomerManager *customerManager = [[CustomerManager alloc] init];
         customerManager.delegate = self;
-        [customerManager createCustomer:customer];
+        if ([self.messageEditCustomer isEqualToString:kMessageEditCustomer]) {
+            [customerManager updateTrainer:customer];
+        } else {
+            [customerManager createCustomer:customer];
+        }
     }
 }
 
@@ -188,6 +196,22 @@ NSString *const kSelectImages = @"Select avatar,please";
     } else {
         self.labelNotes.text = kCreateFail;
         [AlertManager showAlertWithTitle:kReminderTitle message:error.localizedDescription
+            viewControler:self okAction:^{
+        }];
+    }
+}
+
+- (void)updateCustomerWithMessage:(BOOL)success withError:(NSError *)error returnCustomer:(Customer *)customer {
+    if (success) {
+        [MBProgressHUD hideHUDForView:self.view animated:true];
+        self.labelNotes.text = kUpdateSuccess;
+        if ([self.delegate respondsToSelector:@selector(updateCustomer:)]) {
+            [self.delegate updateCustomer:customer];
+        }
+    } else {
+        self.labelNotes.text = kUpdateFail;
+        [MBProgressHUD hideHUDForView:self.view animated:true];
+        [AlertManager showAlertWithTitle:kRegisterRequest message:error.localizedDescription
             viewControler:self okAction:^{
         }];
     }

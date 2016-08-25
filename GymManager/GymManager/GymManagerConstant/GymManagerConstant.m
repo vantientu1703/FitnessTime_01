@@ -70,6 +70,8 @@ NSString *const kCalendarIdentifier = @"Calendar";
 NSString *const kEditTrainerTitle = @"Edit trainer";
 NSString *const kCreateSuccess = @"Create success";
 NSString *const kCreateFail = @"Create fail";
+NSString *const kUpdateSuccess = @"Update success";
+NSString *const kUpdateFail = @"Update fail";
 
 #pragma mark - CoreData
 NSString *const kCoreDataModel = @"GymManager";

@@ -14,7 +14,7 @@ CGFloat const kCornerRadiusViewBackgroundCustomer = 5.0f;
 CGFloat const kCornerRadiusImageViewCustomers = 40.0f;
 NSString *const kEdiCustomerTitle = @"Edit customer";
 
-@interface InfoCustomerManagerViewController ()
+@interface InfoCustomerManagerViewController ()<AddNewCustomerViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *viewBackgroudInfoCustomer;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewCustomer;
@@ -67,7 +67,17 @@ NSString *const kEdiCustomerTitle = @"Edit customer";
         instantiateViewControllerWithIdentifier:kAddNewCustomerViewControllerIdentifier];
     addNewCustomerVC.messageEditCustomer = kMessageEditCustomer;
     addNewCustomerVC.customer = self.customer;
+    addNewCustomerVC.delegate = self;
     [self.navigationController pushViewController:addNewCustomerVC animated:true];
+}
+
+#pragma mark - AddNewCustomerViewControllerDelegate
+- (void)updateCustomer:(Customer *)customer {
+    self.customer = customer;
+    [self setupInfoCustomer];
+    if ([self.delegate respondsToSelector:@selector(reloadDataCustomers:)]) {
+        [self.delegate reloadDataCustomers:customer];
+    }
 }
 
 @end

@@ -18,4 +18,10 @@
     return newImage;
 }
 
++ (UIImage *)decodeBase64ToImage:(NSString *)strEncodeData {
+    NSData *data = [[NSData alloc] initWithBase64EncodedString:strEncodeData
+        options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    return [UIImage imageWithData:data];
+}
+
 @end

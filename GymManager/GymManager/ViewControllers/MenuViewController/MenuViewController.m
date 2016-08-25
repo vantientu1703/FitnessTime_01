@@ -100,7 +100,7 @@ static NSString *const kCellDefault = @"CellDefault";
             break;
         }
         case MenuDetailRowLogOut: {
-            AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
             [[DataStore sharedDataStore] clearUser];
             [appDelegate loadLoginViewController];
             break;

@@ -18,6 +18,7 @@
 
 - (void)getAllCustomers;
 - (void)createCustomer:(Customer *)customer;
+- (void)updateTrainer:(Customer *)customer;
 @property (weak, nonatomic) id<CustomerManagerDelegate> delegate;
 
 @end

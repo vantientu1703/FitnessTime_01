@@ -16,7 +16,7 @@ CGFloat const kCornerRadiusAddNewCustomer = 20.0f;
 //TODO
 NSString *const kNameCustomer = @"Ngo Van Van Duong";
 
-@interface CustomerManagerViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, AddNewCustomerViewControllerDelegate, CustomerManagerDelegate>
+@interface CustomerManagerViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, AddNewCustomerViewControllerDelegate, CustomerManagerDelegate, InfoCustomerManagerViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonAddNewCustomer;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -25,7 +25,9 @@ NSString *const kNameCustomer = @"Ngo Van Van Duong";
 @end
 
 @implementation CustomerManagerViewController
-
+{
+    NSIndexPath *_indexPath;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -81,15 +83,25 @@ NSString *const kNameCustomer = @"Ngo Van Van Duong";
     UIStoryboard *customerStoryboard = [UIStoryboard
         storyboardWithName:kCustomerManagerStoryboard bundle:nil];
     if ([self.statusCustomerManagerTitle isEqualToString:kCustomerManagerVCTitle]) {
-        InfoCustomerManagerViewController *infoCustomerVC = [customerStoryboard
-            instantiateViewControllerWithIdentifier:kInfoCustomerManagerViewControllerIdentifier];
+        InfoCustomerManagerViewController *infoCustomerVC;
+        if (!infoCustomerVC) {
+            infoCustomerVC = [customerStoryboard
+                instantiateViewControllerWithIdentifier:kInfoCustomerManagerViewControllerIdentifier];
+        }
+        infoCustomerVC.delegate = self;
         infoCustomerVC.customer = self.arrCustomers[indexPath.row];
-        NSLog(@"%@", self.arrCustomers[indexPath.row]);
+        _indexPath = indexPath;
         [self.navigationController pushViewController:infoCustomerVC animated:true];
     } else {
         [self.navigationController popViewControllerAnimated:true];
     }
     
+}
+
+#pragma mark - InfoCustomerManagerViewControllerDelegate
+- (void)reloadDataCustomers:(Customer *)customer {
+    [self.arrCustomers replaceObjectAtIndex:_indexPath.row withObject:customer];
+    [self.collectionView reloadData];
 }
 
 #pragma mark - Button add new customer
