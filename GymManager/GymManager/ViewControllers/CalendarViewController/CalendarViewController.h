@@ -11,11 +11,13 @@
 typedef NS_ENUM(NSUInteger, CalendarPickerState) {
     CalendarPickerStateDay,
     CalendarPickerStateMonth,
-    CalendarPickerStateYear
+    CalendarPickerStateYear,
+    CalendarPickerStateTime
 };
 
 @interface CalendarViewController : UIViewController
 
+@property (nonatomic) CalendarPickerState state;
 - (void)didPickDateWithCompletionBlock:(void(^)(NSDate* dateSelected, CalendarPickerState state))callBackBlock;
 
 @end

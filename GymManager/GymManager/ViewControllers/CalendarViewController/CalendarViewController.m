@@ -18,14 +18,12 @@ NSInteger const kYearPickerRange = 20;
 @property (copy, nonatomic) void(^callBackBlock)(NSDate *date, CalendarPickerState state);
 @property (weak, nonatomic) IBOutlet UIButton *btnPick;
 @property (weak, nonatomic) IBOutlet UILabel *lbDateSelected;
-@property (weak, nonatomic) IBOutlet UIView *containerView;
-@property (weak, nonatomic) IBOutlet RSDFDatePickerView *datePickerView;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePickerView;
 @property (weak, nonatomic) IBOutlet SRMonthPicker *monthYearPicker;
 @property (weak, nonatomic) IBOutlet UIPickerView *yearPicker;
 @property (nonatomic) NSInteger startYear;
+@property (strong, nonatomic) DateFormatter *formatter;
 @property (strong, nonatomic) NSDate *dateSelected;
-@property (strong, nonatomic) NSDateFormatter *formatter;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
 
 @end
 
@@ -36,22 +34,11 @@ NSInteger const kYearPickerRange = 20;
     // Do any additional setup after loading the view from its nib.
     self.title = @"Calendar";
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    //Setup Day View
+    //Setup Day
+    self.formatter = [DateFormatter sharedInstance];
     self.dateSelected = [NSDate date];
-    self.datePickerView.delegate = self;
-    //Setup Month view
-    self.monthYearPicker.delegate = self;
-    self.formatter = [[NSDateFormatter alloc] init];
-    [self didSelectDaySegment];
-    //Setup Year view
-    self.formatter.dateFormat = @"yyyy";
-    NSCalendar *cal = [NSCalendar currentCalendar];
-    NSDate *startYear = [cal dateByAddingUnit:NSCalendarUnitYear value:-(kYearPickerRange / 2) toDate:[NSDate date]
-        options:0];
-    self.startYear = [self.formatter stringFromDate:startYear].integerValue;
-    self.dateSelected = [self.formatter dateFromString:[NSString stringWithFormat:@"%d", self.startYear]];
-    self.yearPicker.dataSource = self;
-    self.yearPicker.delegate = self;
+    [self setTodayLabel];
+    [self pickerWithState:self.state];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,7 +60,7 @@ NSInteger const kYearPickerRange = 20;
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    self.dateSelected = [self.formatter dateFromString:[NSString stringWithFormat:@"%d", (self.startYear + row)]];
+    self.dateSelected = [self.formatter dateFromYearString:[NSString stringWithFormat:@"%d", (self.startYear + row)]];
 }
 
 #pragma mark - Day picker implementation
@@ -84,30 +71,32 @@ NSInteger const kYearPickerRange = 20;
 
 #pragma mark - action hanlder
 - (IBAction)btnPickClick:(id)sender {
-    CalendarPickerState state;
     NSDate *date;
-    switch (self.segment.selectedSegmentIndex) {
+    switch (self.state) {
+        case CalendarPickerStateYear:
+            date = self.dateSelected;
+            break;
         case CalendarPickerStateMonth:
-            state = CalendarPickerStateMonth;
             date = self.monthYearPicker.date;
             break;
         default:
-            state = CalendarPickerStateYear;
-            date = self.dateSelected;
+            date = self.datePickerView.date;
             break;
     }
-    self.callBackBlock(date, state);
+    self.callBackBlock(date, self.state);
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)segmentClicked:(id)sender {
-    UISegmentedControl *segment = sender;
-    switch (segment.selectedSegmentIndex) {
+- (void)pickerWithState:(CalendarPickerState)state {
+    switch (state) {
         case CalendarPickerStateDay:
             [self didSelectDaySegment];
             break;
         case CalendarPickerStateMonth:
             [self didSelectMonthSegment];
+            break;
+        case CalendarPickerStateTime:
+            [self didSelectTimeSegment];
             break;
         default:
             [self didSelectYearSegment];
@@ -115,27 +104,43 @@ NSInteger const kYearPickerRange = 20;
     }
 }
 
+- (void)setTodayLabel {
+    self.lbDateSelected.text =[self.formatter dateFormatterDateMonthYear:[NSDate date]];
+}
+
 - (void)didSelectDaySegment {
-    self.formatter.dateFormat = @"dd\nMMMM\nyyyy";
-    self.lbDateSelected.text =[self.formatter stringFromDate:[NSDate date]];
     self.datePickerView.hidden = NO;
     self.monthYearPicker.hidden = YES;
     self.yearPicker.hidden = YES;
-    self.btnPick.hidden = YES;
 }
 
 - (void)didSelectMonthSegment {
+    //Setup Month view
+    self.monthYearPicker.delegate = self;
     self.datePickerView.hidden = YES;
     self.monthYearPicker.hidden = NO;
     self.yearPicker.hidden = YES;
-    self.btnPick.hidden = NO;
 }
 
 - (void)didSelectYearSegment {
+    //Set fisrt year in list
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSDate *startYearDate = [cal dateByAddingUnit:NSCalendarUnitYear value:-(kYearPickerRange / 2) toDate:[NSDate date]
+        options:0];
+    self.startYear = [self.formatter yearStringFromDate:startYearDate].integerValue;
+    self.dateSelected = [self.formatter dateFromYearString:[NSString stringWithFormat:@"%d", self.startYear]];
+    self.yearPicker.dataSource = self;
+    self.yearPicker.delegate = self;
     self.datePickerView.hidden = YES;
     self.monthYearPicker.hidden = YES;
     self.yearPicker.hidden = NO;
-    self.btnPick.hidden = NO;
+}
+
+- (void)didSelectTimeSegment {
+    self.datePickerView.datePickerMode = UIDatePickerModeDateAndTime;
+    self.datePickerView.hidden = NO;
+    self.monthYearPicker.hidden = YES;
+    self.yearPicker.hidden = YES;
 }
 
 - (void)didPickDateWithCompletionBlock:(void(^)(NSDate* dateSelected, CalendarPickerState state))callBackBlock {

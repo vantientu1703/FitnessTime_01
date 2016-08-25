@@ -17,5 +17,7 @@
 - (NSString *)dateFormatterHour:(NSDate *)date;
 - (NSString *)dateWithHourFormatterFromString:(NSString *)string;
 - (NSString *)dateWithDateMonthYearFormatterFromString:(NSString *)string;
+- (NSString *)yearStringFromDate:(NSDate *)date;
+- (NSDate *)dateFromYearString:(NSString *)string;
 
 @end

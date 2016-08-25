@@ -28,6 +28,16 @@
     return sharedInstance;
 }
 
+- (NSString *)yearStringFromDate:(NSDate *)date {
+    _dateFormatter.dateFormat = @"yyyy";
+    return [_dateFormatter stringFromDate:date];
+}
+
+- (NSDate *)dateFromYearString:(NSString *)string {
+    _dateFormatter.dateFormat = @"yyyy";
+    return [_dateFormatter dateFromString:string];
+}
+
 - (NSString *)dateFormatterDateMonthYear:(NSDate *)date {
     _dateFormatter.dateFormat = @"dd/MM/yyyy";
     return [_dateFormatter stringFromDate:date];

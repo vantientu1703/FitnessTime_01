@@ -338,7 +338,7 @@
                                                         <state key="normal" title="Add Category"/>
                                                         <connections>
                                                             <action selector="btnAddCategoryClick:" destination="kTx-Na-KWR" eventType="touchUpInside" id="PJK-g7-jBB"/>
-                                                            <segue destination="Ke4-kb-BNU" kind="presentation" id="908-Yq-2t6"/>
+                                                            <segue destination="Ke4-kb-BNU" kind="presentation" identifier="CategoryListSegue" id="908-Yq-2t6"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
