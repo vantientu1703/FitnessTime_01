@@ -44,11 +44,12 @@ NSString *const kUserDefaultLoginCheck = @"loged";
     userManager.email = user.email;
     userManager.avatar = user.avatar;
     userManager.userName = user.userName;
+    userManager.fullName = user.fullName;
     [self.keychain setString:user.authToken forKey:kTokenChainKey];
     [[NSManagedObjectContext MR_defaultContext]
      MR_saveToPersistentStoreWithCompletion:^(BOOL contextDidSave, NSError * _Nullable error) {
         complete(contextDidSave);
-     }];
+    }];
 }
 
 - (User*)getUserManage {

@@ -13,10 +13,11 @@
 NSString *const kTodayMeetingTableViewCellIdentifier = @"TodayMeetingTableViewCell";
 CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
 
-@interface TodayMeetingsViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface TodayMeetingsViewController ()<UITableViewDelegate, UITableViewDataSource, MeetingManagerDelegate, MeetingDetailViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonAddMeeting;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSMutableArray *arrMeetings;
 
 @end
 
@@ -26,6 +27,28 @@ CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupView];
+    [self getAllMeetngsToday];
+}
+
+- (void)getAllMeetngsToday {
+    [MBProgressHUD showHUDAddedTo:self.view animated:true];
+    MeetingManager *meetingManager = [[MeetingManager alloc] init];
+    meetingManager.delegate = self;
+    [meetingManager getAllMeetings];
+}
+
+#pragma mark - MeetingManagerDelegate
+- (void)didResponseWithMessage:(NSString *)message withError:(NSError *)error returnArray:(NSArray *)arrMeetings {
+    if (error) {
+        [AlertManager showAlertWithTitle:kRegisterRequest message:message
+            viewControler:self reloadAction:^{
+            [self getAllMeetngsToday];
+        }];
+    } else {
+        [MBProgressHUD hideHUDForView:self.view animated:true];
+        self.arrMeetings = arrMeetings.mutableCopy;
+        [self.tableView reloadData];
+    }
 }
 
 - (void)setupView {
@@ -54,14 +77,14 @@ CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
 
 #pragma mark - UITableViewDataSources
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    //TODO
-    return 10;
+    return self.arrMeetings.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TodayMeetingTableViewCell *cell = (TodayMeetingTableViewCell *)[tableView
         dequeueReusableCellWithIdentifier:kTodayMeetingTableViewCellIdentifier forIndexPath:indexPath];
-    //TODO
+    Meeting *meeting = self.arrMeetings[indexPath.row];
+    [cell cellWithMeeting:meeting];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -96,6 +119,7 @@ CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
     UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
     MeetingDetailViewController *meetingDetailVC = [st
         instantiateViewControllerWithIdentifier:kMeetingDetailViewControllerIdentifier];
+    meetingDetailVC.delegate = self;
     meetingDetailVC.statusEditMeeting = kAddNewMeetingTitle;
     [self.navigationController pushViewController:meetingDetailVC animated:true];
 }
@@ -114,6 +138,15 @@ CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
     [alertController addAction:okAction];
     [alertController addAction:cancelAction];
     [self presentViewController:alertController animated:true completion:nil];
+}
+
+#pragma mark - MeetingDetailViewControllerDelegate
+- (void)reloadDataMeetings:(Meeting *)meeting {
+    if (!self.arrMeetings) {
+        self.arrMeetings = [NSMutableArray array];
+    }
+    [self.arrMeetings addObject:meeting];
+    [self.tableView reloadData];
 }
 
 @end

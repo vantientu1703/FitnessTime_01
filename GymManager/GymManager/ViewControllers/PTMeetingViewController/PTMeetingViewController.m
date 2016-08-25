@@ -128,7 +128,10 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
         detailPTManagerVC.delegate = self;
         [self.navigationController pushViewController:detailPTManagerVC animated:true];
     } else if ([self.statusAddNewMeeting isEqualToString:kStatusAddNewMeeting]) {
-        [self.navigationController popViewControllerAnimated:YES];
+        if ([self.delegate respondsToSelector:@selector(selectedTrainer:)]) {
+            [self.delegate selectedTrainer:self.arrTrainers[indexPath.row]];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
     }
 }
 

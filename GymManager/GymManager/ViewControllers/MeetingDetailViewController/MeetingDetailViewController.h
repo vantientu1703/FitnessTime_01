@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol MeetingDetailViewControllerDelegate <NSObject>
+- (void)reloadDataMeetings:(Meeting *)meeting;
+@end
+
 @interface MeetingDetailViewController : UIViewController
+@property (weak, nonatomic) id<MeetingDetailViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSString *statusEditMeeting;
 @end

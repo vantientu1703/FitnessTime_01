@@ -35,7 +35,7 @@ NSString *const kNotificationNOSelectStartDate = @"Select start date,please!";
 NSString *const kNotificationNOSelectEndDate = @"Select end date,please!";
 CGFloat const kHeightMeetingDetailCell = 44.0f;
 
-@interface MeetingDetailViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface MeetingDetailViewController ()<UITableViewDataSource, UITableViewDelegate, MeetingManagerDelegate, PTMeetingViewControllerDelegate, CustomerManagerViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *labelNotes;
@@ -44,6 +44,11 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
 
 @implementation MeetingDetailViewController
 {
+    NSIndexPath *_indexPath;
+    Trainer *_trainer;
+    Customer *_customer;
+    NSDate *_fromDate;
+    NSDate *_toDate;
     NSString *_nameTrainer;
     NSString *_nameCustomer;
     BOOL _boolStartDate;
@@ -125,32 +130,54 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
 - (void)tableView:(UITableView *)tableView
     didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:true];
+    DateFormatter *dateFormatter = [[DateFormatter alloc] init];
     UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
-    PTMeetingViewController *ptMeetingVC = [st
-        instantiateViewControllerWithIdentifier:kPTMeetingViewControllerIdentifier];
-    CalendarViewController *calendarVC = [[CalendarViewController alloc] init];
-    [calendarVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {
-        //TODO
-    }];
     switch (indexPath.row) {
-        case MeetingDetailRowTrainer:
+        case MeetingDetailRowTrainer: {
+            _indexPath = indexPath;
+            PTMeetingViewController *ptMeetingVC = [st
+                instantiateViewControllerWithIdentifier:kPTMeetingViewControllerIdentifier];
+            ptMeetingVC.delegate = self;
             [self.navigationController pushViewController:ptMeetingVC animated:true];
             ptMeetingVC.statusAddNewMeeting = kStatusAddNewMeeting;
             break;
+        }
         case MeetingDetailRowCustomer: {
+            _indexPath = indexPath;
             UIStoryboard *st = [UIStoryboard storyboardWithName:kCustomerManagerStoryboard bundle:nil];
             CustomerManagerViewController *customerManagerVC = [st
                 instantiateViewControllerWithIdentifier:kCustomerManagerViewControllerIdentifier];
             customerManagerVC.statusCustomerManagerTitle = kStatusAddNewMeeting;
+            customerManagerVC.delegate = self;
             [self.navigationController pushViewController:customerManagerVC animated:true];
             break;
         }
-        case MeetingDetailRowFromDate:
+        case MeetingDetailRowFromDate: {
+            UIStoryboard *st = [UIStoryboard storyboardWithName:kCalendarIdentifier bundle:nil];
+            CalendarViewController *calendarVC = [st instantiateInitialViewController];
+            [calendarVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {
+                _fromDate = dateSelected;
+                DateMeetingTableViewCell *dateMeetingCell = (DateMeetingTableViewCell *)[self.tableView
+                    cellForRowAtIndexPath:indexPath];
+                dateMeetingCell.labelFromTitle.text = kFromTitle;
+                dateMeetingCell.labelDateMeeting.text = [dateFormatter dateFormatterDateMonthYear:_fromDate];
+            }];
             [self.navigationController pushViewController:calendarVC animated:true];
             break;
-        case MeetingDetailRowToDate:
+        }
+        case MeetingDetailRowToDate: {
+            UIStoryboard *st = [UIStoryboard storyboardWithName:kCalendarIdentifier bundle:nil];
+            CalendarViewController *calendarVC = [st instantiateInitialViewController];
+            [calendarVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {
+                _toDate = dateSelected;
+                DateMeetingTableViewCell *dateMeetingCell = (DateMeetingTableViewCell *)[self.tableView
+                    cellForRowAtIndexPath:indexPath];
+                dateMeetingCell.labelFromTitle.text = kToTitle;
+                dateMeetingCell.labelDateMeeting.text = [dateFormatter dateFormatterDateMonthYear:_toDate];
+            }];
             [self.navigationController pushViewController:calendarVC animated:true];
             break;
+        }
         default:
             break;
     }
@@ -158,18 +185,50 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
 
 #pragma mark - Implement button Submit
 - (IBAction)submitPress:(id)sender {
-    if (!_nameTrainer.length) {
+    if (!_trainer) {
         self.labelNotes.text = kNotificationNoSelectTrainer;
-    } else if (!_nameCustomer.length) {
+    } else if (!_customer) {
         self.labelNotes.text = kNotificationNoSelectCustomer;
-    } else if (!_boolStartDate) {
+    } else if (!_fromDate) {
         self.labelNotes.text = kNotificationNOSelectStartDate;
-    } else if (!_boolEndDate) {
+    } else if (!_toDate) {
         self.labelNotes.text = kNotificationNOSelectEndDate;
     } else {
-        //TODO
+        [MBProgressHUD showHUDAddedTo:self.view animated:true];
         self.labelNotes.text = kNotificationAddNewMeetingSuccess;
+        MeetingManager *meetingManager = [[MeetingManager alloc] init];
+        meetingManager.delegate = self;
+        [meetingManager createMeetingWithTrainer:_trainer withTrainee:_customer fromDate:_fromDate toDate:_toDate];
     }
+}
+
+#pragma mark - MeetingManagerDelegate
+- (void)createMeetingItem:(Meeting *)meeting success:(BOOL)success error:(NSError *)error {
+    [MBProgressHUD hideHUDForView:self.view animated:true];
+    if (success) {
+        self.labelNotes.text = kUpdateSuccess;
+        if ([self.delegate respondsToSelector:@selector(reloadDataMeetings:)]) {
+            [self.delegate reloadDataMeetings:meeting];
+        }
+    } else {
+        self.labelNotes.text = error.localizedDescription;
+    }
+}
+
+#pragma mark - PTMeetingViewControllerDelegate
+- (void)selectedTrainer:(Trainer *)trainer {
+    _trainer = trainer;
+    CustomerOrTrainnerTableViewCell *cell = (CustomerOrTrainnerTableViewCell *)[self.tableView
+        cellForRowAtIndexPath:_indexPath];
+    cell.labelNameCustomOrTrainer.text = _trainer.fullName;
+}
+
+#pragma mark - CustomerManagerViewControllerDelegate
+- (void)selectedCustomer:(Customer *)customer {
+    _customer = customer;
+    CustomerOrTrainnerTableViewCell *cell = (CustomerOrTrainnerTableViewCell *)[self.tableView
+        cellForRowAtIndexPath:_indexPath];
+    cell.labelNameCustomOrTrainer.text = _customer.fullName;
 }
 
 @end

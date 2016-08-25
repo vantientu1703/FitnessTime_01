@@ -38,13 +38,12 @@ NSString *const kEdiCustomerTitle = @"Edit customer";
 }
 
 - (void)setupInfoCustomer {
-    DateFormatter *dateFormatter = [[DateFormatter alloc] init];
     self.labelAddress.text = self.customer.address;
-    self.labelDateOfBirth.text = [dateFormatter dateFormatterDateMonthYear:self.customer.birthday];
-    self.labelExprityDate.text = [dateFormatter dateFormatterDateMonthYear:self.customer.expiryDate];
+    self.labelDateOfBirth.text = [[DateFormatter sharedInstance] dateFormatterDateMonthYear:self.customer.birthday];
+    self.labelExprityDate.text = [[DateFormatter sharedInstance] dateFormatterDateMonthYear:self.customer.expiryDate];
     self.labelNameCustomer.text = self.customer.fullName;
     self.labelPhoneNumber.text = self.customer.telNumber;
-    self.labelRegisterDate.text = [dateFormatter dateFormatterDateMonthYear:self.customer.registryDate];
+    self.labelRegisterDate.text = [[DateFormatter sharedInstance] dateFormatterDateMonthYear:self.customer.registryDate];
 }
 
 #pragma mark - Setup view

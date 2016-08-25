@@ -99,14 +99,13 @@ NSString *const kUpdateFailTitle = @"Update fail";
         [[DataStore sharedDataStore] updateProfile:user complete:^(BOOL success) {
             if (success) {
                 self.labelNotes.text = kUpdateSuccessTitle;
+                if ([self.delegate respondsToSelector:@selector(updateUser:)]) {
+                    [self.delegate updateUser:user];
+                }
             } else {
                 self.labelNotes.text = kUpdateFailTitle;
             }
         }];
-        self.labelNotes.text = kUpdateSuccessTitle;
-        if ([self.delegate respondsToSelector:@selector(updateUser:)]) {
-            [self.delegate updateUser:user];
-        }
     } else {
         [MBProgressHUD hideHUDForView:self.view animated:true];
         self.labelNotes.text = kUpdateFailTitle;
@@ -160,7 +159,6 @@ NSString *const kUpdateFailTitle = @"Update fail";
     if (newImage) {
         _imageString = [UIImageJPEGRepresentation(newImage, 0.4f)
             base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-        _imageString = [_imageString stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
     }
     [picker dismissViewControllerAnimated:YES completion:nil];
 }

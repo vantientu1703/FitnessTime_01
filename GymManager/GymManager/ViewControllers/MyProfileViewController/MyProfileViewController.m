@@ -18,6 +18,7 @@ CGFloat const kCornerRadiusProfile = 50.0f;
 @property (weak, nonatomic) IBOutlet UILabel *labelDateOfBirth;
 @property (weak, nonatomic) IBOutlet UILabel *labelAddress;
 @property (weak, nonatomic) IBOutlet UILabel *labelEmail;
+@property (weak, nonatomic) IBOutlet UILabel *labelPhoneNumber;
 @property (strong, nonatomic) User *user;
 
 @end
@@ -38,6 +39,7 @@ CGFloat const kCornerRadiusProfile = 50.0f;
     self.labelDateOfBirth.text = [dateFormatter
         dateFormatterDateMonthYear:self.user.birthday];
     self.labelAddress.text = self.user.address;
+    self.labelPhoneNumber.text = self.user.telNumber;
 }
 
 #pragma mark - Setup view
