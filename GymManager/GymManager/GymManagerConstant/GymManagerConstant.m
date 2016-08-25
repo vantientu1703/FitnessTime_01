@@ -73,6 +73,8 @@ NSString *const kCreateFail = @"Create fail";
 NSString *const kUpdateSuccess = @"Update success";
 NSString *const kUpdateFail = @"Update fail";
 NSString *const kSelectDate = @"Select date";
+NSString *const kStoryboardTransactionQuantity = @"Quantity";
+NSString *const kShowQuantitySegue = @"ShowQuatitySegue";
 
 #pragma mark - CoreData
 NSString *const kCoreDataModel = @"GymManager";
@@ -82,7 +84,7 @@ NSString *const kBundleID = @"com.vantientu.GymManager";
 NSString *const URLRequest = @"https://fit-ness-backend.herokuapp.com/api/";
 NSString *const kLoginRequest = @"auth/login";
 NSString *const kRegisterRequest = @"auth/register";
-NSString *const kGetAllTransactionRequest = @"transaction";
+NSString *const kTransactionRequest = @"orders";
 NSString *const kURLAPI = @"https://fit-ness-backend.herokuapp.com/api/";
 NSString *const kAPIUser = @"users";
 NSString *const kGetAllItemsRequest = @"items";

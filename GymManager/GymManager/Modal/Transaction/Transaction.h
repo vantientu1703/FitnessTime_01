@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSDate *date;
 @property (strong, nonatomic) NSArray<Item> *items;
 @property (strong, nonatomic) NSString *customerName;
+@property (strong, nonatomic) NSString<Optional> *customerId;
 @property (nonatomic) NSInteger totalCost;
 
 @end
