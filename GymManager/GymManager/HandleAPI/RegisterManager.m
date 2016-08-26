@@ -14,7 +14,7 @@
      //TODO check input before request
     NSString *url = [NSString stringWithFormat:@"%@%@", URLRequest, kRegisterRequest];
     //TODO : Params
-    NSDictionary *params = @{@"email": user.email, @"password": user.password, @"user_name": user.userName,
+    NSDictionary *params = @{@"email": user.email, @"password": user.password, @"full_name": user.fullName,
                              @"birthday": user.birthday, @"address": user.address};
     [self.manager POST:url parameters:params progress:nil
         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

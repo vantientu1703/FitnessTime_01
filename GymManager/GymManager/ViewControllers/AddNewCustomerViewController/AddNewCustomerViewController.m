@@ -190,6 +190,7 @@ NSString *const kSelectImages = @"Select avatar,please";
     } else if (!_imageAvatar) {
         self.labelNotes.text = kSelectImages;
     } else {
+        self.labelNotes.text = @"";
         Customer *customer;
         if ([self.messageEditCustomer isEqualToString:kMessageEditCustomer]) {
             customer = self.customer;
@@ -221,8 +222,8 @@ NSString *const kSelectImages = @"Select avatar,please";
 
 #pragma mark - CustomerManagerDelegate 
 - (void)createdCustomerWithMessage:(BOOL)success withError:(NSError *)error returnCustomer:(Customer *)customer {
+    [MBProgressHUD hideHUDForView:self.view animated:true];
     if (success) {
-        [MBProgressHUD hideHUDForView:self.view animated:true];
         if ([self.delegate respondsToSelector:@selector(addNewCustomer:)]) {
             [self.delegate addNewCustomer:customer];
         }

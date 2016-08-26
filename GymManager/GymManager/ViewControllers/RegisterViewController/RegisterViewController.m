@@ -24,6 +24,7 @@ NSString *const kFillAddress = @"Fill address";
 @property (weak, nonatomic) IBOutlet UITextField *textFieldEmail;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldAddress;
 @property (weak, nonatomic) IBOutlet UILabel *labelNotes;
+@property (weak, nonatomic) IBOutlet UIButton *buttonRegister;
 
 @end
 
@@ -90,7 +91,11 @@ NSString *const kFillAddress = @"Fill address";
         self.labelNotes.text = kFillAddress;
         return nil;
     } else {
-        user.userName = self.textFieldUserName.text;
+        self.labelNotes.text = @"";
+        [self.view endEditing:YES];
+        self.buttonRegister.enabled = NO;
+        [MBProgressHUD showHUDAddedTo:self.view animated:true];
+        user.fullName = self.textFieldUserName.text;
         user.email = self.textFieldEmail.text;
         user.address = self.textFieldAddress.text;
         user.birthday = _dateOfBirth;
@@ -107,13 +112,15 @@ NSString *const kFillAddress = @"Fill address";
 
 #pragma mark - RegisterManagerDelegate
 - (void)didResponseWithMessage:(NSString *)message withError:(NSError *)error returnUser:(User *)user {
-    //TODO
+    [MBProgressHUD hideHUDForView:self.view animated:true];
+    self.buttonRegister.enabled = YES;
     if (error) {
         [AlertManager showAlertWithTitle:kReminderTitle message:message
             viewControler:self reloadAction:^{
             [self doRegister];
         }];
     } else {
+        [self.navigationController popViewControllerAnimated:true];
         self.labelNotes.text = kRegisterSuccess;
     }
 }

@@ -35,7 +35,6 @@ NSString *const kErrorEmailOrPassword = @"Error email or password";
     [super viewDidLoad];
     self.textFieldPassword.delegate = self;
     self.textFieldUserName.delegate = self;
-    self.title = kLoginVCTitle;
 }
 
 #pragma mark - Login
