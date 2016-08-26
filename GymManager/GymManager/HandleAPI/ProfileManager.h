@@ -11,6 +11,7 @@
 @protocol ProfileManagerDelegate <NSObject>
 
 - (void)updateProfile:(User *)user success:(BOOL)success error:(NSError *)error;
+- (void)logoutSuccess:(BOOL)success error:(NSError *)error;
 
 @end
 
@@ -18,5 +19,5 @@
 
 @property (weak, nonatomic) id<ProfileManagerDelegate> delegate;
 - (void)updateProfile:(User *)user;
-
+- (void)logout;
 @end

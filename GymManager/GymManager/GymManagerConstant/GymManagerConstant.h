@@ -91,6 +91,7 @@ extern NSString *const kAPIUser;
 extern NSString *const kGetAllItemsRequest;
 extern NSString *const kManager;
 extern NSString *const kMeetings;
+extern NSString *const kLogout;
 
 #pragma mark - Message
 extern NSString *const kMessageFailLogin;

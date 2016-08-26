@@ -31,4 +31,18 @@
     }];
 }
 
+- (void)logout {
+    NSString *url = [NSString stringWithFormat:@"%@%@", kURLAPI, kLogout];
+    User *user = [[DataStore sharedDataStore] getUserManage];
+    NSDictionary *params = @{@"auth_token": user.authToken};
+    [self.manager DELETE:url parameters:params
+        success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        //TODO
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if ([self.delegate respondsToSelector:@selector(logoutSuccess:error:)]) {
+            [self.delegate logoutSuccess:false error:error];
+        }
+    }];
+}
+
 @end
