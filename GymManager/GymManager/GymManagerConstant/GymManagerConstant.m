@@ -90,6 +90,7 @@ NSString *const kAPIUser = @"users";
 NSString *const kGetAllItemsRequest = @"items";
 NSString *const kManager = @"managers";
 NSString *const kMeetings = @"meetings";
+NSString *const kLogout = @"auth/logout";
 
 #pragma mark - Message
 NSString *const kMessageFailLogin = @"Login is fail";

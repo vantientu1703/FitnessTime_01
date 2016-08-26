@@ -34,7 +34,7 @@ NSInteger const kNumberOfRowsInSectionMenu = 5;
 CGFloat const kHeightCellMenu = 50.0f;
 static NSString *const kCellDefault = @"CellDefault";
 
-@interface MenuViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface MenuViewController ()<UITableViewDataSource,UITableViewDelegate, ProfileManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -100,14 +100,23 @@ static NSString *const kCellDefault = @"CellDefault";
             break;
         }
         case MenuDetailRowLogOut: {
+            ProfileManager *profileManager = [[ProfileManager alloc] init];
+            profileManager.delegate = self;
+            [profileManager logout];
             AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
             [[DataStore sharedDataStore] clearUser];
             [appDelegate loadLoginViewController];
+            [[DataStore sharedDataStore] clearUser];
             break;
         }
         default:
             break;
     }
+}
+
+#pragma mark - ProfileManagerDelegate 
+- (void)logoutSuccess:(BOOL)success error:(NSError *)error {
+    //TODO
 }
 
 #pragma mark - Set title for cell
