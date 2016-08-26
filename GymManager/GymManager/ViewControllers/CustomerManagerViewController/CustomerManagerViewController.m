@@ -93,7 +93,10 @@ NSString *const kNameCustomer = @"Ngo Van Van Duong";
         _indexPath = indexPath;
         [self.navigationController pushViewController:infoCustomerVC animated:true];
     } else {
-        [self.navigationController popViewControllerAnimated:true];
+        if ([self.delegate respondsToSelector:@selector(selectedCustomer:)]) {
+            [self.delegate selectedCustomer:self.arrCustomers[indexPath.row]];
+            [self.navigationController popViewControllerAnimated:true];
+        }
     }
     
 }

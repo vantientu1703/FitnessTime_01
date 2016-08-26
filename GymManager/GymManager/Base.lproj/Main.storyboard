@@ -149,11 +149,13 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="labelDateMothYear" destination="aYO-8k-HcN" id="hii-9V-bYm"/>
-                                            <outlet property="labelHour" destination="FUB-fX-doY" id="wZQ-ir-LB1"/>
+                                            <outlet property="labelFromDateMothYear" destination="aYO-8k-HcN" id="azt-kS-CIg"/>
+                                            <outlet property="labelFromHour" destination="FUB-fX-doY" id="dn9-bd-g8C"/>
                                             <outlet property="labelNameTrainee" destination="Jnb-f7-1P8" id="qba-Il-pim"/>
                                             <outlet property="labelNameTrainner" destination="zqn-yg-Ifh" id="Ojs-1j-kTB"/>
                                             <outlet property="labelPhoneNumber" destination="MUE-k5-tqg" id="ad7-iQ-zD0"/>
+                                            <outlet property="labelToDateMothYear" destination="em6-a8-E0M" id="3Yd-8Z-qRJ"/>
+                                            <outlet property="labelToHour" destination="laU-qh-5GG" id="azT-XN-d4M"/>
                                             <outlet property="viewBackground" destination="mEQ-ds-Gzy" id="Fta-XV-s4q"/>
                                         </connections>
                                     </tableViewCell>
@@ -1130,6 +1132,7 @@
                         <outlet property="labelDateOfBirth" destination="2FJ-Se-RCV" id="EDS-EU-NWI"/>
                         <outlet property="labelEmail" destination="roN-0c-OcV" id="jFO-OJ-XHw"/>
                         <outlet property="labelFullName" destination="EgY-Be-AoH" id="DSs-In-pqP"/>
+                        <outlet property="labelPhoneNumber" destination="HIl-XO-60V" id="EMr-oc-hb0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tRf-jU-gQd" userLabel="First Responder" sceneMemberID="firstResponder"/>

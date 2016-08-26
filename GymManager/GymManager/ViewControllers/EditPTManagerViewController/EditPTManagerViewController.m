@@ -123,8 +123,8 @@ NSString *const kSelectAvatar = @"Select avatar,please";
 
 #pragma mark - TrainerManagerDelegate
 - (void)createdTrainerWithMessage:(BOOL)success withError:(NSError *)error returnTrainer:(Trainer *)trainer {
+    [MBProgressHUD hideHUDForView:self.view animated:true];
     if (success) {
-        [MBProgressHUD hideHUDForView:self.view animated:true];
         [self.delegate createNewTrainer:trainer];
         self.labelNotes.text = kCreateSuccess;
     } else {

@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol CustomerManagerViewControllerDelegate <NSObject>
+- (void)selectedCustomer:(Customer *)customer;
+@end
+
 @interface CustomerManagerViewController : UIViewController
+@property (weak, nonatomic) id<CustomerManagerViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSString *statusCustomerManagerTitle;
 @end

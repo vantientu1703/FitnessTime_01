@@ -89,6 +89,7 @@ NSString *const kURLAPI = @"https://fit-ness-backend.herokuapp.com/api/";
 NSString *const kAPIUser = @"users";
 NSString *const kGetAllItemsRequest = @"items";
 NSString *const kManager = @"managers";
+NSString *const kMeetings = @"meetings";
 
 #pragma mark - Message
 NSString *const kMessageFailLogin = @"Login is fail";

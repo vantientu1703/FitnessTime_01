@@ -12,10 +12,9 @@
 
 @interface Meeting : NSObject
 
-@property (strong, nonatomic) NSString *ID;
-@property (strong, nonatomic) NSDate *startTime;
-@property (strong, nonatomic) NSDate *endTime;
-@property (strong, nonatomic) Customer *customer;
-@property (strong, nonatomic) Trainer *trainer;
+@property (strong, nonatomic) NSString *id;
+@property (strong, nonatomic) NSString *fromDate;
+@property (strong, nonatomic) NSString *toDate;
+@property (strong, nonatomic) NSArray *users;
 
 @end

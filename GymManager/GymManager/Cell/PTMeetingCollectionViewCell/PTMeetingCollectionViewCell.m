@@ -16,8 +16,8 @@ CGFloat const kCornerRadiusImageViewCell = 30.0f;
 - (void)cellWithTrainer:(Trainer *)trainer {
     self.imageViewPTMeetingCell.layer.cornerRadius = kCornerRadiusImageViewCell;
     self.imageViewPTMeetingCell.layer.masksToBounds = YES;
-    NSURL *urlImage = [NSURL URLWithString:trainer.avatar];
-    [self.imageViewPTMeetingCell sd_setImageWithURL:urlImage
+    NSURL *url = [NSURL URLWithString:trainer.avatar];
+    [self.imageViewPTMeetingCell sd_setImageWithURL:url
         completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         if (!image) {
             self.imageViewPTMeetingCell.image = [UIImageConstant imageUserConstant];

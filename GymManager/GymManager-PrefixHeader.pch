@@ -40,4 +40,7 @@
 #import "UIImageConstant.h"
 #import "CustomerManager.h"
 #import "ProfileManager.h"
+#import "MeetingManager.h"
+#import "Meeting.h"
+#import "ParseJson.h"
 #endif /* GymManager_PrefixHeader_pch */

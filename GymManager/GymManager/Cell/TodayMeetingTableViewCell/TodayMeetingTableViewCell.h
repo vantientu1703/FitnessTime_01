@@ -11,12 +11,13 @@
 @interface TodayMeetingTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIView *viewBackground;
-@property (weak, nonatomic) IBOutlet UILabel *labelHour;
-@property (weak, nonatomic) IBOutlet UILabel *labelDateMothYear;
+@property (weak, nonatomic) IBOutlet UILabel *labelFromHour;
+@property (weak, nonatomic) IBOutlet UILabel *labelFromDateMothYear;
+@property (weak, nonatomic) IBOutlet UILabel *labelToHour;
+@property (weak, nonatomic) IBOutlet UILabel *labelToDateMothYear;
 @property (weak, nonatomic) IBOutlet UILabel *labelNameTrainner;
 @property (weak, nonatomic) IBOutlet UILabel *labelNameTrainee;
 @property (weak, nonatomic) IBOutlet UILabel *labelPhoneNumber;
-- (void)setupCellWithNameTrainer:(NSString *)nameTrainer nameTrainee:(NSString *)nameTrainee
-    withDate:(NSString *)date andHour:(NSString *)hour andPhoneNumber:(NSString *)phoneNumber;
+- (void)cellWithMeeting:(Meeting *)meeting;
 
 @end

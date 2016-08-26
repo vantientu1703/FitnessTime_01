@@ -135,12 +135,12 @@ NSString *const kSelectImages = @"Select avatar,please";
         _imageAvatar = [UIImageJPEGRepresentation(newImage, 0.4f)
             base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     }
-    _imageAvatar = [_imageAvatar stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Save new customer
 - (IBAction)saveNewCustomer:(id)sender {
+    [self.view endEditing:YES];
     [self setupInfoNewCustomer];
 }
 
@@ -222,7 +222,7 @@ NSString *const kSelectImages = @"Select avatar,please";
     UIStoryboard *st = [UIStoryboard storyboardWithName:kCalendarIdentifier bundle:nil];
     CalendarViewController *calendarVC = [st instantiateInitialViewController];
     [calendarVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {
-        _dateOfBirth = dateSelected;\
+        _dateOfBirth = dateSelected;
         DateFormatter *dateFormatter = [[DateFormatter alloc] init];
         [self.buttonDateOfBirth setTitle:[dateFormatter dateFormatterDateMonthYear:_dateOfBirth]
             forState:UIControlStateNormal];

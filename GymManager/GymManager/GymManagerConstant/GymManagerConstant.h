@@ -90,6 +90,7 @@ extern NSString *const kURLAPI;
 extern NSString *const kAPIUser;
 extern NSString *const kGetAllItemsRequest;
 extern NSString *const kManager;
+extern NSString *const kMeetings;
 
 #pragma mark - Message
 extern NSString *const kMessageFailLogin;
