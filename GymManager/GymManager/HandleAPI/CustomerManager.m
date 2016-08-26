@@ -31,13 +31,8 @@
 }
 
 - (void)createCustomer:(Customer *)customer {
-    User *user = (User *)[[DataStore sharedDataStore] getUserManage];
     NSString *url = [NSString stringWithFormat:@"%@%@", kURLAPI, kAPIUser];
-    NSDictionary *params = @{@"auth_token": user.authToken, @"user[full_name]": customer.fullName,
-                             @"user[birthday]": customer.birthday, @"user[tel_number]": customer.telNumber,
-                             @"user[address]": customer.address, @"user[registry_date]": customer.registryDate,
-                             @"user[expiry_date]": customer.expiryDate, @"user[avatar]": customer.avatar,
-                             @"user[role]": @"customer"};
+    NSDictionary *params = [self dictionaryWithCustomer:customer];
     [self.manager POST:url parameters:params progress:nil
         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSError *error;
@@ -55,13 +50,8 @@
 }
 
 - (void)updateTrainer:(Customer *)customer {
-    User *user = (User *)[[DataStore sharedDataStore] getUserManage];
     NSString *url = [NSString stringWithFormat:@"%@%@/%@", kURLAPI, kAPIUser, customer.id];
-    NSDictionary *params = @{@"user[full_name]": customer.fullName, @"user[birthday]": customer.birthday,
-                             @"user[tel_number]": customer.telNumber, @"user[address]": customer.address,
-                             @"user[registry_date]": customer.registryDate, @"user[expiry_date]": customer.expiryDate,
-                             @"user[avatar]": customer.avatar, @"user[role]": @"customer",
-                             @"auth_token": user.authToken};
+    NSDictionary *params = [self dictionaryWithCustomer:customer];
     [self.manager PUT:url parameters:params
         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSError *error;
@@ -87,6 +77,21 @@
         }
     }
     return customers;
+}
+
+- (NSDictionary *)dictionaryWithCustomer:(Customer *)customer {
+    User *user = (User *)[[DataStore sharedDataStore] getUserManage];
+    NSDictionary *params = @{@"user[full_name]": customer.fullName,
+                             @"user[birthday]": [[DateFormatter sharedInstance]
+                                                 dateFormatterDateMonthYear:customer.birthday],
+                             @"user[tel_number]": customer.telNumber, @"user[address]": customer.address,
+                             @"user[registry_date]": [[DateFormatter sharedInstance]
+                                                      dateFormatterDateMonthYear:customer.registryDate],
+                             @"user[expiry_date]": [[DateFormatter sharedInstance]
+                                                    dateFormatterDateMonthYear:customer.expiryDate],
+                             @"user[avatar]": customer.avatar, @"user[role]": @"customer",
+                             @"auth_token": user.authToken};
+    return params;
 }
 
 @end

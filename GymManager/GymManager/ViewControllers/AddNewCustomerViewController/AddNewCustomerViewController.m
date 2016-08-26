@@ -48,6 +48,7 @@ NSString *const kSelectImages = @"Select avatar,please";
     NSDate *_toDate;
     NSDate *_dateOfBirth;
     NSString *_imageAvatar;
+    BOOL _modifier;
 }
 #pragma mark - View's life
 - (void)viewDidLoad {
@@ -55,6 +56,9 @@ NSString *const kSelectImages = @"Select avatar,please";
     // Do any additional setup after loading the view.
     [self setupView];
     if ([self.messageEditCustomer isEqualToString:kMessageEditCustomer]) {
+        _dateOfBirth = self.customer.birthday;
+        _fromDate = self.customer.registryDate;
+        _toDate = self.customer.expiryDate;
         DateFormatter *dateFormatter = [[DateFormatter alloc] init];
         self.textFieldNameCustomer.text = self.customer.fullName;
         self.textFieldPhoneNumber.text = self.customer.telNumber;
@@ -65,11 +69,24 @@ NSString *const kSelectImages = @"Select avatar,please";
             forState:UIControlStateNormal];
         [self.buttonExpityDate setTitle:[dateFormatter dateFormatterDateMonthYear:self.customer.expiryDate]
             forState:UIControlStateNormal];
+        NSURL *url = [NSURL URLWithString:self.customer.avatar];
+        [self.imageViewCustomer sd_setImageWithURL:url
+            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            if (!image) {
+                self.imageViewCustomer.image = [UIImageConstant imageUserConstant];
+            } else {
+                _imageAvatar = [UIImageJPEGRepresentation(image, 0.4f)
+                    base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+            }
+        }];
     }
 }
 
 - (void)setupView {
-    //TODO
+    self.textFieldAddress.delegate = self;
+    self.textFieldEmail.delegate = self;
+    self.textFieldNameCustomer.delegate = self;
+    self.textFieldPhoneNumber.delegate = self;
     self.title = kAddNEwCustomerVCTitle;
     self.viewBackgroundCustomer.layer.cornerRadius = kCornerRadiusViewBackground;
     self.imageViewCustomer.layer.cornerRadius = kCornerRadiusImageView;
@@ -81,6 +98,18 @@ NSString *const kSelectImages = @"Select avatar,please";
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
         target:self action:@selector(saveNewCustomer:)];
     self.navigationItem.rightBarButtonItem = doneButton;
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    _modifier = true;
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 #pragma mark - UITapGestureRecognizer
@@ -124,7 +153,7 @@ NSString *const kSelectImages = @"Select avatar,please";
 
 #pragma mark - UIImagePickerViewControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    //TODO
+    _modifier = true;
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
     CGFloat x0 = self.imageViewCustomer.frame.size.width;
     CGFloat y0 = self.imageViewCustomer.frame.size.height;
@@ -161,7 +190,6 @@ NSString *const kSelectImages = @"Select avatar,please";
     } else if (!_imageAvatar) {
         self.labelNotes.text = kSelectImages;
     } else {
-        [MBProgressHUD showHUDAddedTo:self.view animated:true];
         Customer *customer;
         if ([self.messageEditCustomer isEqualToString:kMessageEditCustomer]) {
             customer = self.customer;
@@ -178,8 +206,14 @@ NSString *const kSelectImages = @"Select avatar,please";
         CustomerManager *customerManager = [[CustomerManager alloc] init];
         customerManager.delegate = self;
         if ([self.messageEditCustomer isEqualToString:kMessageEditCustomer]) {
-            [customerManager updateTrainer:customer];
+            if (_modifier) {
+                [MBProgressHUD showHUDAddedTo:self.view animated:true];
+                self.navigationItem.rightBarButtonItem.enabled = NO;
+                [customerManager updateTrainer:customer];
+            }
         } else {
+            [MBProgressHUD showHUDAddedTo:self.view animated:true];
+            self.navigationItem.rightBarButtonItem.enabled = NO;
             [customerManager createCustomer:customer];
         }
     }
@@ -202,15 +236,15 @@ NSString *const kSelectImages = @"Select avatar,please";
 }
 
 - (void)updateCustomerWithMessage:(BOOL)success withError:(NSError *)error returnCustomer:(Customer *)customer {
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+    [MBProgressHUD hideHUDForView:self.view animated:true];
     if (success) {
-        [MBProgressHUD hideHUDForView:self.view animated:true];
         self.labelNotes.text = kUpdateSuccess;
         if ([self.delegate respondsToSelector:@selector(updateCustomer:)]) {
             [self.delegate updateCustomer:customer];
         }
     } else {
         self.labelNotes.text = kUpdateFail;
-        [MBProgressHUD hideHUDForView:self.view animated:true];
         [AlertManager showAlertWithTitle:kRegisterRequest message:error.localizedDescription
             viewControler:self okAction:^{
         }];
@@ -222,6 +256,7 @@ NSString *const kSelectImages = @"Select avatar,please";
     UIStoryboard *st = [UIStoryboard storyboardWithName:kCalendarIdentifier bundle:nil];
     CalendarViewController *calendarVC = [st instantiateInitialViewController];
     [calendarVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {
+        _modifier = true;
         _dateOfBirth = dateSelected;
         DateFormatter *dateFormatter = [[DateFormatter alloc] init];
         [self.buttonDateOfBirth setTitle:[dateFormatter dateFormatterDateMonthYear:_dateOfBirth]
@@ -234,6 +269,7 @@ NSString *const kSelectImages = @"Select avatar,please";
     UIStoryboard *st = [UIStoryboard storyboardWithName:kCalendarIdentifier bundle:nil];
     CalendarViewController *calendarVC = [st instantiateInitialViewController];
     [calendarVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {
+        _modifier = true;
         _fromDate = dateSelected;
         DateFormatter *dateFormatter = [[DateFormatter alloc] init];
         [self.buttonRegisterDate setTitle:[dateFormatter dateFormatterDateMonthYear:_fromDate]
@@ -246,6 +282,7 @@ NSString *const kSelectImages = @"Select avatar,please";
     UIStoryboard *st = [UIStoryboard storyboardWithName:kCalendarIdentifier bundle:nil];
     CalendarViewController *calendarVC = [st instantiateInitialViewController];
     [calendarVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {
+        _modifier = true;
         _toDate = dateSelected;
         DateFormatter *dateFormatter = [[DateFormatter alloc] init];
         [self.buttonExpityDate setTitle:[dateFormatter dateFormatterDateMonthYear:_toDate]
