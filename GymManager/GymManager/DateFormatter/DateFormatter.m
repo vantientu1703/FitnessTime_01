@@ -15,6 +15,7 @@
 - (instancetype)init {
     if (self = [super init]) {
         _dateFormatter = [[NSDateFormatter alloc] init];
+        [_dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
     }
     return self;
 }
@@ -64,8 +65,6 @@
     [inputDateFormatter setTimeZone:inputTimeZone];
     [inputDateFormatter setDateFormat:@"YYYY-MM-dd'T'HH:mm:ss.SSS'Z'"];
     NSDate *date = [inputDateFormatter dateFromString:string];
-    NSTimeZone *outputTimeZone = [NSTimeZone localTimeZone];
-    [_dateFormatter setTimeZone:outputTimeZone];
     return [self dateFormatterHour:date];
 }
 
@@ -75,8 +74,6 @@
     [inputDateFormatter setTimeZone:inputTimeZone];
     [inputDateFormatter setDateFormat:@"YYYY-MM-dd'T'HH:mm:ss.SSS'Z'"];
     NSDate *date = [inputDateFormatter dateFromString:string];
-    NSTimeZone *outputTimeZone = [NSTimeZone localTimeZone];
-    [_dateFormatter setTimeZone:outputTimeZone];
     return [self dateFormatterDateMonthYear:date];
 }
 

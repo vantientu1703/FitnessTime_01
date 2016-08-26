@@ -39,11 +39,21 @@ NSString *const kEdiCustomerTitle = @"Edit customer";
 
 - (void)setupInfoCustomer {
     self.labelAddress.text = self.customer.address;
-    self.labelDateOfBirth.text = [[DateFormatter sharedInstance] dateFormatterDateMonthYear:self.customer.birthday];
-    self.labelExprityDate.text = [[DateFormatter sharedInstance] dateFormatterDateMonthYear:self.customer.expiryDate];
+    self.labelDateOfBirth.text = [[DateFormatter sharedInstance]
+        dateFormatterDateMonthYear:self.customer.birthday];
+    self.labelExprityDate.text = [[DateFormatter sharedInstance]
+        dateFormatterDateMonthYear:self.customer.expiryDate];
     self.labelNameCustomer.text = self.customer.fullName;
     self.labelPhoneNumber.text = self.customer.telNumber;
-    self.labelRegisterDate.text = [[DateFormatter sharedInstance] dateFormatterDateMonthYear:self.customer.registryDate];
+    self.labelRegisterDate.text = [[DateFormatter sharedInstance]
+        dateFormatterDateMonthYear:self.customer.registryDate];
+    NSURL *url = [NSURL URLWithString:self.customer.avatar];
+    [self.imageViewCustomer sd_setImageWithURL:url
+        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        if (!image) {
+            self.imageViewCustomer.image = [UIImageConstant imageUserConstant];
+        }
+    }];
 }
 
 #pragma mark - Setup view

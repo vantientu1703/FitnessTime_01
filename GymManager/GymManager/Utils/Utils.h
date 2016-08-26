@@ -13,5 +13,6 @@
 
 + (UIImage *)convertImageToThumbnailImage:(UIImage *)image withSize:(CGSize)size;
 + (UIImage *)decodeBase64ToImage:(NSString *)strEncodeData;
++ (NSString *)convertImageToBase64:(UIImage *)image;
 
 @end

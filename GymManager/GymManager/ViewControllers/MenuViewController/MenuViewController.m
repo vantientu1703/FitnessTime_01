@@ -37,6 +37,9 @@ static NSString *const kCellDefault = @"CellDefault";
 @interface MenuViewController ()<UITableViewDataSource,UITableViewDelegate, ProfileManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) MyProfileViewController *myProfileVC;
+@property (strong, nonatomic) PTMeetingViewController *ptPTMeetingVC;
+@property (strong, nonatomic) CustomerManagerViewController *customerManagerVC;
 
 @end
 
@@ -74,23 +77,29 @@ static NSString *const kCellDefault = @"CellDefault";
         storyboardWithName:kCustomerManagerStoryboard bundle:nil];
     switch (indexPath.row) {
         case MenuDetailRowMyProfile: {
-            MyProfileViewController *myProfileVC = [st
-                instantiateViewControllerWithIdentifier:kMyProfileViewControllerIdentifier];
-            [self.navigationController pushViewController:myProfileVC animated:true];
+            if (!self.myProfileVC) {
+                self.myProfileVC = [st
+                    instantiateViewControllerWithIdentifier:kMyProfileViewControllerIdentifier];
+            }
+            [self.navigationController pushViewController:self.myProfileVC animated:true];
             break;
         }
         case MenuDetailRowPTManager: {
-            PTMeetingViewController *ptPTMeetingVC = [st
-                instantiateViewControllerWithIdentifier:kPTMeetingViewControllerIdentifier];
-            ptPTMeetingVC.statusAddNewMeeting = kDetailPTManagerTitle;
-            [self.navigationController pushViewController:ptPTMeetingVC animated:true];
+            if (!self.ptPTMeetingVC) {
+                self.ptPTMeetingVC = [st
+                    instantiateViewControllerWithIdentifier:kPTMeetingViewControllerIdentifier];
+            }
+            self.ptPTMeetingVC.statusAddNewMeeting = kDetailPTManagerTitle;
+            [self.navigationController pushViewController:self.ptPTMeetingVC animated:true];
             break;
         }
         case MenuDetailRowCustomerManager: {
-            CustomerManagerViewController *customerManagerVC = [customerManagerStoryboard
-                instantiateViewControllerWithIdentifier:kCustomerManagerViewControllerIdentifier];
-            customerManagerVC.statusCustomerManagerTitle = kCustomerManagerVCTitle;
-            [self.navigationController pushViewController:customerManagerVC animated:true];
+            if (!self.customerManagerVC) {
+                self.customerManagerVC = [customerManagerStoryboard
+                    instantiateViewControllerWithIdentifier:kCustomerManagerViewControllerIdentifier];
+            }
+            self.customerManagerVC.statusCustomerManagerTitle = kCustomerManagerVCTitle;
+            [self.navigationController pushViewController:self.customerManagerVC animated:true];
             break;
         }
         case MenuDetailRowCategory: {

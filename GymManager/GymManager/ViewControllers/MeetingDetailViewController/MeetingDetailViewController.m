@@ -39,6 +39,8 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *labelNotes;
+@property (strong, nonatomic) PTMeetingViewController *ptMeetingVC;
+@property (strong, nonatomic) CustomerManagerViewController *customerManagerVC;
 
 @end
 
@@ -135,21 +137,25 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
     switch (indexPath.row) {
         case MeetingDetailRowTrainer: {
             _indexPath = indexPath;
-            PTMeetingViewController *ptMeetingVC = [st
-                instantiateViewControllerWithIdentifier:kPTMeetingViewControllerIdentifier];
-            ptMeetingVC.delegate = self;
-            [self.navigationController pushViewController:ptMeetingVC animated:true];
-            ptMeetingVC.statusAddNewMeeting = kStatusAddNewMeeting;
+            if (!self.ptMeetingVC) {
+                self.ptMeetingVC = [st
+                    instantiateViewControllerWithIdentifier:kPTMeetingViewControllerIdentifier];
+            }
+            self.ptMeetingVC.delegate = self;
+            [self.navigationController pushViewController:self.ptMeetingVC animated:true];
+            self.ptMeetingVC.statusAddNewMeeting = kStatusAddNewMeeting;
             break;
         }
         case MeetingDetailRowCustomer: {
             _indexPath = indexPath;
             UIStoryboard *st = [UIStoryboard storyboardWithName:kCustomerManagerStoryboard bundle:nil];
-            CustomerManagerViewController *customerManagerVC = [st
-                instantiateViewControllerWithIdentifier:kCustomerManagerViewControllerIdentifier];
-            customerManagerVC.statusCustomerManagerTitle = kStatusAddNewMeeting;
-            customerManagerVC.delegate = self;
-            [self.navigationController pushViewController:customerManagerVC animated:true];
+            if (!self.customerManagerVC) {
+                self.customerManagerVC = [st
+                    instantiateViewControllerWithIdentifier:kCustomerManagerViewControllerIdentifier];;
+            }
+            self.customerManagerVC.statusCustomerManagerTitle = kStatusAddNewMeeting;
+            self.customerManagerVC.delegate = self;
+            [self.navigationController pushViewController:self.customerManagerVC animated:true];
             break;
         }
         case MeetingDetailRowFromDate: {

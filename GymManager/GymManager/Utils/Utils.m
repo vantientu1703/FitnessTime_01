@@ -24,4 +24,9 @@
     return [UIImage imageWithData:data];
 }
 
++ (NSString *)convertImageToBase64:(UIImage *)image {
+    return [UIImageJPEGRepresentation(image, 0.4f)
+        base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+}
+
 @end
