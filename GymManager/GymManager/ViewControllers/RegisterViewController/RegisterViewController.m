@@ -9,6 +9,7 @@
 #import "RegisterViewController.h"
 #import "RegisterManager.h"
 #import "DataValidation.h"
+#import "AppDelegate.h"
 
 NSString *const kRegisterVCTitle = @"Register";
 NSString *const kIsNoSelectedDate = @"No select date of birth";
@@ -120,13 +121,21 @@ NSString *const kFillAddress = @"Fill address";
             [self doRegister];
         }];
     } else {
-        [self.navigationController popViewControllerAnimated:true];
-        self.labelNotes.text = kRegisterSuccess;
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [appDelegate loadTabbarController];
     }
 }
 
 #pragma mark - Button select date of birth
 - (IBAction)buttonDateOfBirthPress:(id)sender {
+    [self showCalendar];
+}
+
+- (IBAction)calendarPress:(id)sender {
+    [self showCalendar];
+}
+
+- (void)showCalendar {
     UIStoryboard *st = [UIStoryboard storyboardWithName:kCalendarIdentifier bundle:nil];
     CalendarViewController *calendarVC = [st instantiateInitialViewController];
     [self.navigationController pushViewController:calendarVC animated:true];

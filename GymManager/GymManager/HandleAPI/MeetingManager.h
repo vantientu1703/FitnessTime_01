@@ -12,6 +12,8 @@
 @protocol MeetingManagerDelegate <NSObject>
 
 - (void)didResponseWithMessage:(NSString *)message withError:(NSError *)error returnArray:(NSArray *)arrMeetings;
+- (void)didResponseWithMessage:(NSString *)message withDate:(NSDate *)date
+    withError:(NSError *)error returnArray:(NSArray *)arrMeetings;
 - (void)createMeetingItem:(Meeting *)meeting success:(BOOL)success error:(NSError *)error;
 - (void)updateMeetingItem:(Meeting *)meeting success:(BOOL)success error:(NSError *)error;
 
@@ -22,4 +24,5 @@
 - (void)getAllMeetings;
 - (void)createMeetingWithTrainer:(Trainer *)trainer withTrainee:(Customer *)customer
     fromDate:(NSDate *)fromDate toDate:(NSDate *)toDate;
+- (void)getAllMeetingsWithDate:(NSDate *)date;
 @end
