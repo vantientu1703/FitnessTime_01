@@ -30,56 +30,97 @@
 }
 
 - (NSString *)yearStringFromDate:(NSDate *)date {
-    _dateFormatter.dateFormat = @"yyyy";
+    _dateFormatter.dateFormat = [self dateFormatterTypeString:DateFormatterTypeYear];
     return [_dateFormatter stringFromDate:date];
 }
 
 - (NSDate *)dateFromYearString:(NSString *)string {
-    _dateFormatter.dateFormat = @"yyyy";
+    _dateFormatter.dateFormat = [self dateFormatterTypeString:DateFormatterTypeYear];
     return [_dateFormatter dateFromString:string];
 }
 
 - (NSString *)dateFormatterDateMonthYear:(NSDate *)date {
-    _dateFormatter.dateFormat = @"dd/MM/yyyy";
+    _dateFormatter.dateFormat = [self dateFormatterTypeString:DateFormatterTypeDayMonthYear];
     return [_dateFormatter stringFromDate:date];
 }
 
 - (NSDate *)dateByServerFormatFromString:(NSString *)string {
-    _dateFormatter.dateFormat = @"YYYY-MM-dd'T'HH:mm:ss.SSS'Z'";
+    _dateFormatter.dateFormat = [self dateFormatterTypeString:DateFormatterTypeUTC];
     return [_dateFormatter dateFromString:string];
 }
 
 - (NSDate *)dateWithMonthYearFormatterFromString:(NSString*)string {
-    _dateFormatter.dateFormat = @"dd/MM/yyyy";
+    _dateFormatter.dateFormat = [self dateFormatterTypeString:DateFormatterTypeDayMonthYear];
     return [_dateFormatter dateFromString:string];
 }
 
 - (NSString *)dateFormatterFullInfo:(NSDate *)date {
-    _dateFormatter.dateFormat = @"HH:mm dd/MM/yyyy";
+    _dateFormatter.dateFormat = [self dateFormatterTypeString:DateFormatterTypeHourDayMonthYear];
     return [_dateFormatter stringFromDate:date];
 }
 
 - (NSString *)dateFormatterHour:(NSDate *)date {
-    _dateFormatter.dateFormat = @"HH:mm a";
+    _dateFormatter.dateFormat = [self dateFormatterTypeString:DateFormatterTypeHour];
+    return [_dateFormatter stringFromDate:date];
+}
+
+- (NSString *)dateFormatterHourDateMonthYear:(NSDate *)date {
+    _dateFormatter.dateFormat = [self dateFormatterTypeString:DateFormatterTypeHourDayMonthYear];
     return [_dateFormatter stringFromDate:date];
 }
 
 - (NSString *)dateWithHourFormatterFromString:(NSString *)string {
-    NSTimeZone *inputTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
-    NSDateFormatter *inputDateFormatter = [[NSDateFormatter alloc] init];
-    [inputDateFormatter setTimeZone:inputTimeZone];
-    [inputDateFormatter setDateFormat:@"YYYY-MM-dd'T'HH:mm:ss.SSS'Z'"];
-    NSDate *date = [inputDateFormatter dateFromString:string];
-    return [self dateFormatterHour:date];
+    NSDate *date = [self dateFromString:string withFormat:DateFormatterTypeUTC];
+    return [self stringFromDate:date withFormat:DateFormatterTypeHour];
 }
 
 - (NSString *)dateWithDateMonthYearFormatterFromString:(NSString *)string {
+    NSDate *date = [self dateFromString:string withFormat:DateFormatterTypeUTC];
+    return [self stringFromDate:date withFormat:DateFormatterTypeDayMonthYear];
+}
+
+- (NSString *)dateWithHourDayMonthYearFormatterFromString:(NSString *)string {
+    NSDate *date = [self dateFromString:string withFormat:DateFormatterTypeUTC];
+    return [self stringFromDate:date withFormat:DateFormatterTypeHourDayMonthYear];
+}
+
+- (NSDate *)dateFormatterHourDateMonthYearWithString:(NSString *)string {
+    return [self dateFromString:string withFormat:DateFormatterTypeUTC];;
+}
+
+- (NSString *)stringFromDate:(NSDate *)date withFormat:(DateFormatterType)format {
+    _dateFormatter.dateFormat = [self dateFormatterTypeString:format];
+    return [_dateFormatter stringFromDate:date];
+}
+
+- (NSDate *)dateFromString:(NSString *)dateString withFormat:(DateFormatterType)format {
     NSTimeZone *inputTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
     NSDateFormatter *inputDateFormatter = [[NSDateFormatter alloc] init];
     [inputDateFormatter setTimeZone:inputTimeZone];
-    [inputDateFormatter setDateFormat:@"YYYY-MM-dd'T'HH:mm:ss.SSS'Z'"];
-    NSDate *date = [inputDateFormatter dateFromString:string];
-    return [self dateFormatterDateMonthYear:date];
+    [inputDateFormatter setDateFormat:[self dateFormatterTypeString:format]];
+    return [inputDateFormatter dateFromString:dateString];
+}
+
+- (NSString *)dateFormatterTypeString:(DateFormatterType)format {
+    switch (format) {
+        case DateFormatterTypeHour: {
+            return @"HH:mm a";
+        }
+        case DateFormatterTypeHourDayMonthYear: {
+            return @"HH:mm a dd/MM/yyyy";
+        }
+        case DateFormatterTypeDayMonthYear: {
+            return @"dd/MM/yyyy";
+        }
+        case DateFormatterTypeUTC: {
+            return @"YYYY-MM-dd'T'HH:mm:ss.SSS'Z'";
+        }
+        case DateFormatterTypeYear: {
+            return @"yyyy";
+        }
+        default:
+            return nil;
+    }
 }
 
 @end

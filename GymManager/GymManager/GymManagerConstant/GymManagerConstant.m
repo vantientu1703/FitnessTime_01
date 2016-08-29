@@ -75,6 +75,10 @@ NSString *const kUpdateFail = @"Update fail";
 NSString *const kSelectDate = @"Select date";
 NSString *const kStoryboardTransactionQuantity = @"Quantity";
 NSString *const kShowQuantitySegue = @"ShowQuatitySegue";
+NSString *const kDeleteMeetingSuccess = @"Delete meeting is success";
+NSString *const kDeleteMeetingFail = @"Delete meeting is fail";
+NSString *const kTrainer = @"trainer";
+NSString *const kCustomer = @"customer";
 
 #pragma mark - CoreData
 NSString *const kCoreDataModel = @"GymManager";

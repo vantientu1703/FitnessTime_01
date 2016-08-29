@@ -22,7 +22,9 @@ CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
 @end
 
 @implementation TodayMeetingsViewController
-
+{
+    NSIndexPath *_indexPath;
+}
 #pragma mark - View's life
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -61,6 +63,21 @@ CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
         [MBProgressHUD hideHUDForView:self.view animated:true];
         self.arrMeetings = arrMeetings.mutableCopy;
         [self.tableView reloadData];
+    }
+}
+
+- (void)didDeleteMeetingSuccess:(BOOL)success error:(NSError *)error {
+    [MBProgressHUD hideHUDForView:self.view animated:true];
+    if (success) {
+        [AlertManager showAlertWithTitle:kReminderTitle message:kDeleteMeetingSuccess
+            viewControler:self okAction:^{
+            [self.arrMeetings removeObjectAtIndex:_indexPath.row];
+            [self.tableView deleteRowsAtIndexPaths:@[_indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }];
+    } else {
+        [AlertManager showAlertWithTitle:kReminderTitle message:kDeleteMeetingFail
+            viewControler:self okAction:^{
+        }];
     }
 }
 
@@ -114,11 +131,12 @@ CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
             MeetingDetailViewController *meetingDetailVC = [st
                 instantiateViewControllerWithIdentifier:kMeetingDetailViewControllerIdentifier];
             meetingDetailVC.statusEditMeeting = kEditMeetingTitle;
+            meetingDetailVC.meeting = self.arrMeetings[indexPath.row];
             [self.navigationController pushViewController:meetingDetailVC animated:true];
     }];
     UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault
         title:kDeleteActionTitle handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-        [self showAlertController];
+        [self showAlertControllerWithIndexPath:indexPath];
     }];
     return @[deleteAction, editAction];
 }
@@ -138,12 +156,16 @@ CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
 }
 
 #pragma mark - Show alert controller
-- (void)showAlertController {
+- (void)showAlertControllerWithIndexPath:(NSIndexPath *)indexPath {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:kReminderTitle
         message:kMessageReminder preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:kOkActionTitle style:UIAlertActionStyleDefault
         handler:^(UIAlertAction * _Nonnull action) {
-        //TODO
+        [MBProgressHUD showHUDAddedTo:self.view animated:true];
+        MeetingManager *meetingManager = [[MeetingManager alloc] init];
+        meetingManager.delegate = self;
+        [meetingManager deleteMeeting:self.arrMeetings[indexPath.row]];
+        _indexPath = indexPath;
     }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:kCancelActionTitle style:UIAlertActionStyleDefault
         handler:^(UIAlertAction * _Nonnull action) {

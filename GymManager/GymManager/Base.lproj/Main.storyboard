@@ -862,8 +862,8 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25/08/2016" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTP-Tc-V5i">
-                                                    <rect key="frame" x="137" y="11" width="230" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="91" y="11" width="276" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -871,7 +871,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="YdD-6o-ymb" secondAttribute="bottom" constant="11" id="7Be-oF-WXD"/>
                                                 <constraint firstAttribute="bottom" secondItem="NTP-Tc-V5i" secondAttribute="bottom" constant="11" id="MOB-o0-0V7"/>
-                                                <constraint firstItem="NTP-Tc-V5i" firstAttribute="leading" secondItem="YdD-6o-ymb" secondAttribute="trailing" constant="54" id="Uhl-Bv-A9p"/>
+                                                <constraint firstItem="NTP-Tc-V5i" firstAttribute="leading" secondItem="YdD-6o-ymb" secondAttribute="trailing" constant="8" id="Uhl-Bv-A9p"/>
                                                 <constraint firstAttribute="trailing" secondItem="NTP-Tc-V5i" secondAttribute="trailing" constant="8" id="duM-NA-bR0"/>
                                                 <constraint firstItem="YdD-6o-ymb" firstAttribute="top" secondItem="x8r-ub-pii" secondAttribute="top" constant="11" id="lEB-Ec-tUR"/>
                                                 <constraint firstItem="YdD-6o-ymb" firstAttribute="leading" secondItem="x8r-ub-pii" secondAttribute="leading" constant="8" id="qCK-Wy-cvm"/>

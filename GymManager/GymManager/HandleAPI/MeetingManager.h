@@ -16,6 +16,7 @@
     withError:(NSError *)error returnArray:(NSArray *)arrMeetings;
 - (void)createMeetingItem:(Meeting *)meeting success:(BOOL)success error:(NSError *)error;
 - (void)updateMeetingItem:(Meeting *)meeting success:(BOOL)success error:(NSError *)error;
+- (void)didDeleteMeetingSuccess:(BOOL)success error:(NSError *)error;
 
 @end
 
@@ -25,4 +26,5 @@
 - (void)createMeetingWithTrainer:(Trainer *)trainer withTrainee:(Customer *)customer
     fromDate:(NSDate *)fromDate toDate:(NSDate *)toDate;
 - (void)getAllMeetingsWithDate:(NSDate *)date;
+- (void)deleteMeeting:(Meeting *)meeting;
 @end

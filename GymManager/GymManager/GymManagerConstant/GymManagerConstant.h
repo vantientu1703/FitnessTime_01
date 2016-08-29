@@ -75,6 +75,10 @@ extern NSString *const kUpdateFail;
 extern NSString *const kSelectDate;
 extern NSString *const kStoryboardTransactionQuantity;
 extern NSString *const kShowQuantitySegue;
+extern NSString *const kDeleteMeetingSuccess;
+extern NSString *const kDeleteMeetingFail;
+extern NSString *const kTrainer;
+extern NSString *const kCustomer;
 
 #pragma mark - CoreData
 extern NSString *const kCoreDataModel;
