@@ -8,8 +8,6 @@
 
 #import "TodayMeetingTableViewCell.h"
 
-NSString *const kTrainer = @"trainer";
-NSString *const kCustomer = @"customer";
 CGFloat const kCornerRadius = 5.0f;
 
 @implementation TodayMeetingTableViewCell

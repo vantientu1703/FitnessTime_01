@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, DateFormatterType) {
+    DateFormatterTypeHour,
+    DateFormatterTypeHourDayMonthYear,
+    DateFormatterTypeDayMonthYear,
+    DateFormatterTypeUTC,
+    DateFormatterTypeYear
+};
+
 @interface DateFormatter : NSObject
 
 + (instancetype)sharedInstance;
@@ -20,5 +28,8 @@
 - (NSString *)yearStringFromDate:(NSDate *)date;
 - (NSDate *)dateFromYearString:(NSString *)string;
 - (NSDate *)dateByServerFormatFromString:(NSString *)string;
+- (NSString *)dateWithHourDayMonthYearFormatterFromString:(NSString *)string;
+- (NSString *)dateFormatterHourDateMonthYear:(NSDate *)date;
+- (NSDate *)dateFormatterHourDateMonthYearWithString:(NSString *)string;
 
 @end

@@ -68,6 +68,8 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
         self.title = kAddNewMeetingTitle;
     } else {
         self.title = kEditMeetingTitle;
+        _fromDate = [[DateFormatter sharedInstance] dateFormatterHourDateMonthYearWithString:self.meeting.fromDate];
+        _toDate = [[DateFormatter sharedInstance] dateFormatterHourDateMonthYearWithString:self.meeting.toDate];
     }
     self.edgesForExtendedLayout = UIRectEdgeNone;
     _nameCustomer = @"";
@@ -80,7 +82,17 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    DateFormatter *dateFormatter = [[DateFormatter alloc] init];
+    Trainer *trainer;
+    Customer *customer;
+    for (NSDictionary *obj in self.meeting.users) {
+        if ([obj[@"role"] isEqualToString:kTrainer]) {
+            trainer = [[Trainer alloc] initWithDictionary:obj error:nil];
+            _trainer = trainer;
+        } else if ([obj[@"role"] isEqualToString:kCustomer]) {
+            customer = [[Customer alloc] initWithDictionary:obj error:nil];
+            _customer = customer;
+        }
+    }
     switch (indexPath.row) {
         case MeetingDetailRowTrainer: {
             CustomerOrTrainnerTableViewCell *trainerCell = (CustomerOrTrainnerTableViewCell *)[tableView
@@ -88,7 +100,11 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
                 forIndexPath:indexPath];
             trainerCell.selectionStyle = UITableViewCellSelectionStyleNone;
             trainerCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            [trainerCell configCellWithName:kTrainnerTitle];
+            if ([self.statusEditMeeting isEqualToString:kEditMeetingTitle]) {
+                [trainerCell configCellWithName:trainer.fullName];
+            } else {
+                [trainerCell configCellWithName:kTrainnerTitle];
+            }
             return trainerCell;
         }
         case MeetingDetailRowCustomer: {
@@ -97,7 +113,11 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
                 forIndexPath:indexPath];
             customerCell.selectionStyle = UITableViewCellSelectionStyleNone;
             customerCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            [customerCell configCellWithName:kCustomerTitle];
+            if ([self.statusEditMeeting isEqualToString:kEditMeetingTitle]) {
+                [customerCell configCellWithName:customer.fullName];
+            } else {
+                [customerCell configCellWithName:kCustomerTitle];
+            }
             return customerCell;
         }
         case MeetingDetailRowFromDate: {
@@ -106,8 +126,13 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
                 forIndexPath:indexPath];
             fromDateMeetingCell.selectionStyle = UITableViewCellSelectionStyleNone;
             fromDateMeetingCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            [fromDateMeetingCell configCellWithDate:[dateFormatter dateFormatterDateMonthYear:[NSDate date]]
-                andTitleFrom:kFromTitle];
+            if ([self.statusEditMeeting isEqualToString:kEditMeetingTitle]) {
+                [fromDateMeetingCell configCellWithDate:[[DateFormatter sharedInstance]
+                    dateWithHourDayMonthYearFormatterFromString:self.meeting.fromDate] andTitleFrom:kFromTitle];
+            } else {
+                [fromDateMeetingCell configCellWithDate:[[DateFormatter sharedInstance]
+                    dateFormatterDateMonthYear:[NSDate date]] andTitleFrom:kFromTitle];
+            }
             return fromDateMeetingCell;
         }
         case MeetingDetailRowToDate: {
@@ -116,7 +141,13 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
                 forIndexPath:indexPath];
             toDateMeetingCell.selectionStyle = UITableViewCellSelectionStyleNone;
             toDateMeetingCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            [toDateMeetingCell configCellWithDate:[dateFormatter dateFormatterDateMonthYear:[NSDate date]] andTitleFrom:kToTitle];
+            if ([self.statusEditMeeting isEqualToString:kEditMeetingTitle]) {
+                [toDateMeetingCell configCellWithDate:[[DateFormatter sharedInstance]
+                    dateWithHourDayMonthYearFormatterFromString:self.meeting.toDate] andTitleFrom:kToTitle];
+            } else {
+                [toDateMeetingCell configCellWithDate:[[DateFormatter sharedInstance]
+                    dateFormatterDateMonthYear:[NSDate date]] andTitleFrom:kToTitle];
+            }
             return toDateMeetingCell;
         }
         default:
@@ -132,7 +163,6 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
 - (void)tableView:(UITableView *)tableView
     didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:true];
-    DateFormatter *dateFormatter = [[DateFormatter alloc] init];
     UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
     switch (indexPath.row) {
         case MeetingDetailRowTrainer: {
@@ -161,12 +191,14 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
         case MeetingDetailRowFromDate: {
             UIStoryboard *st = [UIStoryboard storyboardWithName:kCalendarIdentifier bundle:nil];
             CalendarViewController *calendarVC = [st instantiateInitialViewController];
+            calendarVC.state = CalendarPickerStateTime;
             [calendarVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {
                 _fromDate = dateSelected;
                 DateMeetingTableViewCell *dateMeetingCell = (DateMeetingTableViewCell *)[self.tableView
                     cellForRowAtIndexPath:indexPath];
                 dateMeetingCell.labelFromTitle.text = kFromTitle;
-                dateMeetingCell.labelDateMeeting.text = [dateFormatter dateFormatterDateMonthYear:_fromDate];
+                dateMeetingCell.labelDateMeeting.text = [[DateFormatter sharedInstance]
+                    dateFormatterHourDateMonthYear:_fromDate];
             }];
             [self.navigationController pushViewController:calendarVC animated:true];
             break;
@@ -174,12 +206,14 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
         case MeetingDetailRowToDate: {
             UIStoryboard *st = [UIStoryboard storyboardWithName:kCalendarIdentifier bundle:nil];
             CalendarViewController *calendarVC = [st instantiateInitialViewController];
+            calendarVC.state = CalendarPickerStateTime;
             [calendarVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {
                 _toDate = dateSelected;
                 DateMeetingTableViewCell *dateMeetingCell = (DateMeetingTableViewCell *)[self.tableView
                     cellForRowAtIndexPath:indexPath];
                 dateMeetingCell.labelFromTitle.text = kToTitle;
-                dateMeetingCell.labelDateMeeting.text = [dateFormatter dateFormatterDateMonthYear:_toDate];
+                dateMeetingCell.labelDateMeeting.text = [[DateFormatter sharedInstance]
+                    dateFormatterHourDateMonthYear:_toDate];
             }];
             [self.navigationController pushViewController:calendarVC animated:true];
             break;

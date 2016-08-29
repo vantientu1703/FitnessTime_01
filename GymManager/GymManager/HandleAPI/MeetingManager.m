@@ -71,6 +71,22 @@
     }];
 }
 
+- (void)deleteMeeting:(Meeting *)meeting {
+    User *user = [[DataStore sharedDataStore] getUserManage];
+    NSString *url = [NSString stringWithFormat:@"%@%@%@", kURLAPI, kMeetings, meeting.id];
+    NSDictionary *params = @{@"auth_token": user.authToken};
+    [self.manager DELETE:url parameters:params
+        success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if ([self.delegate respondsToSelector:@selector(didDeleteMeetingSuccess:error:)]) {
+            [self.delegate didDeleteMeetingSuccess:true error:nil];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if ([self.delegate respondsToSelector:@selector(didDeleteMeetingSuccess:error:)]) {
+            [self.delegate didDeleteMeetingSuccess:false error:error];
+        }
+    }];
+}
+
 - (NSArray *)meetingsByResponseArray:(NSArray *)responseArr error:(NSError *)error {
     NSMutableArray *meetings = @[].mutableCopy;
     for (NSDictionary *dict in responseArr) {
