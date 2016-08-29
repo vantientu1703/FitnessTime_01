@@ -91,6 +91,7 @@ extern NSString *const kBundleID;
 #pragma mark - API
 extern NSString *const URLRequest;
 extern NSString *const URLRequestItem;
+extern NSString *const URLRequestTransaction;
 extern NSString *const kLoginRequest;
 extern NSString *const kRegisterRequest;
 extern NSString *const kTransactionRequest;

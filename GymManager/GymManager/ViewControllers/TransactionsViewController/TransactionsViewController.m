@@ -11,6 +11,7 @@
 #import "CalendarViewController.h"
 #import "TransactionManager.h"
 #import "MBProgressHUD.h"
+#import "AddTransactionViewController.h"
 
 NSString *const kAddTransactionSegue = @"AddTransactionSegue";
 
@@ -20,6 +21,7 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
 @property (strong, nonatomic) NSMutableArray *arrTrans;
 @property (strong, nonatomic) UIRefreshControl *refresh;
 @property (strong, nonatomic) TransactionManager *manager;
+@property (strong, nonatomic) dispatch_queue_t transactionQueue;
 
 @end
 
@@ -28,6 +30,7 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.transactionQueue = dispatch_queue_create("transaction_queue", DISPATCH_QUEUE_SERIAL);
     self.manager = [[TransactionManager alloc] init];
     self.manager.delegate = self;
     [self setupView];
@@ -114,23 +117,20 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
         totalRows:((Transaction*)self.arrTrans[section]).items.count inSection:section];
 }
 
+#pragma mark - actionsheet in tableview delegate
+- (void)didEditSection:(NSUInteger)section {
+    [self performSegueWithIdentifier:kAddTransactionSegue sender:@(section)];
+}
+
 - (void)didDeleteSection:(NSUInteger)section {
-    [self.arrTrans removeObjectAtIndex:section];
-    [self.tableView beginUpdates];
-    [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:section]
-        withRowAnimation:UITableViewRowAnimationTop];
-    [self.tableView endUpdates];
-    [self.tableView reloadData];
-    [UIView animateWithDuration:0.3 animations:^{
-        self.contraintTableViewCell.constant = self.tableView.contentSize.height;
-        [self.view layoutIfNeeded];
-    }];
+    [self.manager deleteTransaction:self.arrTrans[section] byUser:[[DataStore sharedDataStore] getUserManage]
+        atSection:section];
 }
 
 - (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewRowAction *ac1 = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal
         title:@"Edit" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-        //Todo
+        //TODO
     }];
     UITableViewRowAction *ac2 = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive
         title:@"Delete" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
@@ -189,6 +189,47 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
         self.arrTrans = transactions.mutableCopy;
         [self.tableView reloadData];
         self.contraintTableViewCell.constant = self.tableView.contentSize.height;
+    }
+}
+
+- (void)didDeleteTransctionWithMessage:(NSString *)message withError:(NSError *)error atSection:(NSInteger)section {
+    dispatch_sync(self.transactionQueue, ^{
+        [self.arrTrans removeObjectAtIndex:section];
+        [self.tableView beginUpdates];
+        [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:section]
+            withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView endUpdates];
+        [UIView animateWithDuration:0.3 animations:^{
+            self.contraintTableViewCell.constant = self.tableView.contentSize.height;
+            [self.view layoutIfNeeded];
+        }];
+    });
+}
+
+#pragma mark - Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([kAddTransactionSegue isEqualToString:segue.identifier]) {
+        AddTransactionViewController *addVC = (AddTransactionViewController*)[segue destinationViewController];
+        if (sender) {
+            //If edit transaction
+            NSNumber *index = (NSNumber*)sender;
+            [addVC updateTransaction:[self.arrTrans[index.integerValue] copy] withCompleteBlock:^(Transaction *returnTran) {
+                //Update tableview in queue
+                dispatch_sync(self.transactionQueue, ^{
+                    self.arrTrans[index.integerValue] = returnTran;
+                    [self.tableView reloadData];
+                });
+            }];
+        } else {
+            [addVC updateTransaction:nil withCompleteBlock:^(Transaction *returnTran) {
+                //Update tableview in queue
+//                dispatch_sync(self.transactionQueue, ^{
+                    [self.arrTrans insertObject:returnTran atIndex:0];
+                    [self.tableView reloadData];
+                    self.contraintTableViewCell.constant = self.tableView.contentSize.height;
+//                });
+            }];
+        }
     }
 }
 

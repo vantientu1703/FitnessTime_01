@@ -22,6 +22,8 @@
 - (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier andFrame:(CGRect)frame;
 - (void)drawView;
 - (void)updateWithTitle:(NSString *)title isCollapsed:(BOOL)isCollapsed totalRows:(NSInteger)row andSection:(NSInteger)section;
+- (void)hideLoadingView:(BOOL)hide;
+
 @end
 
 @protocol HeaderViewDelegate <NSObject>

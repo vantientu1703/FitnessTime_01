@@ -165,6 +165,7 @@ CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    //TODO
 }
 
 #pragma mark - Button add new meeting

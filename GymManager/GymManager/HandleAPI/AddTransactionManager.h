@@ -13,6 +13,7 @@
 @protocol AddTransactionManagerDelegate <NSObject>
 
 - (void)didCreateTransaction:(Transaction *)transaction withMessage:(NSString *)message withError:(NSError *)error;
+- (void)didEditTransaction:(Transaction *)transaction withMessage:(NSString *)message withError:(NSError *)error atIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
@@ -20,5 +21,6 @@
 
 @property (strong, nonatomic) id<AddTransactionManagerDelegate> delegate;
 - (void)createTransaction:(Transaction *)transaction byUser:(User *)user;
+- (void)editTransaction:(Transaction *)transaction byUser:(User *)user atIndexPath:(NSIndexPath *)indexPath;
 
 @end

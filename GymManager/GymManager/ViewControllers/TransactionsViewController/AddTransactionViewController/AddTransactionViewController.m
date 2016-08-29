@@ -22,6 +22,9 @@ NSString *const kCategoryListSegue = @"CategoryListSegue";
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *arrCategory;
 @property (strong, nonatomic) AddTransactionManager *manager;
+@property (strong, nonatomic) Transaction *transaction;
+@property (strong, nonatomic) Transaction *editedTransaction;
+@property (copy, nonatomic) void(^callBackBlock)(Transaction* returnTran);
 
 @end
 
@@ -46,6 +49,10 @@ NSString *const kCategoryListSegue = @"CategoryListSegue";
     [self.tableView registerNib:[UINib nibWithNibName:kTransactionCellIndentifier bundle:nil]
          forCellReuseIdentifier:kTransactionCellIndentifier];
     self.tableView.scrollEnabled = NO;
+    if (self.transaction) {
+        self.lbCustomerName.text = self.transaction.user.fullName;
+        self.arrCategory = self.transaction.items.mutableCopy;
+    }
     [self reloadTableView];
 }
 
@@ -68,6 +75,20 @@ NSString *const kCategoryListSegue = @"CategoryListSegue";
     tran.userId = @"1";
     tran.items = self.arrCategory.copy;
     return tran;
+}
+
+- (BOOL)editTransaction {
+    self.editedTransaction = [self.transaction copy];
+    BOOL edited = NO;
+    if (![self.transaction.items isEqualToArray:self.arrCategory]) {
+        self.editedTransaction.items = self.arrCategory.copy;
+        edited = YES;
+    }
+    if ([self.lbCustomerName.text isEqualToString:self.transaction.user.fullName]) {
+        //TODO
+        edited = YES;
+    }
+    return edited;
 }
 
 #pragma mark - TableView implementation
@@ -118,7 +139,16 @@ NSString *const kCategoryListSegue = @"CategoryListSegue";
 
 - (IBAction)btnSubmitClick:(id)sender {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [self.manager createTransaction:[self genarateTransaction] byUser:[[DataStore sharedDataStore] getUserManage]];
+    User *user = [[DataStore sharedDataStore] getUserManage];
+    if (self.arrCategory.count) {
+        if (self.transaction) {
+            if ([self editedTransaction]) {
+                [self.manager editTransaction:[self editedTransaction] byUser:user atIndexPath:nil];
+            }
+        } else {
+            [self.manager createTransaction:[self genarateTransaction] byUser:user];
+        }
+    }
 }
 
 - (IBAction)didTapCustomer:(id)sender {
@@ -138,15 +168,29 @@ NSString *const kCategoryListSegue = @"CategoryListSegue";
 }
 
 #pragma mark - Api delegate
+- (void)didEditTransaction:(Transaction *)transaction withMessage:(NSString *)message withError:(NSError *)error atIndexPath:(NSIndexPath *)indexPath {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    if (error) {
+        [self.manager showAlertByMessage:message title:kCreateFail];
+    } else {
+        [self.manager showAlertByMessage:message title:kCreateSuccess];
+        self.callBackBlock([self editedTransaction]);
+    }
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)didCreateTransaction:(Transaction *)transaction withMessage:(NSString *)message withError:(NSError *)error {
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     if (error) {
         [self.manager showAlertByMessage:message title:kCreateFail];
     } else {
         [self.manager showAlertByMessage:message title:kCreateSuccess];
+        self.callBackBlock(transaction);
     }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:kCategoryListSegue]) {
         ListCategoryViewController *listVC = ((UINavigationController*)[segue
@@ -168,6 +212,12 @@ NSString *const kCategoryListSegue = @"CategoryListSegue";
             [self reloadSumTotal];
         }];
     }
+}
+
+#pragma mark - Block callback
+- (void)updateTransaction:(Transaction *)transaction withCompleteBlock:(void(^)(Transaction* returnTran))block {
+    self.callBackBlock = block;
+    self.transaction = transaction;
 }
 
 @end
