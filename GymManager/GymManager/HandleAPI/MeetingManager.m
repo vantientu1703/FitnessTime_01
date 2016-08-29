@@ -30,6 +30,24 @@
     }];
 }
 
+- (void)getAllMeetingsWithDate:(NSDate *)date {
+    User *user = (User *)[[DataStore sharedDataStore] getUserManage];
+    NSString *url = [NSString stringWithFormat:@"%@%@", kURLAPI, kMeetings];
+    NSDictionary *params = @{@"auth_token": user.authToken, @"date": date};
+    [self.manager GET:url parameters:params progress:nil
+        success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSError *error;
+        NSArray *meetings = [self meetingsByResponseArray:responseObject error:error];
+        if (!error && [self.delegate respondsToSelector:@selector(didResponseWithMessage:withDate:withError:returnArray:)]) {
+            [self.delegate didResponseWithMessage:error.localizedDescription withDate:date withError:error returnArray:meetings];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if ([self.delegate respondsToSelector:@selector(didResponseWithMessage:withError:returnArray:)]) {
+            [self.delegate didResponseWithMessage:error.localizedDescription withError:error returnArray:nil];
+        }
+    }];
+}
+
 - (void)createMeetingWithTrainer:(Trainer *)trainer withTrainee:(Customer *)customer fromDate:(NSDate *)fromDate toDate:(NSDate *)toDate {
     User *user = [[DataStore sharedDataStore] getUserManage];
     NSString *url = [NSString stringWithFormat:@"%@%@", kURLAPI, kMeetings];

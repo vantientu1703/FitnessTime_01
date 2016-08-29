@@ -223,6 +223,7 @@ NSString *const kSelectImages = @"Select avatar,please";
 #pragma mark - CustomerManagerDelegate 
 - (void)createdCustomerWithMessage:(BOOL)success withError:(NSError *)error returnCustomer:(Customer *)customer {
     [MBProgressHUD hideHUDForView:self.view animated:true];
+    self.navigationItem.rightBarButtonItem.enabled = YES;
     if (success) {
         if ([self.delegate respondsToSelector:@selector(addNewCustomer:)]) {
             [self.delegate addNewCustomer:customer];

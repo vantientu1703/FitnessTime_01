@@ -27,14 +27,14 @@ CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupView];
-    [self getAllMeetngsToday];
+    [self getAllMeetngsWithDate:[NSDate date]];
 }
 
-- (void)getAllMeetngsToday {
+- (void)getAllMeetngsWithDate:(NSDate *)date {
     [MBProgressHUD showHUDAddedTo:self.view animated:true];
     MeetingManager *meetingManager = [[MeetingManager alloc] init];
     meetingManager.delegate = self;
-    [meetingManager getAllMeetings];
+    [meetingManager getAllMeetingsWithDate:date];
 }
 
 #pragma mark - MeetingManagerDelegate
@@ -42,7 +42,20 @@ CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
     if (error) {
         [AlertManager showAlertWithTitle:kRegisterRequest message:message
             viewControler:self reloadAction:^{
-            [self getAllMeetngsToday];
+            [self getAllMeetngsWithDate:[NSDate date]];
+        }];
+    } else {
+        [MBProgressHUD hideHUDForView:self.view animated:true];
+        self.arrMeetings = arrMeetings.mutableCopy;
+        [self.tableView reloadData];
+    }
+}
+
+- (void)didResponseWithMessage:(NSString *)message withDate:(NSDate *)date withError:(NSError *)error returnArray:(NSArray *)arrMeetings {
+    if (error) {
+        [AlertManager showAlertWithTitle:kRegisterRequest message:message
+            viewControler:self reloadAction:^{
+            [self getAllMeetngsWithDate:date];
         }];
     } else {
         [MBProgressHUD hideHUDForView:self.view animated:true];
@@ -71,7 +84,7 @@ CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
     CalendarViewController *calendarVC = [st instantiateInitialViewController];
     [self.navigationController pushViewController:calendarVC animated:true];
     [calendarVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {
-        //TODO
+        [self getAllMeetngsWithDate:dateSelected];
     }];
 }
 
