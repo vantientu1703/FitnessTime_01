@@ -19,5 +19,6 @@
 - (NSString *)dateWithDateMonthYearFormatterFromString:(NSString *)string;
 - (NSString *)yearStringFromDate:(NSDate *)date;
 - (NSDate *)dateFromYearString:(NSString *)string;
+- (NSDate *)dateByServerFormatFromString:(NSString *)string;
 
 @end

@@ -64,7 +64,7 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
 
 #pragma mark - Load Data 
 - (void)reloadDataForWholeView {
-    [self.manager fetchAllTransaction];
+    [self.manager fetchAllTransactionByUser:[[DataStore sharedDataStore] getUserManage]];
     [self.refresh beginRefreshing];
 }
 
@@ -130,16 +130,11 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
 - (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewRowAction *ac1 = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal
         title:@"Edit" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-            //Todo
+        //Todo
     }];
     UITableViewRowAction *ac2 = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive
         title:@"Delete" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-        [self.arrTrans[indexPath.section] removeObjectAtIndex:indexPath.row];
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:
-            UITableViewRowAnimationFade];
-        //Update Tableview height contraint
-        [self.tableView reloadData];
-        self.contraintTableViewCell.constant = self.tableView.contentSize.height;
+        //TODO
     }];
     return @[ac2, ac1];
 }
@@ -188,9 +183,7 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
 - (void)didFetchAllTransctionWithMessage:(NSString *)message withError:(NSError *)error returnTransactions:(NSArray *)transactions {
     [self.refresh endRefreshing];
     if (error) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:error.description delegate:nil
-            cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+        [self.manager showAlertByMessage:message title:error.localizedDescription];
     } else {
         [self.arrTrans removeAllObjects];
         self.arrTrans = transactions.mutableCopy;

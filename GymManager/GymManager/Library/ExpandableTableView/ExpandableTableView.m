@@ -56,11 +56,14 @@
 - (UIView *)headerWithTransaction:(Transaction *)transaction totalRows:(NSInteger)row inSection:(NSInteger)section {
     BOOL isCollapsed = [self collapsedForSection:section];
     HeaderViewContent *headerView = self.headerView;
-    headerView.lbCusName.text = transaction.customerName;
-    headerView.lbTotalCost.text = [NSString stringWithFormat:@"%dĐ", transaction.totalCost];
-    headerView.lbDate.text = [[[DateFormatter alloc] init] dateFormatterFullInfo:transaction.date];
     [headerView updateWithTitle:@"" isCollapsed:isCollapsed totalRows:row andSection:section];
     [headerView drawView];
+    headerView.lbTotalCost.text = [NSString stringWithFormat:@"%.0ld Đ", (long)transaction.totalPrice];
+    headerView.lbDate.text = [[[DateFormatter alloc] init] dateFormatterFullInfo:transaction.createdAt];
+    Customer *customer = transaction.user;
+    if (customer.fullName) {
+        headerView.lbCusName.text = customer.fullName;
+    }
     return headerView;
 }
 

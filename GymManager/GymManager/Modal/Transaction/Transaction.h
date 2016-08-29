@@ -13,10 +13,11 @@
 @interface Transaction : JSONModel
 
 @property (strong, nonatomic) NSString *id;
-@property (strong, nonatomic) NSDate *date;
-@property (strong, nonatomic) NSArray<Item> *items;
-@property (strong, nonatomic) NSString *customerName;
-@property (strong, nonatomic) NSString<Optional> *customerId;
-@property (nonatomic) NSInteger totalCost;
+@property (strong, nonatomic) NSArray<Item,Optional> *items;
+@property (strong, nonatomic) NSString<Optional> *customerName;
+@property (strong, nonatomic) NSString<Optional> *userId;
+@property (strong, nonatomic) NSDate<Optional> *createdAt;
+@property (strong, nonatomic) Customer *user;
+@property (nonatomic) NSInteger totalPrice;
 
 @end

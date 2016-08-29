@@ -65,7 +65,7 @@ NSString *const kCategoryListSegue = @"CategoryListSegue";
 - (Transaction *)genarateTransaction {
     Transaction *tran = [[Transaction alloc] init];
     //TODO change customerId after customer pick viewcontroller has done
-    tran.customerId = @"1";
+    tran.userId = @"1";
     tran.items = self.arrCategory.copy;
     return tran;
 }

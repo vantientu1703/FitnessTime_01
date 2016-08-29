@@ -19,6 +19,6 @@
 @interface TransactionManager : Manager
 
 @property (strong, nonatomic) id<TransactionManagerDelegate> delegate;
-- (void)fetchAllTransaction;
+- (void)fetchAllTransactionByUser:(User *)user;
 
 @end

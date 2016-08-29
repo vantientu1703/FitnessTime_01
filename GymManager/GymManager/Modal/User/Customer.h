@@ -10,8 +10,8 @@
 
 @interface Customer : Person
 
-@property (strong, nonatomic) NSDate *registryDate;
-@property (strong, nonatomic) NSDate *expiryDate;
+@property (strong, nonatomic) NSDate<Optional> *registryDate;
+@property (strong, nonatomic) NSDate<Optional> *expiryDate;
 @property (strong, nonatomic) NSArray<Optional> *meetings;
 
 @end

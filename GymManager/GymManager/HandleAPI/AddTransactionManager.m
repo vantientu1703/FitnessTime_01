@@ -13,7 +13,7 @@
 - (void)createTransaction:(Transaction *)transaction byUser:(User *)user {
     NSString *url = [NSString stringWithFormat:@"%@%@", kURLAPI, kTransactionRequest];
     NSMutableDictionary *params = @{@"auth_token": user.authToken,
-                                    @"order[user_id]": transaction.customerId}.mutableCopy;
+                                    @"order[user_id]": transaction.userId}.mutableCopy;
     for (NSUInteger index = 0; index < transaction.items.count; index++) {
         Item *item = transaction.items[index];
         [params setValue:item.id
