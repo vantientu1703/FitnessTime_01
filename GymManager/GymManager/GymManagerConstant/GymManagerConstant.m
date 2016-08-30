@@ -90,6 +90,7 @@ NSString *const kBundleID = @"com.vantientu.GymManager";
 
 #pragma mark - API
 NSString *const URLRequest = @"https://fit-ness-backend.herokuapp.com/api/";
+NSString *const URLRequestTransaction = @"https://fit-ness-backend.herokuapp.com/api/orders";
 NSString *const kLoginRequest = @"auth/login";
 NSString *const kRegisterRequest = @"auth/register";
 NSString *const kTransactionRequest = @"orders";

@@ -12,6 +12,7 @@
 @protocol ExpandableTableViewDelegate <NSObject>
 
 - (void)didEndAnimationWithNumberOffCellChange:(NSInteger)numberOfCell;
+- (void)didEditSection:(NSUInteger)section;
 - (void)didDeleteSection:(NSUInteger)section;
 
 @end

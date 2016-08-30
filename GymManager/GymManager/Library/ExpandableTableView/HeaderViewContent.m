@@ -16,6 +16,7 @@
 @property (nonatomic, assign) NSInteger totalRows;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, assign) BOOL isCollapsed;
+@property (weak, nonatomic) IBOutlet UIView *viewLoading;
 
 @end
 
@@ -69,6 +70,7 @@
         view.frame = self.contentView.bounds;
         [self.contentView addSubview:view];
     }
+    [self hideLoadingView:YES];
 }
 
 - (IBAction)btnMenuClick:(id)sender {
@@ -85,4 +87,9 @@
         [self.delegate didPickActionSheetAtIndex:buttonIndex withHeaderView:self];
     }
 }
+
+- (void)hideLoadingView:(BOOL)hide {
+    self.viewLoading.hidden = hide;
+}
+
 @end

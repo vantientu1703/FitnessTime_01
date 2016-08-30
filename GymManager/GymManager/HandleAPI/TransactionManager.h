@@ -13,6 +13,7 @@
 
 - (void)didFetchAllTransctionWithMessage:(NSString *)message withError:(NSError *)error returnTransactions:(NSArray*)
     transactions;
+- (void)didDeleteTransctionWithMessage:(NSString *)message withError:(NSError *)error atSection:(NSInteger)section;
 
 @end
 
@@ -20,5 +21,6 @@
 
 @property (strong, nonatomic) id<TransactionManagerDelegate> delegate;
 - (void)fetchAllTransactionByUser:(User *)user;
+- (void)deleteTransaction:(Transaction *)transaction byUser:(User *)user atSection:(NSInteger)section;
 
 @end

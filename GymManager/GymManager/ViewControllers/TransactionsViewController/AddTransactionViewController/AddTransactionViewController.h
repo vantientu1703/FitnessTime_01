@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Transaction.h"
 
 @interface AddTransactionViewController : UIViewController
 
@@ -16,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbDate;
 @property (weak, nonatomic) IBOutlet UIView *viewDate;
 @property (weak, nonatomic) IBOutlet UILabel *lbTotalCost;
+- (void)updateTransaction:(Transaction *)transaction withCompleteBlock:(void(^)(Transaction* returnTran))block;
 
 @end
