@@ -16,6 +16,7 @@
     meeting.fromDate = dict[@"from_date"];
     meeting.toDate = dict[@"to_date"];
     meeting.users = dict[@"users"];
+    meeting.userMeetings = dict[@"user_meetings"];
     return meeting;
 }
 

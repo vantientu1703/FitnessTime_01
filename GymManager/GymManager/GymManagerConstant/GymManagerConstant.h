@@ -79,6 +79,10 @@ extern NSString *const kDeleteMeetingSuccess;
 extern NSString *const kDeleteMeetingFail;
 extern NSString *const kTrainer;
 extern NSString *const kCustomer;
+extern NSString *const kIconFriends;
+extern NSString *const kIconNewsFeed;
+extern NSString *const kIconSetting;
+extern NSString *const kIconTransactions;
 
 #pragma mark - CoreData
 extern NSString *const kCoreDataModel;

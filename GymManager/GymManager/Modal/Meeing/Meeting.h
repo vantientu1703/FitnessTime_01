@@ -16,5 +16,6 @@
 @property (strong, nonatomic) NSString *fromDate;
 @property (strong, nonatomic) NSString *toDate;
 @property (strong, nonatomic) NSArray *users;
+@property (strong, nonatomic) NSArray *userMeetings;
 
 @end

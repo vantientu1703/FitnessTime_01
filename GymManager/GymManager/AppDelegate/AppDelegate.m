@@ -60,6 +60,10 @@
     UINavigationController *navMenuVC = [[UINavigationController alloc] initWithRootViewController:menuVC];
     //Set viewcontrollers for tabbar controller
     [tabVC setViewControllers:@[navTodayMeetingsVC,navPTMeetingVC,navTransactionVC,navMenuVC]];
+    NSArray *arrImages = @[kIconNewsFeed, kIconFriends, kIconTransactions, kIconSetting];
+    [tabVC.tabBar.items enumerateObjectsUsingBlock:^(UITabBarItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.image = [UIImage imageNamed:arrImages[idx]];
+    }];
     self.window.rootViewController = tabVC;
 }
 
