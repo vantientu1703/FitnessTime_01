@@ -6,7 +6,7 @@
 #import "DataValidation.h"
 
 NSString *const kErrorEmailRequired = @"Email address required";
-NSString *const kErrorEmailInvalid = @"Emial invalid";
+NSString *const kErrorEmailInvalid = @"Email invalid";
 NSString *const kEmailFilterRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
 NSInteger const kMaxLenght = 255;
 NSString *const kLimitLenghtTitle = @"Limit email";

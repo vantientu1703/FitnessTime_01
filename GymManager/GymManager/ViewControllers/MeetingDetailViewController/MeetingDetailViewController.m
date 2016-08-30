@@ -22,7 +22,7 @@ typedef NS_ENUM(NSInteger, MeetingDetailRows) {
 };
 
 NSInteger const kNumberOfRowsInSection = 4;
-NSString *const kTrainnerTitle = @"Persion Trainer";
+NSString *const kTrainnerTitle = @"Trainer";
 NSString *const kCustomerTitle = @"Customer";
 NSString *const kCustomerOrTrainnerTableViewCellIdentifier = @"CustomerOrTrainnerTableViewCell";
 NSString *const kDateMeetingTableViewCellIdentifier = @"DateMeetingTableViewCell";
@@ -71,6 +71,9 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
         _fromDate = [[DateFormatter sharedInstance] dateFormatterHourDateMonthYearWithString:self.meeting.fromDate];
         _toDate = [[DateFormatter sharedInstance] dateFormatterHourDateMonthYearWithString:self.meeting.toDate];
     }
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+        target:self action:@selector(saveMeeting:)];
+    self.navigationItem.rightBarButtonItem = doneButton;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     _nameCustomer = @"";
     _nameTrainer = @"";
@@ -223,8 +226,8 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
     }
 }
 
-#pragma mark - Implement button Submit
-- (IBAction)submitPress:(id)sender {
+#pragma mark - Implement button done
+- (IBAction)saveNewMeetingPress:(id)sender {
     if (!_trainer) {
         self.labelNotes.text = kNotificationNoSelectTrainer;
     } else if (!_customer) {

@@ -164,6 +164,9 @@ CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
     return YES;
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+}
+
 #pragma mark - Button add new meeting
 - (IBAction)buttonAddMeetingPress:(id)sender {
     UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];

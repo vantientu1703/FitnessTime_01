@@ -17,9 +17,9 @@
 #import "DataStore.h"
 
 NSString *const kLoginVCTitle = @"Login";
-NSString *const kEmailError = @"Email error";
-NSString *const kPasswordError = @"Password error";
-NSString *const kErrorEmailOrPassword = @"Error email or password";
+NSString *const kEmailError = @"Email incorrect";
+NSString *const kPasswordError = @"Password incorrect";
+NSString *const kErrorEmailOrPassword = @"Incorrect email or password";
 
 @interface LoginViewController ()<UITextFieldDelegate, LoginManagerDelegate>
 
