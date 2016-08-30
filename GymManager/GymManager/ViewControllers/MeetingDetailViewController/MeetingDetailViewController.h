@@ -10,6 +10,7 @@
 
 @protocol MeetingDetailViewControllerDelegate <NSObject>
 - (void)reloadDataMeetings:(Meeting *)meeting;
+- (void)updateMeeting:(Meeting *)meeting;
 @end
 
 @interface MeetingDetailViewController : UIViewController

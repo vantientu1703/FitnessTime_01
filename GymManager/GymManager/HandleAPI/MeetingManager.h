@@ -27,4 +27,6 @@
     fromDate:(NSDate *)fromDate toDate:(NSDate *)toDate;
 - (void)getAllMeetingsWithDate:(NSDate *)date;
 - (void)deleteMeeting:(Meeting *)meeting;
+- (void)updateMeetingItem:(Meeting *)meeting withTrainer:(Trainer *)trainer withCustomer:(Customer *)customer
+    fromDate:(NSDate *)fromDate toDate:(NSDate *)toDate;
 @end

@@ -63,7 +63,7 @@ NSString *const kDetailPTManagerTitle = @"show detail pt manager";
 NSString *const kPTManagerVCTitle = @"PT Manager";
 NSString *const kAddNewMeetingTitle = @"Add new meeting";
 NSString *const kEditMeetingTitle = @"Edit meeting";
-NSString *const kTodayMeetingsVCTitle = @"Today Meeting";
+NSString *const kTodayMeetingsVCTitle = @"Today Meetings";
 NSString *const kDetailMeetingsTrainerVCTitle = @"Detail Meeting Trainner";
 NSString *const kCustomerManagerVCTitle = @"customer manager view controller title";
 NSString *const kCalendarIdentifier = @"Calendar";
@@ -79,6 +79,10 @@ NSString *const kDeleteMeetingSuccess = @"Delete meeting is success";
 NSString *const kDeleteMeetingFail = @"Delete meeting is fail";
 NSString *const kTrainer = @"trainer";
 NSString *const kCustomer = @"customer";
+NSString *const kIconFriends = @"friends";
+NSString *const kIconNewsFeed = @"news-feed";
+NSString *const kIconSetting = @"settings";
+NSString *const kIconTransactions = @"ic_transactions";
 
 #pragma mark - CoreData
 NSString *const kCoreDataModel = @"GymManager";

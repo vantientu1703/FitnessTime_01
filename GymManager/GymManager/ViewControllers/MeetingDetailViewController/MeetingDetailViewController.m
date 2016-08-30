@@ -234,11 +234,16 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
     } else if (!_toDate) {
         self.labelNotes.text = kNotificationNOSelectEndDate;
     } else {
-        [MBProgressHUD showHUDAddedTo:self.view animated:true];
-        self.labelNotes.text = kNotificationAddNewMeetingSuccess;
         MeetingManager *meetingManager = [[MeetingManager alloc] init];
         meetingManager.delegate = self;
-        [meetingManager createMeetingWithTrainer:_trainer withTrainee:_customer fromDate:_fromDate toDate:_toDate];
+        if ([self.statusEditMeeting isEqualToString:kEditMeetingTitle]) {
+            [MBProgressHUD showHUDAddedTo:self.view animated:true];
+            [meetingManager updateMeetingItem:self.meeting withTrainer:_trainer
+                withCustomer:_customer fromDate:_fromDate toDate:_toDate];
+        } else {
+            [MBProgressHUD showHUDAddedTo:self.view animated:true];
+            [meetingManager createMeetingWithTrainer:_trainer withTrainee:_customer fromDate:_fromDate toDate:_toDate];
+        }
     }
 }
 
@@ -246,12 +251,28 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
 - (void)createMeetingItem:(Meeting *)meeting success:(BOOL)success error:(NSError *)error {
     [MBProgressHUD hideHUDForView:self.view animated:true];
     if (success) {
-        self.labelNotes.text = kUpdateSuccess;
+        self.labelNotes.text = kCreateSuccess;
         if ([self.delegate respondsToSelector:@selector(reloadDataMeetings:)]) {
             [self.delegate reloadDataMeetings:meeting];
+        } else {
+            [[NSNotificationCenter defaultCenter] postNotificationName:kAddNewMeetingTitle object:nil];
         }
     } else {
         self.labelNotes.text = error.localizedDescription;
+    }
+}
+
+- (void)updateMeetingItem:(Meeting *)meeting success:(BOOL)success error:(NSError *)error {
+    [MBProgressHUD hideHUDForView:self.view animated:true];
+    if (success) {
+        self.labelNotes.text = kUpdateSuccess;
+        if ([self.delegate respondsToSelector:@selector(updateMeeting:)]) {
+            [self.delegate updateMeeting:meeting];
+        }
+    } else {
+        [AlertManager showAlertWithTitle:kRegisterRequest message:error.localizedDescription
+            viewControler:self okAction:^{
+        }];
     }
 }
 

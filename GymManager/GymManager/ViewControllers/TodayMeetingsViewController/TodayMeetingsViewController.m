@@ -29,7 +29,24 @@ CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupView];
-    [self getAllMeetngsWithDate:[NSDate date]];
+    if ([self.statusDetailMeeting isEqualToString:kDetailMeetingsTrainerVCTitle]) {
+        //TODO
+    } else {
+        [self getAllMeetngsWithDate:[NSDate date]];
+    }
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getAllMeetingsToday)
+        name:kAddNewMeetingTitle object:nil];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)getAllMeetingsToday {
+    [MBProgressHUD showHUDAddedTo:self.view animated:true];
+    MeetingManager *meetingManager = [[MeetingManager alloc] init];
+    meetingManager.delegate = self;
+    [meetingManager getAllMeetingsWithDate:[NSDate date]];
 }
 
 - (void)getAllMeetngsWithDate:(NSDate *)date {
@@ -132,6 +149,8 @@ CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
                 instantiateViewControllerWithIdentifier:kMeetingDetailViewControllerIdentifier];
             meetingDetailVC.statusEditMeeting = kEditMeetingTitle;
             meetingDetailVC.meeting = self.arrMeetings[indexPath.row];
+            meetingDetailVC.delegate = self;
+            _indexPath = indexPath;
             [self.navigationController pushViewController:meetingDetailVC animated:true];
     }];
     UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault
@@ -181,6 +200,11 @@ CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
         self.arrMeetings = [NSMutableArray array];
     }
     [self.arrMeetings addObject:meeting];
+    [self.tableView reloadData];
+}
+
+- (void)updateMeeting:(Meeting *)meeting {
+    [self.arrMeetings replaceObjectAtIndex:_indexPath.row withObject:meeting];
     [self.tableView reloadData];
 }
 

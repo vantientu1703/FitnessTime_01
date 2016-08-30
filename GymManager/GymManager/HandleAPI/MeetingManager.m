@@ -71,6 +71,28 @@
     }];
 }
 
+- (void)updateMeetingItem:(Meeting *)meeting withTrainer:(Trainer *)trainer withCustomer:(Customer *)customer fromDate:(NSDate *)fromDate toDate:(NSDate *)toDate {
+    User *user = [[DataStore sharedDataStore] getUserManage];
+    NSString *url = [NSString stringWithFormat:@"%@%@%@", kURLAPI, kMeetings, meeting.id];
+    NSDictionary *params = @{@"auth_token": user.authToken, @"meeting[from_date]": fromDate,
+                             @"meeting[to_date]": toDate,
+                             @"meeting[user_meetings_attributes][0][user_id]": trainer.id,
+                             @"meeting[user_meetings_attributes][0][user_meetings_id]": meeting.id,
+                             @"meeting[user_meetings_attributes][1][user_id]": customer.id,
+                             @"meeting[user_meetings_attributes][1][user_meetings_id]": meeting.id};
+    [self.manager PUT:url parameters:params
+        success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        Meeting *meeting = [ParseJson meetingWithDictionary:responseObject];
+        if ([self.delegate respondsToSelector:@selector(updateMeetingItem:success:error:)]) {
+            [self.delegate updateMeetingItem:meeting success:true error:nil];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if ([self.delegate respondsToSelector:@selector(updateMeetingItem:success:error:)]) {
+            [self.delegate updateMeetingItem:nil success:true error:error];
+        }
+    }];
+}
+
 - (void)deleteMeeting:(Meeting *)meeting {
     User *user = [[DataStore sharedDataStore] getUserManage];
     NSString *url = [NSString stringWithFormat:@"%@%@%@", kURLAPI, kMeetings, meeting.id];

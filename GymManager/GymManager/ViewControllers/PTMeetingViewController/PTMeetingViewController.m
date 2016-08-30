@@ -113,7 +113,6 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:true];
-    //TODO
     UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
     if ([self.statusAddNewMeeting isEqualToString:kDetailMeetingTitle]) {
         TodayMeetingsViewController *todayMeetingsVC = [st
