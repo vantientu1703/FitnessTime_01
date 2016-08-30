@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol MeetingDetailViewControllerDelegate <NSObject>
+@optional
 - (void)reloadDataMeetings:(Meeting *)meeting;
 - (void)updateMeeting:(Meeting *)meeting;
 @end

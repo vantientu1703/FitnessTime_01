@@ -72,7 +72,7 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
         _toDate = [[DateFormatter sharedInstance] dateFormatterHourDateMonthYearWithString:self.meeting.toDate];
     }
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-        target:self action:@selector(saveMeeting:)];
+        target:self action:@selector(saveNewMeetingPress:)];
     self.navigationItem.rightBarButtonItem = doneButton;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     _nameCustomer = @"";

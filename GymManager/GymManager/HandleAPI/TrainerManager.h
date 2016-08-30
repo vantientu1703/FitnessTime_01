@@ -12,6 +12,8 @@
 #import "User.h"
 
 @protocol TrainerManagerDelegate <NSObject>
+
+@optional
 - (void)didResponseWithMessage:(NSString *)message withError:(NSError *)error returnArray:(NSArray *)arrTrainer;
 - (void)createdTrainerWithMessage:(BOOL)success withError:(NSError *)error returnTrainer:(Trainer *)trainer;
 - (void)updateTrainerWithMessage:(BOOL)success withError:(NSError *)error returnTrainer:(Trainer *)trainer;
