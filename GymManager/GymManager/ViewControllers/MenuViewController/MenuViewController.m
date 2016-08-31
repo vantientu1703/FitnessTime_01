@@ -113,7 +113,6 @@ static NSString *const kCellDefault = @"CellDefault";
             profileManager.delegate = self;
             [profileManager logout];
             AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-            [[DataStore sharedDataStore] clearUser];
             [appDelegate loadLoginViewController];
             [[DataStore sharedDataStore] clearUser];
             break;
