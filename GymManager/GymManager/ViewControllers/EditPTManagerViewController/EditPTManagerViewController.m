@@ -82,14 +82,16 @@ NSString *const kSelectAvatar = @"Select avatar,please";
 
 #pragma mark - Set info for trainer
 - (void)createTrainer {
+    NSString *email = [DataValidation isValidEmailAddress:self.textFieldEmail.text];
+    NSString *phoneNumber = [DataValidation isValidPhoneNumber:(NSMutableString *)self.textFieldPhoneNumber.text];
     if (!self.textFieldAddress.text.length) {
         self.labelNotes.text = kNoFillAddressTitle;
     } else if (!self.textFieldEmail.text.length) {
-        self.labelNotes.text = kNoFillEmailTitle;
+        self.labelNotes.text = email;
     } else if (!self.textFieldFullName.text.length) {
         self.labelNotes.text = kNoFillFullNameTitle;
     } else if (!self.textFieldPhoneNumber.text.length) {
-        self.labelNotes.text = kNoFillPhoneNumberTitle;
+        self.labelNotes.text = phoneNumber;
     } else if (!self.textFiledIncomeShif.text.length) {
         self.labelNotes.text = kNoFillIncomShifTitle;
     } else if (!_dateOfBirth) {

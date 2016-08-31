@@ -34,7 +34,9 @@
     User *user = (User *)[[DataStore sharedDataStore] getUserManage];
     NSDictionary *params = @{@"auth_token": user.authToken, @"user[full_name]": trainer.fullName,
                              @"user[tel_number]": trainer.telNumber, @"user[address]": trainer.address,
-                             @"user[role]": @"trainer", @"user[birthday]": trainer.birthday,
+                             @"user[role]": @"trainer",
+                             @"user[birthday]": [[DateFormatter sharedInstance]
+                                dateFormatterDateMonthYear:trainer.birthday],
                              @"user[avatar]": trainer.avatar,
                              @"user[meeting_money]": [NSString stringWithFormat:@"%f", trainer.meetingMoney]};
     

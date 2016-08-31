@@ -10,4 +10,6 @@
 + (NSString *)isValidPassword:(NSString *)password;
 + (NSString *)isValidConfirmedPassword:(NSString *)confirmedPassword password:(NSString *)password;
 + (NSString *)isValidName:(NSString *)name;
++ (NSString *)isValidPhoneNumber:(NSMutableString *)phoneNumber;
++ (NSString *)replaceSpaceInEmail:(NSMutableString *)email;
 @end

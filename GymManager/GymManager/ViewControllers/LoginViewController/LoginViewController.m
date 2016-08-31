@@ -46,14 +46,18 @@ NSString *const kErrorEmailOrPassword = @"Incorrect email or password";
 - (void)doLogin {
     LoginManager *loginManager = [[LoginManager alloc] init];
     loginManager.delegate = self;
-    NSString *email = [DataValidation isValidEmailAddress:self.textFieldUserName.text];
+    NSString *emailLogin = [DataValidation replaceSpaceInEmail:(NSMutableString *)self.textFieldUserName.text];
+    NSString *email;
+    if (emailLogin) {
+        email = [DataValidation isValidEmailAddress:emailLogin];
+    }
     NSString *passWord = [DataValidation isValidPassword:self.textFieldPassword.text];
     if (email) {
         self.labelNotes.text = email;
     } else if (passWord) {
         self.labelNotes.text = passWord;
     } else {
-        [loginManager doLoginWithEmail:self.textFieldUserName.text password:self.textFieldPassword.text];
+        [loginManager doLoginWithEmail:emailLogin password:self.textFieldPassword.text];
         [MBProgressHUD showHUDAddedTo:self.view animated:true];
     }
 }

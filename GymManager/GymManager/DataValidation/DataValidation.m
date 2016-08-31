@@ -16,6 +16,8 @@ NSString *const kMinLenghtReguiredTitle = @"Password should be at least is 6";
 NSString *const kNotEquals = @"Confirm password not equals";
 NSString *const kNameRequired = @"Name required";
 NSInteger const kMaxLenghtNames = 50;
+NSString *const kPhoneNumber = @"Phone number invalid";
+NSString *const kPhoneNumberLength = @"Length phone number from 10 to 11 text";
 
 @implementation DataValidation
 
@@ -61,6 +63,22 @@ NSInteger const kMaxLenghtNames = 50;
         return kNameRequired;
     }
     return nil;
+}
+
++ (NSString *)isValidPhoneNumber:(NSMutableString *)phoneNumber {
+    if (phoneNumber.length < 10 || phoneNumber.length > 11) {
+        return kPhoneNumberLength;
+    }
+    NSString *phoneNumberRegex = @"0[0-9]{9,10}";
+    NSPredicate *phoneNumberPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneNumberRegex];
+    if (![phoneNumberPredicate evaluateWithObject:phoneNumber]) {
+        return kPhoneNumber;
+    }
+    return nil;
+}
+
++ (NSString *)replaceSpaceInEmail:(NSMutableString *)email {
+    return [email stringByReplacingOccurrencesOfString:@" " withString:@""];
 }
 
 @end

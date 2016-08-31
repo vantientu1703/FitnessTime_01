@@ -175,10 +175,12 @@ NSString *const kSelectImages = @"Select avatar,please";
 
 #pragma mark - Set info customer
 - (void)setupInfoNewCustomer {
-    if (!self.textFieldNameCustomer.text.length) {
+    NSString *name = [DataValidation isValidName:self.textFieldNameCustomer.text];
+    NSString *phoneNumber = [DataValidation isValidPhoneNumber:(NSMutableString *)self.textFieldPhoneNumber.text];
+    if (name) {
         self.labelNotes.text = kFillNames;
-    } else if (!self.textFieldPhoneNumber.text.length) {
-        self.labelNotes.text = kFillPhoneNumbers;
+    } else if (phoneNumber) {
+        self.labelNotes.text = phoneNumber;
     } else if (!self.textFieldAddress.text.length) {
         self.labelNotes.text = kFillAddresss;
     } else if (!_dateOfBirth) {
