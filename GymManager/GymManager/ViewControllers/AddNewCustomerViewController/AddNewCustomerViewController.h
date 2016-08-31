@@ -10,6 +10,7 @@
 
 @protocol AddNewCustomerViewControllerDelegate <NSObject>
 
+@optional
 - (void)addNewCustomer:(Customer *)customer;
 - (void)updateCustomer:(Customer *)customer;
 

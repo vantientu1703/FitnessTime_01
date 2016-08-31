@@ -9,6 +9,7 @@
 #import "Manager.h"
 
 @protocol CustomerManagerDelegate <NSObject>
+@optional
 - (void)didResponseWithMessage:(NSString *)message withError:(NSError *)error returnArray:(NSArray *)arrCustomers;
 - (void)createdCustomerWithMessage:(BOOL)success withError:(NSError *)error returnCustomer:(Customer *)customer;
 - (void)updateCustomerWithMessage:(BOOL)success withError:(NSError *)error returnCustomer:(Customer *)customer;

@@ -11,6 +11,7 @@
 
 @protocol MeetingManagerDelegate <NSObject>
 
+@optional
 - (void)didResponseWithMessage:(NSString *)message withError:(NSError *)error returnArray:(NSArray *)arrMeetings;
 - (void)didResponseWithMessage:(NSString *)message withDate:(NSDate *)date
     withError:(NSError *)error returnArray:(NSArray *)arrMeetings;

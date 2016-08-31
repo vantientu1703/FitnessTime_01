@@ -10,6 +10,7 @@
 
 @protocol DetailPTManagerViewControllerDelegate <NSObject>
 
+@optional
 - (void)reloadDataCollectionView:(Trainer *)trainer;
 
 @end

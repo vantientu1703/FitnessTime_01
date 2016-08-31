@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 @protocol EditPTManagerViewControllerDelegate <NSObject>
 
+@optional
 - (void)createNewTrainer:(Trainer *)trainer;
 - (void)updateTrainer:(Trainer *)trainer;
 

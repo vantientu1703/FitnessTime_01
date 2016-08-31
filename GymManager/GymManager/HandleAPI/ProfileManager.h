@@ -10,6 +10,7 @@
 
 @protocol ProfileManagerDelegate <NSObject>
 
+@optional
 - (void)updateProfile:(User *)user success:(BOOL)success error:(NSError *)error;
 - (void)logoutSuccess:(BOOL)success error:(NSError *)error;
 
