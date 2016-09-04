@@ -43,4 +43,5 @@
 #import "MeetingManager.h"
 #import "Meeting.h"
 #import "ParseJson.h"
+#import "BaseViewController.h"
 #endif /* GymManager_PrefixHeader_pch */

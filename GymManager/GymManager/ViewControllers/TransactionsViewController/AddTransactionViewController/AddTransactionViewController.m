@@ -25,6 +25,7 @@ NSString *const kCategoryListSegue = @"CategoryListSegue";
 @property (strong, nonatomic) Transaction *transaction;
 @property (strong, nonatomic) Transaction *editedTransaction;
 @property (copy, nonatomic) void(^callBackBlock)(Transaction* returnTran);
+@property (weak, nonatomic) IBOutlet UIView *emptyView;
 
 @end
 
@@ -57,8 +58,12 @@ NSString *const kCategoryListSegue = @"CategoryListSegue";
 }
 
 - (void)reloadTableView {
+    if (self.arrCategory.count) {
+        [self.emptyView setHidden:YES];
+    } else {
+        [self.emptyView setHidden:NO];
+    }
     [self.tableView reloadData];
-    self.contraintTableViewHeight.constant = self.tableView.contentSize.height;
 }
 
 - (void)reloadSumTotal {

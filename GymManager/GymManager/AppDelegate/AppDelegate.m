@@ -39,6 +39,8 @@
 }
 
 - (void)loadTabbarController {
+    [[UITabBar appearance] setBarTintColor:[UIColor whiteColor]];
+    [[UITabBar appearance] setTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"green_bg.jpg"]]];
     //TODO
     UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
     UITabBarController *tabVC = [[UITabBarController alloc] init];

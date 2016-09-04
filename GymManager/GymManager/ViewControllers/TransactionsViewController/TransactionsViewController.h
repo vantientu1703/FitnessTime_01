@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ExpandableTableView.h"
 
-@interface TransactionsViewController : UIViewController
+@interface TransactionsViewController : BaseViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *lbNumOfTrans;
 @property (weak, nonatomic) IBOutlet UILabel *lbTotalIncome;

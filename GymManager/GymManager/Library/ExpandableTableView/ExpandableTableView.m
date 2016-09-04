@@ -96,7 +96,6 @@
 - (void)didPickActionSheetAtIndex:(NSUInteger)index withHeaderView:(HeaderViewContent *)headerView {
     if (index == 0) {
         [headerView hideLoadingView:NO];
-        [self didTapHeader:headerView];
         NSString *key = [NSString stringWithFormat:@"%ld", (long)headerView.section];
         BOOL isCollapsed = [self collapsedForSection:headerView.section];
         isCollapsed = !isCollapsed;
