@@ -13,5 +13,6 @@
 @property (strong, nonatomic) NSDate<Optional> *startWorkDate;
 @property (strong, nonatomic) NSArray<Optional> *meetings;
 @property (assign, nonatomic) CGFloat meetingMoney;
+- (NSURL *)avatarURL;
 
 @end

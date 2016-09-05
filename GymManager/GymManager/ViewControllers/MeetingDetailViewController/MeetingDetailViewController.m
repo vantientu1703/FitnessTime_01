@@ -34,6 +34,7 @@ NSString *const kToTitle = @"To :";
 NSString *const kNotificationNOSelectStartDate = @"Select start date,please!";
 NSString *const kNotificationNOSelectEndDate = @"Select end date,please!";
 CGFloat const kHeightMeetingDetailCell = 44.0f;
+NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
 
 @interface MeetingDetailViewController ()<UITableViewDataSource, UITableViewDelegate, MeetingManagerDelegate, PTMeetingViewControllerDelegate, CustomerManagerViewControllerDelegate>
 
@@ -70,6 +71,8 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
         self.title = kEditMeetingTitle;
         _fromDate = [[DateFormatter sharedInstance] dateFormatterHourDateMonthYearWithString:self.meeting.fromDate];
         _toDate = [[DateFormatter sharedInstance] dateFormatterHourDateMonthYearWithString:self.meeting.toDate];
+        _trainer = self.meeting.trainer;
+        _customer = self.meeting.customer;
     }
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
         target:self action:@selector(saveNewMeetingPress:)];
@@ -85,17 +88,6 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Trainer *trainer;
-    Customer *customer;
-    for (NSDictionary *obj in self.meeting.users) {
-        if ([obj[@"role"] isEqualToString:kTrainer]) {
-            trainer = [[Trainer alloc] initWithDictionary:obj error:nil];
-            _trainer = trainer;
-        } else if ([obj[@"role"] isEqualToString:kCustomer]) {
-            customer = [[Customer alloc] initWithDictionary:obj error:nil];
-            _customer = customer;
-        }
-    }
     switch (indexPath.row) {
         case MeetingDetailRowTrainer: {
             CustomerOrTrainnerTableViewCell *trainerCell = (CustomerOrTrainnerTableViewCell *)[tableView
@@ -104,9 +96,13 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
             trainerCell.selectionStyle = UITableViewCellSelectionStyleNone;
             trainerCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             if ([self.statusEditMeeting isEqualToString:kEditMeetingTitle]) {
-                [trainerCell configCellWithName:trainer.fullName];
+                [trainerCell configCellWithName:_trainer.fullName];
             } else {
-                [trainerCell configCellWithName:kTrainnerTitle];
+                if (self.trainer) {
+                    [trainerCell configCellWithName:self.trainer.fullName];
+                } else {
+                    [trainerCell configCellWithName:kTrainnerTitle];
+                }
             }
             return trainerCell;
         }
@@ -117,7 +113,7 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
             customerCell.selectionStyle = UITableViewCellSelectionStyleNone;
             customerCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             if ([self.statusEditMeeting isEqualToString:kEditMeetingTitle]) {
-                [customerCell configCellWithName:customer.fullName];
+                [customerCell configCellWithName:_customer.fullName];
             } else {
                 [customerCell configCellWithName:kCustomerTitle];
             }
@@ -276,6 +272,22 @@ CGFloat const kHeightMeetingDetailCell = 44.0f;
         [AlertManager showAlertWithTitle:kRegisterRequest message:error.localizedDescription
             viewControler:self okAction:^{
         }];
+    }
+}
+
+- (void)createMeetingFaileWithMessage:(NSString *)message {
+    //TODO: handle create meeting fail
+    [MBProgressHUD hideHUDForView:self.view animated:true];
+    if (message) {
+        self.labelNotes.text = message;
+    }
+}
+
+- (void)updateMeetingFailWithMessage:(NSString *)message {
+    //TODO: handle update meeting fail
+    [MBProgressHUD hideHUDForView:self.view animated:true];
+    if (message) {
+        self.labelNotes.text = message;
     }
 }
 

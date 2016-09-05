@@ -21,7 +21,6 @@ typedef NS_ENUM(NSInteger, MenuDetailRows) {
     MenuDetailRowLogOut
 };
 
-NSString *const kMyProfileTitle = @"My Profile";
 NSString *const kPTManagerTitle = @"PT Manager";
 NSString *const kLogoutTitle = @"Logout";
 NSString *const kCategoryTitle = @"Category";

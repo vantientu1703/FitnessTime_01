@@ -24,4 +24,8 @@
     self.expiryDate = [formatter dateWithMonthYearFormatterFromString:string];
 }
 
+- (NSURL *)avatarURL{
+    return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", kURLImage, self.avatar]];
+}
+
 @end

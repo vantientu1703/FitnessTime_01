@@ -30,7 +30,10 @@ CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
     [super viewDidLoad];
     [self setupView];
     if ([self.statusDetailMeeting isEqualToString:kDetailMeetingsTrainerVCTitle]) {
-        //TODO
+        [MBProgressHUD showHUDAddedTo:self.view animated:true];
+        MeetingManager *meetingManager = [[MeetingManager alloc] init];
+        meetingManager.delegate = self;
+        [meetingManager getMeetingsWithTrainer:self.trainer];
     } else {
         [self getAllMeetngsWithDate:[NSDate date]];
     }
@@ -58,26 +61,26 @@ CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
 
 #pragma mark - MeetingManagerDelegate
 - (void)didResponseWithMessage:(NSString *)message withError:(NSError *)error returnArray:(NSArray *)arrMeetings {
+    [MBProgressHUD hideHUDForView:self.view animated:true];
     if (error) {
         [AlertManager showAlertWithTitle:kRegisterRequest message:message
             viewControler:self reloadAction:^{
             [self getAllMeetngsWithDate:[NSDate date]];
         }];
     } else {
-        [MBProgressHUD hideHUDForView:self.view animated:true];
         self.arrMeetings = arrMeetings.mutableCopy;
         [self.tableView reloadData];
     }
 }
 
 - (void)didResponseWithMessage:(NSString *)message withDate:(NSDate *)date withError:(NSError *)error returnArray:(NSArray *)arrMeetings {
+    [MBProgressHUD hideHUDForView:self.view animated:true];
     if (error) {
         [AlertManager showAlertWithTitle:kRegisterRequest message:message
             viewControler:self reloadAction:^{
             [self getAllMeetngsWithDate:date];
         }];
     } else {
-        [MBProgressHUD hideHUDForView:self.view animated:true];
         self.arrMeetings = arrMeetings.mutableCopy;
         [self.tableView reloadData];
     }
@@ -175,6 +178,7 @@ CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
         instantiateViewControllerWithIdentifier:kMeetingDetailViewControllerIdentifier];
     meetingDetailVC.delegate = self;
     meetingDetailVC.statusEditMeeting = kAddNewMeetingTitle;
+    meetingDetailVC.trainer = self.trainer;
     [self.navigationController pushViewController:meetingDetailVC animated:true];
 }
 

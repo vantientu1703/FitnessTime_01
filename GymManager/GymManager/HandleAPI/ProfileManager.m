@@ -13,12 +13,13 @@
 - (void)updateProfile:(User *)user {
     NSString *url = [NSString stringWithFormat:@"%@%@/%@", kURLAPI, kManager, user.id];
     NSDictionary *params = @{@"auth_token": user.authToken, @"manager[full_name]": user.fullName,
-                             @"manager[user_name]": user.userName, @"manager[address]": user.address,
-                             @"manager[tel_number]": user.telNumber, @"manager[avatar]": user.avatar};
+                             @"manager[address]": user.address, @"manager[tel_number]": user.telNumber,
+                             @"manager[avatar]": user.avatar, @"manager[birthday]": [[DateFormatter sharedInstance]
+                                dateFormatterDateMonthYear:user.birthday]};
     [self.manager PUT:url parameters:params
         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSError *error;
-        User *user = [[User alloc] initWithDictionary:responseObject error:&error];
+        User *user = [[User alloc] initWithDictionary:responseObject[@"manager"] error:&error];
         if (!error) {
             if ([self.delegate respondsToSelector:@selector(updateProfile:success:error:)]) {
                 [self.delegate updateProfile:user success:true error:error];

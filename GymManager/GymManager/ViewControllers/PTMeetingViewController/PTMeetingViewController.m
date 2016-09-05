@@ -118,6 +118,7 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
         TodayMeetingsViewController *todayMeetingsVC = [st
             instantiateViewControllerWithIdentifier:kTodayMeetinViewControllerIdentifier];
         todayMeetingsVC.statusDetailMeeting = kDetailMeetingsTrainerVCTitle;
+        todayMeetingsVC.trainer = self.arrTrainers[indexPath.row];
         [self.navigationController pushViewController:todayMeetingsVC animated:true];
     } else if ([self.statusAddNewMeeting isEqualToString:kDetailPTManagerTitle]) {
         DetailPTManagerViewController *detailPTManagerVC = [st
