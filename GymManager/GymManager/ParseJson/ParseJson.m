@@ -15,8 +15,15 @@
     meeting.id = dict[@"id"];
     meeting.fromDate = dict[@"from_date"];
     meeting.toDate = dict[@"to_date"];
-    meeting.users = dict[@"users"];
-    meeting.userMeetings = dict[@"user_meetings"];
+    NSError *error;
+    Trainer *trainer = [[Trainer alloc] initWithDictionary:dict[@"trainer"] error:&error];
+    if (!error) {
+        meeting.trainer = trainer;
+    }
+    Customer *customer = [[Customer alloc] initWithDictionary:dict[@"customer"] error:&error];
+    if (!error) {
+        meeting.customer = customer;
+    }
     return meeting;
 }
 

@@ -20,9 +20,9 @@
     [self.manager POST:url parameters:params progress:nil
         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //TODO Catch Network error, handle data
-        User *user = [[User alloc] initWithDictionary:responseObject[@"user"] error:nil];
+        User *user = [[User alloc] initWithDictionary:responseObject[@"manager"] error:nil];
         if ([self.delegate respondsToSelector:@selector(didResponseWithMessage:withError:returnUser:)]) {
-            [self.delegate didResponseWithMessage:@"OK" withError:nil returnUser:user];
+            [self.delegate didResponseWithMessage:kOkActionTitle withError:nil returnUser:user];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if ([self.delegate respondsToSelector:@selector(didResponseWithMessage:withError:returnUser:)]) {

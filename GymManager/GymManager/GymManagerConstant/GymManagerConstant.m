@@ -59,7 +59,7 @@ NSString *const kCategoryViewControllerIdentifier = @"CategoryViewController";
 NSString *const kAddNewCategoryViewControllerIdentifier = @"AddNewCategoryViewController";
 NSString *const kEditNumberOfCategoryViewControllerIdentifier = @"EditNumberOfCategoryViewController";
 NSString *const kDetailMeetingTitle = @"show detail meeting";
-NSString *const kDetailPTManagerTitle = @"show detail pt manager";
+NSString *const kDetailPTManagerTitle = @"Detail PT manager";
 NSString *const kPTManagerVCTitle = @"PT Manager";
 NSString *const kAddNewMeetingTitle = @"New meeting";
 NSString *const kEditMeetingTitle = @"Edit meeting";
@@ -77,29 +77,31 @@ NSString *const kStoryboardTransactionQuantity = @"Quantity";
 NSString *const kShowQuantitySegue = @"ShowQuatitySegue";
 NSString *const kDeleteMeetingSuccess = @"Delete meeting is success";
 NSString *const kDeleteMeetingFail = @"Delete meeting is fail";
-NSString *const kTrainer = @"trainer";
-NSString *const kCustomer = @"customer";
+NSString *const kTrainer = @"trainer/";
+NSString *const kCustomer = @"customer/";
 NSString *const kIconFriends = @"friends";
 NSString *const kIconNewsFeed = @"news-feed";
 NSString *const kIconSetting = @"settings";
 NSString *const kIconTransactions = @"ic_transactions";
+NSString *const kMyProfileTitle = @"My Profile";
 
 #pragma mark - CoreData
 NSString *const kCoreDataModel = @"GymManager";
 NSString *const kBundleID = @"com.vantientu.GymManager";
 
 #pragma mark - API
-NSString *const URLRequest = @"https://fit-ness-backend.herokuapp.com/api/";
+NSString *const URLRequest = @"http://172.16.0.131:3000/api/"; //@"https://fit-ness-backend.herokuapp.com/api/";
 NSString *const URLRequestTransaction = @"https://fit-ness-backend.herokuapp.com/api/orders";
 NSString *const kLoginRequest = @"auth/login";
 NSString *const kRegisterRequest = @"auth/register";
 NSString *const kTransactionRequest = @"orders";
-NSString *const kURLAPI = @"https://fit-ness-backend.herokuapp.com/api/";
+NSString *const kURLAPI = @"http://172.16.0.131:3000/api/"; //@"https://fit-ness-backend.herokuapp.com/api/";
 NSString *const kAPIUser = @"users/";
 NSString *const kGetAllItemsRequest = @"items";
 NSString *const kManager = @"managers";
 NSString *const kMeetings = @"meetings/";
 NSString *const kLogout = @"auth/logout";
+NSString *const kURLImage = @"http://172.16.0.131:3000";
 
 #pragma mark - Message
 NSString *const kMessageFailLogin = @"Login is fail";

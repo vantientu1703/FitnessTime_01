@@ -68,9 +68,16 @@ NSString *const kSelectAvatar = @"Select avatar,please";
         } else {
             [self.buttonDateOfBirth setTitle:kSelectDate forState:UIControlStateNormal];
         }
-        
+        NSURL *url = self.trainer.avatarURL;
+        [self.imageViewPT sd_setImageWithURL:url completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            if (!image) {
+                self.imageViewPT.image = [UIImageConstant imageUserConstant];
+            } else {
+                _imageString = [UIImageJPEGRepresentation(image, 0.4f)
+                    base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+            }
+        }];
         _dateOfBirth = self.trainer.birthday;
-        _imageString = self.trainer.avatar;
     }
 }
 
@@ -82,12 +89,9 @@ NSString *const kSelectAvatar = @"Select avatar,please";
 
 #pragma mark - Set info for trainer
 - (void)createTrainer {
-    NSString *email = [DataValidation isValidEmailAddress:self.textFieldEmail.text];
     NSString *phoneNumber = [DataValidation isValidPhoneNumber:(NSMutableString *)self.textFieldPhoneNumber.text];
     if (!self.textFieldAddress.text.length) {
         self.labelNotes.text = kNoFillAddressTitle;
-    } else if (!self.textFieldEmail.text.length) {
-        self.labelNotes.text = email;
     } else if (!self.textFieldFullName.text.length) {
         self.labelNotes.text = kNoFillFullNameTitle;
     } else if (!self.textFieldPhoneNumber.text.length) {
@@ -189,7 +193,6 @@ NSString *const kSelectAvatar = @"Select avatar,please";
         _imageString = [UIImageJPEGRepresentation(newImage, 0.4)
             base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     }
-    _imageString = [_imageString stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 

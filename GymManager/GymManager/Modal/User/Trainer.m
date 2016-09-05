@@ -14,4 +14,8 @@
     return [JSONKeyMapper mapperFromUnderscoreCaseToCamelCase];
 }
 
+- (NSURL *)avatarURL {
+    return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", kURLImage, self.avatar]];
+}
+
 @end

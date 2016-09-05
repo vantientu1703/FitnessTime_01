@@ -15,7 +15,7 @@
 @property (strong, nonatomic) NSString *id;
 @property (strong, nonatomic) NSString *fromDate;
 @property (strong, nonatomic) NSString *toDate;
-@property (strong, nonatomic) NSArray *users;
-@property (strong, nonatomic) NSArray *userMeetings;
+@property (strong, nonatomic) Trainer *trainer;
+@property (strong, nonatomic) Customer *customer;
 
 @end

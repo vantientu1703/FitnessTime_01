@@ -13,5 +13,6 @@
 @property (strong, nonatomic) NSString<Optional> *userName;
 @property (strong, nonatomic) NSString<Optional> *password;
 @property (strong, nonatomic) NSString<Optional> *authToken;
+- (NSURL *)avatarURL;
 
 @end

@@ -82,13 +82,14 @@ NSString *const kErrorEmailOrPassword = @"Incorrect email or password";
 
 #pragma mark - LoginManagerDelegate
 - (void)didResponseWithMessage:(NSString *)message withError:(NSError *)error returnUser:(User *)user {
+    [MBProgressHUD hideHUDForView:self.view animated:true];
     if (error) {
         [AlertManager showAlertWithTitle:kReminderTitle message:message
             viewControler:self okAction:^{
-            self.labelNotes.text = kErrorEmailOrPassword;
-            [MBProgressHUD hideHUDForView:self.view animated:true];
+            self.labelNotes.text = @"";
         }];
     } else {
+        self.labelNotes.text = @"";
         [[DataStore sharedDataStore] setNewUserManagefromUser:user WithCompletionblock:^(BOOL success) {
             if (success) {
                 AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -101,6 +102,5 @@ NSString *const kErrorEmailOrPassword = @"Incorrect email or password";
             }
         }];
     }
-    [MBProgressHUD hideHUDForView:self.view animated:true];
 }
 @end

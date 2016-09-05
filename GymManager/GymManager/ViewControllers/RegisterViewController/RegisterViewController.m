@@ -121,8 +121,16 @@ NSString *const kFillAddress = @"Fill address";
             [self doRegister];
         }];
     } else {
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [appDelegate loadTabbarController];
+        [[DataStore sharedDataStore] setNewUserManagefromUser:user WithCompletionblock:^(BOOL success) {
+            if (success) {
+                AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                [appDelegate loadTabbarController];
+            } else {
+                [AlertManager showAlertWithTitle:kReminderTitle message:error.localizedDescription
+                    viewControler:self okAction:^{
+                }];
+            }
+        }];
     }
 }
 

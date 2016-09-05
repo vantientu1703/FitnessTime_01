@@ -48,20 +48,44 @@
     }];
 }
 
+- (void)getMeetingsWithTrainer:(Trainer *)trainer {
+    User *user = (User *)[[DataStore sharedDataStore] getUserManage];
+    NSString *url = [NSString stringWithFormat:@"%@%@%@", kURLAPI, kAPIUser, trainer.id];
+    NSDictionary *params = @{@"auth_token": user.authToken};
+    [self.manager GET:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        //TODO
+        NSError *error;
+        NSArray *meetings = [self meetingsByResponseArray:responseObject error:error];
+        if (!error && [self.delegate respondsToSelector:@selector(didResponseWithMessage:withError:returnArray:)]) {
+            [self.delegate didResponseWithMessage:error.localizedDescription withError:error returnArray:meetings];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (!error && [self.delegate respondsToSelector:@selector(didResponseWithMessage:withError:returnArray:)]) {
+            [self.delegate didResponseWithMessage:error.localizedDescription withError:error returnArray:nil];
+        }
+    }];
+}
+
 - (void)createMeetingWithTrainer:(Trainer *)trainer withTrainee:(Customer *)customer fromDate:(NSDate *)fromDate toDate:(NSDate *)toDate {
     User *user = [[DataStore sharedDataStore] getUserManage];
     NSString *url = [NSString stringWithFormat:@"%@%@", kURLAPI, kMeetings];
     NSDictionary *params = @{@"auth_token": user.authToken, @"meeting[from_date]": fromDate,
                              @"meeting[to_date]": toDate,
-                             @"meeting[user_meetings_attributes][0][user_id]": trainer.id,
-                             @"meeting[user_meetings_attributes][1][user_id]": customer.id};
+                             @"meeting[trainer_id]": trainer.id,
+                             @"meeting[customer_id]": customer.id};
     [self.manager POST:url parameters:params progress:nil
         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSError *error;
-        Meeting *meeting = [ParseJson meetingWithDictionary:responseObject];
-        if (!error) {
+        if (!responseObject[@"errors"]) {
+            Meeting *meeting = [ParseJson meetingWithDictionary:responseObject];
             if ([self.delegate respondsToSelector:@selector(createMeetingItem:success:error:)]) {
-                [self.delegate createMeetingItem:meeting success:true error:error];
+                [self.delegate createMeetingItem:meeting success:true error:nil];
+            }
+        } else {
+            NSArray *errors = responseObject[@"errors"];
+            if (errors.count) {
+                if ([self.delegate respondsToSelector:@selector(createMeetingFaileWithMessage:)]) {
+                    [self.delegate createMeetingFaileWithMessage:errors[0]];
+                }
             }
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -74,17 +98,20 @@
 - (void)updateMeetingItem:(Meeting *)meeting withTrainer:(Trainer *)trainer withCustomer:(Customer *)customer fromDate:(NSDate *)fromDate toDate:(NSDate *)toDate {
     User *user = [[DataStore sharedDataStore] getUserManage];
     NSString *url = [NSString stringWithFormat:@"%@%@%@", kURLAPI, kMeetings, meeting.id];
-    NSDictionary *params = @{@"auth_token": user.authToken, @"meeting[from_date]": fromDate,
-                             @"meeting[to_date]": toDate,
-                             @"meeting[user_meetings_attributes][0][user_id]": trainer.id,
-                             @"meeting[user_meetings_attributes][0][user_meetings_id]": meeting.id,
-                             @"meeting[user_meetings_attributes][1][user_id]": customer.id,
-                             @"meeting[user_meetings_attributes][1][user_meetings_id]": meeting.id};
-    [self.manager PUT:url parameters:params
+    NSDictionary *params = @{@"manager[id]": user.id, @"auth_token": user.authToken,
+                             @"meeting[from_date]": fromDate, @"meeting[to_date]": toDate,
+                             @"meeting[trainer_id]": trainer.id, @"meeting[customer_id]": customer.id};
+    [self.manager PATCH:url parameters:params
         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        Meeting *meeting = [ParseJson meetingWithDictionary:responseObject];
-        if ([self.delegate respondsToSelector:@selector(updateMeetingItem:success:error:)]) {
+        if (!responseObject[@"errors"] && [self.delegate
+            respondsToSelector:@selector(updateMeetingItem:success:error:)]) {
+            Meeting *meeting = [ParseJson meetingWithDictionary:responseObject];
             [self.delegate updateMeetingItem:meeting success:true error:nil];
+        } else {
+            NSArray *errors = responseObject[@"errors"];
+            if (errors.count && [self.delegate respondsToSelector:@selector(updateMeetingFailWithMessage:)]) {
+                [self.delegate updateMeetingFailWithMessage:errors[0]];
+            }
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if ([self.delegate respondsToSelector:@selector(updateMeetingItem:success:error:)]) {

@@ -83,6 +83,7 @@ extern NSString *const kIconFriends;
 extern NSString *const kIconNewsFeed;
 extern NSString *const kIconSetting;
 extern NSString *const kIconTransactions;
+extern NSString *const kMyProfileTitle;
 
 #pragma mark - CoreData
 extern NSString *const kCoreDataModel;
@@ -101,6 +102,7 @@ extern NSString *const kGetAllItemsRequest;
 extern NSString *const kManager;
 extern NSString *const kMeetings;
 extern NSString *const kLogout;
+extern NSString *const kURLImage;
 
 #pragma mark - Message
 extern NSString *const kMessageFailLogin;

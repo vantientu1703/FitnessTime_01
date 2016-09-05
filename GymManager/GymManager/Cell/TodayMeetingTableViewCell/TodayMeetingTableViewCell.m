@@ -24,19 +24,8 @@ CGFloat const kCornerRadius = 5.0f;
     self.labelToDateMothYear.text = [[DateFormatter sharedInstance]
         dateWithDateMonthYearFormatterFromString:meeting.toDate];
     self.labelToHour.text = [[DateFormatter sharedInstance] dateWithHourFormatterFromString:meeting.toDate];
-    [meeting.users enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        Trainer *trainer;
-        Customer *customer;
-        NSError *error;
-        if ([obj[@"role"] isEqualToString:kTrainer]) {
-            trainer = [[Trainer alloc] initWithDictionary:obj error:&error];
-            self.labelNameTrainner.text = trainer.fullName;
-        } else if ([obj[@"role"] isEqualToString:kCustomer]){
-            customer = [[Customer alloc] initWithDictionary:obj error:&error];
-            self.labelNameTrainee.text = customer.fullName;
-            self.labelPhoneNumber.text = customer.telNumber;
-        }
-    }];
+    self.labelNameTrainee.text = meeting.customer.fullName;
+    self.labelNameTrainner.text = meeting.trainer.fullName;
 }
 
 @end

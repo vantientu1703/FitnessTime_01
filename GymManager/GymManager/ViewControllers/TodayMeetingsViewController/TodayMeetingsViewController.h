@@ -12,5 +12,6 @@
 
 @interface TodayMeetingsViewController : BaseViewController
 @property (strong, nonatomic) NSString *statusDetailMeeting;
+@property (strong, nonatomic) Trainer *trainer;
 @end
 

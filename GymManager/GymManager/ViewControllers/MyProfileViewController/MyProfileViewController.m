@@ -40,10 +40,18 @@ CGFloat const kCornerRadiusProfile = 50.0f;
         dateFormatterDateMonthYear:self.user.birthday];
     self.labelAddress.text = self.user.address;
     self.labelPhoneNumber.text = self.user.telNumber;
+    NSURL *url = self.user.avatarURL;
+    [self.imageViewMyProfile sd_setImageWithURL:url
+        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        if (!image) {
+            self.imageViewMyProfile.image = [UIImageConstant imageUserConstant];
+        }
+    }];
 }
 
 #pragma mark - Setup view
 - (void)setupView {
+    self.title = kMyProfileTitle;
     UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
         target:self action:@selector(editMyProfilePress:)];
     self.navigationItem.rightBarButtonItem = editButton;

@@ -18,4 +18,5 @@
 @property (weak, nonatomic) id<MeetingDetailViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSString *statusEditMeeting;
 @property (strong, nonatomic) Meeting *meeting;
+@property (strong, nonatomic) Trainer *trainer;
 @end

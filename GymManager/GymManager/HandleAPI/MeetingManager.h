@@ -18,6 +18,8 @@
 - (void)createMeetingItem:(Meeting *)meeting success:(BOOL)success error:(NSError *)error;
 - (void)updateMeetingItem:(Meeting *)meeting success:(BOOL)success error:(NSError *)error;
 - (void)didDeleteMeetingSuccess:(BOOL)success error:(NSError *)error;
+- (void)createMeetingFaileWithMessage:(NSString *)message;
+- (void)updateMeetingFailWithMessage:(NSString *)message;
 
 @end
 
@@ -30,4 +32,5 @@
 - (void)deleteMeeting:(Meeting *)meeting;
 - (void)updateMeetingItem:(Meeting *)meeting withTrainer:(Trainer *)trainer withCustomer:(Customer *)customer
     fromDate:(NSDate *)fromDate toDate:(NSDate *)toDate;
+- (void)getMeetingsWithTrainer:(Trainer *)trainer;
 @end
