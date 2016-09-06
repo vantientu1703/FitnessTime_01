@@ -50,6 +50,8 @@
 		EF0809931D5C954A007A8EAE /* PTMeetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0809921D5C954A007A8EAE /* PTMeetingViewController.m */; };
 		EF0809981D5C97B6007A8EAE /* TransactionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0809971D5C97B6007A8EAE /* TransactionsViewController.m */; };
 		EF08099B1D5C97C9007A8EAE /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF08099A1D5C97C9007A8EAE /* MenuViewController.m */; };
+		EF0D90891D7E80E500A2EE4A /* PTManager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF0D90871D7E80E500A2EE4A /* PTManager.storyboard */; settings = {ASSET_TAGS = (); }; };
+		EF0D908D1D7E814000A2EE4A /* PTManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0D908C1D7E814000A2EE4A /* PTManagerViewController.m */; settings = {ASSET_TAGS = (); }; };
 		EF5FA7AE1D6AE22200E4B95F /* DataValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5FA7AD1D6AE22200E4B95F /* DataValidation.m */; };
 		EF635BFF1D6CB21900BEB9A1 /* TrainerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF635BFE1D6CB21900BEB9A1 /* TrainerManager.m */; };
 		EF635C021D6D79BC00BEB9A1 /* UIImageConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = EF635C011D6D79BC00BEB9A1 /* UIImageConstant.m */; };
@@ -181,6 +183,9 @@
 		EF0809971D5C97B6007A8EAE /* TransactionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransactionsViewController.m; path = ViewControllers/TransactionsViewController/TransactionsViewController.m; sourceTree = "<group>"; };
 		EF0809991D5C97C9007A8EAE /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuViewController.h; path = ViewControllers/MenuViewController/MenuViewController.h; sourceTree = "<group>"; };
 		EF08099A1D5C97C9007A8EAE /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuViewController.m; path = ViewControllers/MenuViewController/MenuViewController.m; sourceTree = "<group>"; };
+		EF0D90881D7E80E500A2EE4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PTManager.storyboard; sourceTree = "<group>"; };
+		EF0D908B1D7E814000A2EE4A /* PTManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTManagerViewController.h; path = ViewControllers/PTManagerViewController/PTManagerViewController.h; sourceTree = "<group>"; };
+		EF0D908C1D7E814000A2EE4A /* PTManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PTManagerViewController.m; path = ViewControllers/PTManagerViewController/PTManagerViewController.m; sourceTree = "<group>"; };
 		EF5FA7AC1D6AE22200E4B95F /* DataValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataValidation.h; path = DataValidation/DataValidation.h; sourceTree = "<group>"; };
 		EF5FA7AD1D6AE22200E4B95F /* DataValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataValidation.m; path = DataValidation/DataValidation.m; sourceTree = "<group>"; };
 		EF635BFD1D6CB21900BEB9A1 /* TrainerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrainerManager.h; path = HandleAPI/TrainerManager.h; sourceTree = "<group>"; };
@@ -497,6 +502,7 @@
 				EF870A801D5DB64D00118D7C /* LoginViewController */,
 				EF870A881D5DC67700118D7C /* RegisterViewController */,
 				EF08097A1D5C8881007A8EAE /* TodayMettingViewController */,
+				EF0D908A1D7E811500A2EE4A /* PTManagerViewController */,
 				EF0809901D5C94C2007A8EAE /* PTMeetingViewController */,
 				EFFD8D551D66CDD400994CC5 /* DetailPTManagerViewController */,
 				EFFD8D591D66D98100994CC5 /* EditPTManagerViewController */,
@@ -574,6 +580,7 @@
 				40AB31221D5DB47400341359 /* Transaction.storyboard */,
 				EFFD8D4F1D66BBD900994CC5 /* CustomerManagerStoryboard.storyboard */,
 				400C78D91D67465F00CEE19B /* Calendar.storyboard */,
+				EF0D90871D7E80E500A2EE4A /* PTManager.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -629,6 +636,15 @@
 				EF08099A1D5C97C9007A8EAE /* MenuViewController.m */,
 			);
 			name = MenuViewController;
+			sourceTree = "<group>";
+		};
+		EF0D908A1D7E811500A2EE4A /* PTManagerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EF0D908B1D7E814000A2EE4A /* PTManagerViewController.h */,
+				EF0D908C1D7E814000A2EE4A /* PTManagerViewController.m */,
+			);
+			name = PTManagerViewController;
 			sourceTree = "<group>";
 		};
 		EF74B2F81D6EA84000D17C52 /* ParseJson */ = {
@@ -935,6 +951,7 @@
 				EF7D77FB1D752EBC00A6C63F /* notifications.png in Resources */,
 				EFFD8D661D67092800994CC5 /* ic_category.png in Resources */,
 				EF870A861D5DBA9F00118D7C /* ic_key.png in Resources */,
+				EF0D90891D7E80E500A2EE4A /* PTManager.storyboard in Resources */,
 				EF0809691D5C8261007A8EAE /* Assets.xcassets in Resources */,
 				EF7D77EF1D752EAE00A6C63F /* messages@2x.png in Resources */,
 				EF7D78011D75375F00A6C63F /* ic_transactions@2x.png in Resources */,
@@ -1047,6 +1064,7 @@
 				EF635BFF1D6CB21900BEB9A1 /* TrainerManager.m in Sources */,
 				EFFD8D581D66CE4A00994CC5 /* DetailPTManagerViewController.m in Sources */,
 				EFF28BD11D65730F000F9B27 /* MeetingDetailViewController.m in Sources */,
+				EF0D908D1D7E814000A2EE4A /* PTManagerViewController.m in Sources */,
 				EF870A831D5DB66700118D7C /* LoginViewController.m in Sources */,
 				EF635C081D6DD46F00BEB9A1 /* ProfileManager.m in Sources */,
 				EF74B2F71D6EA1AA00D17C52 /* MeetingManager.m in Sources */,
@@ -1110,6 +1128,14 @@
 				EF08096B1D5C8261007A8EAE /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		EF0D90871D7E80E500A2EE4A /* PTManager.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EF0D90881D7E80E500A2EE4A /* Base */,
+			);
+			name = PTManager.storyboard;
 			sourceTree = "<group>";
 		};
 		EFFD8D4F1D66BBD900994CC5 /* CustomerManagerStoryboard.storyboard */ = {

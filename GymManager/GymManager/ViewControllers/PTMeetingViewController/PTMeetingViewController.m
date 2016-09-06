@@ -15,9 +15,7 @@
 #import "EditPTManagerViewController.h"
 #import "TrainerManager.h"
 
-NSString *const kPTMeetingCollectionViewCellIdentifier = @"MeetingCollectionViewCell";
 CGFloat const kTriggerVerticalOffset = 100.0f;
-CGFloat const kCornerRadiusButtonAddNewMeeting = 20.0f;
 //TODO
 NSString *const kNameTrainer = @"Nguyen Van Van Duong";
 
@@ -41,6 +39,33 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
     // Do any additional setup after loading the view.
     [self setupView];
     [self getAllTrainers];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addNewTrainer:)
+        name:kAddNewTrainerTitle object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTrainers:)
+        name:kUpdateTrainerTitle object:nil];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - NSNotificationCenter
+- (void)addNewTrainer:(NSNotification *)notification {
+    if (!self.arrTrainers) {
+        self.arrTrainers = [NSMutableArray array];
+    }
+    if ([notification.name isEqualToString:kAddNewTrainerTitle]) {
+        NSDictionary *userInfo = notification.userInfo;
+        Trainer *trainer = userInfo[@"trainer"];
+        [self.arrTrainers addObject:trainer];
+        [self.collectionView reloadData];
+    }
+}
+
+- (void)updateTrainers:(NSNotification *)notification {
+    if (notification) {
+        [self getAllTrainers];
+    }
 }
 
 - (void)getAllTrainers {
@@ -101,7 +126,6 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    //TODO
     PTMeetingCollectionViewCell *cell = (PTMeetingCollectionViewCell *)[collectionView
         dequeueReusableCellWithReuseIdentifier:kPTMeetingCollectionViewCellIdentifier
         forIndexPath:indexPath];

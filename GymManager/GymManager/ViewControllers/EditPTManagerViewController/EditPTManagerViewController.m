@@ -8,6 +8,7 @@
 
 #import "EditPTManagerViewController.h"
 #import "TrainerManager.h"
+#import "PTMeetingViewController.h"
 
 CGFloat const kCornerRadiusImageViewPTEdit = 50.0f;
 NSString *const kNoFillAddressTitle  = @"Fill address,please!";
@@ -35,6 +36,7 @@ NSString *const kSelectAvatar = @"Select avatar,please";
 {
     NSDate *_dateOfBirth;
     NSString *_imageString;
+    BOOL _modifier;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -103,7 +105,6 @@ NSString *const kSelectAvatar = @"Select avatar,please";
     } else if (!_imageString) {
         self.labelNotes.text = kSelectAvatar;
     } else {
-        [MBProgressHUD showHUDAddedTo:self.view animated:true];
         Trainer *trainer;
         if ([self.statusEditString isEqualToString:kEditTrainerTitle]) {
             trainer = self.trainer;
@@ -120,8 +121,12 @@ NSString *const kSelectAvatar = @"Select avatar,please";
         TrainerManager *trainerManager = [[TrainerManager alloc] init];
         trainerManager.delegate = self;
         if ([self.statusEditString isEqualToString:kEditTrainerTitle]) {
-            [trainerManager updateTrainer:trainer];
+            if (_modifier) {
+                [MBProgressHUD showHUDAddedTo:self.view animated:true];
+                [trainerManager updateTrainer:trainer];
+            }
         } else {
+            [MBProgressHUD showHUDAddedTo:self.view animated:true];
             [trainerManager createNewTrainer:trainer];
         }
     }
@@ -133,6 +138,8 @@ NSString *const kSelectAvatar = @"Select avatar,please";
     if (success) {
         [self.delegate createNewTrainer:trainer];
         self.labelNotes.text = kCreateSuccess;
+        NSDictionary *userInfo = @{@"trainer": trainer};
+        [[NSNotificationCenter defaultCenter] postNotificationName:kAddNewTrainerTitle object:self userInfo:userInfo];
     } else {
         [AlertManager showAlertWithTitle:kRegisterRequest message:error.localizedDescription
             viewControler:self reloadAction:^{
@@ -143,8 +150,9 @@ NSString *const kSelectAvatar = @"Select avatar,please";
 }
 
 - (void)updateTrainerWithMessage:(BOOL)success withError:(NSError *)error returnTrainer:(Trainer *)trainer {
+    [MBProgressHUD hideHUDForView:self.view animated:true];
     if (success) {
-        [MBProgressHUD hideHUDForView:self.view animated:true];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateTrainerTitle object:nil];
         self.labelNotes.text = kUpdateSuccess;
         if ([self.delegate respondsToSelector:@selector(updateTrainer:)]) {
             [self.delegate updateTrainer:trainer];
@@ -163,6 +171,7 @@ NSString *const kSelectAvatar = @"Select avatar,please";
     CalendarViewController *calendarVC = [st instantiateInitialViewController];
     [self.navigationController pushViewController:calendarVC animated:true];
     [calendarVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {
+        _modifier = true;
         _dateOfBirth = dateSelected;
         DateFormatter *dateFormatter = [[DateFormatter alloc] init];
         [self.buttonDateOfBirth setTitle:[dateFormatter
@@ -193,6 +202,7 @@ NSString *const kSelectAvatar = @"Select avatar,please";
         _imageString = [UIImageJPEGRepresentation(newImage, 0.4)
             base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     }
+    _modifier = true;
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -200,6 +210,12 @@ NSString *const kSelectAvatar = @"Select avatar,please";
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [self createTrainer];
     [textField resignFirstResponder];
+    return YES;
+}
+
+#pragma mark - UITextFieldDelegate
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    _modifier = true;
     return YES;
 }
 

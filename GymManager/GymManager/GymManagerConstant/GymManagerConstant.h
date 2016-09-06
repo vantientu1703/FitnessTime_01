@@ -84,6 +84,12 @@ extern NSString *const kIconNewsFeed;
 extern NSString *const kIconSetting;
 extern NSString *const kIconTransactions;
 extern NSString *const kMyProfileTitle;
+extern CGFloat const kCornerRadiusButtonAddNewMeeting;
+extern NSString *const kPTMeetingCollectionViewCellIdentifier;
+extern NSString *const kPTManagerStoryboardIdentifier;
+extern NSString *const kPTManagerViewControllerIdentifier;
+extern NSString *const kAddNewTrainerTitle;
+extern NSString *const kUpdateTrainerTitle;
 
 #pragma mark - CoreData
 extern NSString *const kCoreDataModel;

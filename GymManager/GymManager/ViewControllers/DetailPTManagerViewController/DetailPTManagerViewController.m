@@ -35,7 +35,7 @@ CGFloat const kCornerRadiusImageViewPT = 40.0f;
 }
 
 - (void)setupInfoTrainer {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", kURLImage, self.trainer.avatar]];
+    NSURL *url = self.trainer.avatarURL;
     [self.imageViewPT sd_setImageWithURL:url
         completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         if (!image) {

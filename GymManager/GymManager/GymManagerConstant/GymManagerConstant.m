@@ -32,6 +32,7 @@ NSString *const kOkActionTitle = @"Ok";
 NSString *const kCancelActionTitle = @"Cancel";
 CGFloat const kCornerRadiusButton = 20.0f;
 NSString *const kPTMeetingViewControllerIdentifier = @"PTMeetingViewController";
+NSString *const kPTManagerViewControllerIdentifier = @"PTManagerViewController";
 NSString *const kMeetingDetailViewControllerIdentifier = @"MeetingDetailViewController";
 NSString *const kStatusAddNewMeeting = @"status add new meeting";
 NSString *const kStatusViewMeetingDetail = @"status view meeting detail";
@@ -62,6 +63,8 @@ NSString *const kDetailMeetingTitle = @"show detail meeting";
 NSString *const kDetailPTManagerTitle = @"Detail PT manager";
 NSString *const kPTManagerVCTitle = @"PT Manager";
 NSString *const kAddNewMeetingTitle = @"New meeting";
+NSString *const kAddNewTrainerTitle = @"Add new trainer";
+NSString *const kUpdateTrainerTitle = @"Update new trainer";
 NSString *const kEditMeetingTitle = @"Edit meeting";
 NSString *const kTodayMeetingsVCTitle = @"Today Meetings";
 NSString *const kDetailMeetingsTrainerVCTitle = @"Detail Meeting Trainner";
@@ -84,6 +87,9 @@ NSString *const kIconNewsFeed = @"news-feed";
 NSString *const kIconSetting = @"settings";
 NSString *const kIconTransactions = @"ic_transactions";
 NSString *const kMyProfileTitle = @"My Profile";
+CGFloat const kCornerRadiusButtonAddNewMeeting = 20.0f;
+NSString *const kPTMeetingCollectionViewCellIdentifier = @"MeetingCollectionViewCell";
+NSString *const kPTManagerStoryboardIdentifier = @"PTManager";
 
 #pragma mark - CoreData
 NSString *const kCoreDataModel = @"GymManager";

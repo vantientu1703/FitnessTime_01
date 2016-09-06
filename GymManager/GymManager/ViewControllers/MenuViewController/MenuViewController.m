@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "CustomerManagerViewController.h"
 #import "CategoryViewController.h"
+#import "PTManagerViewController.h"
 
 typedef NS_ENUM(NSInteger, MenuDetailRows) {
     MenuDetailRowMyProfile,
@@ -39,6 +40,7 @@ static NSString *const kCellDefault = @"CellDefault";
 @property (strong, nonatomic) MyProfileViewController *myProfileVC;
 @property (strong, nonatomic) PTMeetingViewController *ptPTMeetingVC;
 @property (strong, nonatomic) CustomerManagerViewController *customerManagerVC;
+@property (strong, nonatomic) PTManagerViewController *ptManagerVC;
 
 @end
 
@@ -84,12 +86,12 @@ static NSString *const kCellDefault = @"CellDefault";
             break;
         }
         case MenuDetailRowPTManager: {
-            if (!self.ptPTMeetingVC) {
-                self.ptPTMeetingVC = [st
-                    instantiateViewControllerWithIdentifier:kPTMeetingViewControllerIdentifier];
+            UIStoryboard *ptManagerST = [UIStoryboard storyboardWithName:kPTManagerStoryboardIdentifier bundle:nil];
+            if (!self.ptManagerVC) {
+                self.ptManagerVC = [ptManagerST
+                    instantiateViewControllerWithIdentifier:kPTManagerViewControllerIdentifier];
             }
-            self.ptPTMeetingVC.statusAddNewMeeting = kDetailPTManagerTitle;
-            [self.navigationController pushViewController:self.ptPTMeetingVC animated:true];
+            [self.navigationController pushViewController:self.ptManagerVC animated:true];
             break;
         }
         case MenuDetailRowCustomerManager: {
