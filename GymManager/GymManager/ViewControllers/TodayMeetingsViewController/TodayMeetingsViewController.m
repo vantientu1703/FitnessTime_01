@@ -207,8 +207,11 @@ CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
     if (!self.arrMeetings) {
         self.arrMeetings = [NSMutableArray array];
     }
-    [self.arrMeetings addObject:meeting];
-    [self.tableView reloadData];
+    if ([[[DateFormatter sharedInstance] dateWithDateMonthYearFormatterFromString:meeting.fromDate] isEqualToString:
+        [[DateFormatter sharedInstance] dateFormatterDateMonthYear:[NSDate date]]]) {
+        [self.arrMeetings addObject:meeting];
+        [self.tableView reloadData];
+    }
 }
 
 - (void)updateMeeting:(Meeting *)meeting {

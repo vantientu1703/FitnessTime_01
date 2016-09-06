@@ -43,12 +43,15 @@ NSString *const kFillAddress = @"Fill address";
 
 - (void)setupView {
     self.viewContainButtonSelectDate.layer.cornerRadius = kCornerRadiusViewBackground;
-    self.navigationController.navigationBar.barTintColor = [UIColor lightGrayColor];
+    self.navigationController.navigationBar.barTintColor = [UIColor grayColor];
     self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    [self.navigationController.navigationBar
+        setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]
         initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelPress:)];
-    self.navigationController.navigationItem.leftBarButtonItem = cancelButton;
+    self.navigationItem.leftBarButtonItem = cancelButton;
     NSString *dateString = [[DateFormatter sharedInstance] dateFormatterDateMonthYear:[NSDate date]];
     self.title = kRegisterVCTitle;
     self.textFieldAddress.delegate = self;

@@ -101,7 +101,6 @@ NSString *const kSelectImages = @"Select avatar,please";
 }
 
 #pragma mark - UITextFieldDelegate
-
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     _modifier = true;
     return YES;

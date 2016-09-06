@@ -100,6 +100,7 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
             } else {
                 if (self.trainer) {
                     [trainerCell configCellWithName:self.trainer.fullName];
+                    trainerCell.selectionStyle = UITableViewCellSelectionStyleNone;
                 } else {
                     [trainerCell configCellWithName:kTrainnerTitle];
                 }
@@ -165,14 +166,16 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
     UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
     switch (indexPath.row) {
         case MeetingDetailRowTrainer: {
-            _indexPath = indexPath;
-            if (!self.ptMeetingVC) {
-                self.ptMeetingVC = [st
-                    instantiateViewControllerWithIdentifier:kPTMeetingViewControllerIdentifier];
+            if (!self.trainer) {
+                _indexPath = indexPath;
+                if (!self.ptMeetingVC) {
+                    self.ptMeetingVC = [st
+                        instantiateViewControllerWithIdentifier:kPTMeetingViewControllerIdentifier];
+                }
+                self.ptMeetingVC.delegate = self;
+                [self.navigationController pushViewController:self.ptMeetingVC animated:true];
+                self.ptMeetingVC.statusAddNewMeeting = kStatusAddNewMeeting;
             }
-            self.ptMeetingVC.delegate = self;
-            [self.navigationController pushViewController:self.ptMeetingVC animated:true];
-            self.ptMeetingVC.statusAddNewMeeting = kStatusAddNewMeeting;
             break;
         }
         case MeetingDetailRowCustomer: {
