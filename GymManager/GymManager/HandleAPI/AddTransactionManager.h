@@ -21,6 +21,6 @@
 
 @property (strong, nonatomic) id<AddTransactionManagerDelegate> delegate;
 - (void)createTransaction:(Transaction *)transaction byUser:(User *)user;
-- (void)editTransaction:(Transaction *)transaction byUser:(User *)user atIndexPath:(NSIndexPath *)indexPath;
+- (void)editTransaction:(Transaction *)transaction withDeletedItems:(NSArray *)deletedItems byUser:(User *)user atIndexPath:(NSIndexPath *)indexPath;
 
 @end

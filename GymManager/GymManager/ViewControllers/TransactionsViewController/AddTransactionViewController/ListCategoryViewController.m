@@ -115,12 +115,12 @@ NSString *const kShowEditSegue = @"ShowEditSegue";
         self.mode = ItemListModeEdit;
         [self.tableView setEditing:NO animated:YES];
         [self.btnCancel setTitle:@"Cancel"];
-        [self.btnEdit setTitle:@"Done"];
+        [self.btnEdit setTitle:@"Edit"];
     } else {
         self.mode = ItemListModeNormal;
         [self.tableView setEditing:YES animated:YES];
         [self.btnCancel setTitle:@"Add"];
-        [self.btnEdit setTitle:@"Edit"];
+        [self.btnEdit setTitle:@"Done"];
     }
 }
 

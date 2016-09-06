@@ -211,9 +211,11 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
         if (sender) {
             //If edit transaction
             NSNumber *index = (NSNumber*)sender;
-            [addVC updateTransaction:[self.arrTrans[index.integerValue] copy] withCompleteBlock:^(Transaction *returnTran) {
+            Transaction *transaction = (Transaction*)self.arrTrans[index.integerValue];
+            [addVC updateTransaction:transaction withCompleteBlock:^(Transaction *returnTran) {
                 //Update tableview in queue
                 dispatch_sync(self.transactionQueue, ^{
+                    returnTran.createdAt = transaction.createdAt;
                     self.arrTrans[index.integerValue] = returnTran;
                     [self.tableView reloadData];
                 });

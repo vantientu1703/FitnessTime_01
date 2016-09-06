@@ -17,7 +17,7 @@
 @property (strong, nonatomic) NSString<Optional> *customerName;
 @property (strong, nonatomic) NSString<Optional> *userId;
 @property (strong, nonatomic) NSDate<Optional> *createdAt;
-@property (strong, nonatomic) Customer *user;
+@property (strong, nonatomic) Customer<Optional> *user;
 @property (nonatomic) NSInteger totalPrice;
 
 @end
