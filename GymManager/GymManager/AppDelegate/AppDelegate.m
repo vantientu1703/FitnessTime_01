@@ -34,14 +34,12 @@
 - (void)loadLoginViewController {
     UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
     LoginViewController *loginVC = [st instantiateViewControllerWithIdentifier:kLoginViewControllerIdentifier];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginVC];
-    self.window.rootViewController = nav;
+    self.window.rootViewController = loginVC;
 }
 
 - (void)loadTabbarController {
     [[UITabBar appearance] setBarTintColor:[UIColor whiteColor]];
     [[UITabBar appearance] setTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"green_bg.jpg"]]];
-    //TODO
     UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
     UITabBarController *tabVC = [[UITabBarController alloc] init];
     TodayMeetingsViewController *todayMeetingsVC = [st instantiateViewControllerWithIdentifier:
