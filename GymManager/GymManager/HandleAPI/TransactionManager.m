@@ -59,6 +59,7 @@
                 Item *item = [[Item alloc] initWithDictionary:itemDict[@"item"] error:&itemError];
                 if (!itemError) {
                     item.quantity = @(((NSString*)itemDict[@"quantity"]).integerValue);
+                    item.orderItemId = itemDict[@"id"];
                     [items addObject:item];
                 }
             }

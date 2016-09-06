@@ -12,7 +12,7 @@
 @implementation Transaction
 
 + (JSONKeyMapper *)keyMapper {
-    return [JSONKeyMapper baseMapper:[JSONKeyMapper mapperFromUnderscoreCaseToCamelCase] withModelToJSONExceptions:@{@"customer":@"user"}];
+    return [JSONKeyMapper mapperFromUnderscoreCaseToCamelCase];
 }
 
 - (void)setCreatedAtWithNSString:(NSString *)string {

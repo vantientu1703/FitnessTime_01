@@ -10,17 +10,19 @@
 
 NSString *const kOrderAtribute = @"order[order_items_attributes]";
 NSString *const kOrderKeyId = @"[item_id]";
-NSString *const kOrderkeyQuantity = @"[quantity]";
+NSString *const kOrderKeyQuantity = @"[quantity]";
+NSString *const kOrderKeyOrderItemId = @"[id]";
+NSString *const kOrderKeyDelete = @"[_destroy]";
 
 @implementation AddTransactionManager
 
 - (void)createTransaction:(Transaction *)transaction byUser:(User *)user {
     NSString *url = [NSString stringWithFormat:@"%@", URLRequestTransaction];
-    NSMutableDictionary *params = @{@"auth_token": user.authToken, @"order[user_id]": transaction.userId}.mutableCopy;
+    NSMutableDictionary *params = @{@"auth_token": user.authToken, @"order[user_id]": @"16"}.mutableCopy;
     [transaction.items enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         Item *item = (Item*)obj;
         [params setValue:item.id forKey:[self itemKey:kOrderKeyId atIndex:idx]];
-        [params setValue:item.quantity.stringValue forKey:[self itemKey:kOrderkeyQuantity atIndex:idx]];
+        [params setValue:item.quantity.stringValue forKey:[self itemKey:kOrderKeyQuantity atIndex:idx]];
     }];
     [self.manager POST:url parameters:params progress:nil
         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -36,13 +38,22 @@ NSString *const kOrderkeyQuantity = @"[quantity]";
     }}];
 }
 
-- (void)editTransaction:(Transaction *)transaction byUser:(User *)user atIndexPath:(NSIndexPath *)indexPath {
+- (void)editTransaction:(Transaction *)transaction withDeletedItems:(NSArray *)deletedItems byUser:(User *)user atIndexPath:(NSIndexPath *)indexPath {
     NSString *url = [NSString stringWithFormat:@"%@/%@", URLRequestTransaction, transaction.id];
-    NSMutableDictionary *params = @{@"auth_token": user.authToken, @"order[user_id]": transaction.userId}.mutableCopy;
-    [transaction.items enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    NSMutableDictionary *params = @{@"auth_token": user.authToken, @"order[user_id]": @"16"}.mutableCopy;
+    [deletedItems enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         Item *item = (Item*)obj;
         [params setValue:item.id forKey:[self itemKey:kOrderKeyId atIndex:idx]];
-        [params setValue:item.quantity.stringValue forKey:[self itemKey:kOrderkeyQuantity atIndex:idx]];
+        [params setValue:item.quantity.stringValue forKey:[self itemKey:kOrderKeyQuantity atIndex:idx]];
+        [params setValue:item.orderItemId forKey:[self itemKey:kOrderKeyOrderItemId atIndex:idx]];
+        [params setValue:@"true" forKey:[self itemKey:kOrderKeyDelete atIndex:idx]];
+    }];
+    [transaction.items enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        Item *item = (Item*)obj;
+        [params setValue:item.id forKey:[self itemKey:kOrderKeyId atIndex:idx + deletedItems.count]];
+        [params setValue:item.quantity.stringValue
+            forKey:[self itemKey:kOrderKeyQuantity atIndex:idx + deletedItems.count]];
+        [params setValue:item.orderItemId forKey:[self itemKey:kOrderKeyOrderItemId atIndex:idx + deletedItems.count]];
     }];
     [self.manager PUT:url parameters:params
         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

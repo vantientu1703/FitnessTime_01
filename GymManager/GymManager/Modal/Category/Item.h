@@ -15,6 +15,7 @@
 @interface Item : JSONModel
 
 @property (strong, nonatomic) NSString *id;
+@property (strong, nonatomic) NSString<Optional> *orderItemId;
 @property (strong, nonatomic) NSString *name;
 @property (nonatomic) double price;
 @property (nonatomic) NSNumber<Optional> *quantity;

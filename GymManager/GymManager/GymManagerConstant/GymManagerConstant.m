@@ -20,7 +20,7 @@ NSString *const kMenuViewControllerTitle = @"Menu";
 NSString *const kRegisterViewControllerIdentifier = @"RegisterViewController";
 NSString *const kNotificationSetRootViewWindowTitle = @"Set root view window";
 const CGFloat kTableViewCellHeight = 40.0;
-const CGFloat kTableViewHeaderHeight = 60.0;
+const CGFloat kTableViewHeaderHeight = 80.0;
 NSString *const kTransactionCellIndentifier = @"CategoryCell";
 NSString *const kTodayMeetinViewControllerIdentifier = @"TodayMeetingsViewController";
 NSString *const kIconCalendar = @"ic_calendar";
@@ -97,7 +97,7 @@ NSString *const kBundleID = @"com.vantientu.GymManager";
 
 #pragma mark - API
 NSString *const URLRequest = @"http://172.16.0.131:3000/api/"; //@"https://fit-ness-backend.herokuapp.com/api/";
-NSString *const URLRequestTransaction = @"https://fit-ness-backend.herokuapp.com/api/orders";
+NSString *const URLRequestTransaction = @"http://172.16.0.131:3000/api/orders";
 NSString *const kLoginRequest = @"auth/login";
 NSString *const kRegisterRequest = @"auth/register";
 NSString *const kTransactionRequest = @"orders";

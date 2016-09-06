@@ -21,9 +21,10 @@ NSString *const kCategoryListSegue = @"CategoryListSegue";
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *arrCategory;
+@property (strong, nonatomic) NSMutableArray *arrDeletedCategory;
 @property (strong, nonatomic) AddTransactionManager *manager;
 @property (strong, nonatomic) Transaction *transaction;
-@property (strong, nonatomic) Transaction *editedTransaction;
+@property (copy, nonatomic) Transaction *editedTransaction;
 @property (copy, nonatomic) void(^callBackBlock)(Transaction* returnTran);
 @property (weak, nonatomic) IBOutlet UIView *emptyView;
 
@@ -45,11 +46,11 @@ NSString *const kCategoryListSegue = @"CategoryListSegue";
 }
 
 - (void)setupView {
-    //TableView with fake data
-    self.arrCategory = @[].mutableCopy;
+    self.arrDeletedCategory = @[].mutableCopy;
     [self.tableView registerNib:[UINib nibWithNibName:kTransactionCellIndentifier bundle:nil]
          forCellReuseIdentifier:kTransactionCellIndentifier];
     self.tableView.scrollEnabled = NO;
+    self.arrCategory = @[].mutableCopy;
     if (self.transaction) {
         self.lbCustomerName.text = self.transaction.user.fullName;
         self.arrCategory = self.transaction.items.mutableCopy;
@@ -83,10 +84,15 @@ NSString *const kCategoryListSegue = @"CategoryListSegue";
 }
 
 - (BOOL)editTransaction {
-    self.editedTransaction = [self.transaction copy];
+    self.editedTransaction = self.transaction;
     BOOL edited = NO;
     if (![self.transaction.items isEqualToArray:self.arrCategory]) {
         self.editedTransaction.items = self.arrCategory.copy;
+        for (Item *item in self.transaction.items) {
+            if (![self.arrCategory containsObject:item]) {
+                [self.arrDeletedCategory addObject:item];
+            }
+        }
         edited = YES;
     }
     if ([self.lbCustomerName.text isEqualToString:self.transaction.user.fullName]) {
@@ -143,12 +149,13 @@ NSString *const kCategoryListSegue = @"CategoryListSegue";
 }
 
 - (IBAction)btnSubmitClick:(id)sender {
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     User *user = [[DataStore sharedDataStore] getUserManage];
     if (self.arrCategory.count) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         if (self.transaction) {
-            if ([self editedTransaction]) {
-                [self.manager editTransaction:[self editedTransaction] byUser:user atIndexPath:nil];
+            if ([self editTransaction]) {
+                [self.manager editTransaction:[self editedTransaction] withDeletedItems:self.arrDeletedCategory
+                    byUser:user atIndexPath:nil];
             }
         } else {
             [self.manager createTransaction:[self genarateTransaction] byUser:user];
