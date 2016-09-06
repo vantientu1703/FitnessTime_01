@@ -20,12 +20,10 @@ NSString *const kFillPhoneNumber = @"Fill phone number";
 NSString *const kUpdateSuccessTitle = @"Update success";
 NSString *const kUpdateFailTitle = @"Update fail";
 
-@interface EditMyProfileViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate, ProfileManagerDelegate>
+@interface EditMyProfileViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate, ProfileManagerDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewOfUser;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldFullName;
-@property (weak, nonatomic) IBOutlet UITextField *textFieldNewPassword;
-@property (weak, nonatomic) IBOutlet UITextField *textFieldConfirmPassword;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldAddress;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldEmail;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldPhoneNumber;
@@ -39,6 +37,7 @@ NSString *const kUpdateFailTitle = @"Update fail";
 {
     NSString *_imageString;
     NSDate *_fromDate;
+    BOOL _modifier;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -72,6 +71,10 @@ NSString *const kUpdateFailTitle = @"Update fail";
     self.title = kEditViewControllerTitle;
     self.imageViewOfUser.layer.cornerRadius = kCornerRadiusImageViewUser;
     self.imageViewOfUser.layer.masksToBounds = YES;
+    self.textFieldAddress.delegate = self;
+    self.textFieldEmail.delegate = self;
+    self.textFieldFullName.delegate = self;
+    self.textFieldPhoneNumber.delegate = self;
     [self.buttonDateOfBirth setTitle:[[DateFormatter sharedInstance] dateFormatterDateMonthYear:[NSDate date]]
         forState:UIControlStateNormal];
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
@@ -96,8 +99,7 @@ NSString *const kUpdateFailTitle = @"Update fail";
         self.labelNotes.text = kFileFullName;
     } else if (!self.textFieldPhoneNumber.text.length) {
         self.labelNotes.text = kFillPhoneNumber;
-    } else {
-        [MBProgressHUD showHUDAddedTo:self.view animated:true];
+    } else if (_modifier) {
         self.user.avatar = _imageString;
         self.user.address = self.textFieldAddress.text;
         self.user.email = self.textFieldEmail.text;
@@ -106,6 +108,7 @@ NSString *const kUpdateFailTitle = @"Update fail";
         self.user.birthday = _fromDate;
         ProfileManager *profileManager = [[ProfileManager alloc] init];
         profileManager.delegate = self;
+        [MBProgressHUD showHUDAddedTo:self.view animated:true];
         [profileManager updateProfile:self.user];
     }
 }
@@ -123,6 +126,7 @@ NSString *const kUpdateFailTitle = @"Update fail";
     CalendarViewController *calendarVC = [st instantiateInitialViewController];
     [calendarVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {
         _fromDate = dateSelected;
+        _modifier = true;
         [self.buttonDateOfBirth setTitle:[[DateFormatter sharedInstance]
             dateFormatterDateMonthYear:_fromDate] forState:UIControlStateNormal];
     }];
@@ -196,7 +200,13 @@ NSString *const kUpdateFailTitle = @"Update fail";
         _imageString = [UIImageJPEGRepresentation(newImage, 0.4f)
             base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     }
+    _modifier = true;
     [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    _modifier = true;
+    return YES;
 }
 
 @end

@@ -1,67 +1,49 @@
 //
-//  ViewController.m
+//  DetailMeetingPTViewController.m
 //  GymManager
 //
-//  Created by Văn Tiến Tú on 8/11/16.
+//  Created by Văn Tiến Tú on 9/6/16.
 //  Copyright © 2016 vantientu. All rights reserved.
 //
 
-#import "TodayMeetingsViewController.h"
+#import "DetailMeetingPTViewController.h"
 #import "TodayMeetingTableViewCell.h"
 #import "MeetingDetailViewController.h"
 
-@interface TodayMeetingsViewController ()<UITableViewDelegate, UITableViewDataSource, MeetingManagerDelegate, MeetingDetailViewControllerDelegate>
+@interface DetailMeetingPTViewController ()<MeetingDetailViewControllerDelegate, MeetingManagerDelegate>
 
-@property (weak, nonatomic) IBOutlet UIButton *buttonAddMeeting;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *buttonAddNewMeeting;
 @property (strong, nonatomic) NSMutableArray *arrMeetings;
 
 @end
 
-@implementation TodayMeetingsViewController
+@implementation DetailMeetingPTViewController
 {
     NSIndexPath *_indexPath;
 }
-#pragma mark - View's life
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupView];
-    if ([self.statusDetailMeeting isEqualToString:kDetailMeetingsTrainerVCTitle]) {
-        [MBProgressHUD showHUDAddedTo:self.view animated:true];
-        MeetingManager *meetingManager = [[MeetingManager alloc] init];
-        meetingManager.delegate = self;
-        [meetingManager getMeetingsWithTrainer:self.trainer];
-    } else {
-        [self getAllMeetngsWithDate:[NSDate date]];
-    }
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getAllMeetingsToday:)
-        name:kAddNewMeetingTitle object:nil];
+    [self getAllMeetingsOfTrainer];
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+#pragma mark - Button add new meeting
+- (IBAction)addNewMeetingPress:(id)sender {
+    UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
+    MeetingDetailViewController *meetingDetailVC = [st
+        instantiateViewControllerWithIdentifier:kMeetingDetailViewControllerIdentifier];
+    meetingDetailVC.delegate = self;
+    meetingDetailVC.statusEditMeeting = kAddNewMeetingTitle;
+    meetingDetailVC.trainer = self.trainer;
+    [self.navigationController pushViewController:meetingDetailVC animated:true];
 }
 
-- (void)getAllMeetingsToday:(NSNotification *)notification {
-    if (notification) {
-        NSDictionary *userInfo = notification.userInfo;
-        Meeting *meeting = userInfo[@"meeting"];
-        if (!self.arrMeetings) {
-            self.arrMeetings = [NSMutableArray array];
-        }
-        if ([[[DateFormatter sharedInstance] dateWithDateMonthYearFormatterFromString:meeting.fromDate] isEqualToString:
-        [[DateFormatter sharedInstance] dateFormatterDateMonthYear:[NSDate date]]]) {
-        [self.arrMeetings addObject:meeting];
-        [self.tableView reloadData];
-        }   
-    }
-}
-
-- (void)getAllMeetngsWithDate:(NSDate *)date {
+- (void)getAllMeetingsOfTrainer {
     [MBProgressHUD showHUDAddedTo:self.view animated:true];
     MeetingManager *meetingManager = [[MeetingManager alloc] init];
     meetingManager.delegate = self;
-    [meetingManager getAllMeetingsWithDate:date];
+    [meetingManager getMeetingsWithTrainer:self.trainer];
 }
 
 #pragma mark - MeetingManagerDelegate
@@ -70,20 +52,6 @@
     if (error) {
         [AlertManager showAlertWithTitle:kRegisterRequest message:message
             viewControler:self reloadAction:^{
-            [self getAllMeetngsWithDate:[NSDate date]];
-        }];
-    } else {
-        self.arrMeetings = arrMeetings.mutableCopy;
-        [self.tableView reloadData];
-    }
-}
-
-- (void)didResponseWithMessage:(NSString *)message withDate:(NSDate *)date withError:(NSError *)error returnArray:(NSArray *)arrMeetings {
-    [MBProgressHUD hideHUDForView:self.view animated:true];
-    if (error) {
-        [AlertManager showAlertWithTitle:kRegisterRequest message:message
-            viewControler:self reloadAction:^{
-            [self getAllMeetngsWithDate:date];
         }];
     } else {
         self.arrMeetings = arrMeetings.mutableCopy;
@@ -107,27 +75,8 @@
 }
 
 - (void)setupView {
-    if ([self.statusDetailMeeting isEqualToString:kTodayMeetingsVCTitle]) {
-        self.title = kTodayMeetingsVCTitle;
-    } else {
-        self.title = kDetailMeetingsTrainerVCTitle;
-    }
-    if (![self.statusDetailMeeting isEqualToString:kDetailMeetingsTrainerVCTitle]) {
-        UIBarButtonItem *calendarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:kIconCalendar]
-            style:UIBarButtonItemStylePlain target:self action:@selector(showCalendar:)];
-        self.navigationItem.rightBarButtonItem = calendarButton;
-    }
-    self.buttonAddMeeting.layer.cornerRadius = kCornerRadiusButton;
-}
-
-#pragma mark - Show calendar
-- (IBAction)showCalendar:(id)sender {
-    UIStoryboard *st = [UIStoryboard storyboardWithName:kCalendarIdentifier bundle:nil];
-    CalendarViewController *calendarVC = [st instantiateInitialViewController];
-    [self.navigationController pushViewController:calendarVC animated:true];
-    [calendarVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {
-        [self getAllMeetngsWithDate:dateSelected];
-    }];
+    self.title = kDetailMeetingsTrainerVCTitle;
+    self.buttonAddNewMeeting.layer.cornerRadius = kCornerRadiusButton;
 }
 
 #pragma mark - UITableViewDataSources
@@ -148,18 +97,18 @@
     return kHeightCellTodayMeetingTableViewCell;
 }
 
-#pragma mark - UITableViewDelegate 
+#pragma mark - UITableViewDelegate
 - (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewRowAction *editAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal
         title:kEditActionTitle handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-            UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
-            MeetingDetailViewController *meetingDetailVC = [st
-                instantiateViewControllerWithIdentifier:kMeetingDetailViewControllerIdentifier];
-            meetingDetailVC.statusEditMeeting = kEditMeetingTitle;
-            meetingDetailVC.meeting = self.arrMeetings[indexPath.row];
-            meetingDetailVC.delegate = self;
-            _indexPath = indexPath;
-            [self.navigationController pushViewController:meetingDetailVC animated:true];
+        UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
+        MeetingDetailViewController *meetingDetailVC = [st
+            instantiateViewControllerWithIdentifier:kMeetingDetailViewControllerIdentifier];
+        meetingDetailVC.statusEditMeeting = kEditMeetingTitle;
+        meetingDetailVC.meeting = self.arrMeetings[indexPath.row];
+        meetingDetailVC.delegate = self;
+        _indexPath = indexPath;
+        [self.navigationController pushViewController:meetingDetailVC animated:true];
     }];
     UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault
         title:kDeleteActionTitle handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
@@ -174,17 +123,6 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     //TODO
-}
-
-#pragma mark - Button add new meeting
-- (IBAction)buttonAddMeetingPress:(id)sender {
-    UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
-    MeetingDetailViewController *meetingDetailVC = [st
-        instantiateViewControllerWithIdentifier:kMeetingDetailViewControllerIdentifier];
-    meetingDetailVC.delegate = self;
-    meetingDetailVC.statusEditMeeting = kAddNewMeetingTitle;
-    meetingDetailVC.trainer = self.trainer;
-    [self.navigationController pushViewController:meetingDetailVC animated:true];
 }
 
 #pragma mark - Show alert controller
@@ -212,11 +150,8 @@
     if (!self.arrMeetings) {
         self.arrMeetings = [NSMutableArray array];
     }
-    if ([[[DateFormatter sharedInstance] dateWithDateMonthYearFormatterFromString:meeting.fromDate] isEqualToString:
-        [[DateFormatter sharedInstance] dateFormatterDateMonthYear:[NSDate date]]]) {
-        [self.arrMeetings addObject:meeting];
-        [self.tableView reloadData];
-    }
+    [self.arrMeetings addObject:meeting];
+    [self.tableView reloadData];
 }
 
 - (void)updateMeeting:(Meeting *)meeting {

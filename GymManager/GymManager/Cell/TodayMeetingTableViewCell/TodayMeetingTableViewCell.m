@@ -26,6 +26,7 @@ CGFloat const kCornerRadius = 5.0f;
     self.labelToHour.text = [[DateFormatter sharedInstance] dateWithHourFormatterFromString:meeting.toDate];
     self.labelNameTrainee.text = meeting.customer.fullName;
     self.labelNameTrainner.text = meeting.trainer.fullName;
+    self.labelPhoneNumber.text = meeting.trainer.telNumber;
 }
 
 @end

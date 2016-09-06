@@ -14,6 +14,7 @@
 #import "TodayMeetingsViewController.h"
 #import "EditPTManagerViewController.h"
 #import "TrainerManager.h"
+#import "DetailMeetingPTViewController.h"
 
 CGFloat const kTriggerVerticalOffset = 100.0f;
 //TODO
@@ -137,13 +138,13 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:true];
-    UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
+    UIStoryboard *st = [UIStoryboard storyboardWithName:kDetailMeetingPTStoryboardIdentifier bundle:nil];
     if ([self.statusAddNewMeeting isEqualToString:kDetailMeetingTitle]) {
-        TodayMeetingsViewController *todayMeetingsVC = [st
-            instantiateViewControllerWithIdentifier:kTodayMeetinViewControllerIdentifier];
-        todayMeetingsVC.statusDetailMeeting = kDetailMeetingsTrainerVCTitle;
-        todayMeetingsVC.trainer = self.arrTrainers[indexPath.row];
-        [self.navigationController pushViewController:todayMeetingsVC animated:true];
+        DetailMeetingPTViewController *detailMeetingPTVC = [st
+            instantiateViewControllerWithIdentifier:kDetailMeetingPTVCIdentifier];
+        detailMeetingPTVC.statusDetailMeeting = kDetailMeetingsTrainerVCTitle;
+        detailMeetingPTVC.trainer = self.arrTrainers[indexPath.row];
+        [self.navigationController pushViewController:detailMeetingPTVC animated:true];
     } else if ([self.statusAddNewMeeting isEqualToString:kDetailPTManagerTitle]) {
         DetailPTManagerViewController *detailPTManagerVC = [st
             instantiateViewControllerWithIdentifier:kDetailPTManagerViewControllerIdentifier];
