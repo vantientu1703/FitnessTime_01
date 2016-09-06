@@ -18,7 +18,7 @@ NSString *const kOrderKeyDelete = @"[_destroy]";
 
 - (void)createTransaction:(Transaction *)transaction byUser:(User *)user {
     NSString *url = [NSString stringWithFormat:@"%@", URLRequestTransaction];
-    NSMutableDictionary *params = @{@"auth_token": user.authToken, @"order[user_id]": @"16"}.mutableCopy;
+    NSMutableDictionary *params = @{@"auth_token": user.authToken, @"order[user_id]": transaction.user.id}.mutableCopy;
     [transaction.items enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         Item *item = (Item*)obj;
         [params setValue:item.id forKey:[self itemKey:kOrderKeyId atIndex:idx]];
@@ -40,7 +40,7 @@ NSString *const kOrderKeyDelete = @"[_destroy]";
 
 - (void)editTransaction:(Transaction *)transaction withDeletedItems:(NSArray *)deletedItems byUser:(User *)user atIndexPath:(NSIndexPath *)indexPath {
     NSString *url = [NSString stringWithFormat:@"%@/%@", URLRequestTransaction, transaction.id];
-    NSMutableDictionary *params = @{@"auth_token": user.authToken, @"order[user_id]": @"16"}.mutableCopy;
+    NSMutableDictionary *params = @{@"auth_token": user.authToken, @"order[user_id]": transaction.user.id}.mutableCopy;
     [deletedItems enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         Item *item = (Item*)obj;
         [params setValue:item.id forKey:[self itemKey:kOrderKeyId atIndex:idx]];

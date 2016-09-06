@@ -21,8 +21,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZJa-Dp-Kl4">
                                 <rect key="frame" x="0.0" y="10" width="375" height="657"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3vY-R5-XBw">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vY-R5-XBw">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="566"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPt-lY-ib7">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
@@ -49,14 +49,14 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPa-m9-1Ym">
-                                                        <rect key="frame" x="326" y="56" width="19" height="18"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPa-m9-1Ym">
+                                                        <rect key="frame" x="355" y="56" width="10" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <color key="textColor" red="0.92156862750000001" green="0.3921568627" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJh-wG-Rft">
-                                                        <rect key="frame" x="326" y="79" width="19" height="18"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJh-wG-Rft">
+                                                        <rect key="frame" x="355" y="79" width="10" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <color key="textColor" red="0.057294889129999999" green="0.8350560897" blue="0.050325691460000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -288,8 +288,8 @@
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KpY-jF-hPD">
-                                                                        <rect key="frame" x="110" y="4" width="38" height="21"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick Customer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KpY-jF-hPD">
+                                                                        <rect key="frame" x="110" y="4" width="112" height="21"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <color key="textColor" red="0.057294889129999999" green="0.8350560897" blue="0.050325691460000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
@@ -305,6 +305,7 @@
                                                             </view>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <gestureRecognizers/>
                                                         <constraints>
                                                             <constraint firstItem="6cC-sr-VgF" firstAttribute="height" secondItem="vLe-Zb-YmT" secondAttribute="height" multiplier="0.7" id="E0n-pd-4df"/>
                                                             <constraint firstAttribute="trailing" secondItem="6cC-sr-VgF" secondAttribute="trailing" constant="8" id="EGV-Vn-LUl"/>
@@ -312,6 +313,9 @@
                                                             <constraint firstAttribute="height" constant="40" id="azb-8d-PtR"/>
                                                             <constraint firstItem="6cC-sr-VgF" firstAttribute="leading" secondItem="vLe-Zb-YmT" secondAttribute="leading" constant="8" id="hBJ-oO-vki"/>
                                                         </constraints>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="tuN-Vt-4kP" appends="YES" id="dma-Sc-agD"/>
+                                                        </connections>
                                                     </view>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -371,6 +375,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4q9-CW-xd6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="tuN-Vt-4kP">
+                    <connections>
+                        <action selector="didTapCustomer:" destination="kTx-Na-KWR" id="gTZ-Xa-tTF"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="792" y="219"/>
         </scene>
@@ -695,7 +704,6 @@
                                         </state>
                                         <connections>
                                             <action selector="btnCancelClick:" destination="swG-VG-Syy" eventType="touchUpInside" id="6Y1-49-JLe"/>
-                                            <action selector="btnSave:" destination="swG-VG-Syy" eventType="touchUpInside" id="oYf-Xx-NLc"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -745,6 +753,6 @@
         <image name="Plus-96.png" width="96" height="96"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Nkv-tE-Tr2"/>
+        <segue reference="4Ml-ht-vrJ"/>
     </inferredMetricsTieBreakers>
 </document>

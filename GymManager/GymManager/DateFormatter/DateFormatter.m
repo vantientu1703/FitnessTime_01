@@ -104,10 +104,10 @@
 - (NSString *)dateFormatterTypeString:(DateFormatterType)format {
     switch (format) {
         case DateFormatterTypeHour: {
-            return @"HH:mm a";
+            return @"hh:mm a";
         }
         case DateFormatterTypeHourDayMonthYear: {
-            return @"HH:mm a dd/MM/yyyy";
+            return @"hh:mm a dd/MM/yyyy";
         }
         case DateFormatterTypeDayMonthYear: {
             return @"dd/MM/yyyy";

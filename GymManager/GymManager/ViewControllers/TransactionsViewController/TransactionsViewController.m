@@ -15,7 +15,7 @@
 
 NSString *const kAddTransactionSegue = @"AddTransactionSegue";
 
-@interface TransactionsViewController () <UITableViewDelegate,UITableViewDataSource,ExpandableTableViewDelegate,TransactionManagerDelegate>
+@interface TransactionsViewController () <UITableViewDelegate,UITableViewDataSource,ExpandableTableViewDelegate,TransactionManagerDelegate,UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet ExpandableTableView *tableView;
 @property (strong, nonatomic) NSMutableArray *arrTrans;
@@ -70,6 +70,15 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
 - (void)reloadDataForWholeView {
     [self.manager fetchAllTransactionByUser:[[DataStore sharedDataStore] getUserManage]];
     [self.refresh beginRefreshing];
+}
+
+- (void)reloadOverView {
+    self.lbNumOfTrans.text = @(self.arrTrans.count).stringValue;
+    NSInteger sum = 0;
+    for (Transaction *tran in self.arrTrans) {
+        sum += tran.totalPrice;
+    }
+    self.lbTotalIncome.text = @(sum).stringValue;
 }
 
 #pragma mark - TableView Implementation
@@ -172,25 +181,24 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
 }
 
 - (void)showCalendar {
-    CalendarViewController *calVC = [[UIStoryboard storyboardWithName:@"Calendar" bundle:nil]
-        instantiateInitialViewController];
-    [calVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {
-        //TODO
-    }];
-    [self.navigationController pushViewController:calVC animated:YES];
+    UIActionSheet *picker = [[UIActionSheet alloc] initWithTitle:@"Filter By :" delegate:self
+        cancelButtonTitle:kCancelTitle destructiveButtonTitle:nil otherButtonTitles:@"Day", @"Month", @"Year", nil];
+    [picker showInView:self.view];
 }
 
 #pragma mark - Data handler
 - (void)didFetchAllTransctionWithMessage:(NSString *)message withError:(NSError *)error returnTransactions:(NSArray *)transactions {
-    [self.refresh endRefreshing];
     if (error) {
         [self.manager showAlertByMessage:message title:error.localizedDescription];
     } else {
         [self.arrTrans removeAllObjects];
         self.arrTrans = transactions.mutableCopy;
         [self.tableView reloadData];
+        [self reloadOverView];
         self.contraintTableViewCell.constant = self.tableView.contentSize.height;
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     }
+    [self.refresh endRefreshing];
 }
 
 - (void)didDeleteTransctionWithMessage:(NSString *)message withError:(NSError *)error atSection:(NSInteger)section {
@@ -200,8 +208,24 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
         [UIView animateWithDuration:0.3 animations:^{
             self.contraintTableViewCell.constant = self.tableView.contentSize.height;
             [self.view layoutIfNeeded];
+            [self reloadOverView];
         }];
     });
+}
+
+#pragma mark - Action sheet picker delegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex != actionSheet.cancelButtonIndex) {
+        CalendarViewController *calVC = [[UIStoryboard storyboardWithName:@"Calendar" bundle:nil]
+            instantiateInitialViewController];
+        calVC.state = buttonIndex;
+        [calVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [self.manager fetchAllTransactionByUser:[[DataStore sharedDataStore] getUserManage] withFilterState:state
+                date:dateSelected];
+        }];
+        [self.navigationController pushViewController:calVC animated:YES];
+    }
 }
 
 #pragma mark - Navigation

@@ -16,8 +16,7 @@
 }
 
 - (void)setCreatedAtWithNSString:(NSString *)string {
-    DateFormatter *formatter = [[DateFormatter alloc] init];
-    self.createdAt = [formatter dateByServerFormatFromString:string];
+    self.createdAt = [[DateFormatter sharedInstance] dateFromString:string withFormat:DateFormatterTypeUTC];
 }
 
 @end
