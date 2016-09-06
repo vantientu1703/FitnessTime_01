@@ -26,6 +26,7 @@ NSString *const kFillAddress = @"Fill address";
 @property (weak, nonatomic) IBOutlet UITextField *textFieldAddress;
 @property (weak, nonatomic) IBOutlet UILabel *labelNotes;
 @property (weak, nonatomic) IBOutlet UIButton *buttonRegister;
+@property (weak, nonatomic) IBOutlet UIView *viewContainButtonSelectDate;
 
 @end
 
@@ -41,8 +42,14 @@ NSString *const kFillAddress = @"Fill address";
 }
 
 - (void)setupView {
-    DateFormatter *dateFommater = [[DateFormatter alloc] init];
-    NSString *dateString = [dateFommater dateFormatterDateMonthYear:[NSDate date]];
+    self.viewContainButtonSelectDate.layer.cornerRadius = kCornerRadiusViewBackground;
+    self.navigationController.navigationBar.barTintColor = [UIColor lightGrayColor];
+    self.navigationController.navigationBar.translucent = NO;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]
+        initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelPress:)];
+    self.navigationController.navigationItem.leftBarButtonItem = cancelButton;
+    NSString *dateString = [[DateFormatter sharedInstance] dateFormatterDateMonthYear:[NSDate date]];
     self.title = kRegisterVCTitle;
     self.textFieldAddress.delegate = self;
     self.textFieldConfirmPassword.delegate = self;
@@ -64,6 +71,10 @@ NSString *const kFillAddress = @"Fill address";
     if (user) {
         [registerManager doRegisterWithUser:user];
     }
+}
+
+- (IBAction)cancelPress:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (User *)setUser {

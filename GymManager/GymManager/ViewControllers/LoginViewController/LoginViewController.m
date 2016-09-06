@@ -66,7 +66,8 @@ NSString *const kErrorEmailOrPassword = @"Incorrect email or password";
 - (IBAction)registerPress:(id)sender {
     UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
     RegisterViewController *registerVC = [st instantiateViewControllerWithIdentifier:kRegisterViewControllerIdentifier];
-    [self.navigationController pushViewController:registerVC animated:true];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:registerVC];
+    [self presentViewController:nav animated:true completion:nil];
 }
 
 - (IBAction)forgetPasswordPress:(id)sender {
