@@ -30,6 +30,7 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     self.transactionQueue = dispatch_queue_create("transaction_queue", DISPATCH_QUEUE_SERIAL);
     self.manager = [[TransactionManager alloc] init];
     self.manager.delegate = self;
@@ -195,10 +196,7 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
 - (void)didDeleteTransctionWithMessage:(NSString *)message withError:(NSError *)error atSection:(NSInteger)section {
     dispatch_sync(self.transactionQueue, ^{
         [self.arrTrans removeObjectAtIndex:section];
-        [self.tableView beginUpdates];
-        [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:section]
-            withRowAnimation:UITableViewRowAnimationFade];
-        [self.tableView endUpdates];
+        [self.tableView reloadData];
         [UIView animateWithDuration:0.3 animations:^{
             self.contraintTableViewCell.constant = self.tableView.contentSize.height;
             [self.view layoutIfNeeded];
@@ -223,11 +221,11 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
         } else {
             [addVC updateTransaction:nil withCompleteBlock:^(Transaction *returnTran) {
                 //Update tableview in queue
-//                dispatch_sync(self.transactionQueue, ^{
+                dispatch_sync(self.transactionQueue, ^{
                     [self.arrTrans insertObject:returnTran atIndex:0];
                     [self.tableView reloadData];
                     self.contraintTableViewCell.constant = self.tableView.contentSize.height;
-//                });
+                });
             }];
         }
     }
