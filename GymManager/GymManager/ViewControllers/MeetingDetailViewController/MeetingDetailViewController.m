@@ -254,10 +254,11 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
     [MBProgressHUD hideHUDForView:self.view animated:true];
     if (success) {
         self.labelNotes.text = kCreateSuccess;
+        NSDictionary *userInfo = @{@"meeting": meeting};
+        [[NSNotificationCenter defaultCenter] postNotificationName:kAddNewMeetingTitle
+            object:self userInfo:userInfo];
         if ([self.delegate respondsToSelector:@selector(reloadDataMeetings:)]) {
             [self.delegate reloadDataMeetings:meeting];
-        } else {
-            [[NSNotificationCenter defaultCenter] postNotificationName:kAddNewMeetingTitle object:nil];
         }
     } else {
         self.labelNotes.text = error.localizedDescription;

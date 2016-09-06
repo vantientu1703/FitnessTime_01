@@ -90,6 +90,10 @@ extern NSString *const kPTManagerStoryboardIdentifier;
 extern NSString *const kPTManagerViewControllerIdentifier;
 extern NSString *const kAddNewTrainerTitle;
 extern NSString *const kUpdateTrainerTitle;
+extern NSString *const kDetailMeetingPTStoryboardIdentifier;
+extern NSString *const kTodayMeetingTableViewCellIdentifier;;
+extern CGFloat const kHeightCellTodayMeetingTableViewCell;
+extern NSString *const kDetailMeetingPTVCIdentifier;
 
 #pragma mark - CoreData
 extern NSString *const kCoreDataModel;

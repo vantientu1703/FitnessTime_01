@@ -90,6 +90,10 @@ NSString *const kMyProfileTitle = @"My Profile";
 CGFloat const kCornerRadiusButtonAddNewMeeting = 20.0f;
 NSString *const kPTMeetingCollectionViewCellIdentifier = @"MeetingCollectionViewCell";
 NSString *const kPTManagerStoryboardIdentifier = @"PTManager";
+NSString *const kDetailMeetingPTStoryboardIdentifier = @"DetailMeetingPT";
+NSString *const kTodayMeetingTableViewCellIdentifier = @"TodayMeetingTableViewCell";
+CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
+NSString *const kDetailMeetingPTVCIdentifier = @"DetailMeetingPTViewController";
 
 #pragma mark - CoreData
 NSString *const kCoreDataModel = @"GymManager";
