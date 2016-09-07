@@ -61,9 +61,11 @@ CGFloat const kCornerRadiusImageViewPT = 40.0f;
     self.navigationItem.rightBarButtonItem = editButton;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
         initWithTarget:self action:@selector(showIncomeThisMonth:)];
-    [self.labelShowIncomeThisMonth addGestureRecognizer:tap];
     [self.labelIncomeThisMonth addGestureRecognizer:tap];
     self.labelIncomeThisMonth.userInteractionEnabled = true;
+    UITapGestureRecognizer *showIncome = [[UITapGestureRecognizer alloc]
+        initWithTarget:self action:@selector(showIncomeThisMonth:)];
+    [self.labelShowIncomeThisMonth addGestureRecognizer:showIncome];
     self.labelShowIncomeThisMonth.userInteractionEnabled = true;
 }
 

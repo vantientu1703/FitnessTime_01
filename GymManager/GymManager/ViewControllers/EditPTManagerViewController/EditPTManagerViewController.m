@@ -117,16 +117,17 @@ NSString *const kSelectAvatar = @"Select avatar,please";
         trainer.address = self.textFieldAddress.text;
         trainer.email = self.textFieldEmail.text;
         trainer.meetingMoney = self.textFiledIncomeShif.text.floatValue;
-        trainer.avatar = _imageString;
         TrainerManager *trainerManager = [[TrainerManager alloc] init];
         trainerManager.delegate = self;
         if ([self.statusEditString isEqualToString:kEditTrainerTitle]) {
             if (_modifier) {
+                trainer.avatar = _imageString;
                 [MBProgressHUD showHUDAddedTo:self.view animated:true];
                 [trainerManager updateTrainer:trainer];
             }
         } else {
             [MBProgressHUD showHUDAddedTo:self.view animated:true];
+            trainer.avatar = _imageString;
             [trainerManager createNewTrainer:trainer];
         }
     }

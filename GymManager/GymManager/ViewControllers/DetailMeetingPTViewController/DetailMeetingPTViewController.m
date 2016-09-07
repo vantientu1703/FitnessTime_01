@@ -10,17 +10,26 @@
 #import "TodayMeetingTableViewCell.h"
 #import "MeetingDetailViewController.h"
 
+NSString *const kMessageSelectType = @"Select filter type";
+NSString *const kAllMeetingTitle = @"All meetings";
+NSString *const kSelectDateTitle = @"Select date";
+NSString *const kFilterTitle = @"Filter";
+
 @interface DetailMeetingPTViewController ()<MeetingDetailViewControllerDelegate, MeetingManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *buttonAddNewMeeting;
 @property (strong, nonatomic) NSMutableArray *arrMeetings;
+@property (weak, nonatomic) IBOutlet UILabel *labelTimes;
+@property (strong, nonatomic) NSMutableArray *arrMeetingFilters;
 
 @end
 
 @implementation DetailMeetingPTViewController
 {
     NSIndexPath *_indexPath;
+    NSString *_filter;
+    NSDate *_dateSelected;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,16 +51,27 @@
     if (notification) {
         NSDictionary *userInfo = notification.userInfo;
         Customer *customer = userInfo[@"customer"];
+        if ([_filter isEqualToString:kFilterTitle]) {
+            [self.arrMeetingFilters enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                Meeting *meeting = (Meeting *)obj;
+                Customer *customerInstance = meeting.customer;
+                if (customer.id == customerInstance.id) {
+                    meeting.customer = customer;
+                    [self.arrMeetings replaceObjectAtIndex:idx withObject:meeting];
+                    return;
+                }
+            }];
+        }
         [self.arrMeetings enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             Meeting *meeting = (Meeting *)obj;
             Customer *customerInstance = meeting.customer;
             if (customer.id == customerInstance.id) {
                 meeting.customer = customer;
                 [self.arrMeetings replaceObjectAtIndex:idx withObject:meeting];
-                [self.tableView reloadData];
                 return;
             }
         }];
+        [self.tableView reloadData];
     }
 }
 
@@ -62,11 +82,17 @@
         if (!self.arrMeetings) {
             self.arrMeetings = [NSMutableArray array];
         }
-        if ([[[DateFormatter sharedInstance] dateWithDateMonthYearFormatterFromString:meeting.fromDate] isEqualToString:
-             [[DateFormatter sharedInstance] dateFormatterDateMonthYear:[NSDate date]]]) {
-            [self.arrMeetings addObject:meeting];
-            [self.tableView reloadData];
+        if (!self.arrMeetingFilters) {
+            self.arrMeetingFilters = [NSMutableArray array];
         }
+        NSString *fromDateString = [[DateFormatter sharedInstance]
+            dateWithDateMonthYearFormatterFromString:meeting.fromDate];
+        NSString *dateSelectedString = [[DateFormatter sharedInstance] dateFormatterDateMonthYear:_dateSelected];
+        if ([fromDateString isEqualToString:dateSelectedString] || [_filter isEqualToString:kFilterTitle]) {
+            [self.arrMeetingFilters addObject:meeting];
+        }
+        [self.arrMeetings addObject:meeting];
+        [self.tableView reloadData];
     }
 }
 
@@ -74,16 +100,27 @@
     if (notification) {
         NSDictionary *userInfo = notification.userInfo;
         Trainer *trainer = userInfo[@"trainer"];
+        if ([_filter isEqualToString:kFilterTitle]) {
+            [self.arrMeetingFilters enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                Meeting *meeting = (Meeting *)obj;
+                Trainer *trainerInstance = meeting.trainer;
+                if (trainer.id == trainerInstance.id) {
+                    meeting.trainer = trainer;
+                    [self.arrMeetings replaceObjectAtIndex:idx withObject:meeting];
+                    return;
+                }
+            }];
+        }
         [self.arrMeetings enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             Meeting *meeting = (Meeting *)obj;
             Trainer *trainerInstance = meeting.trainer;
             if (trainer.id == trainerInstance.id) {
                 meeting.trainer = trainer;
                 [self.arrMeetings replaceObjectAtIndex:idx withObject:meeting];
-                [self.tableView reloadData];
                 return;
             }
         }];
+        [self.tableView reloadData];
     }
 }
 #pragma mark - Button add new meeting
@@ -133,19 +170,80 @@
 }
 
 - (void)setupView {
+    _dateSelected = [NSDate date];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     self.title = kDetailMeetingsTrainerVCTitle;
     self.buttonAddNewMeeting.layer.cornerRadius = kCornerRadiusButton;
+    UIBarButtonItem *calendarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:kIconCalendar]
+        style:UIBarButtonItemStylePlain target:self action:@selector(showAlertFilter)];
+    self.navigationItem.rightBarButtonItem = calendarButton;
+}
+
+- (void)showAlertFilter {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:kReminderTitle
+        message:kMessageSelectType preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *allMeetingFilterAction = [UIAlertAction actionWithTitle:kAllMeetingTitle
+        style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        _filter = @"";
+        self.labelTimes.text = kAllMeetingTitle;
+        [self.tableView reloadData];
+    }];
+    UIAlertAction *selectDateAction = [UIAlertAction actionWithTitle:kSelectDateTitle
+        style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self showCalendar];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:kCancelActionTitle style:UIAlertActionStyleCancel
+        handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alertController addAction:allMeetingFilterAction];
+    [alertController addAction:selectDateAction];
+    [alertController addAction:cancelAction];
+    [self presentViewController:alertController animated:true completion:nil];
+}
+
+- (void)showCalendar {
+    UIStoryboard *st = [UIStoryboard storyboardWithName:kCalendarIdentifier bundle:nil];
+    CalendarViewController *calendarVC = [st instantiateInitialViewController];
+    [calendarVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {
+        _filter = kFilterTitle;
+        _dateSelected = dateSelected;
+        self.labelTimes.text = [[DateFormatter sharedInstance] dateFormatterDateMonthYear:dateSelected];
+        [self filterMeetingsWithDate:dateSelected];
+    }];
+    [self.navigationController pushViewController:calendarVC animated:true];
+}
+
+#pragma mark - Filter meetings
+- (void)filterMeetingsWithDate:(NSDate *)dateSelected {
+    self.arrMeetingFilters = [NSMutableArray array];
+    for (Meeting *meeting in self.arrMeetings) {
+        NSString *fromDateString = [[DateFormatter sharedInstance]
+            dateWithDateMonthYearFormatterFromString:meeting.fromDate];
+        NSString *dateSelectedString = [[DateFormatter sharedInstance] dateFormatterDateMonthYear:dateSelected];
+        if ([fromDateString isEqualToString:dateSelectedString]) {
+            [self.arrMeetingFilters addObject:meeting];
+        }
+    }
+    [self.tableView reloadData];
 }
 
 #pragma mark - UITableViewDataSources
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if ([_filter isEqualToString:kFilterTitle]) {
+        return self.arrMeetingFilters.count;
+    }
     return self.arrMeetings.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TodayMeetingTableViewCell *cell = (TodayMeetingTableViewCell *)[tableView
         dequeueReusableCellWithIdentifier:kTodayMeetingTableViewCellIdentifier forIndexPath:indexPath];
-    Meeting *meeting = self.arrMeetings[indexPath.row];
+    Meeting *meeting;
+    if ([_filter isEqualToString:kFilterTitle]) {
+        meeting = self.arrMeetingFilters[indexPath.row];
+    } else {
+        meeting = self.arrMeetings[indexPath.row];
+    }
     [cell cellWithMeeting:meeting];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;

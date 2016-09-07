@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="102" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HBb-oF-VCR">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="23" width="375" height="644"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TodayMeetingTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodayMeetingTableViewCell" rowHeight="102" id="Ga8-E6-O1e" customClass="TodayMeetingTableViewCell">
@@ -177,14 +177,14 @@
                                                         <mask key="constraints">
                                                             <exclude reference="Ioj-6s-IXH"/>
                                                             <exclude reference="UAa-gm-Ku6"/>
-                                                            <exclude reference="ULQ-sm-HRx"/>
                                                             <exclude reference="J3S-6c-1Be"/>
+                                                            <exclude reference="ULQ-sm-HRx"/>
                                                             <exclude reference="idZ-v5-3Hn"/>
-                                                            <exclude reference="lae-FL-Wav"/>
                                                             <exclude reference="3gF-iS-hx7"/>
                                                             <exclude reference="JTZ-BI-ZbY"/>
-                                                            <exclude reference="S7Z-bE-ncO"/>
+                                                            <exclude reference="lae-FL-Wav"/>
                                                             <exclude reference="Ijm-J3-1bU"/>
+                                                            <exclude reference="S7Z-bE-ncO"/>
                                                             <exclude reference="hVP-l7-3WL"/>
                                                             <exclude reference="0fP-Kw-bqS"/>
                                                             <exclude reference="apO-qs-iw6"/>
@@ -219,7 +219,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWg-LU-BnB">
-                                <rect key="frame" x="325" y="567" width="40" height="40"/>
+                                <rect key="frame" x="325" y="617" width="40" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="lKA-by-mNk"/>
@@ -231,26 +231,46 @@
                                     <action selector="addNewMeetingPress:" destination="4ye-Io-Rvv" eventType="touchUpInside" id="K1D-cm-NzZ"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All meetings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAA-Zz-HeQ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
+                                <color key="backgroundColor" red="0.0" green="0.67450980390000004" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="viw-BN-lQK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="qAA-Zz-HeQ" firstAttribute="leading" secondItem="hrT-TM-Ufb" secondAttribute="leading" id="DAf-z4-o7M"/>
                             <constraint firstItem="HBb-oF-VCR" firstAttribute="leading" secondItem="hrT-TM-Ufb" secondAttribute="leading" id="DKh-q4-hXa"/>
-                            <constraint firstAttribute="bottom" secondItem="aWg-LU-BnB" secondAttribute="bottom" constant="60" id="PAh-NU-3Kl"/>
-                            <constraint firstItem="HBb-oF-VCR" firstAttribute="top" secondItem="hrT-TM-Ufb" secondAttribute="top" id="pZN-73-bNq"/>
+                            <constraint firstItem="qAA-Zz-HeQ" firstAttribute="top" secondItem="hrT-TM-Ufb" secondAttribute="top" id="Hfd-wD-xYT"/>
+                            <constraint firstAttribute="bottom" secondItem="aWg-LU-BnB" secondAttribute="bottom" constant="10" id="PAh-NU-3Kl"/>
+                            <constraint firstItem="HBb-oF-VCR" firstAttribute="top" secondItem="qAA-Zz-HeQ" secondAttribute="bottom" constant="2" id="mNH-sk-L0e"/>
+                            <constraint firstAttribute="trailing" secondItem="qAA-Zz-HeQ" secondAttribute="trailing" id="mk2-aw-wEG"/>
+                            <constraint firstItem="HBb-oF-VCR" firstAttribute="top" secondItem="hrT-TM-Ufb" secondAttribute="top" constant="40" id="pZN-73-bNq"/>
                             <constraint firstAttribute="trailing" secondItem="HBb-oF-VCR" secondAttribute="trailing" id="q6x-wN-dUl"/>
                             <constraint firstAttribute="trailing" secondItem="aWg-LU-BnB" secondAttribute="trailing" constant="10" id="x9K-M1-qGV"/>
                             <constraint firstItem="b2y-b0-2F2" firstAttribute="top" secondItem="HBb-oF-VCR" secondAttribute="bottom" id="yc0-mO-62M"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="pZN-73-bNq"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="buttonAddNewMeeting" destination="aWg-LU-BnB" id="Ibi-jq-5tS"/>
+                        <outlet property="labelTimes" destination="qAA-Zz-HeQ" id="nP5-cD-skK"/>
                         <outlet property="tableView" destination="HBb-oF-VCR" id="V76-7J-gZA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hs9-8g-PAF" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="305.5" y="169.5"/>
+            <point key="canvasLocation" x="306.5" y="176.5"/>
         </scene>
     </scenes>
     <resources>
