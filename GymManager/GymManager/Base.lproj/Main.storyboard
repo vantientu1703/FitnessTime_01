@@ -665,7 +665,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6w-Jz-kx5">
-                                                        <rect key="frame" x="0.0" y="1" width="200" height="30"/>
+                                                        <rect key="frame" x="0.0" y="1" width="292" height="30"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="200" id="6yq-MV-Fv2"/>
@@ -673,6 +673,11 @@
                                                         <state key="normal" title="Button">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="6yq-MV-Fv2"/>
+                                                            </mask>
+                                                        </variation>
                                                         <connections>
                                                             <action selector="buttonDateOfBirthPress:" destination="ZD8-bM-ZKr" eventType="touchUpInside" id="dW5-WF-S3R"/>
                                                         </connections>
@@ -681,6 +686,7 @@
                                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="32" id="H7r-Cc-IpZ"/>
+                                                    <constraint firstItem="2tp-Eq-Eel" firstAttribute="leading" secondItem="U6w-Jz-kx5" secondAttribute="trailing" id="IMD-Lu-Wyu"/>
                                                     <constraint firstItem="U6w-Jz-kx5" firstAttribute="leading" secondItem="0Yt-iN-TJc" secondAttribute="leading" id="MsQ-Hy-mga"/>
                                                     <constraint firstAttribute="bottom" secondItem="U6w-Jz-kx5" secondAttribute="bottom" constant="1" id="Rpy-VW-Gar"/>
                                                     <constraint firstItem="U6w-Jz-kx5" firstAttribute="top" secondItem="0Yt-iN-TJc" secondAttribute="top" constant="1" id="haI-bD-5Y1"/>

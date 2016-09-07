@@ -95,6 +95,7 @@ extern NSString *const kTodayMeetingTableViewCellIdentifier;;
 extern CGFloat const kHeightCellTodayMeetingTableViewCell;
 extern NSString *const kDetailMeetingPTVCIdentifier;
 extern NSString *const kAddNEwCustomerVCTitle;
+extern NSString *const kUpdateCustomer;
 
 #pragma mark - CoreData
 extern NSString *const kCoreDataModel;

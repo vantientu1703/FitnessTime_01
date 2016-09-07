@@ -136,7 +136,6 @@ NSString *const kSelectAvatar = @"Select avatar,please";
 - (void)createdTrainerWithMessage:(BOOL)success withError:(NSError *)error returnTrainer:(Trainer *)trainer {
     [MBProgressHUD hideHUDForView:self.view animated:true];
     if (success) {
-        [self.delegate createNewTrainer:trainer];
         self.labelNotes.text = kCreateSuccess;
         self.labelNotes.textColor = [GymManagerConstant themeColor];
         NSDictionary *userInfo = @{@"trainer": trainer};
@@ -153,12 +152,13 @@ NSString *const kSelectAvatar = @"Select avatar,please";
 - (void)updateTrainerWithMessage:(BOOL)success withError:(NSError *)error returnTrainer:(Trainer *)trainer {
     [MBProgressHUD hideHUDForView:self.view animated:true];
     if (success) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateTrainerTitle object:nil];
         self.labelNotes.text = kUpdateSuccess;
         self.labelNotes.textColor = [GymManagerConstant themeColor];
         if ([self.delegate respondsToSelector:@selector(updateTrainer:)]) {
             [self.delegate updateTrainer:trainer];
         }
+        NSDictionary *userInfo = @{@"trainer": trainer};
+        [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateTrainerTitle object:nil userInfo:userInfo];
     } else {
         self.labelNotes.text = kUpdateFail;
         [AlertManager showAlertWithTitle:kRegisterRequest message:error.localizedDescription

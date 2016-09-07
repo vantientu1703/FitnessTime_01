@@ -29,6 +29,25 @@
     // Do any additional setup after loading the view.
     [self setupView];
     [self getAllTrainers];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addNewTrainer:)
+        name:kAddNewTrainerTitle object:nil];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - NSNotificationCenter
+- (void)addNewTrainer:(NSNotification *)notification {
+    if (!self.arrTrainers) {
+        self.arrTrainers = [NSMutableArray array];
+    }
+    if ([notification.name isEqualToString:kAddNewTrainerTitle]) {
+        NSDictionary *userInfo = notification.userInfo;
+        Trainer *trainer = userInfo[@"trainer"];
+        [self.arrTrainers addObject:trainer];
+        [self.collectionView reloadData];
+    }
 }
 
 - (void)getAllTrainers {
