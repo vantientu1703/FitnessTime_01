@@ -48,7 +48,7 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
 @implementation MeetingDetailViewController
 {
     NSIndexPath *_indexPath;
-    Trainer *_trainer;
+    Trainer *_trainerInstance;
     Customer *_customer;
     NSDate *_fromDate;
     NSDate *_toDate;
@@ -56,6 +56,7 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
     NSString *_nameCustomer;
     BOOL _boolStartDate;
     BOOL _boolEndDate;
+    BOOL _modifier;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -71,7 +72,7 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
         self.title = kEditMeetingTitle;
         _fromDate = [[DateFormatter sharedInstance] dateFormatterHourDateMonthYearWithString:self.meeting.fromDate];
         _toDate = [[DateFormatter sharedInstance] dateFormatterHourDateMonthYearWithString:self.meeting.toDate];
-        _trainer = self.meeting.trainer;
+        _trainerInstance = self.meeting.trainer;
         _customer = self.meeting.customer;
     }
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
@@ -96,7 +97,7 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
             trainerCell.selectionStyle = UITableViewCellSelectionStyleNone;
             trainerCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             if ([self.statusEditMeeting isEqualToString:kEditMeetingTitle]) {
-                [trainerCell configCellWithName:_trainer.fullName];
+                [trainerCell configCellWithName:_trainerInstance.fullName];
             } else {
                 if (self.trainer) {
                     [trainerCell configCellWithName:self.trainer.fullName];
@@ -196,6 +197,7 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
             calendarVC.state = CalendarPickerStateTime;
             [calendarVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {
                 _fromDate = dateSelected;
+                _modifier = true;
                 DateMeetingTableViewCell *dateMeetingCell = (DateMeetingTableViewCell *)[self.tableView
                     cellForRowAtIndexPath:indexPath];
                 dateMeetingCell.labelFromTitle.text = kFromTitle;
@@ -211,6 +213,7 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
             calendarVC.state = CalendarPickerStateTime;
             [calendarVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {
                 _toDate = dateSelected;
+                _modifier = true;
                 DateMeetingTableViewCell *dateMeetingCell = (DateMeetingTableViewCell *)[self.tableView
                     cellForRowAtIndexPath:indexPath];
                 dateMeetingCell.labelFromTitle.text = kToTitle;
@@ -227,7 +230,7 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
 
 #pragma mark - Implement button done
 - (IBAction)saveNewMeetingPress:(id)sender {
-    if (!_trainer) {
+    if (!_trainerInstance) {
         self.labelNotes.text = kNotificationNoSelectTrainer;
     } else if (!_customer) {
         self.labelNotes.text = kNotificationNoSelectCustomer;
@@ -238,13 +241,18 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
     } else {
         MeetingManager *meetingManager = [[MeetingManager alloc] init];
         meetingManager.delegate = self;
-        if ([self.statusEditMeeting isEqualToString:kEditMeetingTitle]) {
-            [MBProgressHUD showHUDAddedTo:self.view animated:true];
-            [meetingManager updateMeetingItem:self.meeting withTrainer:_trainer
-                withCustomer:_customer fromDate:_fromDate toDate:_toDate];
-        } else {
-            [MBProgressHUD showHUDAddedTo:self.view animated:true];
-            [meetingManager createMeetingWithTrainer:_trainer withTrainee:_customer fromDate:_fromDate toDate:_toDate];
+        if (_modifier) {
+            if ([self.statusEditMeeting isEqualToString:kEditMeetingTitle]) {
+                self.navigationItem.rightBarButtonItem.enabled = NO;
+                [MBProgressHUD showHUDAddedTo:self.view animated:true];
+                [meetingManager updateMeetingItem:self.meeting withTrainer:_trainerInstance
+                    withCustomer:_customer fromDate:_fromDate toDate:_toDate];
+            } else {
+                self.navigationItem.rightBarButtonItem.enabled = NO;
+                [MBProgressHUD showHUDAddedTo:self.view animated:true];
+                [meetingManager createMeetingWithTrainer:_trainerInstance withTrainee:_customer
+                    fromDate:_fromDate toDate:_toDate];
+            }
         }
     }
 }
@@ -252,13 +260,17 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
 #pragma mark - MeetingManagerDelegate
 - (void)createMeetingItem:(Meeting *)meeting success:(BOOL)success error:(NSError *)error {
     [MBProgressHUD hideHUDForView:self.view animated:true];
+    self.navigationItem.rightBarButtonItem.enabled = YES;
     if (success) {
+        _modifier = false;
         self.labelNotes.text = kCreateSuccess;
-        NSDictionary *userInfo = @{@"meeting": meeting};
-        [[NSNotificationCenter defaultCenter] postNotificationName:kAddNewMeetingTitle
-            object:self userInfo:userInfo];
+        self.labelNotes.textColor = [GymManagerConstant themeColor];
         if ([self.delegate respondsToSelector:@selector(reloadDataMeetings:)]) {
             [self.delegate reloadDataMeetings:meeting];
+        } else {
+            NSDictionary *userInfo = @{@"meeting": meeting};
+            [[NSNotificationCenter defaultCenter] postNotificationName:kAddNewMeetingTitle
+                object:self userInfo:userInfo];
         }
     } else {
         self.labelNotes.text = error.localizedDescription;
@@ -267,8 +279,11 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
 
 - (void)updateMeetingItem:(Meeting *)meeting success:(BOOL)success error:(NSError *)error {
     [MBProgressHUD hideHUDForView:self.view animated:true];
+    self.navigationItem.rightBarButtonItem.enabled = YES;
     if (success) {
+        _modifier = false;
         self.labelNotes.text = kUpdateSuccess;
+        self.labelNotes.textColor = [GymManagerConstant themeColor];
         if ([self.delegate respondsToSelector:@selector(updateMeeting:)]) {
             [self.delegate updateMeeting:meeting];
         }
@@ -281,6 +296,7 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
 
 - (void)createMeetingFaileWithMessage:(NSString *)message {
     //TODO: handle create meeting fail
+    self.navigationItem.rightBarButtonItem.enabled = YES;
     [MBProgressHUD hideHUDForView:self.view animated:true];
     if (message) {
         self.labelNotes.text = message;
@@ -289,6 +305,7 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
 
 - (void)updateMeetingFailWithMessage:(NSString *)message {
     //TODO: handle update meeting fail
+    self.navigationItem.rightBarButtonItem.enabled = YES;
     [MBProgressHUD hideHUDForView:self.view animated:true];
     if (message) {
         self.labelNotes.text = message;
@@ -297,15 +314,17 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
 
 #pragma mark - PTMeetingViewControllerDelegate
 - (void)selectedTrainer:(Trainer *)trainer {
-    _trainer = trainer;
+    _trainerInstance = trainer;
+    _modifier = true;
     CustomerOrTrainnerTableViewCell *cell = (CustomerOrTrainnerTableViewCell *)[self.tableView
         cellForRowAtIndexPath:_indexPath];
-    cell.labelNameCustomOrTrainer.text = _trainer.fullName;
+    cell.labelNameCustomOrTrainer.text = _trainerInstance.fullName;
 }
 
 #pragma mark - CustomerManagerViewControllerDelegate
 - (void)selectedCustomer:(Customer *)customer {
     _customer = customer;
+    _modifier = true;
     CustomerOrTrainnerTableViewCell *cell = (CustomerOrTrainnerTableViewCell *)[self.tableView
         cellForRowAtIndexPath:_indexPath];
     cell.labelNameCustomOrTrainer.text = _customer.fullName;

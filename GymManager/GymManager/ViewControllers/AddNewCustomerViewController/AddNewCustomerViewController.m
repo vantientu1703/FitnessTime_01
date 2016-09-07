@@ -10,7 +10,6 @@
 #import "AlertManager.h"
 #import "Utils.h"
 
-NSString *const kAddNEwCustomerVCTitle = @"Add new customer";
 NSString *const kMessageSelectTypeTitle = @"Select Type";
 NSString *const kAcionChooseFromLibraryTtile = @"Choose from library";
 NSString *const kAcionChooseFromCameraTtile = @"Choose from camera";
@@ -226,10 +225,10 @@ NSString *const kSelectImages = @"Select avatar,please";
     [MBProgressHUD hideHUDForView:self.view animated:true];
     self.navigationItem.rightBarButtonItem.enabled = YES;
     if (success) {
-        if ([self.delegate respondsToSelector:@selector(addNewCustomer:)]) {
-            [self.delegate addNewCustomer:customer];
-        }
+        NSDictionary *userInfo = @{@"newcustomer": customer};
+        [[NSNotificationCenter defaultCenter] postNotificationName:kAddNEwCustomerVCTitle object:nil userInfo:userInfo];
         self.labelNotes.text = kCreateSuccess;
+        self.labelNotes.textColor = [GymManagerConstant themeColor];
     } else {
         self.labelNotes.text = kCreateFail;
         [AlertManager showAlertWithTitle:kReminderTitle message:error.localizedDescription
@@ -243,6 +242,7 @@ NSString *const kSelectImages = @"Select avatar,please";
     [MBProgressHUD hideHUDForView:self.view animated:true];
     if (success) {
         self.labelNotes.text = kUpdateSuccess;
+        self.labelNotes.textColor = [GymManagerConstant themeColor];
         if ([self.delegate respondsToSelector:@selector(updateCustomer:)]) {
             [self.delegate updateCustomer:customer];
         }
