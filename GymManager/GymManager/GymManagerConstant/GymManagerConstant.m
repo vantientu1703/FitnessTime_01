@@ -96,6 +96,8 @@ CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
 NSString *const kDetailMeetingPTVCIdentifier = @"DetailMeetingPTViewController";
 NSString *const kAddNEwCustomerVCTitle = @"Add new customer";
 NSString *const kUpdateCustomer = @"Update customer";
+NSString *const kIncomeStoryboardIdentifier = @"Income";
+NSString *const kShowPersonalIncomeViewControllerIdentifier = @"ShowPersonalIncomeViewController";
 
 #pragma mark - CoreData
 NSString *const kCoreDataModel = @"GymManager";
@@ -120,6 +122,28 @@ NSString *const kMessageFailLogin = @"Login is fail";
 
 + (UIColor *)themeColor {
     return [UIColor blueColor];
+}
+
++ (NSString *)separateNumberBySemiColon:(float)number {
+    NSMutableString *string = [[NSMutableString alloc] initWithFormat:@"%0.2f",number];
+    NSRange range;
+    int countString;
+    range = [string rangeOfString:@"."];
+    if (range.location != NSNotFound) {
+        countString = (unsigned int)range.location;
+    } else {
+        countString = (unsigned int)[string length];
+    }
+    if (countString > 3) {
+        int k = countString / 3;
+        if (countString % 3 == 0) {
+            k = k - 1;
+        }
+        for (int i = 1; i <= k; i ++) {
+            [string insertString:@"," atIndex:countString - i * 3];
+        }
+    }
+    return string;
 }
 
 @end

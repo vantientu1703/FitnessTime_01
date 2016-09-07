@@ -54,6 +54,8 @@
 		EF0D908D1D7E814000A2EE4A /* PTManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0D908C1D7E814000A2EE4A /* PTManagerViewController.m */; settings = {ASSET_TAGS = (); }; };
 		EF0D90901D7EB29700A2EE4A /* DetailMeetingPT.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF0D908E1D7EB29700A2EE4A /* DetailMeetingPT.storyboard */; settings = {ASSET_TAGS = (); }; };
 		EF0D90941D7EB34900A2EE4A /* DetailMeetingPTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0D90931D7EB34900A2EE4A /* DetailMeetingPTViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EF0D909A1D81216C00A2EE4A /* Income.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF0D90981D81216A00A2EE4A /* Income.storyboard */; settings = {ASSET_TAGS = (); }; };
+		EF0D909E1D8124CB00A2EE4A /* ShowPersonalIncomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0D909D1D8124CB00A2EE4A /* ShowPersonalIncomeViewController.m */; settings = {ASSET_TAGS = (); }; };
 		EF5FA7AE1D6AE22200E4B95F /* DataValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5FA7AD1D6AE22200E4B95F /* DataValidation.m */; };
 		EF635BFF1D6CB21900BEB9A1 /* TrainerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF635BFE1D6CB21900BEB9A1 /* TrainerManager.m */; };
 		EF635C021D6D79BC00BEB9A1 /* UIImageConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = EF635C011D6D79BC00BEB9A1 /* UIImageConstant.m */; };
@@ -191,6 +193,9 @@
 		EF0D908F1D7EB29700A2EE4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DetailMeetingPT.storyboard; sourceTree = "<group>"; };
 		EF0D90921D7EB34900A2EE4A /* DetailMeetingPTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailMeetingPTViewController.h; path = ViewControllers/DetailMeetingPTViewController/DetailMeetingPTViewController.h; sourceTree = "<group>"; };
 		EF0D90931D7EB34900A2EE4A /* DetailMeetingPTViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailMeetingPTViewController.m; path = ViewControllers/DetailMeetingPTViewController/DetailMeetingPTViewController.m; sourceTree = "<group>"; };
+		EF0D90991D81216B00A2EE4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Income.storyboard; sourceTree = "<group>"; };
+		EF0D909C1D8124CB00A2EE4A /* ShowPersonalIncomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShowPersonalIncomeViewController.h; path = ViewControllers/ShowPersonalIncomeViewController/ShowPersonalIncomeViewController.h; sourceTree = "<group>"; };
+		EF0D909D1D8124CB00A2EE4A /* ShowPersonalIncomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShowPersonalIncomeViewController.m; path = ViewControllers/ShowPersonalIncomeViewController/ShowPersonalIncomeViewController.m; sourceTree = "<group>"; };
 		EF5FA7AC1D6AE22200E4B95F /* DataValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataValidation.h; path = DataValidation/DataValidation.h; sourceTree = "<group>"; };
 		EF5FA7AD1D6AE22200E4B95F /* DataValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataValidation.m; path = DataValidation/DataValidation.m; sourceTree = "<group>"; };
 		EF635BFD1D6CB21900BEB9A1 /* TrainerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrainerManager.h; path = HandleAPI/TrainerManager.h; sourceTree = "<group>"; };
@@ -511,6 +516,7 @@
 				EF0D908A1D7E811500A2EE4A /* PTManagerViewController */,
 				EF0809901D5C94C2007A8EAE /* PTMeetingViewController */,
 				EFFD8D551D66CDD400994CC5 /* DetailPTManagerViewController */,
+				EF0D909B1D81249400A2EE4A /* ShowPersonalIncomeViewController */,
 				EFFD8D591D66D98100994CC5 /* EditPTManagerViewController */,
 				EFF28BCE1D6572A7000F9B27 /* MeetingDetailViewController */,
 				EF0809941D5C975E007A8EAE /* TransactionsViewController */,
@@ -588,6 +594,7 @@
 				400C78D91D67465F00CEE19B /* Calendar.storyboard */,
 				EF0D90871D7E80E500A2EE4A /* PTManager.storyboard */,
 				EF0D908E1D7EB29700A2EE4A /* DetailMeetingPT.storyboard */,
+				EF0D90981D81216A00A2EE4A /* Income.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -661,6 +668,15 @@
 				EF0D90931D7EB34900A2EE4A /* DetailMeetingPTViewController.m */,
 			);
 			name = DetailMeetingPTViewController;
+			sourceTree = "<group>";
+		};
+		EF0D909B1D81249400A2EE4A /* ShowPersonalIncomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EF0D909C1D8124CB00A2EE4A /* ShowPersonalIncomeViewController.h */,
+				EF0D909D1D8124CB00A2EE4A /* ShowPersonalIncomeViewController.m */,
+			);
+			name = ShowPersonalIncomeViewController;
 			sourceTree = "<group>";
 		};
 		EF74B2F81D6EA84000D17C52 /* ParseJson */ = {
@@ -984,6 +1000,7 @@
 				40AB31241D5DB47400341359 /* Transaction.storyboard in Resources */,
 				EF7D77FA1D752EBC00A6C63F /* news-feed@2x.png in Resources */,
 				EFF28BB31D655C10000F9B27 /* ic_calendar.png in Resources */,
+				EF0D909A1D81216C00A2EE4A /* Income.storyboard in Resources */,
 				4022D4BF1D7D6CEB00EEF21A /* green_bg.jpg in Resources */,
 				40B8A7321D640C12007AB6BF /* CategoryCell.xib in Resources */,
 				EF7D77FC1D752EBC00A6C63F /* notifications@2x.png in Resources */,
@@ -1051,6 +1068,7 @@
 				EFF1B2FD1D65FC0F002919DB /* main.m in Sources */,
 				EF08098B1D5C8D69007A8EAE /* TodayMeetingsViewController.m in Sources */,
 				400375741D6C3423008ACB3A /* UserManager.m in Sources */,
+				EF0D909E1D8124CB00A2EE4A /* ShowPersonalIncomeViewController.m in Sources */,
 				EFF1B3011D660EA2002919DB /* AlertManager.m in Sources */,
 				EF5FA7AE1D6AE22200E4B95F /* DataValidation.m in Sources */,
 				408933171D646B050081511C /* Trainer.m in Sources */,
@@ -1162,6 +1180,14 @@
 				EF0D908F1D7EB29700A2EE4A /* Base */,
 			);
 			name = DetailMeetingPT.storyboard;
+			sourceTree = "<group>";
+		};
+		EF0D90981D81216A00A2EE4A /* Income.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EF0D90991D81216B00A2EE4A /* Base */,
+			);
+			name = Income.storyboard;
 			sourceTree = "<group>";
 		};
 		EFFD8D4F1D66BBD900994CC5 /* CustomerManagerStoryboard.storyboard */ = {

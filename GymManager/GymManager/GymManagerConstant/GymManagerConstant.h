@@ -96,6 +96,8 @@ extern CGFloat const kHeightCellTodayMeetingTableViewCell;
 extern NSString *const kDetailMeetingPTVCIdentifier;
 extern NSString *const kAddNEwCustomerVCTitle;
 extern NSString *const kUpdateCustomer;
+extern NSString *const kIncomeStoryboardIdentifier;
+extern NSString *const kShowPersonalIncomeViewControllerIdentifier;
 
 #pragma mark - CoreData
 extern NSString *const kCoreDataModel;
@@ -120,5 +122,6 @@ extern NSString *const kURLImage;
 extern NSString *const kMessageFailLogin;
 
 + (UIColor *)themeColor;
++ (NSString *)separateNumberBySemiColon:(float)number;
 
 @end

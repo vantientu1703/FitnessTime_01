@@ -8,6 +8,7 @@
 
 #import "DetailPTManagerViewController.h"
 #import "EditPTManagerViewController.h"
+#import "ShowPersonalIncomeViewController.h"
 
 CGFloat const kCornerRadiusImageViewPT = 40.0f;
 
@@ -71,7 +72,6 @@ CGFloat const kCornerRadiusImageViewPT = 40.0f;
 
 #pragma mark - Edit button
 - (IBAction)editPTProfile:(id)sender {
-    //TODO
     UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
     EditPTManagerViewController *editPTManagerVC = [st
         instantiateViewControllerWithIdentifier:kEditPTManagerViewControllerIdentifier];
@@ -83,7 +83,11 @@ CGFloat const kCornerRadiusImageViewPT = 40.0f;
 
 #pragma mark - Show income this month
 - (IBAction)showIncomeThisMonth:(id)sender {
-    //TODO
+    UIStoryboard *st = [UIStoryboard storyboardWithName:kIncomeStoryboardIdentifier bundle:nil];
+    ShowPersonalIncomeViewController *showPersonIncomeVC = [st
+        instantiateViewControllerWithIdentifier:kShowPersonalIncomeViewControllerIdentifier];
+    showPersonIncomeVC.trainer = self.trainer;
+    [self.navigationController pushViewController:showPersonIncomeVC animated:true];
 }
 
 #pragma mark - EditPTManagerViewControllerDelegate

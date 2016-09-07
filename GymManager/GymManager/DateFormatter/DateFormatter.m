@@ -88,6 +88,15 @@
     return [self dateFromString:string withFormat:DateFormatterTypeUTC];;
 }
 
+- (NSString *)stringMonthYearFromDateString:(NSString *)dateString {
+    NSDate *date = [self dateFromString:dateString withFormat:DateFormatterTypeUTC];
+    return [self stringFromDate:date withFormat:DateFormatterTypeMonthYear];
+}
+
+- (NSString *)stringMonthYearFromDate:(NSDate *)date {
+    return [self stringFromDate:date withFormat:DateFormatterTypeMonthYear];
+}
+
 - (NSString *)stringFromDate:(NSDate *)date withFormat:(DateFormatterType)format {
     _dateFormatter.dateFormat = [self dateFormatterTypeString:format];
     return [_dateFormatter stringFromDate:date];
@@ -117,6 +126,9 @@
         }
         case DateFormatterTypeYear: {
             return @"yyyy";
+        }
+        case DateFormatterTypeMonthYear: {
+            return @"MM/yyyy";
         }
         default:
             return nil;

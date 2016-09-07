@@ -13,7 +13,8 @@ typedef NS_ENUM(NSInteger, DateFormatterType) {
     DateFormatterTypeHourDayMonthYear,
     DateFormatterTypeDayMonthYear,
     DateFormatterTypeUTC,
-    DateFormatterTypeYear
+    DateFormatterTypeYear,
+    DateFormatterTypeMonthYear
 };
 
 @interface DateFormatter : NSObject
@@ -32,5 +33,7 @@ typedef NS_ENUM(NSInteger, DateFormatterType) {
 - (NSString *)dateFormatterHourDateMonthYear:(NSDate *)date;
 - (NSDate *)dateFormatterHourDateMonthYearWithString:(NSString *)string;
 - (NSDate *)dateFromString:(NSString *)dateString withFormat:(DateFormatterType)format;
+- (NSString *)stringMonthYearFromDateString:(NSString *)dateString;
+- (NSString *)stringMonthYearFromDate:(NSDate *)date;
 
 @end
