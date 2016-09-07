@@ -94,26 +94,31 @@ NSString *const kDetailMeetingPTStoryboardIdentifier = @"DetailMeetingPT";
 NSString *const kTodayMeetingTableViewCellIdentifier = @"TodayMeetingTableViewCell";
 CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
 NSString *const kDetailMeetingPTVCIdentifier = @"DetailMeetingPTViewController";
+NSString *const kAddNEwCustomerVCTitle = @"Add new customer";
 
 #pragma mark - CoreData
 NSString *const kCoreDataModel = @"GymManager";
 NSString *const kBundleID = @"com.vantientu.GymManager";
 
 #pragma mark - API
-NSString *const URLRequest = @"http://172.16.0.131:3000/api/"; //@"https://fit-ness-backend.herokuapp.com/api/";
+NSString *const URLRequest = @"https://fit-ness-backend.herokuapp.com/api/"; //@"http://172.16.0.131:3000/api/";
 NSString *const URLRequestTransaction = @"http://172.16.0.131:3000/api/orders";
 NSString *const kLoginRequest = @"auth/login";
 NSString *const kRegisterRequest = @"auth/register";
 NSString *const kTransactionRequest = @"orders";
-NSString *const kURLAPI = @"http://172.16.0.131:3000/api/"; //@"https://fit-ness-backend.herokuapp.com/api/";
+NSString *const kURLAPI = @"https://fit-ness-backend.herokuapp.com/api/"; //@"http://172.16.0.131:3000/api/";
 NSString *const kAPIUser = @"users/";
 NSString *const kGetAllItemsRequest = @"items";
 NSString *const kManager = @"managers";
 NSString *const kMeetings = @"meetings/";
 NSString *const kLogout = @"auth/logout";
-NSString *const kURLImage = @"http://172.16.0.131:3000";
+NSString *const kURLImage = @"https://fit-ness-backend.herokuapp.com"; //@"http://172.16.0.131:3000";
 
 #pragma mark - Message
 NSString *const kMessageFailLogin = @"Login is fail";
+
++ (UIColor *)themeColor {
+    return [UIColor blueColor];
+}
 
 @end

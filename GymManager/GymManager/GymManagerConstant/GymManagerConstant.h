@@ -94,6 +94,7 @@ extern NSString *const kDetailMeetingPTStoryboardIdentifier;
 extern NSString *const kTodayMeetingTableViewCellIdentifier;;
 extern CGFloat const kHeightCellTodayMeetingTableViewCell;
 extern NSString *const kDetailMeetingPTVCIdentifier;
+extern NSString *const kAddNEwCustomerVCTitle;
 
 #pragma mark - CoreData
 extern NSString *const kCoreDataModel;
@@ -116,5 +117,7 @@ extern NSString *const kURLImage;
 
 #pragma mark - Message
 extern NSString *const kMessageFailLogin;
+
++ (UIColor *)themeColor;
 
 @end

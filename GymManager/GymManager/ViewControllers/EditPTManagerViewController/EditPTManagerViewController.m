@@ -138,6 +138,7 @@ NSString *const kSelectAvatar = @"Select avatar,please";
     if (success) {
         [self.delegate createNewTrainer:trainer];
         self.labelNotes.text = kCreateSuccess;
+        self.labelNotes.textColor = [GymManagerConstant themeColor];
         NSDictionary *userInfo = @{@"trainer": trainer};
         [[NSNotificationCenter defaultCenter] postNotificationName:kAddNewTrainerTitle object:self userInfo:userInfo];
     } else {
@@ -154,6 +155,7 @@ NSString *const kSelectAvatar = @"Select avatar,please";
     if (success) {
         [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateTrainerTitle object:nil];
         self.labelNotes.text = kUpdateSuccess;
+        self.labelNotes.textColor = [GymManagerConstant themeColor];
         if ([self.delegate respondsToSelector:@selector(updateTrainer:)]) {
             [self.delegate updateTrainer:trainer];
         }

@@ -47,7 +47,7 @@ NSString *const kEdiCustomerTitle = @"Edit customer";
     self.labelPhoneNumber.text = self.customer.telNumber;
     self.labelRegisterDate.text = [[DateFormatter sharedInstance]
         dateFormatterDateMonthYear:self.customer.registryDate];
-    NSURL *url = [NSURL URLWithString:self.customer.avatar];
+    NSURL *url = self.customer.avatarURL;
     [self.imageViewCustomer sd_setImageWithURL:url
         completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         if (!image) {

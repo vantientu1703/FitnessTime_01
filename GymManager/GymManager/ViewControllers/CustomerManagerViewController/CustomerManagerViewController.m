@@ -33,6 +33,24 @@ NSString *const kNameCustomer = @"Ngo Van Van Duong";
     // Do any additional setup after loading the view.
     [self setupView];
     [self getAllCustomers];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(createNewCustomer:)
+        name:kAddNEwCustomerVCTitle object:nil];
+}
+
+- (void)createNewCustomer:(NSNotification *)notification {
+    if (notification) {
+        NSDictionary *userInfo = notification.userInfo;
+        Customer *customer = userInfo[@"newcustomer"];
+        if (!self.arrCustomers) {
+            self.arrCustomers = [NSMutableArray array];
+        }
+        [self.arrCustomers addObject:customer];
+        [self.collectionView reloadData];
+    }
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)getAllCustomers {

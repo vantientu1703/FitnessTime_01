@@ -140,6 +140,7 @@ NSString *const kUpdateFailTitle = @"Update fail";
         [[DataStore sharedDataStore] updateProfile:user complete:^(BOOL success) {
             if (success) {
                 self.labelNotes.text = kUpdateSuccessTitle;
+                self.labelNotes.textColor = [GymManagerConstant themeColor];
                 if ([self.delegate respondsToSelector:@selector(updateUser:)]) {
                     [self.delegate updateUser:user];
                 }
