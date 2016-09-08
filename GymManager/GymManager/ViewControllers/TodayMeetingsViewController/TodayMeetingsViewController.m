@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonAddMeeting;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *arrMeetings;
+@property (weak, nonatomic) IBOutlet UILabel *labelTimes;
 
 @end
 
@@ -73,10 +74,10 @@
             if (trainer.id == trainerInstance.id) {
                 meeting.trainer = trainer;
                 [self.arrMeetings replaceObjectAtIndex:idx withObject:meeting];
-                [self.tableView reloadData];
                 return;
             }
         }];
+        [self.tableView reloadData];
     }
 }
 
@@ -150,6 +151,7 @@
     } else {
         self.title = kDetailMeetingsTrainerVCTitle;
     }
+    self.labelTimes.text = [[DateFormatter sharedInstance] dateFormatterDateMonthYear:[NSDate date]];
     if (![self.statusDetailMeeting isEqualToString:kDetailMeetingsTrainerVCTitle]) {
         UIBarButtonItem *calendarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:kIconCalendar]
             style:UIBarButtonItemStylePlain target:self action:@selector(showCalendar:)];
@@ -164,6 +166,7 @@
     CalendarViewController *calendarVC = [st instantiateInitialViewController];
     [self.navigationController pushViewController:calendarVC animated:true];
     [calendarVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {
+        self.labelTimes.text = [[DateFormatter sharedInstance] dateFormatterDateMonthYear:dateSelected];
         [self getAllMeetngsWithDate:dateSelected];
     }];
 }

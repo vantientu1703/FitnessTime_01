@@ -19,8 +19,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="102" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rSp-1W-6JO">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="23" width="375" height="644"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TodayMeetingTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodayMeetingTableViewCell" rowHeight="102" id="wpN-uc-qb3" customClass="TodayMeetingTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="102"/>
@@ -232,26 +233,46 @@
                                     <action selector="buttonAddMeetingPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DCc-qk-Of5"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8H-hO-9TY">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
+                                <color key="backgroundColor" red="0.0" green="0.67450980390000004" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="C9i-vY-McO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="F8H-hO-9TY" secondAttribute="trailing" id="07q-FO-pa6"/>
                             <constraint firstAttribute="trailing" secondItem="DFQ-pS-VLj" secondAttribute="trailing" constant="10" id="30l-cR-35o"/>
+                            <constraint firstItem="F8H-hO-9TY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="AfF-cL-dfK"/>
                             <constraint firstItem="rSp-1W-6JO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="OU5-58-96D"/>
+                            <constraint firstItem="rSp-1W-6JO" firstAttribute="top" secondItem="F8H-hO-9TY" secondAttribute="bottom" constant="2" id="Ohu-NS-Bj3"/>
                             <constraint firstAttribute="trailing" secondItem="rSp-1W-6JO" secondAttribute="trailing" id="QXB-Ry-DxB"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rSp-1W-6JO" secondAttribute="bottom" id="dR0-Xs-ebt"/>
                             <constraint firstItem="rSp-1W-6JO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="g6v-iQ-lEZ"/>
                             <constraint firstAttribute="bottom" secondItem="DFQ-pS-VLj" secondAttribute="bottom" constant="60" id="mQg-R9-npd"/>
+                            <constraint firstItem="F8H-hO-9TY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="tH0-4s-oar"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="g6v-iQ-lEZ"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="buttonAddMeeting" destination="DFQ-pS-VLj" id="QiW-58-xu8"/>
+                        <outlet property="labelTimes" destination="F8H-hO-9TY" id="UZm-XX-ZCd"/>
                         <outlet property="tableView" destination="rSp-1W-6JO" id="WnH-TO-ZoQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="183.5" y="183.5"/>
+            <point key="canvasLocation" x="171.5" y="189.5"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="dOE-7z-VT4">
