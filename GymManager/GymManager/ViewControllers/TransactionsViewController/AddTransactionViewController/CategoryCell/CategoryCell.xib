@@ -16,7 +16,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Water" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kwb-ZD-vYn">
-                        <rect key="frame" x="18" y="29" width="51" height="23"/>
+                        <rect key="frame" x="28" y="29" width="51" height="23"/>
                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -39,7 +39,7 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Kwb-ZD-vYn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="2ll-DB-P1M"/>
+                    <constraint firstItem="Kwb-ZD-vYn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="2ll-DB-P1M"/>
                     <constraint firstItem="ibs-aR-jka" firstAttribute="leading" secondItem="Kwb-ZD-vYn" secondAttribute="trailing" priority="250" id="8fb-Q2-MZd"/>
                     <constraint firstItem="ibs-aR-jka" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ATP-AF-KMJ"/>
                     <constraint firstItem="Kwb-ZD-vYn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="B7g-LT-chV"/>

@@ -32,6 +32,29 @@
     }];
 }
 
+- (void)fetchAllTransactionByUser:(User *)user withFilterState:(CalendarPickerState)state date:(NSDate *)date {
+    NSString *url = [NSString stringWithFormat:@"%@", URLRequestTransaction];
+    NSDictionary *params = @{@"auth_token": user.authToken, @"filter_type": [self stringFilterTypeByEnum:state],
+        @"date": [[DateFormatter sharedInstance] dateFormatterDateMonthYear:date]};
+    [self.manager GET:url parameters:params progress:nil
+        success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        //TODO Catch Network error, handle data
+        NSError *error;
+        NSArray *trans = [self transactionsByResponseArray:responseObject error:error];
+        if ([self.delegate
+            respondsToSelector:@selector(didFetchAllTransctionWithMessage:withError:returnTransactions:)]) {
+            [self.delegate didFetchAllTransctionWithMessage:error.localizedDescription withError:error
+                returnTransactions:trans];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if ([self.delegate
+            respondsToSelector:@selector(didFetchAllTransctionWithMessage:withError:returnTransactions:)]) {
+            [self.delegate didFetchAllTransctionWithMessage:error.localizedDescription withError:error
+                returnTransactions:nil];
+        }
+    }];
+}
+
 - (void)deleteTransaction:(Transaction *)transaction byUser:(User *)user  atSection:(NSInteger)section{
     NSString *url = [NSString stringWithFormat:@"%@/%@", URLRequestTransaction, transaction.id];
     NSDictionary *params = @{@"auth_token": user.authToken};
@@ -68,6 +91,17 @@
         }
     }
     return trans;
+}
+
+- (NSString *)stringFilterTypeByEnum:(CalendarPickerState)state {
+    switch (state) {
+        case CalendarPickerStateDay:
+            return @"day";
+        case CalendarPickerStateYear:
+            return @"year";
+        default:
+            return @"month";
+    }
 }
 
 @end

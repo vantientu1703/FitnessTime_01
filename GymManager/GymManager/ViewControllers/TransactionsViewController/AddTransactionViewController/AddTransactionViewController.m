@@ -17,7 +17,7 @@
 
 NSString *const kCategoryListSegue = @"CategoryListSegue";
 
-@interface AddTransactionViewController () <UITableViewDelegate, UITableViewDataSource, AddTransactionManagerDelegate>
+@interface AddTransactionViewController () <UITableViewDelegate, UITableViewDataSource, AddTransactionManagerDelegate, CustomerManagerViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *arrCategory;
@@ -25,6 +25,7 @@ NSString *const kCategoryListSegue = @"CategoryListSegue";
 @property (strong, nonatomic) AddTransactionManager *manager;
 @property (strong, nonatomic) Transaction *transaction;
 @property (copy, nonatomic) Transaction *editedTransaction;
+@property (copy, nonatomic) Customer *customer;
 @property (copy, nonatomic) void(^callBackBlock)(Transaction* returnTran);
 @property (weak, nonatomic) IBOutlet UIView *emptyView;
 
@@ -35,6 +36,7 @@ NSString *const kCategoryListSegue = @"CategoryListSegue";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.navigationItem.title = @"Transaction";
     [self setupView];
     self.manager = [[AddTransactionManager alloc] init];
     self.manager.delegate = self;
@@ -78,8 +80,9 @@ NSString *const kCategoryListSegue = @"CategoryListSegue";
 - (Transaction *)genarateTransaction {
     Transaction *tran = [[Transaction alloc] init];
     //TODO change customerId after customer pick viewcontroller has done
-    tran.userId = @"1";
+    tran.userId = self.customer.id;
     tran.items = self.arrCategory.copy;
+    tran.user = self.customer;
     return tran;
 }
 
@@ -96,7 +99,7 @@ NSString *const kCategoryListSegue = @"CategoryListSegue";
         edited = YES;
     }
     if ([self.lbCustomerName.text isEqualToString:self.transaction.user.fullName]) {
-        //TODO
+        self.editedTransaction.user = self.customer;
         edited = YES;
     }
     return edited;
@@ -150,7 +153,7 @@ NSString *const kCategoryListSegue = @"CategoryListSegue";
 
 - (IBAction)btnSubmitClick:(id)sender {
     User *user = [[DataStore sharedDataStore] getUserManage];
-    if (self.arrCategory.count) {
+    if (self.arrCategory.count && self.customer) {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         if (self.transaction) {
             if ([self editTransaction]) {
@@ -166,7 +169,14 @@ NSString *const kCategoryListSegue = @"CategoryListSegue";
 - (IBAction)didTapCustomer:(id)sender {
     CustomerManagerViewController *cusVC = [[UIStoryboard storyboardWithName:kCustomerManagerStoryboard bundle:nil]
         instantiateViewControllerWithIdentifier:kCustomerManagerViewControllerIdentifier];
+    cusVC.delegate = self;
     [self.navigationController pushViewController:cusVC animated:YES];
+}
+
+# pragma mark - Selected Customer
+- (void)selectedCustomer:(Customer *)customer {
+    self.customer = customer;
+    self.lbCustomerName.text = customer.fullName;
 }
 
 - (IBAction)didTapDate:(id)sender {

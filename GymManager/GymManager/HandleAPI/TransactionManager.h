@@ -21,6 +21,7 @@
 
 @property (strong, nonatomic) id<TransactionManagerDelegate> delegate;
 - (void)fetchAllTransactionByUser:(User *)user;
+- (void)fetchAllTransactionByUser:(User *)user withFilterState:(CalendarPickerState)state date:(NSDate *)date;
 - (void)deleteTransaction:(Transaction *)transaction byUser:(User *)user atSection:(NSInteger)section;
 
 @end
