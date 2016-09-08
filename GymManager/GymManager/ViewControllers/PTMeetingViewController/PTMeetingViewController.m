@@ -65,7 +65,16 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
 
 - (void)updateTrainers:(NSNotification *)notification {
     if (notification) {
-        [self getAllTrainers];
+        NSDictionary *userInfo = notification.userInfo;
+        Trainer *trainer = userInfo[@"trainer"];
+        [self.arrTrainers enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            Trainer *trainerIntance = (Trainer *)obj;
+            if (trainer.id == trainerIntance.id) {
+                [self.arrTrainers replaceObjectAtIndex:idx withObject:trainer];
+                [self.collectionView reloadData];
+                return;
+            }
+        }];
     }
 }
 

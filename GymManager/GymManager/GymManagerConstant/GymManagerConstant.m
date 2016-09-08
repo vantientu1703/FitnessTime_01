@@ -95,6 +95,7 @@ NSString *const kTodayMeetingTableViewCellIdentifier = @"TodayMeetingTableViewCe
 CGFloat const kHeightCellTodayMeetingTableViewCell = 102.0f;
 NSString *const kDetailMeetingPTVCIdentifier = @"DetailMeetingPTViewController";
 NSString *const kAddNEwCustomerVCTitle = @"Add new customer";
+NSString *const kUpdateCustomer = @"Update customer";
 
 #pragma mark - CoreData
 NSString *const kCoreDataModel = @"GymManager";

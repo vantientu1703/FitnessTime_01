@@ -243,6 +243,8 @@ NSString *const kSelectImages = @"Select avatar,please";
     if (success) {
         self.labelNotes.text = kUpdateSuccess;
         self.labelNotes.textColor = [GymManagerConstant themeColor];
+        NSDictionary *userInfo = @{@"customer": customer};
+        [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateCustomer object:nil userInfo:userInfo];
         if ([self.delegate respondsToSelector:@selector(updateCustomer:)]) {
             [self.delegate updateCustomer:customer];
         }

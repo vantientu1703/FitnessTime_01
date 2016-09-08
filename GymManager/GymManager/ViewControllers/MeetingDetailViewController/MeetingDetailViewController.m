@@ -65,7 +65,6 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
 }
 
 - (void)setupView {
-    //TODO
     if ([self.statusEditMeeting isEqualToString:kAddNewMeetingTitle]) {
         self.title = kAddNewMeetingTitle;
     } else {
@@ -100,6 +99,7 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
                 [trainerCell configCellWithName:_trainerInstance.fullName];
             } else {
                 if (self.trainer) {
+                    _trainerInstance = self.trainer;
                     [trainerCell configCellWithName:self.trainer.fullName];
                     trainerCell.selectionStyle = UITableViewCellSelectionStyleNone;
                 } else {
@@ -265,13 +265,9 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
         _modifier = false;
         self.labelNotes.text = kCreateSuccess;
         self.labelNotes.textColor = [GymManagerConstant themeColor];
-        if ([self.delegate respondsToSelector:@selector(reloadDataMeetings:)]) {
-            [self.delegate reloadDataMeetings:meeting];
-        } else {
-            NSDictionary *userInfo = @{@"meeting": meeting};
-            [[NSNotificationCenter defaultCenter] postNotificationName:kAddNewMeetingTitle
-                object:self userInfo:userInfo];
-        }
+        NSDictionary *userInfo = @{@"meeting": meeting};
+        [[NSNotificationCenter defaultCenter] postNotificationName:kAddNewMeetingTitle
+            object:self userInfo:userInfo];
     } else {
         self.labelNotes.text = error.localizedDescription;
     }

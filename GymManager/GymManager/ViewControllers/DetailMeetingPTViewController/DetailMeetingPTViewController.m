@@ -26,8 +26,66 @@
     [super viewDidLoad];
     [self setupView];
     [self getAllMeetingsOfTrainer];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(infoTrainerChanged:)
+        name:kUpdateTrainerTitle object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(createMeeting:)
+        name:kAddNewMeetingTitle object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(infoCustomerChanged:)
+        name:kUpdateCustomer object:nil];
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)infoCustomerChanged:(NSNotification *)notification {
+    if (notification) {
+        NSDictionary *userInfo = notification.userInfo;
+        Customer *customer = userInfo[@"customer"];
+        [self.arrMeetings enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            Meeting *meeting = (Meeting *)obj;
+            Customer *customerInstance = meeting.customer;
+            if (customer.id == customerInstance.id) {
+                meeting.customer = customer;
+                [self.arrMeetings replaceObjectAtIndex:idx withObject:meeting];
+                [self.tableView reloadData];
+                return;
+            }
+        }];
+    }
+}
+
+- (void)createMeeting:(NSNotification *)notification {
+    if (notification) {
+        NSDictionary *userInfo = notification.userInfo;
+        Meeting *meeting = userInfo[@"meeting"];
+        if (!self.arrMeetings) {
+            self.arrMeetings = [NSMutableArray array];
+        }
+        if ([[[DateFormatter sharedInstance] dateWithDateMonthYearFormatterFromString:meeting.fromDate] isEqualToString:
+             [[DateFormatter sharedInstance] dateFormatterDateMonthYear:[NSDate date]]]) {
+            [self.arrMeetings addObject:meeting];
+            [self.tableView reloadData];
+        }
+    }
+}
+
+- (void)infoTrainerChanged:(NSNotification *)notification {
+    if (notification) {
+        NSDictionary *userInfo = notification.userInfo;
+        Trainer *trainer = userInfo[@"trainer"];
+        [self.arrMeetings enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            Meeting *meeting = (Meeting *)obj;
+            Trainer *trainerInstance = meeting.trainer;
+            if (trainer.id == trainerInstance.id) {
+                meeting.trainer = trainer;
+                [self.arrMeetings replaceObjectAtIndex:idx withObject:meeting];
+                [self.tableView reloadData];
+                return;
+            }
+        }];
+    }
+}
 #pragma mark - Button add new meeting
 - (IBAction)addNewMeetingPress:(id)sender {
     UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
