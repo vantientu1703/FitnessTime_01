@@ -15,7 +15,7 @@
 
 @end
 
-@interface EditPTManagerViewController : UIViewController
+@interface EditPTManagerViewController : BaseViewController
 @property (weak, nonatomic) id<EditPTManagerViewControllerDelegate> delegate;
 @property (strong, nonatomic) Trainer *trainer;
 @property (strong, nonatomic) NSString *statusEditString;

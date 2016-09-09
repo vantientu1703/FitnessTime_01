@@ -22,6 +22,7 @@ NSString *const kFilterTitle = @"Filter";
 @property (strong, nonatomic) NSMutableArray *arrMeetings;
 @property (weak, nonatomic) IBOutlet UILabel *labelTimes;
 @property (strong, nonatomic) NSMutableArray *arrMeetingFilters;
+@property (strong, nonatomic) UIRefreshControl *refreshReloadData;
 
 @end
 
@@ -177,6 +178,19 @@ NSString *const kFilterTitle = @"Filter";
     UIBarButtonItem *calendarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:kIconCalendar]
         style:UIBarButtonItemStylePlain target:self action:@selector(showAlertFilter)];
     self.navigationItem.rightBarButtonItem = calendarButton;
+    // Reload data when disconect internet
+    self.refreshReloadData = [[UIRefreshControl alloc] init];
+    [self.refreshReloadData addTarget:self action:@selector(reloadDataTableView:)
+        forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshReloadData atIndex:0];
+}
+
+- (IBAction)reloadDataTableView:(id)sender {
+    [self getAllMeetingsOfTrainer];
+    if ([_filter isEqualToString:kFilterTitle]) {
+        [self filterMeetingsWithDate:_dateSelected];
+    }
+    [self.refreshReloadData endRefreshing];
 }
 
 - (void)showAlertFilter {

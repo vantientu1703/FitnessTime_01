@@ -14,7 +14,7 @@
 
 @end
 
-@interface InfoCustomerManagerViewController : UIViewController
+@interface InfoCustomerManagerViewController : BaseViewController
 @property (weak, nonatomic) id<InfoCustomerManagerViewControllerDelegate> delegate;
 @property (strong, nonatomic) Customer *customer;
 @end

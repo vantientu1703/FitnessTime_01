@@ -71,15 +71,14 @@
                                     <outlet property="delegate" destination="6GA-2A-KnH" id="KTp-9A-rHv"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NV1-y2-W5b">
-                                <rect key="frame" x="325" y="623" width="40" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NV1-y2-W5b">
+                                <rect key="frame" x="310" y="602" width="45" height="45"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="CnM-CN-Ogy"/>
-                                    <constraint firstAttribute="height" constant="40" id="NPc-UY-VAR"/>
+                                    <constraint firstAttribute="width" constant="45" id="CnM-CN-Ogy"/>
+                                    <constraint firstAttribute="height" constant="45" id="NPc-UY-VAR"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="40"/>
-                                <state key="normal" title="+"/>
+                                <state key="normal" image="Plus-96.png"/>
                                 <connections>
                                     <action selector="addNewCustomerPress:" destination="6GA-2A-KnH" eventType="touchUpInside" id="Pko-5k-LtK"/>
                                 </connections>
@@ -89,8 +88,8 @@
                         <constraints>
                             <constraint firstItem="CYI-yB-Rfz" firstAttribute="leading" secondItem="8Yd-KZ-kiG" secondAttribute="leading" id="0eP-Ag-WEJ"/>
                             <constraint firstAttribute="trailing" secondItem="CYI-yB-Rfz" secondAttribute="trailing" id="2dX-CD-XJV"/>
-                            <constraint firstAttribute="trailing" secondItem="NV1-y2-W5b" secondAttribute="trailing" constant="10" id="P8F-Ea-DFb"/>
-                            <constraint firstItem="gdr-5V-N8w" firstAttribute="top" secondItem="NV1-y2-W5b" secondAttribute="bottom" constant="4" id="gpc-BY-Vo8"/>
+                            <constraint firstAttribute="trailing" secondItem="NV1-y2-W5b" secondAttribute="trailing" constant="20" id="P8F-Ea-DFb"/>
+                            <constraint firstItem="gdr-5V-N8w" firstAttribute="top" secondItem="NV1-y2-W5b" secondAttribute="bottom" constant="20" id="gpc-BY-Vo8"/>
                             <constraint firstItem="CYI-yB-Rfz" firstAttribute="top" secondItem="8Yd-KZ-kiG" secondAttribute="top" id="hJJ-id-QcF"/>
                             <constraint firstItem="gdr-5V-N8w" firstAttribute="top" secondItem="CYI-yB-Rfz" secondAttribute="bottom" id="i8Q-38-tdy"/>
                         </constraints>
@@ -831,6 +830,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Plus-96.png" width="96" height="96"/>
         <image name="ic_down.png" width="50" height="50"/>
         <image name="ic_threedots.png" width="30" height="30"/>
         <image name="ic_up.png" width="50" height="50"/>

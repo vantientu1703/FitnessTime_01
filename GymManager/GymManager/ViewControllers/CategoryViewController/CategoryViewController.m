@@ -52,13 +52,13 @@ CGFloat const kCornerRadiusAddNewVC = 5.0f;
     UIStoryboard *st = [UIStoryboard storyboardWithName:kCustomerManagerStoryboard bundle:nil];
     self.addNewCategoryVC = [st
         instantiateViewControllerWithIdentifier:kAddNewCategoryViewControllerIdentifier];
-    self.addNewCategoryVC.delegate = self;
     self.addNewCategoryVC.view.frame = CGRectMake(0.0f, 0.0f, size.width - 20.0f, size.height / 2.0f - 80.0f);
     self.addNewCategoryVC.view.center = CGPointMake(size.width / 2.0f, size.height / 3.0f);
     self.addNewCategoryVC.view.layer.cornerRadius = kCornerRadiusAddNewVC;
+    [self.view addSubview:self.addNewCategoryVC.view];
     [self addChildViewController:self.addNewCategoryVC];
     [self.addNewCategoryVC didMoveToParentViewController:self];
-    [self.view addSubview:self.addNewCategoryVC.view];
+    self.addNewCategoryVC.delegate = self;
 }
 
 #pragma mark - Init view grey background

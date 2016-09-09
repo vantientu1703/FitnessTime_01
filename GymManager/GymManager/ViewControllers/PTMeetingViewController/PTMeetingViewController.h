@@ -12,7 +12,7 @@
 - (void)selectedTrainer:(Trainer *)trainer;
 @end
 
-@interface PTMeetingViewController : UIViewController
+@interface PTMeetingViewController : BaseViewController
 @property (weak, nonatomic) id<PTMeetingViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSString *statusAddNewMeeting;
 @property (strong, nonatomic) Trainer *trainer;

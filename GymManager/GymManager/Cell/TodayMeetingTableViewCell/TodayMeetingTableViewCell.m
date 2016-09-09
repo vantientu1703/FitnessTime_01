@@ -20,10 +20,10 @@ CGFloat const kCornerRadius = 5.0f;
 - (void)cellWithMeeting:(Meeting *)meeting {
     self.labelFromDateMothYear.text = [[DateFormatter sharedInstance]
         dateWithDateMonthYearFormatterFromString:meeting.fromDate];
-    self.labelFromHour.text = [[DateFormatter sharedInstance] dateWithHourFormatterFromString:meeting.fromDate];
+    self.labelFromHour.text = [[DateFormatter sharedInstance] stringHourDayMonthYearFromDateString:meeting.fromDate];
     self.labelToDateMothYear.text = [[DateFormatter sharedInstance]
         dateWithDateMonthYearFormatterFromString:meeting.toDate];
-    self.labelToHour.text = [[DateFormatter sharedInstance] dateWithHourFormatterFromString:meeting.toDate];
+    self.labelToHour.text = [[DateFormatter sharedInstance] stringHourDayMonthYearFromDateString:meeting.toDate];
     self.labelNameTrainee.text = meeting.customer.fullName;
     self.labelNameTrainner.text = meeting.trainer.fullName;
     self.labelPhoneNumber.text = meeting.trainer.telNumber;

@@ -98,6 +98,8 @@ NSString *const kAddNEwCustomerVCTitle = @"Add new customer";
 NSString *const kUpdateCustomer = @"Update customer";
 NSString *const kIncomeStoryboardIdentifier = @"Income";
 NSString *const kShowPersonalIncomeViewControllerIdentifier = @"ShowPersonalIncomeViewController";
+NSString *const kTransactionListCategoryIdentifier = @"TransactionListCategory";
+NSString *const kShowCategoryTitle = @"Show category title";
 
 #pragma mark - CoreData
 NSString *const kCoreDataModel = @"GymManager";

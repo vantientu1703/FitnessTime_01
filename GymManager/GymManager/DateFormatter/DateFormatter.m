@@ -93,6 +93,11 @@
     return [self stringFromDate:date withFormat:DateFormatterTypeMonthYear];
 }
 
+- (NSString *)stringHourDayMonthYearFromDateString:(NSString *)dateString {
+    NSDate *date = [self dateFromString:dateString withFormat:DateFormatterTypeUTC];
+    return [self stringFromDate:date withFormat:DateFormatterTypeHourDayMonthYear];
+}
+
 - (NSString *)stringMonthYearFromDate:(NSDate *)date {
     return [self stringFromDate:date withFormat:DateFormatterTypeMonthYear];
 }
@@ -113,10 +118,10 @@
 - (NSString *)dateFormatterTypeString:(DateFormatterType)format {
     switch (format) {
         case DateFormatterTypeHour: {
-            return @"hh:mm a";
+            return @"HH:mm";
         }
         case DateFormatterTypeHourDayMonthYear: {
-            return @"hh:mm a dd/MM/yyyy";
+            return @"HH:mm dd/MM/yyyy";
         }
         case DateFormatterTypeDayMonthYear: {
             return @"dd/MM/yyyy";

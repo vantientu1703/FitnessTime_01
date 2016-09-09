@@ -16,12 +16,14 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *arrMeetings;
 @property (weak, nonatomic) IBOutlet UILabel *labelTimes;
+@property (strong, nonatomic) UIRefreshControl *refreshReloadData;
 
 @end
 
 @implementation TodayMeetingsViewController
 {
     NSIndexPath *_indexPath;
+    NSDate *_dateSelected;
 }
 #pragma mark - View's life
 - (void)viewDidLoad {
@@ -146,6 +148,7 @@
 }
 
 - (void)setupView {
+    _dateSelected = [NSDate date];
     if ([self.statusDetailMeeting isEqualToString:kTodayMeetingsVCTitle]) {
         self.title = kTodayMeetingsVCTitle;
     } else {
@@ -158,6 +161,17 @@
         self.navigationItem.rightBarButtonItem = calendarButton;
     }
     self.buttonAddMeeting.layer.cornerRadius = kCornerRadiusButton;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    // Reload data when disconect internet
+    self.refreshReloadData = [[UIRefreshControl alloc] init];
+    [self.refreshReloadData addTarget:self action:@selector(reloadDataTableView:)
+        forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshReloadData atIndex:0];
+}
+
+- (IBAction)reloadDataTableView:(id)sender {
+    [self getAllMeetngsWithDate:_dateSelected];
+    [self.refreshReloadData endRefreshing];
 }
 
 #pragma mark - Show calendar
@@ -167,6 +181,7 @@
     [self.navigationController pushViewController:calendarVC animated:true];
     [calendarVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {
         self.labelTimes.text = [[DateFormatter sharedInstance] dateFormatterDateMonthYear:dateSelected];
+        _dateSelected = dateSelected;
         [self getAllMeetngsWithDate:dateSelected];
     }];
 }

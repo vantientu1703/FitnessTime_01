@@ -15,7 +15,7 @@
 
 @end
 
-@interface DetailPTManagerViewController : UIViewController
+@interface DetailPTManagerViewController : BaseViewController
 @property (weak, nonatomic) id<DetailPTManagerViewControllerDelegate> delegate;
 @property (strong, nonatomic) Trainer *trainer;
 @end

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailMeetingPTViewController : UIViewController
+@interface DetailMeetingPTViewController : BaseViewController
 @property (strong, nonatomic) Trainer *trainer;
 @property (strong, nonatomic) NSString *statusDetailMeeting;
 @end
