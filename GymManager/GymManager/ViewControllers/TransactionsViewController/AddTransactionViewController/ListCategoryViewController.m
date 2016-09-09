@@ -83,7 +83,9 @@ NSString *const kShowEditSegue = @"ShowEditSegue";
     if (tableView.isEditing) {
         [self performSegueWithIdentifier:kShowEditSegue sender:indexPath];
     } else {
-        [self performSegueWithIdentifier:kShowQuantitySegue sender:indexPath];
+        if (![self.showCategoryTitle isEqualToString:kShowCategoryTitle]) {
+            [self performSegueWithIdentifier:kShowQuantitySegue sender:indexPath];
+        }
     }
 }
 
@@ -106,7 +108,11 @@ NSString *const kShowEditSegue = @"ShowEditSegue";
     if (self.tableView.isEditing) {
         [self performSegueWithIdentifier:kShowEditSegue sender:nil];
     } else {
-        [self dismissViewControllerAnimated:YES completion:nil];
+        if ([self.showCategoryTitle isEqualToString:kShowCategoryTitle]) {
+            [self.navigationController popViewControllerAnimated:YES];
+        } else {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
     }
 }
 

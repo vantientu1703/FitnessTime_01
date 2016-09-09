@@ -10,6 +10,7 @@
 
 @protocol EditNumberOfCategoryViewControllerDelegate <NSObject>
 
+@optional
 - (void)setNumberOfCategory:(NSInteger)number;
 - (void)removeEditVCFromParentViewController;
 

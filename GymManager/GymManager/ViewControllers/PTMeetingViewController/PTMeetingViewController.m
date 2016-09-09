@@ -96,12 +96,6 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
     [self.refreshReloadData addTarget:self action:@selector(reloadDataCollectionViews:)
         forControlEvents:UIControlEventValueChanged];
     [self.collectionView insertSubview:self.refreshReloadData atIndex:0];
-    //TODO
-//    self.refreshLoadMoreData = [[UIRefreshControl alloc] init];
-//    [self.refreshLoadMoreData addTarget:self action:@selector(loadMoreData:)
-//        forControlEvents:UIControlEventValueChanged];
-//    self.refreshLoadMoreData.triggerVerticalOffset = kTriggerVerticalOffset;
-//    self.collectionView.bottomRefreshControl = self.refreshLoadMoreData;
 }
 
 #pragma mark - TrainerManagerDelegate
@@ -126,7 +120,7 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
 }
 
 - (IBAction)reloadDataCollectionViews:(id)sender {
-    //TODO
+    [self getAllTrainers];
     [self.refreshReloadData endRefreshing];
 }
 

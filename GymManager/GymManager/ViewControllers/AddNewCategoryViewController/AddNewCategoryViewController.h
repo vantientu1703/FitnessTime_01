@@ -10,6 +10,7 @@
 
 @protocol AddNewCategoryViewControllerDelegate <NSObject>
 
+@optional
 - (void)removeAddNewCategoryVCFromParentViewController;
 - (void)createNewCategory:(NSString *)categoryItem;
 

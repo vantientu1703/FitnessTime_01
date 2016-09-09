@@ -13,6 +13,7 @@
 #import "CustomerManagerViewController.h"
 #import "CategoryViewController.h"
 #import "PTManagerViewController.h"
+#import "ListCategoryViewController.h"
 
 typedef NS_ENUM(NSInteger, MenuDetailRows) {
     MenuDetailRowMyProfile,
@@ -104,9 +105,12 @@ static NSString *const kCellDefault = @"CellDefault";
             break;
         }
         case MenuDetailRowCategory: {
-            CategoryViewController *categoryVC = [customerManagerStoryboard
-                instantiateViewControllerWithIdentifier:kCategoryViewControllerIdentifier];
-            [self.navigationController pushViewController:categoryVC animated:true];
+            //TODO
+            UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboardTransaction bundle:nil];
+            ListCategoryViewController *listCategoryVC = [st
+                instantiateViewControllerWithIdentifier:kTransactionListCategoryIdentifier];
+            listCategoryVC.showCategoryTitle = kShowCategoryTitle;
+            [self.navigationController pushViewController:listCategoryVC animated:true];
             break;
         }
         case MenuDetailRowLogOut: {

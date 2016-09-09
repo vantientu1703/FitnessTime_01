@@ -16,7 +16,7 @@
 
 @end
 
-@interface AddNewCustomerViewController : UIViewController
+@interface AddNewCustomerViewController : BaseViewController
 
 @property (weak, nonatomic) id<AddNewCustomerViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSString *messageEditCustomer;

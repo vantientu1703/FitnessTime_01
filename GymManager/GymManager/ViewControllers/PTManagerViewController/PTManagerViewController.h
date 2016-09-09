@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PTManagerViewController : UIViewController
+@interface PTManagerViewController : BaseViewController
 
 @end

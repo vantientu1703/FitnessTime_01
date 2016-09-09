@@ -98,6 +98,8 @@ extern NSString *const kAddNEwCustomerVCTitle;
 extern NSString *const kUpdateCustomer;
 extern NSString *const kIncomeStoryboardIdentifier;
 extern NSString *const kShowPersonalIncomeViewControllerIdentifier;
+extern NSString *const kTransactionListCategoryIdentifier;
+extern NSString *const kShowCategoryTitle;
 
 #pragma mark - CoreData
 extern NSString *const kCoreDataModel;
