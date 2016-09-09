@@ -19,5 +19,7 @@
 - (BOOL)isLoged;
 - (void)clearUser;
 - (void)updateProfile:(User *)user complete:(void(^)(BOOL success))complete;
+- (void)setItemsList:(NSArray *)items;
+- (NSArray *)getItemsList;
 
 @end

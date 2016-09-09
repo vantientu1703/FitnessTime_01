@@ -40,7 +40,7 @@
                                 <constraint firstAttribute="height" constant="1" id="6MP-G9-Gla"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKm-AH-mUm">
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKm-AH-mUm">
                             <rect key="frame" x="271" y="45" width="30" height="30"/>
                             <state key="normal" image="ic_threedots.png"/>
                             <connections>

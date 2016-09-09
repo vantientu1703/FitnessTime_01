@@ -93,9 +93,9 @@ September
                                     <constraint firstItem="lLl-Uv-ZgK" firstAttribute="centerY" secondItem="4Na-fh-Vi6" secondAttribute="centerY" constant="20" id="tXi-0Z-gPC"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vo3-HD-Due">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vo3-HD-Due" customClass="ClipButton">
                                 <rect key="frame" x="108" y="530" width="105" height="30"/>
-                                <color key="backgroundColor" red="0.039472456275335133" green="0.45111811863023388" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.1450980392" green="0.63137254899999995" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="fui-3d-cbe"/>
                                 </constraints>

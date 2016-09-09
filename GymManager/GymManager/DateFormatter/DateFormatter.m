@@ -135,6 +135,12 @@
         case DateFormatterTypeMonthYear: {
             return @"MM/yyyy";
         }
+        case DateFormatterTypeFullText: {
+            return @"dd MMMM yyyy";
+        }
+        case DateFormatterTypeFullTextWithMonth: {
+            return @"MMMM yyyy";
+        }
         default:
             return nil;
     }

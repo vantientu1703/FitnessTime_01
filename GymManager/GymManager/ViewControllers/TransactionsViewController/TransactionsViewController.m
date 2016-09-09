@@ -23,6 +23,8 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
 @property (strong, nonatomic) UIRefreshControl *refresh;
 @property (strong, nonatomic) TransactionManager *manager;
 @property (strong, nonatomic) dispatch_queue_t transactionQueue;
+@property (strong, nonatomic) NSNumberFormatter *numberFormatter;
+@property (weak, nonatomic) IBOutlet UILabel *lbOverviewDetail;
 
 @end
 
@@ -34,6 +36,7 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.transactionQueue = dispatch_queue_create("transaction_queue", DISPATCH_QUEUE_SERIAL);
     self.manager = [[TransactionManager alloc] init];
+    self.numberFormatter = [NumberFormatterDecimal formatter];
     self.manager.delegate = self;
     [self setupView];
     [self reloadDataForWholeView];
@@ -79,7 +82,7 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
     for (Transaction *tran in self.arrTrans) {
         sum += tran.totalPrice;
     }
-    self.lbTotalIncome.text = @(sum).stringValue;
+    self.lbTotalIncome.text = [self.numberFormatter stringFromNumber:@(sum)];
     self.viewEmpty.hidden = (self.arrTrans.count);
 }
 
@@ -111,11 +114,12 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
     if ([item isKindOfClass:[NSDictionary class]]) {
         NSDictionary *itemtDic = (NSDictionary*)item;
         name = itemtDic[@"name"];
-        price = [NSString stringWithFormat:@"%@", itemtDic[@"price"]];
+        NSNumber *priceNumber = @(((NSString*)itemtDic[@"price"]).integerValue);
+        price = [self.numberFormatter stringFromNumber:priceNumber];
         quantity = [NSString stringWithFormat:@"x %@", itemtDic[@"quantity"]];
     } else {
         name = item.name;
-        price = [NSString stringWithFormat:@"%.0fĐ", item.price];
+        price = [self.numberFormatter stringFromNumber:@(item.price)];
         quantity = [NSString stringWithFormat:@"x %ld", (long)item.quantity.integerValue];
     }
     cell.lbCategory.text = name;
@@ -225,6 +229,21 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
             [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             [self.manager fetchAllTransactionByUser:[[DataStore sharedDataStore] getUserManage] withFilterState:state
                 date:dateSelected];
+            DateFormatter *formatter = [DateFormatter sharedInstance];
+            switch (state) {
+                case CalendarPickerStateDay:
+                    self.lbOverviewDetail.text = [formatter stringFromDate:dateSelected
+                        withFormat:DateFormatterTypeYear];
+                    break;
+                case CalendarPickerStateMonth:
+                    self.lbOverviewDetail.text = [formatter stringFromDate:dateSelected
+                        withFormat:DateFormatterTypeYear];
+                    break;
+                default:
+                    self.lbOverviewDetail.text = [formatter stringFromDate:dateSelected
+                        withFormat:DateFormatterTypeYear];
+                    break;
+            }
         }];
         [self.navigationController pushViewController:calVC animated:YES];
     }

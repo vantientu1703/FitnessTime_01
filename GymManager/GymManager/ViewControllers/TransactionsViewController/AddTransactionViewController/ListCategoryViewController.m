@@ -55,8 +55,13 @@ NSString *const kShowEditSegue = @"ShowEditSegue";
 }
 
 - (void)reloadData {
-    [self.refresh beginRefreshing];
-    [self.manager getAllItemsByUser:[self.dataStore getUserManage]];
+    if (![self.dataStore getItemsList].count) {
+        [self.refresh beginRefreshing];
+        [self.manager getAllItemsByUser:[self.dataStore getUserManage]];
+    } else {
+        self.arrCategory = [self.dataStore getItemsList].mutableCopy;
+        [self.tableView reloadData];
+    }
 }
 
 #pragma mark - TableView implementation
@@ -74,7 +79,8 @@ NSString *const kShowEditSegue = @"ShowEditSegue";
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     Item *item = self.arrCategory[indexPath.row];
     cell.lbCategory.text = item.name;
-    cell.lbCost.text = [NSString stringWithFormat:@"%.0fĐ", item.price];
+    cell.lbCost.text = [NSString stringWithFormat:@"%@ Đ", [[NumberFormatterDecimal formatter]
+        stringFromNumber:@(item.price)]];
     [cell.lbQuantity setHidden:YES];
     return cell;
 }
@@ -138,6 +144,7 @@ NSString *const kShowEditSegue = @"ShowEditSegue";
         [self.arrCategory removeAllObjects];
         self.arrCategory = items.mutableCopy;
         [self.tableView reloadData];
+        [self.dataStore setItemsList:items];
     }
     [self.refresh endRefreshing];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -148,6 +155,7 @@ NSString *const kShowEditSegue = @"ShowEditSegue";
         [self.manager showAlertByMessage:message title:@"Error"];
     } else {
         [self.arrCategory addObject:item];
+        [self.dataStore setItemsList:self.arrCategory];
         [self.tableView reloadData];
     }
     [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -158,6 +166,7 @@ NSString *const kShowEditSegue = @"ShowEditSegue";
         [self.manager showAlertByMessage:message title:@"Error"];
     } else {
         self.arrCategory[indexPath.row] = item;
+        [self.dataStore setItemsList:self.arrCategory];
         [self.tableView reloadData];
     }
     [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -168,6 +177,7 @@ NSString *const kShowEditSegue = @"ShowEditSegue";
         [self.manager showAlertByMessage:message title:@"Error"];
     } else {
         [self.arrCategory removeObjectAtIndex:indexPath.row];
+        [self.dataStore setItemsList:self.arrCategory];
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
     }
     [MBProgressHUD hideHUDForView:self.view animated:YES];
