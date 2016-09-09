@@ -24,17 +24,18 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00am 11/12/2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSt-Vc-9VG">
                             <rect key="frame" x="10" y="45" width="129" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30.000Đ" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="45C-ra-dgu">
                             <rect key="frame" x="234" y="15" width="67" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.057294889129999999" green="0.8350560897" blue="0.050325691460000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.1450980392" green="0.63137254899999995" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WCa-1h-g4q">
                             <rect key="frame" x="10" y="39" width="291" height="1"/>
-                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="6MP-G9-Gla"/>
                             </constraints>
@@ -56,13 +57,20 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nguyễn Văn A" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S8T-SE-5Sh">
                             <rect key="frame" x="10" y="15" width="108" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.057294889129999999" green="0.8350560897" blue="0.050325691460000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.1450980392" green="0.63137254899999995" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y2G-Zm-OhS">
+                            <rect key="frame" x="0.0" y="0.0" width="311" height="11"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="11" id="L1F-z8-yxX"/>
+                            </constraints>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qc4-0n-0Bo">
-                            <rect key="frame" x="0.0" y="0.0" width="311" height="89"/>
+                            <rect key="frame" x="0.0" y="0.0" width="311" height="122"/>
                             <subviews>
-                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="TUy-7e-6Pj">
+                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="TUy-7e-6Pj">
                                     <rect key="frame" x="146" y="35" width="20" height="20"/>
                                 </activityIndicatorView>
                             </subviews>
@@ -70,13 +78,6 @@
                             <constraints>
                                 <constraint firstItem="TUy-7e-6Pj" firstAttribute="centerX" secondItem="Qc4-0n-0Bo" secondAttribute="centerX" id="CQa-dy-Kro"/>
                                 <constraint firstItem="TUy-7e-6Pj" firstAttribute="centerY" secondItem="Qc4-0n-0Bo" secondAttribute="centerY" id="Uxm-ex-SgZ"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y2G-Zm-OhS">
-                            <rect key="frame" x="0.0" y="0.0" width="311" height="11"/>
-                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="11" id="L1F-z8-yxX"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -105,11 +106,6 @@
                         <constraint firstAttribute="bottom" secondItem="j39-Xq-Fdv" secondAttribute="bottom" id="yaB-eX-iW4"/>
                         <constraint firstAttribute="trailing" secondItem="j39-Xq-Fdv" secondAttribute="trailing" id="yl6-gW-5H5"/>
                     </constraints>
-                    <variation key="default">
-                        <mask key="subviews">
-                            <exclude reference="Qc4-0n-0Bo"/>
-                        </mask>
-                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.70854955890000004" green="0.71360161339999995" blue="0.72875777720000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -120,7 +116,7 @@
                 <constraint firstAttribute="trailing" secondItem="TU6-lM-WHv" secondAttribute="trailing" id="lUg-xo-9CE"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="187.5" y="167"/>
+            <point key="canvasLocation" x="122.5" y="211"/>
         </view>
     </objects>
     <resources>

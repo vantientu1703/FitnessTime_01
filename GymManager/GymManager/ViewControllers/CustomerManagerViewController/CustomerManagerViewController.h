@@ -12,7 +12,7 @@
 - (void)selectedCustomer:(Customer *)customer;
 @end
 
-@interface CustomerManagerViewController : UIViewController
+@interface CustomerManagerViewController : BaseViewController
 @property (weak, nonatomic) id<CustomerManagerViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSString *statusCustomerManagerTitle;
 @end

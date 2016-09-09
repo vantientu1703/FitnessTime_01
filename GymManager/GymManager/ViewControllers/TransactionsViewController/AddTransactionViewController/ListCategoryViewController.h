@@ -13,9 +13,10 @@ typedef NS_ENUM (NSUInteger, ItemListMode) {
     ItemListModeNormal
 };
 
-@interface ListCategoryViewController : UIViewController
+@interface ListCategoryViewController : BaseViewController
 
 @property (nonatomic) ItemListMode mode;
+@property (copy, nonatomic) NSArray *arrCategoryPicked;
 - (void)didAddItemWithCompletionBlock:(void(^)(Item *item))block;
 
 @end

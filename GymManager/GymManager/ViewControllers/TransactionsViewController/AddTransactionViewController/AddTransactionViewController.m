@@ -51,7 +51,6 @@ NSString *const kCategoryListSegue = @"CategoryListSegue";
     self.arrDeletedCategory = @[].mutableCopy;
     [self.tableView registerNib:[UINib nibWithNibName:kTransactionCellIndentifier bundle:nil]
          forCellReuseIdentifier:kTransactionCellIndentifier];
-    self.tableView.scrollEnabled = NO;
     self.arrCategory = @[].mutableCopy;
     if (self.transaction) {
         self.lbCustomerName.text = self.transaction.user.fullName;
@@ -98,7 +97,7 @@ NSString *const kCategoryListSegue = @"CategoryListSegue";
         }
         edited = YES;
     }
-    if ([self.lbCustomerName.text isEqualToString:self.transaction.user.fullName]) {
+    if (![self.lbCustomerName.text isEqualToString:self.transaction.user.fullName]) {
         self.editedTransaction.user = self.customer;
         edited = YES;
     }
@@ -159,10 +158,14 @@ NSString *const kCategoryListSegue = @"CategoryListSegue";
             if ([self editTransaction]) {
                 [self.manager editTransaction:[self editedTransaction] withDeletedItems:self.arrDeletedCategory
                     byUser:user atIndexPath:nil];
+            } else {
+                [self.navigationController popViewControllerAnimated:YES];
             }
         } else {
             [self.manager createTransaction:[self genarateTransaction] byUser:user];
         }
+    } else {
+        [self.manager showAlertByMessage:@"Please try again" title:@"Some informations are missing"];
     }
 }
 
@@ -240,6 +243,7 @@ NSString *const kCategoryListSegue = @"CategoryListSegue";
 - (void)updateTransaction:(Transaction *)transaction withCompleteBlock:(void(^)(Transaction* returnTran))block {
     self.callBackBlock = block;
     self.transaction = transaction;
+    self.customer = transaction.user;
 }
 
 @end

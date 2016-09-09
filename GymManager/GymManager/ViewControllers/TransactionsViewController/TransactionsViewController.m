@@ -17,6 +17,7 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
 
 @interface TransactionsViewController () <UITableViewDelegate,UITableViewDataSource,ExpandableTableViewDelegate,TransactionManagerDelegate,UIActionSheetDelegate>
 
+@property (weak, nonatomic) IBOutlet UIView *viewEmpty;
 @property (weak, nonatomic) IBOutlet ExpandableTableView *tableView;
 @property (strong, nonatomic) NSMutableArray *arrTrans;
 @property (strong, nonatomic) UIRefreshControl *refresh;
@@ -50,7 +51,7 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
     self.navigationItem.rightBarButtonItem = calendarButton;
     //Setup Tableview
     self.arrTrans = @[].mutableCopy;
-    [self.tableView setAllHeadersInitiallyCollapsed:NO];
+    [self.tableView setAllHeadersInitiallyCollapsed:YES];
     [self.tableView setScrollEnabled:NO];
     self.tableView.expandableDelegate = self;
     [self.tableView registerNib:[UINib nibWithNibName:kTransactionCellIndentifier bundle:nil]
@@ -79,6 +80,7 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
         sum += tran.totalPrice;
     }
     self.lbTotalIncome.text = @(sum).stringValue;
+    self.viewEmpty.hidden = (self.arrTrans.count);
 }
 
 #pragma mark - TableView Implementation
@@ -192,7 +194,7 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
         [self.manager showAlertByMessage:message title:error.localizedDescription];
     } else {
         [self.arrTrans removeAllObjects];
-        self.arrTrans = transactions.mutableCopy;
+        self.arrTrans = [[transactions reverseObjectEnumerator] allObjects].mutableCopy;
         [self.tableView reloadData];
         [self reloadOverView];
         self.contraintTableViewCell.constant = self.tableView.contentSize.height;
@@ -242,6 +244,7 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
                     returnTran.createdAt = transaction.createdAt;
                     self.arrTrans[index.integerValue] = returnTran;
                     [self.tableView reloadData];
+                    [self reloadOverView];
                 });
             }];
         } else {
@@ -251,6 +254,7 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
                     [self.arrTrans insertObject:returnTran atIndex:0];
                     [self.tableView reloadData];
                     self.contraintTableViewCell.constant = self.tableView.contentSize.height;
+                    [self reloadOverView];
                 });
             }];
         }
