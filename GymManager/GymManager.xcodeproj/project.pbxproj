@@ -72,6 +72,8 @@
 		EF635C081D6DD46F00BEB9A1 /* ProfileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF635C071D6DD46E00BEB9A1 /* ProfileManager.m */; };
 		EF74B2F71D6EA1AA00D17C52 /* MeetingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF74B2F61D6EA1AA00D17C52 /* MeetingManager.m */; };
 		EF74B2FB1D6EA86B00D17C52 /* ParseJson.m in Sources */ = {isa = PBXBuildFile; fileRef = EF74B2FA1D6EA86B00D17C52 /* ParseJson.m */; };
+		EF75DFFC1D82F9A500FD8238 /* ic_circle_red.png in Resources */ = {isa = PBXBuildFile; fileRef = EF75DFFA1D82F9A500FD8238 /* ic_circle_red.png */; settings = {ASSET_TAGS = (); }; };
+		EF75DFFD1D82F9A500FD8238 /* ic_cirlce_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = EF75DFFB1D82F9A500FD8238 /* ic_cirlce_blue.png */; settings = {ASSET_TAGS = (); }; };
 		EF7D77EE1D752EAE00A6C63F /* messages.png in Resources */ = {isa = PBXBuildFile; fileRef = EF7D77EA1D752EAE00A6C63F /* messages.png */; };
 		EF7D77EF1D752EAE00A6C63F /* messages@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF7D77EB1D752EAE00A6C63F /* messages@2x.png */; };
 		EF7D77F01D752EAE00A6C63F /* news-feed.png in Resources */ = {isa = PBXBuildFile; fileRef = EF7D77EC1D752EAE00A6C63F /* news-feed.png */; };
@@ -229,6 +231,8 @@
 		EF74B2F61D6EA1AA00D17C52 /* MeetingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeetingManager.m; path = HandleAPI/MeetingManager.m; sourceTree = "<group>"; };
 		EF74B2F91D6EA86B00D17C52 /* ParseJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParseJson.h; path = ParseJson/ParseJson.h; sourceTree = "<group>"; };
 		EF74B2FA1D6EA86B00D17C52 /* ParseJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParseJson.m; path = ParseJson/ParseJson.m; sourceTree = "<group>"; };
+		EF75DFFA1D82F9A500FD8238 /* ic_circle_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_circle_red.png; path = Resources/ic_circle_red.png; sourceTree = "<group>"; };
+		EF75DFFB1D82F9A500FD8238 /* ic_cirlce_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_cirlce_blue.png; path = Resources/ic_cirlce_blue.png; sourceTree = "<group>"; };
 		EF7D77EA1D752EAE00A6C63F /* messages.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = messages.png; path = Resources/messages.png; sourceTree = "<group>"; };
 		EF7D77EB1D752EAE00A6C63F /* messages@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "messages@2x.png"; path = "Resources/messages@2x.png"; sourceTree = "<group>"; };
 		EF7D77EC1D752EAE00A6C63F /* news-feed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "news-feed.png"; path = "Resources/news-feed.png"; sourceTree = "<group>"; };
@@ -558,6 +562,8 @@
 		EF0809781D5C8743007A8EAE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EF75DFFA1D82F9A500FD8238 /* ic_circle_red.png */,
+				EF75DFFB1D82F9A500FD8238 /* ic_cirlce_blue.png */,
 				EFEBAC2E1D829211005C0AEE /* ic_call.png */,
 				4022D4BE1D7D6CEB00EEF21A /* green_bg.jpg */,
 				40EDFA6E1D7D48DB006EDD5D /* Plus-96.png */,
@@ -1010,6 +1016,7 @@
 				EFF19FA51D61ED8400EAD1D1 /* ic_ptmanager.png in Resources */,
 				40DF881D1D81BA1F003F98F2 /* ic_short_down.png in Resources */,
 				400C78DB1D67465F00CEE19B /* Calendar.storyboard in Resources */,
+				EF75DFFD1D82F9A500FD8238 /* ic_cirlce_blue.png in Resources */,
 				EFF19FA21D61ED8400EAD1D1 /* ic_customer.png in Resources */,
 				EFF19FA31D61ED8400EAD1D1 /* ic_logout.png in Resources */,
 				EF0D90901D7EB29700A2EE4A /* DetailMeetingPT.storyboard in Resources */,
@@ -1029,6 +1036,7 @@
 				EFF28BB41D655C10000F9B27 /* ic_threedots.png in Resources */,
 				EF7D77FD1D752EBC00A6C63F /* settings.png in Resources */,
 				EF7D77F01D752EAE00A6C63F /* news-feed.png in Resources */,
+				EF75DFFC1D82F9A500FD8238 /* ic_circle_red.png in Resources */,
 				40DF88151D81B04D003F98F2 /* ic_increase.png in Resources */,
 				EF7D77EE1D752EAE00A6C63F /* messages.png in Resources */,
 				EF7D77F11D752EAE00A6C63F /* settings@2x.png in Resources */,

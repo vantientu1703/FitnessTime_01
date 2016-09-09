@@ -54,6 +54,11 @@
     return [_dateFormatter dateFromString:string];
 }
 
+- (NSDate *)dateWithMonthYearFormatterFromStringUTC:(NSString*)string {
+    _dateFormatter.dateFormat = [self dateFormatterTypeString:DateFormatterTypeUTC];
+    return [_dateFormatter dateFromString:string];
+}
+
 - (NSString *)dateFormatterFullInfo:(NSDate *)date {
     _dateFormatter.dateFormat = [self dateFormatterTypeString:DateFormatterTypeHourDayMonthYear];
     return [_dateFormatter stringFromDate:date];

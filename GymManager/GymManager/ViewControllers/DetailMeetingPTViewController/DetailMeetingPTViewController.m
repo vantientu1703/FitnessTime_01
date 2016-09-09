@@ -13,7 +13,6 @@
 NSString *const kMessageSelectType = @"Select filter type";
 NSString *const kAllMeetingTitle = @"All meetings";
 NSString *const kSelectDateTitle = @"Select date";
-NSString *const kFilterTitle = @"Filter";
 
 @interface DetailMeetingPTViewController ()<MeetingDetailViewControllerDelegate, MeetingManagerDelegate>
 
@@ -32,6 +31,7 @@ NSString *const kFilterTitle = @"Filter";
     NSString *_filter;
     NSDate *_dateSelected;
     BOOL _isRefresh;
+    Meeting *_meetingInstance;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,10 +43,26 @@ NSString *const kFilterTitle = @"Filter";
         name:kAddNewMeetingTitle object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(infoCustomerChanged:)
         name:kUpdateCustomer object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateMeetingToTabMeeting:)
+        name:kUpdateMeeting object:nil];
 }
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)updateMeetingToTabMeeting:(NSNotification *)notifcation {
+    if (notifcation) {
+        NSDictionary *userInfo = notifcation.userInfo;
+        Meeting *meeting = userInfo[@"meeting"];
+        [self.arrMeetings enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            Meeting *meetingItem = (Meeting *)obj;
+            if (meeting.id == meetingItem.id) {
+                [self.arrMeetings replaceObjectAtIndex:idx withObject:meeting];
+            }
+        }];
+        [self.tableView reloadData];
+    }
 }
 
 - (void)infoCustomerChanged:(NSNotification *)notification {
@@ -165,8 +181,14 @@ NSString *const kFilterTitle = @"Filter";
     if (success) {
         [AlertManager showAlertWithTitle:kReminderTitle message:kDeleteMeetingSuccess
             viewControler:self okAction:^{
-            [self.arrMeetings removeObjectAtIndex:_indexPath.row];
+            if ([_filter isEqualToString:kFilterTitle]) {
+                [self.arrMeetingFilters removeObjectAtIndex:_indexPath.row];
+            }
+            [self.arrMeetings removeObject:_meetingInstance];
             [self.tableView deleteRowsAtIndexPaths:@[_indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            NSDictionary *userInfo = @{@"meeting": _meetingInstance};
+            [[NSNotificationCenter defaultCenter] postNotificationName:kDeleteMeetingSuccess object:nil
+                userInfo:userInfo];
         }];
     } else {
         [AlertManager showAlertWithTitle:kReminderTitle message:kDeleteMeetingFail
@@ -177,6 +199,7 @@ NSString *const kFilterTitle = @"Filter";
 
 - (void)setupView {
     _dateSelected = [NSDate date];
+    self.labelTimes.text = kAllMeetingTitle;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.title = kDetailMeetingsTrainerVCTitle;
     self.buttonAddNewMeeting.layer.cornerRadius = kCornerRadiusButton;
@@ -289,7 +312,12 @@ NSString *const kFilterTitle = @"Filter";
         title:kDeleteActionTitle handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
         [self showAlertControllerWithIndexPath:indexPath];
     }];
-    return @[deleteAction, editAction];
+    BOOL check = [self checkMeeting:self.arrMeetings[indexPath.row]];
+    if (check) {
+        return @[deleteAction, editAction];
+    } else {
+        return @[deleteAction];
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -298,6 +326,17 @@ NSString *const kFilterTitle = @"Filter";
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     //TODO
+}
+
+- (BOOL)checkMeeting:(Meeting *)meeting {
+    NSDate *fromDate = [[DateFormatter sharedInstance] dateWithMonthYearFormatterFromStringUTC:meeting.fromDate];
+    double fromDateTime = [fromDate timeIntervalSince1970];
+    double currentDateTime = [[NSDate date] timeIntervalSince1970];
+    if (currentDateTime < fromDateTime) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 #pragma mark - Show alert controller
@@ -309,7 +348,12 @@ NSString *const kFilterTitle = @"Filter";
         [MBProgressHUD showHUDAddedTo:self.view animated:true];
         MeetingManager *meetingManager = [[MeetingManager alloc] init];
         meetingManager.delegate = self;
-        [meetingManager deleteMeeting:self.arrMeetings[indexPath.row]];
+        if ([_filter isEqualToString:kFilterTitle]) {
+            _meetingInstance = self.arrMeetingFilters[indexPath.row];
+        } else {
+            _meetingInstance = self.arrMeetings[_indexPath.row];
+        }
+        [meetingManager deleteMeeting:_meetingInstance];
         _indexPath = indexPath;
     }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:kCancelActionTitle style:UIAlertActionStyleDefault

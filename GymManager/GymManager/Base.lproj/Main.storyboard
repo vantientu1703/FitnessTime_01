@@ -44,8 +44,15 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mEQ-ds-Gzy">
                                                     <rect key="frame" x="0.0" y="4" width="375" height="94"/>
                                                     <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_circle_red.png" translatesAutoresizingMaskIntoConstraints="NO" id="4oZ-wC-Sis">
+                                                            <rect key="frame" x="5" y="37" width="20" height="20"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="20" id="GOp-FX-Brf"/>
+                                                                <constraint firstAttribute="width" constant="20" id="gdm-Dx-ief"/>
+                                                            </constraints>
+                                                        </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oLG-Je-iGc">
-                                                            <rect key="frame" x="20" y="66" width="150" height="25"/>
+                                                            <rect key="frame" x="25" y="66" width="150" height="25"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:00 AM 15/09/2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FUB-fX-doY">
                                                                     <rect key="frame" x="0.0" y="5" width="150" height="16"/>
@@ -73,7 +80,7 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hoang Anh Quang" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jnb-f7-1P8">
-                                                            <rect key="frame" x="20" y="35" width="139" height="21"/>
+                                                            <rect key="frame" x="25" y="35" width="139" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -85,7 +92,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vawn Tien Tu" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqn-yg-Ifh">
-                                                            <rect key="frame" x="20" y="8" width="117" height="24"/>
+                                                            <rect key="frame" x="25" y="8" width="117" height="24"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                                             <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -140,10 +147,12 @@
                                                     <constraints>
                                                         <constraint firstItem="Vau-4K-WAR" firstAttribute="centerY" secondItem="zqn-yg-Ifh" secondAttribute="centerY" id="091-3Y-tUc"/>
                                                         <constraint firstItem="oLG-Je-iGc" firstAttribute="top" secondItem="Jnb-f7-1P8" secondAttribute="bottom" constant="10" id="0YZ-kK-0fm"/>
-                                                        <constraint firstItem="zqn-yg-Ifh" firstAttribute="leading" secondItem="mEQ-ds-Gzy" secondAttribute="leading" constant="20" id="2Ih-MF-kcK"/>
+                                                        <constraint firstItem="zqn-yg-Ifh" firstAttribute="leading" secondItem="mEQ-ds-Gzy" secondAttribute="leading" constant="25" id="2Ih-MF-kcK"/>
                                                         <constraint firstItem="Jnb-f7-1P8" firstAttribute="leading" secondItem="zqn-yg-Ifh" secondAttribute="leading" id="5af-0f-ROF"/>
                                                         <constraint firstAttribute="trailing" secondItem="Vau-4K-WAR" secondAttribute="trailing" constant="28" id="Ecl-HT-9ed"/>
+                                                        <constraint firstItem="4oZ-wC-Sis" firstAttribute="centerY" secondItem="mEQ-ds-Gzy" secondAttribute="centerY" id="JME-sO-8zJ"/>
                                                         <constraint firstAttribute="trailing" secondItem="5cf-Xj-MVd" secondAttribute="trailing" id="JZW-Jk-IuW"/>
+                                                        <constraint firstItem="4oZ-wC-Sis" firstAttribute="leading" secondItem="mEQ-ds-Gzy" secondAttribute="leading" constant="5" id="MT0-61-l1P"/>
                                                         <constraint firstItem="5cf-Xj-MVd" firstAttribute="leading" secondItem="2GM-LR-ETa" secondAttribute="trailing" id="NKy-zk-eRL"/>
                                                         <constraint firstAttribute="trailing" secondItem="Jnb-f7-1P8" secondAttribute="trailing" constant="8" id="QqB-mt-CTL"/>
                                                         <constraint firstItem="zqn-yg-Ifh" firstAttribute="top" secondItem="mEQ-ds-Gzy" secondAttribute="top" constant="8" id="RGt-gf-I9P"/>
@@ -185,6 +194,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="imageViewStatus" destination="4oZ-wC-Sis" id="gIU-c1-iv3"/>
                                             <outlet property="labelFromHour" destination="FUB-fX-doY" id="dn9-bd-g8C"/>
                                             <outlet property="labelNameTrainee" destination="Jnb-f7-1P8" id="qba-Il-pim"/>
                                             <outlet property="labelNameTrainner" destination="zqn-yg-Ifh" id="Ojs-1j-kTB"/>
@@ -1831,6 +1841,7 @@
         <image name="gym_bg.png" width="644" height="751"/>
         <image name="ic_calendar.png" width="20" height="20"/>
         <image name="ic_call.png" width="100" height="100"/>
+        <image name="ic_circle_red.png" width="48" height="48"/>
         <image name="ic_key.png" width="48" height="48"/>
         <image name="ic_user.png" width="50" height="50"/>
     </resources>

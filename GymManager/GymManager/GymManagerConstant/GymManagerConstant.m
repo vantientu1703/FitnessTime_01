@@ -103,6 +103,8 @@ NSString *const kShowCategoryTitle = @"Show category title";
 NSString *const kDateBirthTitle = @"Date just before current time!";
 NSString *const kFromDateToDateTitle = @"registerDate just before expiryDate!";
 NSString *const kDateRegisterAndExpityTitle = @"Date register or expity just before current time!";
+NSString *const kUpdateMeeting = @"Update meeting";
+NSString *const kFilterTitle = @"Filter";
 
 #pragma mark - CoreData
 NSString *const kCoreDataModel = @"GymManager";

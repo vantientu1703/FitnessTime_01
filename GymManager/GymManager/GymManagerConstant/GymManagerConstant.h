@@ -103,6 +103,8 @@ extern NSString *const kShowCategoryTitle;
 extern NSString *const kDateBirthTitle;
 extern NSString *const kFromDateToDateTitle;
 extern NSString *const kDateRegisterAndExpityTitle;
+extern NSString *const kUpdateMeeting;
+extern NSString *const kFilterTitle;
 
 #pragma mark - CoreData
 extern NSString *const kCoreDataModel;
