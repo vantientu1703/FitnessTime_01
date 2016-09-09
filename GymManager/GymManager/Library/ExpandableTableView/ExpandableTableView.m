@@ -58,7 +58,8 @@
     HeaderViewContent *headerView = self.headerView;
     [headerView updateWithTitle:@"" isCollapsed:isCollapsed totalRows:row andSection:section];
     [headerView drawView];
-    headerView.lbTotalCost.text = [NSString stringWithFormat:@"%.0ld Đ", (long)transaction.totalPrice];
+    headerView.lbTotalCost.text = [NSString stringWithFormat:@"%@ Đ", [[NumberFormatterDecimal formatter]
+        stringFromNumber:@(transaction.totalPrice)]];
     headerView.lbDate.text = [[[DateFormatter alloc] init] dateFormatterFullInfo:transaction.createdAt];
     Customer *customer = transaction.user;
     if (customer.fullName) {

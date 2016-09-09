@@ -73,7 +73,7 @@ NSString *const kCategoryListSegue = @"CategoryListSegue";
     for (Item *item in self.arrCategory) {
         sum += (item.price * item.quantity.integerValue);
     }
-    self.lbTotalCost.text = [NSString stringWithFormat:@"%ld Đ", (long)sum];
+    self.lbTotalCost.text = [[NumberFormatterDecimal formatter] stringFromNumber:@(sum)];
 }
 
 - (Transaction *)genarateTransaction {
@@ -119,7 +119,7 @@ NSString *const kCategoryListSegue = @"CategoryListSegue";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     Item *item = self.arrCategory[indexPath.row];
     cell.lbCategory.text = item.name;
-    cell.lbCost.text = [NSString stringWithFormat:@"%.0f",item.price];
+    cell.lbCost.text = [[NumberFormatterDecimal formatter] stringFromNumber:@(item.price)];;
     cell.lbQuantity.text = [NSString stringWithFormat:@" x %@", item.quantity.stringValue];
     return cell;
 }

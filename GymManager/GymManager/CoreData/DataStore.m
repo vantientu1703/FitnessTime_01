@@ -13,7 +13,9 @@ NSString *const kUserDefaultLoginCheck = @"loged";
 
 @interface DataStore ()
 
+@property (strong, nonatomic) dispatch_queue_t transactionQueue;
 @property (strong, nonatomic) UICKeyChainStore *keychain;
+@property (strong, nonatomic) NSArray *arrItems;
 
 @end
 
@@ -22,6 +24,8 @@ NSString *const kUserDefaultLoginCheck = @"loged";
 - (instancetype)init {
     if (self = [super init]) {
         self.keychain = [UICKeyChainStore keyChainStoreWithService:kBundleID];
+        self.arrItems = @[];
+        self.transactionQueue = dispatch_queue_create("transaction_queue", DISPATCH_QUEUE_SERIAL);
     }
     return self;
 }
@@ -90,6 +94,16 @@ NSString *const kUserDefaultLoginCheck = @"loged";
 
 - (BOOL)isLoged {
     return [self.keychain stringForKey:kTokenChainKey].length;
+}
+
+- (void)setItemsList:(NSArray *)items {
+    dispatch_sync(self.transactionQueue, ^{
+        self.arrItems = items;
+    });
+}
+
+- (NSArray *)getItemsList {
+    return self.arrItems;
 }
 
 @end

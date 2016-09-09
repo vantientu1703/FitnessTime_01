@@ -37,6 +37,7 @@
 		40B8A7311D640C12007AB6BF /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B8A72F1D640C12007AB6BF /* CategoryCell.m */; };
 		40B8A7321D640C12007AB6BF /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40B8A7301D640C12007AB6BF /* CategoryCell.xib */; };
 		40BF38031D6AB35200793CEB /* TransactionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BF38021D6AB35200793CEB /* TransactionManager.m */; };
+		40DB605E1D826B8F009B223F /* NumberFormatterDecimal.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DB605D1D826B8F009B223F /* NumberFormatterDecimal.m */; };
 		40DF88131D81A382003F98F2 /* ClipButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DF88121D81A382003F98F2 /* ClipButton.m */; };
 		40DF88151D81B04D003F98F2 /* ic_increase.png in Resources */ = {isa = PBXBuildFile; fileRef = 40DF88141D81B04D003F98F2 /* ic_increase.png */; };
 		40DF88171D81B084003F98F2 /* ic_decrease.png in Resources */ = {isa = PBXBuildFile; fileRef = 40DF88161D81B084003F98F2 /* ic_decrease.png */; };
@@ -169,6 +170,8 @@
 		40B8A7301D640C12007AB6BF /* CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CategoryCell.xib; path = ViewControllers/TransactionsViewController/AddTransactionViewController/CategoryCell/CategoryCell.xib; sourceTree = "<group>"; };
 		40BF38011D6AB35200793CEB /* TransactionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransactionManager.h; path = HandleAPI/TransactionManager.h; sourceTree = "<group>"; };
 		40BF38021D6AB35200793CEB /* TransactionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransactionManager.m; path = HandleAPI/TransactionManager.m; sourceTree = "<group>"; };
+		40DB605C1D826B8F009B223F /* NumberFormatterDecimal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NumberFormatterDecimal.h; path = Utils/NumberFormatterDecimal.h; sourceTree = "<group>"; };
+		40DB605D1D826B8F009B223F /* NumberFormatterDecimal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NumberFormatterDecimal.m; path = Utils/NumberFormatterDecimal.m; sourceTree = "<group>"; };
 		40DF88111D81A382003F98F2 /* ClipButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClipButton.h; path = Library/ClipButton.h; sourceTree = "<group>"; };
 		40DF88121D81A382003F98F2 /* ClipButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClipButton.m; path = Library/ClipButton.m; sourceTree = "<group>"; };
 		40DF88141D81B04D003F98F2 /* ic_increase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_increase.png; sourceTree = "<group>"; };
@@ -858,6 +861,8 @@
 				EF5FA7AD1D6AE22200E4B95F /* DataValidation.m */,
 				EFFD8D3C1D66AC2800994CC5 /* Utils.h */,
 				EFFD8D3D1D66AC2800994CC5 /* Utils.m */,
+				40DB605C1D826B8F009B223F /* NumberFormatterDecimal.h */,
+				40DB605D1D826B8F009B223F /* NumberFormatterDecimal.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1133,6 +1138,7 @@
 				EF635C081D6DD46F00BEB9A1 /* ProfileManager.m in Sources */,
 				EF74B2F71D6EA1AA00D17C52 /* MeetingManager.m in Sources */,
 				40B8A72B1D640C04007AB6BF /* ListCategoryViewController.m in Sources */,
+				40DB605E1D826B8F009B223F /* NumberFormatterDecimal.m in Sources */,
 				EFFD8D5C1D66D9C000994CC5 /* EditPTManagerViewController.m in Sources */,
 				40B8A72C1D640C04007AB6BF /* PopoverQuatityViewController.m in Sources */,
 				EFFD8D641D66FFB900994CC5 /* CategoryTableViewCell.m in Sources */,
