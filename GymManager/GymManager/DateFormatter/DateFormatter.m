@@ -146,6 +146,9 @@
         case DateFormatterTypeFullTextWithMonth: {
             return @"MMMM yyyy";
         }
+        case DateFormatterTypeCalendarToday: {
+            return @"dd\nMMMM\nyyyy";
+        }
         default:
             return nil;
     }

@@ -82,7 +82,7 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
     for (Transaction *tran in self.arrTrans) {
         sum += tran.totalPrice;
     }
-    self.lbTotalIncome.text = [self.numberFormatter stringFromNumber:@(sum)];
+    self.lbTotalIncome.text = [NSString stringWithFormat:@"%@ Đ",[self.numberFormatter stringFromNumber:@(sum)]];
     self.viewEmpty.hidden = (self.arrTrans.count);
 }
 
@@ -233,11 +233,11 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
             switch (state) {
                 case CalendarPickerStateDay:
                     self.lbOverviewDetail.text = [formatter stringFromDate:dateSelected
-                        withFormat:DateFormatterTypeYear];
+                        withFormat:DateFormatterTypeFullText];
                     break;
                 case CalendarPickerStateMonth:
                     self.lbOverviewDetail.text = [formatter stringFromDate:dateSelected
-                        withFormat:DateFormatterTypeYear];
+                        withFormat:DateFormatterTypeFullTextWithMonth];
                     break;
                 default:
                     self.lbOverviewDetail.text = [formatter stringFromDate:dateSelected

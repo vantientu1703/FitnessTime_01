@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeaderViewContent">
@@ -40,18 +41,21 @@
                                 <constraint firstAttribute="height" constant="1" id="6MP-G9-Gla"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKm-AH-mUm">
-                            <rect key="frame" x="271" y="45" width="30" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKm-AH-mUm">
+                            <rect key="frame" x="229" y="45" width="72" height="72"/>
+                            <constraints>
+                                <constraint firstAttribute="height" secondItem="uKm-AH-mUm" secondAttribute="width" id="i8U-DE-AEB"/>
+                            </constraints>
                             <state key="normal" image="ic_threedots.png"/>
                             <connections>
                                 <action selector="btnMenuClick:" destination="-1" eventType="touchUpInside" id="6PO-jd-DtC"/>
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j39-Xq-Fdv">
-                            <rect key="frame" x="0.0" y="111" width="311" height="11"/>
+                            <rect key="frame" x="0.0" y="117" width="311" height="5"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="11" id="k24-Z7-x2R"/>
+                                <constraint firstAttribute="height" constant="5" id="k24-Z7-x2R"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nguyễn Văn A" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S8T-SE-5Sh">
@@ -61,17 +65,17 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y2G-Zm-OhS">
-                            <rect key="frame" x="0.0" y="0.0" width="311" height="11"/>
+                            <rect key="frame" x="0.0" y="0.0" width="311" height="5"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="11" id="L1F-z8-yxX"/>
+                                <constraint firstAttribute="height" constant="5" id="L1F-z8-yxX"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qc4-0n-0Bo">
                             <rect key="frame" x="0.0" y="0.0" width="311" height="122"/>
                             <subviews>
-                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="TUy-7e-6Pj">
-                                    <rect key="frame" x="146" y="35" width="20" height="20"/>
+                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="TUy-7e-6Pj">
+                                    <rect key="frame" x="146" y="51" width="20" height="20"/>
                                 </activityIndicatorView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="0.86594827586206902" colorSpace="calibratedWhite"/>
@@ -101,11 +105,17 @@
                         <constraint firstItem="Y2G-Zm-OhS" firstAttribute="top" secondItem="TU6-lM-WHv" secondAttribute="top" id="pZR-zN-xv9"/>
                         <constraint firstItem="WCa-1h-g4q" firstAttribute="top" secondItem="S8T-SE-5Sh" secondAttribute="bottom" constant="3" id="qza-g9-hcC"/>
                         <constraint firstAttribute="trailing" secondItem="Y2G-Zm-OhS" secondAttribute="trailing" id="taz-bu-jpO"/>
+                        <constraint firstItem="j39-Xq-Fdv" firstAttribute="top" secondItem="uKm-AH-mUm" secondAttribute="bottom" id="udQ-MH-ZjI"/>
                         <constraint firstItem="S8T-SE-5Sh" firstAttribute="leading" secondItem="TU6-lM-WHv" secondAttribute="leading" constant="10" id="ufZ-NU-U3b"/>
                         <constraint firstItem="WCa-1h-g4q" firstAttribute="leading" secondItem="S8T-SE-5Sh" secondAttribute="leading" id="xds-zY-BVr"/>
                         <constraint firstAttribute="bottom" secondItem="j39-Xq-Fdv" secondAttribute="bottom" id="yaB-eX-iW4"/>
                         <constraint firstAttribute="trailing" secondItem="j39-Xq-Fdv" secondAttribute="trailing" id="yl6-gW-5H5"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="subviews">
+                            <exclude reference="Qc4-0n-0Bo"/>
+                        </mask>
+                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.70854955890000004" green="0.71360161339999995" blue="0.72875777720000001" alpha="1" colorSpace="calibratedRGB"/>
