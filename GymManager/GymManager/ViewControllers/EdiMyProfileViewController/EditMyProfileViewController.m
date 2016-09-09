@@ -89,7 +89,14 @@ NSString *const kUpdateFailTitle = @"Update fail";
 }
 
 - (void)saveUser {
-    if (!_imageString.length) {
+    double currentTime = [[NSDate date] timeIntervalSince1970];
+    double dateBirthTime = [_fromDate timeIntervalSince1970];
+    NSString *phoneNumber = [DataValidation isValidPhoneNumber:(NSMutableString *)self.textFieldPhoneNumber.text];
+    if (phoneNumber) {
+        self.labelNotes.text = phoneNumber;
+    } else if (currentTime < dateBirthTime) {
+        self.labelNotes.text = kDateBirthTitle;
+    } else if (!_imageString.length) {
         self.labelNotes.text = kSelectImage;
     } else if (!self.textFieldAddress.text.length) {
         self.labelNotes.text = kFillAddressTitle;
