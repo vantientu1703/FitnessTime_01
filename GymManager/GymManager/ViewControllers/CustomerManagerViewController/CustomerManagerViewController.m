@@ -21,6 +21,7 @@ NSString *const kNameCustomer = @"Ngo Van Van Duong";
 @property (weak, nonatomic) IBOutlet UIButton *buttonAddNewCustomer;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) NSMutableArray *arrCustomers;
+@property (strong, nonatomic) UIRefreshControl *refreshReloadData;
 
 @end
 
@@ -76,9 +77,17 @@ NSString *const kNameCustomer = @"Ngo Van Van Duong";
 
 #pragma mark - Set up view
 - (void)setupView {
-    //TODO
     self.title = kCustomerManagerTitle;
     self.buttonAddNewCustomer.layer.cornerRadius = kCornerRadiusAddNewCustomer;
+    self.refreshReloadData = [[UIRefreshControl alloc] init];
+    [self.refreshReloadData addTarget:self action:@selector(reloadDataCollectionViews:)
+        forControlEvents:UIControlEventValueChanged];
+    [self.collectionView insertSubview:self.refreshReloadData atIndex:0];
+}
+
+- (IBAction)reloadDataCollectionViews:(id)sender {
+    [self getAllCustomers];
+    [self.refreshReloadData endRefreshing];
 }
 
 #pragma mark - UICollectionViewDataSources

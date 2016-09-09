@@ -17,6 +17,7 @@ typedef NS_ENUM (NSUInteger, ItemListMode) {
 
 @property (nonatomic) ItemListMode mode;
 @property (copy, nonatomic) NSArray *arrCategoryPicked;
+@property (strong, nonatomic) NSString *showCategoryTitle;
 - (void)didAddItemWithCompletionBlock:(void(^)(Item *item))block;
 
 @end

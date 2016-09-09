@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonAddPT;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) NSMutableArray *arrTrainers;
+@property (strong, nonatomic) UIRefreshControl *refreshReloadData;
 
 @end
 
@@ -60,6 +61,15 @@
 - (void)setupView {
     self.title = kPTManagerVCTitle;
     self.buttonAddPT.layer.cornerRadius = kCornerRadiusButtonAddNewMeeting;
+    self.refreshReloadData = [[UIRefreshControl alloc] init];
+    [self.refreshReloadData addTarget:self action:@selector(reloadDataCollectionViews:)
+        forControlEvents:UIControlEventValueChanged];
+    [self.collectionView insertSubview:self.refreshReloadData atIndex:0];
+}
+
+- (IBAction)reloadDataCollectionViews:(id)sender {
+    [self getAllTrainers];
+    [self.refreshReloadData endRefreshing];
 }
 
 #pragma mark - Add new trainer

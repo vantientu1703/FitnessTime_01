@@ -14,7 +14,7 @@
 - (void)updateMeeting:(Meeting *)meeting;
 @end
 
-@interface MeetingDetailViewController : UIViewController
+@interface MeetingDetailViewController : BaseViewController
 @property (weak, nonatomic) id<MeetingDetailViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSString *statusEditMeeting;
 @property (strong, nonatomic) Meeting *meeting;

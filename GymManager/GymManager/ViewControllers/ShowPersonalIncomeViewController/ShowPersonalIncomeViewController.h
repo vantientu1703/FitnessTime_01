@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ShowPersonalIncomeViewController : UIViewController
+@interface ShowPersonalIncomeViewController : BaseViewController
 @property (strong, nonatomic) Trainer *trainer;
 @end

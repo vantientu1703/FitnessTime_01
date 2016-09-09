@@ -14,7 +14,7 @@
 
 @end
 
-@interface EditMyProfileViewController : UIViewController
+@interface EditMyProfileViewController : BaseViewController
 @property (weak, nonatomic) id<EditMyProfileViewControllerDelegate> delegate;
 @property (strong, nonatomic) User *user;
 @end
