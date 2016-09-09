@@ -46,7 +46,11 @@ NSString *const kSelectAvatar = @"Select avatar,please";
 
 #pragma mark - Set up view
 - (void)setupView {
-    //TODO
+    if ([self.statusEditString isEqualToString:kEditTrainerTitle]) {
+        self.title = kEditTrainerTitle;
+    } else {
+        self.title = kAddNewTrainerTitle;
+    }
     self.textFieldFullName.delegate = self;
     self.textFieldPhoneNumber.delegate = self;
     self.textFieldAddress.delegate = self;

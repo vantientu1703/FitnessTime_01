@@ -280,9 +280,8 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
         _modifier = false;
         self.labelNotes.text = kUpdateSuccess;
         self.labelNotes.textColor = [GymManagerConstant themeColor];
-        if ([self.delegate respondsToSelector:@selector(updateMeeting:)]) {
-            [self.delegate updateMeeting:meeting];
-        }
+        NSDictionary *userInfo = @{@"meeting": meeting};
+        [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateMeeting object:nil userInfo:userInfo];
     } else {
         [AlertManager showAlertWithTitle:kRegisterRequest message:error.localizedDescription
             viewControler:self okAction:^{

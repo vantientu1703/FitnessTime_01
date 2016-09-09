@@ -43,8 +43,15 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mh0-6L-P1b">
                                                     <rect key="frame" x="0.0" y="4" width="375" height="94"/>
                                                     <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Yq-3d-SI7">
+                                                            <rect key="frame" x="5" y="37" width="20" height="20"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="20" id="WLW-Hd-jPF"/>
+                                                                <constraint firstAttribute="height" constant="20" id="YdV-R3-KH2"/>
+                                                            </constraints>
+                                                        </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xop-zK-yKa">
-                                                            <rect key="frame" x="20" y="66" width="150" height="24"/>
+                                                            <rect key="frame" x="25" y="66" width="150" height="24"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:00 AM 15/09/2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVg-hk-odd">
                                                                     <rect key="frame" x="0.0" y="4" width="150" height="16"/>
@@ -72,7 +79,7 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hoang Anh Quang" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uC4-iM-7af">
-                                                            <rect key="frame" x="20" y="35" width="139" height="21"/>
+                                                            <rect key="frame" x="25" y="35" width="139" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -84,7 +91,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vawn Tien Tu" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arp-sS-2zj">
-                                                            <rect key="frame" x="20" y="8" width="117" height="24"/>
+                                                            <rect key="frame" x="25" y="8" width="117" height="24"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                                             <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -144,14 +151,16 @@
                                                         <constraint firstAttribute="trailing" secondItem="arp-sS-2zj" secondAttribute="trailing" constant="8" id="8Ue-u3-l8h"/>
                                                         <constraint firstItem="hFo-Be-izE" firstAttribute="leading" secondItem="arp-sS-2zj" secondAttribute="trailing" constant="17" id="8yq-iN-xJR"/>
                                                         <constraint firstAttribute="trailing" secondItem="hFo-Be-izE" secondAttribute="trailing" constant="28" id="A8p-7V-ypz"/>
-                                                        <constraint firstItem="arp-sS-2zj" firstAttribute="leading" secondItem="Mh0-6L-P1b" secondAttribute="leading" constant="20" id="CYS-DB-6Yn"/>
+                                                        <constraint firstItem="arp-sS-2zj" firstAttribute="leading" secondItem="Mh0-6L-P1b" secondAttribute="leading" constant="25" id="CYS-DB-6Yn"/>
                                                         <constraint firstItem="xop-zK-yKa" firstAttribute="leading" secondItem="uC4-iM-7af" secondAttribute="leading" id="FMG-Qa-kQD"/>
+                                                        <constraint firstItem="2Yq-3d-SI7" firstAttribute="centerY" secondItem="Mh0-6L-P1b" secondAttribute="centerY" id="G7P-dK-QZE"/>
                                                         <constraint firstItem="uC4-iM-7af" firstAttribute="leading" secondItem="arp-sS-2zj" secondAttribute="leading" id="ME4-rI-VxK"/>
                                                         <constraint firstItem="gBq-N2-ISN" firstAttribute="top" secondItem="xop-zK-yKa" secondAttribute="top" id="Mk4-mD-t9g"/>
                                                         <constraint firstItem="uC4-iM-7af" firstAttribute="leading" secondItem="arp-sS-2zj" secondAttribute="leading" id="MsA-6Y-Qbt"/>
                                                         <constraint firstItem="xop-zK-yKa" firstAttribute="width" secondItem="Mh0-6L-P1b" secondAttribute="width" multiplier="0.4" id="N8p-iE-aC9"/>
                                                         <constraint firstItem="gBq-N2-ISN" firstAttribute="width" secondItem="xop-zK-yKa" secondAttribute="width" id="NB1-oR-li6"/>
                                                         <constraint firstItem="gBq-N2-ISN" firstAttribute="height" secondItem="xop-zK-yKa" secondAttribute="height" id="RFW-d3-H3I"/>
+                                                        <constraint firstItem="2Yq-3d-SI7" firstAttribute="leading" secondItem="Mh0-6L-P1b" secondAttribute="leading" constant="5" id="bJN-qB-fmb"/>
                                                         <constraint firstAttribute="trailing" secondItem="hFo-Be-izE" secondAttribute="trailing" constant="30" id="f7f-2m-QDS"/>
                                                         <constraint firstItem="OfH-ff-W4c" firstAttribute="centerY" secondItem="Mh0-6L-P1b" secondAttribute="centerY" id="ge6-Vk-53t"/>
                                                         <constraint firstItem="uC4-iM-7af" firstAttribute="top" secondItem="arp-sS-2zj" secondAttribute="bottom" constant="3" id="m9O-Zr-o9G"/>
@@ -184,6 +193,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="imageViewStatus" destination="2Yq-3d-SI7" id="j4o-Om-ddl"/>
                                             <outlet property="labelFromHour" destination="xVg-hk-odd" id="Bm9-YZ-H4k"/>
                                             <outlet property="labelNameTrainee" destination="uC4-iM-7af" id="zq1-a3-TAC"/>
                                             <outlet property="labelNameTrainner" destination="arp-sS-2zj" id="3pr-wb-Y14"/>
