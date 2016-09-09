@@ -100,6 +100,9 @@ NSString *const kIncomeStoryboardIdentifier = @"Income";
 NSString *const kShowPersonalIncomeViewControllerIdentifier = @"ShowPersonalIncomeViewController";
 NSString *const kTransactionListCategoryIdentifier = @"TransactionListCategory";
 NSString *const kShowCategoryTitle = @"Show category title";
+NSString *const kDateBirthTitle = @"Date just before current time!";
+NSString *const kFromDateToDateTitle = @"registerDate just before expiryDate!";
+NSString *const kDateRegisterAndExpityTitle = @"Date register or expity just before current time!";
 
 #pragma mark - CoreData
 NSString *const kCoreDataModel = @"GymManager";

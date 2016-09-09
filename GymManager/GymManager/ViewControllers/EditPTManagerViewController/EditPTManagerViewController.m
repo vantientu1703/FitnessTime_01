@@ -57,6 +57,9 @@ NSString *const kSelectAvatar = @"Select avatar,please";
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
         target:self action:@selector(savePTInfo:)];
     self.navigationItem.rightBarButtonItem = doneButton;
+    if (!_dateOfBirth) {
+        [self.buttonDateOfBirth setTitle:kSelectDate forState:UIControlStateNormal];
+    }
     if ([self.statusEditString isEqualToString:kEditTrainerTitle]) {
         DateFormatter *dateFormatter = [[DateFormatter alloc] init];
         self.textFieldAddress.text = self.trainer.address;
@@ -92,6 +95,8 @@ NSString *const kSelectAvatar = @"Select avatar,please";
 #pragma mark - Set info for trainer
 - (void)createTrainer {
     NSString *phoneNumber = [DataValidation isValidPhoneNumber:(NSMutableString *)self.textFieldPhoneNumber.text];
+    double currentTime = [[NSDate date] timeIntervalSince1970];
+    double dateBirthTime = [_dateOfBirth timeIntervalSince1970];
     if (!self.textFieldAddress.text.length) {
         self.labelNotes.text = kNoFillAddressTitle;
     } else if (!self.textFieldFullName.text.length) {
@@ -104,6 +109,8 @@ NSString *const kSelectAvatar = @"Select avatar,please";
         self.labelNotes.text = kSelectDateOfBirth;
     } else if (!_imageString) {
         self.labelNotes.text = kSelectAvatar;
+    } else if (currentTime < dateBirthTime) {
+        self.labelNotes.text = kDateBirthTitle;
     } else {
         Trainer *trainer;
         if ([self.statusEditString isEqualToString:kEditTrainerTitle]) {

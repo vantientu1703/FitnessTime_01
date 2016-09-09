@@ -42,6 +42,9 @@ NSString *const kFillAddress = @"Fill address";
 }
 
 - (void)setupView {
+    if (!_dateOfBirth) {
+        [self.buttonSelecDateOfBirth setTitle:kSelectDate forState:UIControlStateNormal];
+    }
     self.viewContainButtonSelectDate.layer.cornerRadius = kCornerRadiusViewBackground;
     self.navigationController.navigationBar.barTintColor = [UIColor grayColor];
     self.navigationController.navigationBar.translucent = NO;
@@ -52,11 +55,9 @@ NSString *const kFillAddress = @"Fill address";
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]
         initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelPress:)];
     self.navigationItem.leftBarButtonItem = cancelButton;
-    NSString *dateString = [[DateFormatter sharedInstance] dateFormatterDateMonthYear:[NSDate date]];
     self.title = kRegisterVCTitle;
     self.textFieldAddress.delegate = self;
     self.textFieldConfirmPassword.delegate = self;
-    [self.buttonSelecDateOfBirth setTitle:dateString forState:UIControlStateNormal];
     self.textFieldEmail.delegate = self;
     self.textFieldPassword.delegate = self;
     self.textFieldUserName.delegate = self;

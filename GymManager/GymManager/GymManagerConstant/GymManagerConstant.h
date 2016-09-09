@@ -100,6 +100,9 @@ extern NSString *const kIncomeStoryboardIdentifier;
 extern NSString *const kShowPersonalIncomeViewControllerIdentifier;
 extern NSString *const kTransactionListCategoryIdentifier;
 extern NSString *const kShowCategoryTitle;
+extern NSString *const kDateBirthTitle;
+extern NSString *const kFromDateToDateTitle;
+extern NSString *const kDateRegisterAndExpityTitle;
 
 #pragma mark - CoreData
 extern NSString *const kCoreDataModel;

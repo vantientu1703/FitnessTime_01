@@ -82,6 +82,16 @@ NSString *const kSelectImages = @"Select avatar,please";
 }
 
 - (void)setupView {
+    if (!_dateOfBirth) {
+        [self.buttonDateOfBirth setTitle:kSelectDate forState:UIControlStateNormal];
+    }
+    if (!_fromDate) {
+        [self.buttonRegisterDate setTitle:kSelectDate forState:UIControlStateNormal];
+    }
+    if (!_toDate) {
+        [self.buttonExpityDate setTitle:kSelectDate forState:UIControlStateNormal];
+    }
+    self.textFieldPhoneNumber.keyboardType = UIKeyboardTypeNumberPad;
     self.textFieldAddress.delegate = self;
     self.textFieldEmail.delegate = self;
     self.textFieldNameCustomer.delegate = self;
@@ -175,7 +185,15 @@ NSString *const kSelectImages = @"Select avatar,please";
 - (void)setupInfoNewCustomer {
     NSString *name = [DataValidation isValidName:self.textFieldNameCustomer.text];
     NSString *phoneNumber = [DataValidation isValidPhoneNumber:(NSMutableString *)self.textFieldPhoneNumber.text];
-    if (name) {
+    double currentTime = [[NSDate date] timeIntervalSince1970];
+    double registerDateTime = [_fromDate timeIntervalSince1970];
+    double expityDateTime = [_toDate timeIntervalSince1970];
+    double dateBirhtTime = [_dateOfBirth timeIntervalSinceNow];
+    if (dateBirhtTime > currentTime) {
+        self.labelNotes.text = kDateBirthTitle;
+    } else if (registerDateTime > expityDateTime) {
+        self.labelNotes.text = kFromDateToDateTitle;
+    } else if (name) {
         self.labelNotes.text = kFillNames;
     } else if (phoneNumber) {
         self.labelNotes.text = phoneNumber;
@@ -213,9 +231,13 @@ NSString *const kSelectImages = @"Select avatar,please";
                 [customerManager updateTrainer:customer];
             }
         } else {
-            [MBProgressHUD showHUDAddedTo:self.view animated:true];
-            self.navigationItem.rightBarButtonItem.enabled = NO;
-            [customerManager createCustomer:customer];
+            if (currentTime > registerDateTime || currentTime > expityDateTime) {
+                self.labelNotes.text = kDateRegisterAndExpityTitle;
+            } else {
+                [MBProgressHUD showHUDAddedTo:self.view animated:true];
+                self.navigationItem.rightBarButtonItem.enabled = NO;
+                [customerManager createCustomer:customer];
+            }
         }
     }
 }
