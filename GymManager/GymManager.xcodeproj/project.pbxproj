@@ -37,6 +37,12 @@
 		40B8A7311D640C12007AB6BF /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B8A72F1D640C12007AB6BF /* CategoryCell.m */; };
 		40B8A7321D640C12007AB6BF /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40B8A7301D640C12007AB6BF /* CategoryCell.xib */; };
 		40BF38031D6AB35200793CEB /* TransactionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BF38021D6AB35200793CEB /* TransactionManager.m */; };
+		40DF88131D81A382003F98F2 /* ClipButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DF88121D81A382003F98F2 /* ClipButton.m */; };
+		40DF88151D81B04D003F98F2 /* ic_increase.png in Resources */ = {isa = PBXBuildFile; fileRef = 40DF88141D81B04D003F98F2 /* ic_increase.png */; };
+		40DF88171D81B084003F98F2 /* ic_decrease.png in Resources */ = {isa = PBXBuildFile; fileRef = 40DF88161D81B084003F98F2 /* ic_decrease.png */; };
+		40DF88191D81B452003F98F2 /* ic_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 40DF88181D81B452003F98F2 /* ic_right.png */; };
+		40DF881B1D81B91D003F98F2 /* ic_short_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 40DF881A1D81B91D003F98F2 /* ic_short_up.png */; };
+		40DF881D1D81BA1F003F98F2 /* ic_short_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 40DF881C1D81BA1F003F98F2 /* ic_short_down.png */; };
 		40EA22E91D5E26FF00B08942 /* HeaderViewContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40EA22E81D5E26FE00B08942 /* HeaderViewContent.xib */; };
 		40EA22EC1D5E27C700B08942 /* HeaderViewContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EA22EB1D5E27C700B08942 /* HeaderViewContent.m */; };
 		40EDFA6D1D7D4403006EDD5D /* gym_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 40EDFA6B1D7D4403006EDD5D /* gym_bg.png */; };
@@ -50,12 +56,12 @@
 		EF0809931D5C954A007A8EAE /* PTMeetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0809921D5C954A007A8EAE /* PTMeetingViewController.m */; };
 		EF0809981D5C97B6007A8EAE /* TransactionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0809971D5C97B6007A8EAE /* TransactionsViewController.m */; };
 		EF08099B1D5C97C9007A8EAE /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF08099A1D5C97C9007A8EAE /* MenuViewController.m */; };
-		EF0D90891D7E80E500A2EE4A /* PTManager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF0D90871D7E80E500A2EE4A /* PTManager.storyboard */; settings = {ASSET_TAGS = (); }; };
-		EF0D908D1D7E814000A2EE4A /* PTManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0D908C1D7E814000A2EE4A /* PTManagerViewController.m */; settings = {ASSET_TAGS = (); }; };
-		EF0D90901D7EB29700A2EE4A /* DetailMeetingPT.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF0D908E1D7EB29700A2EE4A /* DetailMeetingPT.storyboard */; settings = {ASSET_TAGS = (); }; };
-		EF0D90941D7EB34900A2EE4A /* DetailMeetingPTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0D90931D7EB34900A2EE4A /* DetailMeetingPTViewController.m */; settings = {ASSET_TAGS = (); }; };
-		EF0D909A1D81216C00A2EE4A /* Income.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF0D90981D81216A00A2EE4A /* Income.storyboard */; settings = {ASSET_TAGS = (); }; };
-		EF0D909E1D8124CB00A2EE4A /* ShowPersonalIncomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0D909D1D8124CB00A2EE4A /* ShowPersonalIncomeViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EF0D90891D7E80E500A2EE4A /* PTManager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF0D90871D7E80E500A2EE4A /* PTManager.storyboard */; };
+		EF0D908D1D7E814000A2EE4A /* PTManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0D908C1D7E814000A2EE4A /* PTManagerViewController.m */; };
+		EF0D90901D7EB29700A2EE4A /* DetailMeetingPT.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF0D908E1D7EB29700A2EE4A /* DetailMeetingPT.storyboard */; };
+		EF0D90941D7EB34900A2EE4A /* DetailMeetingPTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0D90931D7EB34900A2EE4A /* DetailMeetingPTViewController.m */; };
+		EF0D909A1D81216C00A2EE4A /* Income.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF0D90981D81216A00A2EE4A /* Income.storyboard */; };
+		EF0D909E1D8124CB00A2EE4A /* ShowPersonalIncomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0D909D1D8124CB00A2EE4A /* ShowPersonalIncomeViewController.m */; };
 		EF5FA7AE1D6AE22200E4B95F /* DataValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5FA7AD1D6AE22200E4B95F /* DataValidation.m */; };
 		EF635BFF1D6CB21900BEB9A1 /* TrainerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF635BFE1D6CB21900BEB9A1 /* TrainerManager.m */; };
 		EF635C021D6D79BC00BEB9A1 /* UIImageConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = EF635C011D6D79BC00BEB9A1 /* UIImageConstant.m */; };
@@ -161,6 +167,13 @@
 		40B8A7301D640C12007AB6BF /* CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CategoryCell.xib; path = ViewControllers/TransactionsViewController/AddTransactionViewController/CategoryCell/CategoryCell.xib; sourceTree = "<group>"; };
 		40BF38011D6AB35200793CEB /* TransactionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransactionManager.h; path = HandleAPI/TransactionManager.h; sourceTree = "<group>"; };
 		40BF38021D6AB35200793CEB /* TransactionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransactionManager.m; path = HandleAPI/TransactionManager.m; sourceTree = "<group>"; };
+		40DF88111D81A382003F98F2 /* ClipButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClipButton.h; path = Library/ClipButton.h; sourceTree = "<group>"; };
+		40DF88121D81A382003F98F2 /* ClipButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClipButton.m; path = Library/ClipButton.m; sourceTree = "<group>"; };
+		40DF88141D81B04D003F98F2 /* ic_increase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_increase.png; sourceTree = "<group>"; };
+		40DF88161D81B084003F98F2 /* ic_decrease.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_decrease.png; sourceTree = "<group>"; };
+		40DF88181D81B452003F98F2 /* ic_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_right.png; sourceTree = "<group>"; };
+		40DF881A1D81B91D003F98F2 /* ic_short_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_short_up.png; sourceTree = "<group>"; };
+		40DF881C1D81BA1F003F98F2 /* ic_short_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_short_down.png; sourceTree = "<group>"; };
 		40EA22E81D5E26FE00B08942 /* HeaderViewContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HeaderViewContent.xib; path = Library/ExpandableTableView/HeaderViewContent.xib; sourceTree = "<group>"; };
 		40EA22EA1D5E27C700B08942 /* HeaderViewContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeaderViewContent.h; path = Library/ExpandableTableView/HeaderViewContent.h; sourceTree = "<group>"; };
 		40EA22EB1D5E27C700B08942 /* HeaderViewContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeaderViewContent.m; path = Library/ExpandableTableView/HeaderViewContent.m; sourceTree = "<group>"; };
@@ -398,6 +411,8 @@
 			isa = PBXGroup;
 			children = (
 				40AB312C1D5DD80600341359 /* ExpandableTableView */,
+				40DF88111D81A382003F98F2 /* ClipButton.h */,
+				40DF88121D81A382003F98F2 /* ClipButton.m */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -550,6 +565,11 @@
 				EF7D77EB1D752EAE00A6C63F /* messages@2x.png */,
 				EF7D77EC1D752EAE00A6C63F /* news-feed.png */,
 				EF7D77ED1D752EAE00A6C63F /* settings@2x.png */,
+				40DF881C1D81BA1F003F98F2 /* ic_short_down.png */,
+				40DF881A1D81B91D003F98F2 /* ic_short_up.png */,
+				40DF88181D81B452003F98F2 /* ic_right.png */,
+				40DF88141D81B04D003F98F2 /* ic_increase.png */,
+				40DF88161D81B084003F98F2 /* ic_decrease.png */,
 				EF7E23EE1D674B4D00B613FD /* ic_up.png */,
 				EF7E23EC1D67429800B613FD /* ic_down.png */,
 				EFFD8D651D67092800994CC5 /* ic_category.png */,
@@ -973,10 +993,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40DF88191D81B452003F98F2 /* ic_right.png in Resources */,
 				40EDFA6D1D7D4403006EDD5D /* gym_bg.png in Resources */,
 				EF08096C1D5C8261007A8EAE /* LaunchScreen.storyboard in Resources */,
 				EFFD8D511D66BBD900994CC5 /* CustomerManagerStoryboard.storyboard in Resources */,
 				EFF19FA51D61ED8400EAD1D1 /* ic_ptmanager.png in Resources */,
+				40DF881D1D81BA1F003F98F2 /* ic_short_down.png in Resources */,
 				400C78DB1D67465F00CEE19B /* Calendar.storyboard in Resources */,
 				EFF19FA21D61ED8400EAD1D1 /* ic_customer.png in Resources */,
 				EFF19FA31D61ED8400EAD1D1 /* ic_logout.png in Resources */,
@@ -985,15 +1007,18 @@
 				EFFD8D661D67092800994CC5 /* ic_category.png in Resources */,
 				EF870A861D5DBA9F00118D7C /* ic_key.png in Resources */,
 				EF0D90891D7E80E500A2EE4A /* PTManager.storyboard in Resources */,
+				40DF881B1D81B91D003F98F2 /* ic_short_up.png in Resources */,
 				EF0809691D5C8261007A8EAE /* Assets.xcassets in Resources */,
 				EF7D77EF1D752EAE00A6C63F /* messages@2x.png in Resources */,
 				EF7D78011D75375F00A6C63F /* ic_transactions@2x.png in Resources */,
 				EFF19FA41D61ED8400EAD1D1 /* ic_myprofile.png in Resources */,
 				EF0809671D5C8261007A8EAE /* Main.storyboard in Resources */,
+				40DF88171D81B084003F98F2 /* ic_decrease.png in Resources */,
 				EF870A871D5DBA9F00118D7C /* ic_user.png in Resources */,
 				EFF28BB41D655C10000F9B27 /* ic_threedots.png in Resources */,
 				EF7D77FD1D752EBC00A6C63F /* settings.png in Resources */,
 				EF7D77F01D752EAE00A6C63F /* news-feed.png in Resources */,
+				40DF88151D81B04D003F98F2 /* ic_increase.png in Resources */,
 				EF7D77EE1D752EAE00A6C63F /* messages.png in Resources */,
 				EF7D77F11D752EAE00A6C63F /* settings@2x.png in Resources */,
 				40EA22E91D5E26FF00B08942 /* HeaderViewContent.xib in Resources */,
@@ -1108,6 +1133,7 @@
 				40B8A72C1D640C04007AB6BF /* PopoverQuatityViewController.m in Sources */,
 				EFFD8D641D66FFB900994CC5 /* CategoryTableViewCell.m in Sources */,
 				EF0809981D5C97B6007A8EAE /* TransactionsViewController.m in Sources */,
+				40DF88131D81A382003F98F2 /* ClipButton.m in Sources */,
 				408933241D646B370081511C /* Item.m in Sources */,
 				EFF28BD91D657397000F9B27 /* DateMeetingTableViewCell.m in Sources */,
 				4089331C1D646B1D0081511C /* Transaction.m in Sources */,

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Transaction.h"
 
-@interface AddTransactionViewController : UIViewController
+@interface AddTransactionViewController : BaseViewController
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contraintTableViewHeight;
 @property (weak, nonatomic) IBOutlet UILabel *lbCustomerName;
