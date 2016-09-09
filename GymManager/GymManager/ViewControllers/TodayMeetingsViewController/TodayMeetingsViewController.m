@@ -24,6 +24,7 @@
 {
     NSIndexPath *_indexPath;
     NSDate *_dateSelected;
+    BOOL _isRefresh;
 }
 #pragma mark - View's life
 - (void)viewDidLoad {
@@ -99,7 +100,10 @@
 }
 
 - (void)getAllMeetngsWithDate:(NSDate *)date {
-    [MBProgressHUD showHUDAddedTo:self.view animated:true];
+    if (!_isRefresh) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:true];
+        _isRefresh = false;
+    }
     MeetingManager *meetingManager = [[MeetingManager alloc] init];
     meetingManager.delegate = self;
     [meetingManager getAllMeetingsWithDate:date];
@@ -108,6 +112,7 @@
 #pragma mark - MeetingManagerDelegate
 - (void)didResponseWithMessage:(NSString *)message withError:(NSError *)error returnArray:(NSArray *)arrMeetings {
     [MBProgressHUD hideHUDForView:self.view animated:true];
+    [self.refreshReloadData endRefreshing];
     if (error) {
         [AlertManager showAlertWithTitle:kRegisterRequest message:message
             viewControler:self reloadAction:^{
@@ -121,6 +126,7 @@
 
 - (void)didResponseWithMessage:(NSString *)message withDate:(NSDate *)date withError:(NSError *)error returnArray:(NSArray *)arrMeetings {
     [MBProgressHUD hideHUDForView:self.view animated:true];
+    [self.refreshReloadData endRefreshing];
     if (error) {
         [AlertManager showAlertWithTitle:kRegisterRequest message:message
             viewControler:self reloadAction:^{
@@ -170,8 +176,8 @@
 }
 
 - (IBAction)reloadDataTableView:(id)sender {
+    _isRefresh = true;
     [self getAllMeetngsWithDate:_dateSelected];
-    [self.refreshReloadData endRefreshing];
 }
 
 #pragma mark - Show calendar

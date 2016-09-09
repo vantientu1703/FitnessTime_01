@@ -11,22 +11,24 @@
 CGFloat const kCornerRadius = 5.0f;
 
 @implementation TodayMeetingTableViewCell
-
+{
+    NSInteger _phoneNumber;
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.viewBackground.layer.cornerRadius = kCornerRadius;
 }
 
 - (void)cellWithMeeting:(Meeting *)meeting {
-    self.labelFromDateMothYear.text = [[DateFormatter sharedInstance]
-        dateWithDateMonthYearFormatterFromString:meeting.fromDate];
+    _phoneNumber = [meeting.trainer.telNumber integerValue];
     self.labelFromHour.text = [[DateFormatter sharedInstance] stringHourDayMonthYearFromDateString:meeting.fromDate];
-    self.labelToDateMothYear.text = [[DateFormatter sharedInstance]
-        dateWithDateMonthYearFormatterFromString:meeting.toDate];
     self.labelToHour.text = [[DateFormatter sharedInstance] stringHourDayMonthYearFromDateString:meeting.toDate];
     self.labelNameTrainee.text = meeting.customer.fullName;
     self.labelNameTrainner.text = meeting.trainer.fullName;
-    self.labelPhoneNumber.text = meeting.trainer.telNumber;
+}
+
+- (IBAction)callPhonePress:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"%ld", _phoneNumber]]];
 }
 
 @end

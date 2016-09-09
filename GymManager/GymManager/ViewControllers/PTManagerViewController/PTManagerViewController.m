@@ -24,6 +24,7 @@
 {
     NSIndexPath *_indexPath;
     BOOL _modifier;
+    BOOL _isRefresh;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -52,7 +53,10 @@
 }
 
 - (void)getAllTrainers {
-    [MBProgressHUD showHUDAddedTo:self.view animated:true];
+    if (!_isRefresh) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:true];
+        _isRefresh = false;
+    }
     TrainerManager *trainerManager = [[TrainerManager alloc] init];
     trainerManager.delegate = self;
     [trainerManager getAllTrainers];
@@ -68,8 +72,8 @@
 }
 
 - (IBAction)reloadDataCollectionViews:(id)sender {
+    _isRefresh = true;
     [self getAllTrainers];
-    [self.refreshReloadData endRefreshing];
 }
 
 #pragma mark - Add new trainer
@@ -84,6 +88,7 @@
 #pragma mark - TrainerManagerDelegate
 - (void)didResponseWithMessage:(NSString *)message withError:(NSError *)error returnArray:(NSArray *)arrTrainer {
     [MBProgressHUD hideHUDForView:self.view animated:true];
+    [self.refreshReloadData endRefreshing];
     if (error) {
         [AlertManager showAlertWithTitle:kReminderTitle message:message viewControler:self reloadAction:^{
             [self getAllTrainers];

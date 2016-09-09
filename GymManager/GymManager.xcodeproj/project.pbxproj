@@ -89,6 +89,7 @@
 		EF870A871D5DBA9F00118D7C /* ic_user.png in Resources */ = {isa = PBXBuildFile; fileRef = EF870A851D5DBA9F00118D7C /* ic_user.png */; };
 		EF870A8B1D5DC69400118D7C /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF870A8A1D5DC69400118D7C /* RegisterViewController.m */; };
 		EF870A971D5DFEFE00118D7C /* PTMeetingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF870A961D5DFEFE00118D7C /* PTMeetingCollectionViewCell.m */; };
+		EFEBAC2F1D829211005C0AEE /* ic_call.png in Resources */ = {isa = PBXBuildFile; fileRef = EFEBAC2E1D829211005C0AEE /* ic_call.png */; settings = {ASSET_TAGS = (); }; };
 		EFF19FA21D61ED8400EAD1D1 /* ic_customer.png in Resources */ = {isa = PBXBuildFile; fileRef = EFF19F9E1D61ED8400EAD1D1 /* ic_customer.png */; };
 		EFF19FA31D61ED8400EAD1D1 /* ic_logout.png in Resources */ = {isa = PBXBuildFile; fileRef = EFF19F9F1D61ED8400EAD1D1 /* ic_logout.png */; };
 		EFF19FA41D61ED8400EAD1D1 /* ic_myprofile.png in Resources */ = {isa = PBXBuildFile; fileRef = EFF19FA01D61ED8400EAD1D1 /* ic_myprofile.png */; };
@@ -255,6 +256,7 @@
 		EF870A8A1D5DC69400118D7C /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterViewController.m; path = ViewControllers/RegisterViewController/RegisterViewController.m; sourceTree = "<group>"; };
 		EF870A951D5DFEFE00118D7C /* PTMeetingCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTMeetingCollectionViewCell.h; path = Cell/PTMeetingCollectionViewCell/PTMeetingCollectionViewCell.h; sourceTree = "<group>"; };
 		EF870A961D5DFEFE00118D7C /* PTMeetingCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PTMeetingCollectionViewCell.m; path = Cell/PTMeetingCollectionViewCell/PTMeetingCollectionViewCell.m; sourceTree = "<group>"; };
+		EFEBAC2E1D829211005C0AEE /* ic_call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_call.png; path = Resources/ic_call.png; sourceTree = "<group>"; };
 		EFF19F9E1D61ED8400EAD1D1 /* ic_customer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_customer.png; path = Resources/ic_customer.png; sourceTree = "<group>"; };
 		EFF19F9F1D61ED8400EAD1D1 /* ic_logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_logout.png; path = Resources/ic_logout.png; sourceTree = "<group>"; };
 		EFF19FA01D61ED8400EAD1D1 /* ic_myprofile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_myprofile.png; path = Resources/ic_myprofile.png; sourceTree = "<group>"; };
@@ -556,6 +558,7 @@
 		EF0809781D5C8743007A8EAE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EFEBAC2E1D829211005C0AEE /* ic_call.png */,
 				4022D4BE1D7D6CEB00EEF21A /* green_bg.jpg */,
 				40EDFA6E1D7D48DB006EDD5D /* Plus-96.png */,
 				40EDFA6B1D7D4403006EDD5D /* gym_bg.png */,
@@ -1021,6 +1024,7 @@
 				EFF19FA41D61ED8400EAD1D1 /* ic_myprofile.png in Resources */,
 				EF0809671D5C8261007A8EAE /* Main.storyboard in Resources */,
 				40DF88171D81B084003F98F2 /* ic_decrease.png in Resources */,
+				EFEBAC2F1D829211005C0AEE /* ic_call.png in Resources */,
 				EF870A871D5DBA9F00118D7C /* ic_user.png in Resources */,
 				EFF28BB41D655C10000F9B27 /* ic_threedots.png in Resources */,
 				EF7D77FD1D752EBC00A6C63F /* settings.png in Resources */,
