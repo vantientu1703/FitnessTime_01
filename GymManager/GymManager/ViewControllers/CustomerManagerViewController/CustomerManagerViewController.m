@@ -13,8 +13,6 @@
 
 NSString *const kCustomerManagerCollectionViewCellIdentifier = @"CustomerManagerCollectionViewCell";
 CGFloat const kCornerRadiusAddNewCustomer = 20.0f;
-//TODO
-NSString *const kNameCustomer = @"Ngo Van Van Duong";
 
 @interface CustomerManagerViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, AddNewCustomerViewControllerDelegate, CustomerManagerDelegate, InfoCustomerManagerViewControllerDelegate>
 
@@ -28,6 +26,7 @@ NSString *const kNameCustomer = @"Ngo Van Van Duong";
 @implementation CustomerManagerViewController
 {
     NSIndexPath *_indexPath;
+    BOOL _isRefresh;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -55,7 +54,10 @@ NSString *const kNameCustomer = @"Ngo Van Van Duong";
 }
 
 - (void)getAllCustomers {
-    [MBProgressHUD showHUDAddedTo:self.view animated:true];
+    if (!_isRefresh) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:true];
+        _isRefresh = false;
+    }
     CustomerManager *customerManager = [[CustomerManager alloc] init];
     customerManager.delegate = self;
     [customerManager getAllCustomers];
@@ -63,13 +65,13 @@ NSString *const kNameCustomer = @"Ngo Van Van Duong";
 
 #pragma mark - CustomerManagerDelegate 
 - (void)didResponseWithMessage:(NSString *)message withError:(NSError *)error returnArray:(NSArray *)arrCustomers {
+    [self.refreshReloadData endRefreshing];
+    [MBProgressHUD hideHUDForView:self.view animated:true];
     if (error) {
-        [MBProgressHUD hideHUDForView:self.view animated:true];
         [AlertManager showAlertWithTitle:kRegisterRequest message:message viewControler:self reloadAction:^{
             [self getAllCustomers];
         }];
     } else {
-        [MBProgressHUD hideHUDForView:self.view animated:true];
         self.arrCustomers = arrCustomers.mutableCopy;
         [self.collectionView reloadData];
     }
@@ -86,8 +88,8 @@ NSString *const kNameCustomer = @"Ngo Van Van Duong";
 }
 
 - (IBAction)reloadDataCollectionViews:(id)sender {
+    _isRefresh = true;
     [self getAllCustomers];
-    [self.refreshReloadData endRefreshing];
 }
 
 #pragma mark - UICollectionViewDataSources

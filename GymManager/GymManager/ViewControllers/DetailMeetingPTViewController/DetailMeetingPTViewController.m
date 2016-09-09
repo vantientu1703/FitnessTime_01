@@ -31,6 +31,7 @@ NSString *const kFilterTitle = @"Filter";
     NSIndexPath *_indexPath;
     NSString *_filter;
     NSDate *_dateSelected;
+    BOOL _isRefresh;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -136,7 +137,10 @@ NSString *const kFilterTitle = @"Filter";
 }
 
 - (void)getAllMeetingsOfTrainer {
-    [MBProgressHUD showHUDAddedTo:self.view animated:true];
+    if (!_isRefresh) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:true];
+        _isRefresh = false;
+    }
     MeetingManager *meetingManager = [[MeetingManager alloc] init];
     meetingManager.delegate = self;
     [meetingManager getMeetingsWithTrainer:self.trainer];
@@ -144,6 +148,7 @@ NSString *const kFilterTitle = @"Filter";
 
 #pragma mark - MeetingManagerDelegate
 - (void)didResponseWithMessage:(NSString *)message withError:(NSError *)error returnArray:(NSArray *)arrMeetings {
+    [self.refreshReloadData endRefreshing];
     [MBProgressHUD hideHUDForView:self.view animated:true];
     if (error) {
         [AlertManager showAlertWithTitle:kRegisterRequest message:message
@@ -186,11 +191,11 @@ NSString *const kFilterTitle = @"Filter";
 }
 
 - (IBAction)reloadDataTableView:(id)sender {
+    _isRefresh = true;
     [self getAllMeetingsOfTrainer];
     if ([_filter isEqualToString:kFilterTitle]) {
         [self filterMeetingsWithDate:_dateSelected];
     }
-    [self.refreshReloadData endRefreshing];
 }
 
 - (void)showAlertFilter {

@@ -33,6 +33,7 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
 @implementation PTMeetingViewController
 {
     NSIndexPath *_indexPath;
+    BOOL _isRefresh;
 }
 #pragma mark - View's life
 - (void)viewDidLoad {
@@ -79,7 +80,10 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
 }
 
 - (void)getAllTrainers {
-    [MBProgressHUD showHUDAddedTo:self.view animated:true];
+    if (!_isRefresh) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:true];
+        _isRefresh = false;
+    }
     TrainerManager *trainerManager = [[TrainerManager alloc] init];
     trainerManager.delegate = self;
     [trainerManager getAllTrainers];
@@ -100,13 +104,14 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
 
 #pragma mark - TrainerManagerDelegate
 - (void)didResponseWithMessage:(NSString *)message withError:(NSError *)error returnArray:(NSArray *)arrTrainer {
+    [self.refreshReloadData endRefreshing];
+    [MBProgressHUD hideHUDForView:self.view animated:true];
     if (error) {
         [AlertManager showAlertWithTitle:kReminderTitle message:message viewControler:self reloadAction:^{
             [self getAllTrainers];
         }];
     } else {
         if (arrTrainer) {
-            [MBProgressHUD hideHUDForView:self.view animated:true];
             self.arrTrainers = arrTrainer.mutableCopy;
             [self.collectionView reloadData];
         }
@@ -120,8 +125,8 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
 }
 
 - (IBAction)reloadDataCollectionViews:(id)sender {
+    _isRefresh = true;
     [self getAllTrainers];
-    [self.refreshReloadData endRefreshing];
 }
 
 #pragma mark - UICollectionViewDataSources
