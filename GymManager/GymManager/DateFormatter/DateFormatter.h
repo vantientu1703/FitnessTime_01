@@ -16,7 +16,8 @@ typedef NS_ENUM(NSInteger, DateFormatterType) {
     DateFormatterTypeYear,
     DateFormatterTypeMonthYear,
     DateFormatterTypeFullText,
-    DateFormatterTypeFullTextWithMonth
+    DateFormatterTypeFullTextWithMonth,
+    DateFormatterTypeCalendarToday
 };
 
 @interface DateFormatter : NSObject

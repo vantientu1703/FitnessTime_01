@@ -33,6 +33,7 @@ NSInteger const kYearPickerRange = 20;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"Calendar";
+    self.navigationItem.backBarButtonItem.title = @"";
     self.edgesForExtendedLayout = UIRectEdgeNone;
     //Setup Day
     self.formatter = [DateFormatter sharedInstance];
@@ -105,7 +106,7 @@ NSInteger const kYearPickerRange = 20;
 }
 
 - (void)setTodayLabel {
-    self.lbDateSelected.text =[self.formatter dateFormatterDateMonthYear:[NSDate date]];
+    self.lbDateSelected.text = [self.formatter stringFromDate:[NSDate date] withFormat:DateFormatterTypeCalendarToday];
 }
 
 - (void)didSelectDaySegment {
