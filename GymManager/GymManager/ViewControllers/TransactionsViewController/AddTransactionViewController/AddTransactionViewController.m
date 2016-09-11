@@ -16,6 +16,9 @@
 #import "DateFormatter.h"
 
 NSString *const kCategoryListSegue = @"CategoryListSegue";
+NSString *const kMessageMissingTitle = @"Please try again";
+NSString *const kMessageMissingCustomer= @"Customer is not selected";
+NSString *const kMessageMissingItems = @"Items list is empty";
 
 @interface AddTransactionViewController () <UITableViewDelegate, UITableViewDataSource, AddTransactionManagerDelegate, CustomerManagerViewControllerDelegate>
 
@@ -164,8 +167,10 @@ NSString *const kCategoryListSegue = @"CategoryListSegue";
         } else {
             [self.manager createTransaction:[self genarateTransaction] byUser:user];
         }
-    } else {
-        [self.manager showAlertByMessage:@"Please try again" title:@"Some informations are missing"];
+    } else if (!self.arrCategory.count) {
+        [self.manager showAlertByMessage:kMessageMissingTitle title:kMessageMissingItems];
+    } else if (!self.customer) {
+        [self.manager showAlertByMessage:kMessageMissingTitle title:kMessageMissingCustomer];
     }
 }
 
@@ -220,6 +225,7 @@ NSString *const kCategoryListSegue = @"CategoryListSegue";
     if ([segue.identifier isEqualToString:kCategoryListSegue]) {
         ListCategoryViewController *listVC = ((UINavigationController*)[segue
             destinationViewController]).viewControllers.firstObject;
+        listVC.arrCategoryPicked = self.arrCategory;
         [listVC didAddItemWithCompletionBlock:^(Item *item) {
             [self.arrCategory addObject:item];
             [self reloadTableView];

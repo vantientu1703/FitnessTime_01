@@ -46,7 +46,7 @@ NSString *const kShowEditSegue = @"ShowEditSegue";
     self.manager = [[CategoryManager alloc] init];
     self.dataStore = [DataStore sharedDataStore];
     self.manager.delegate = self;
-    [self reloadData];
+    [self initData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,14 +54,19 @@ NSString *const kShowEditSegue = @"ShowEditSegue";
     // Dispose of any resources that can be recreated.
 }
 
-- (void)reloadData {
-    if (![self.dataStore getItemsList].count) {
+- (void)initData {
+    if (![self.dataStore getItemsListWithSelectedItemsList:nil].count) {
         [self.refresh beginRefreshing];
         [self.manager getAllItemsByUser:[self.dataStore getUserManage]];
     } else {
-        self.arrCategory = [self.dataStore getItemsList].mutableCopy;
+        self.arrCategory = [self.dataStore getItemsListWithSelectedItemsList:self.arrCategoryPicked].mutableCopy;
         [self.tableView reloadData];
     }
+}
+
+- (void)reloadData {
+    [self.refresh beginRefreshing];
+    [self.manager getAllItemsByUser:[self.dataStore getUserManage]];
 }
 
 #pragma mark - TableView implementation
@@ -142,7 +147,18 @@ NSString *const kShowEditSegue = @"ShowEditSegue";
         [self.manager showAlertByMessage:message title:@"Error"];
     } else {
         [self.arrCategory removeAllObjects];
-        self.arrCategory = items.mutableCopy;
+        for (Item *item in items) {
+            BOOL contain = NO;
+            for (Item *curItem in self.arrCategoryPicked) {
+                if ([curItem.id isEqualToString:item.id]) {
+                    contain = YES;
+                    break;
+                }
+            }
+            if (!contain) {
+                [self.arrCategory addObject:item];
+            }
+        }
         [self.tableView reloadData];
         [self.dataStore setItemsList:items];
     }
@@ -177,7 +193,7 @@ NSString *const kShowEditSegue = @"ShowEditSegue";
         [self.manager showAlertByMessage:message title:@"Error"];
     } else {
         [self.arrCategory removeObjectAtIndex:indexPath.row];
-        [self.dataStore setItemsList:self.arrCategory];
+        [self.dataStore deleteItem:self.arrCategory[indexPath.row]];
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
     }
     [MBProgressHUD hideHUDForView:self.view animated:YES];

@@ -8,7 +8,6 @@
 
 #import "ExpandableTableView.h"
 #import "DateFormatter.h"
-#import "HeaderViewContent.h"
 
 @interface ExpandableTableView () <HeaderViewDelegate>
 
@@ -108,7 +107,7 @@
         }
         [self.expandableDelegate didDeleteSection:headerView.section];
     } else if (index == 1) {
-        [self.expandableDelegate didEditSection:headerView.section];
+        [self.expandableDelegate didEditSection:headerView.section withHeaderView:headerView];
     }
 }
 

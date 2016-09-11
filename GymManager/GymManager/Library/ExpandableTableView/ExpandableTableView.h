@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "Transaction.h"
+#import "HeaderViewContent.h"
 
 @protocol ExpandableTableViewDelegate <NSObject>
 
 - (void)didEndAnimationWithNumberOffCellChange:(NSInteger)numberOfCell;
-- (void)didEditSection:(NSUInteger)section;
+- (void)didEditSection:(NSUInteger)section withHeaderView:(HeaderViewContent *)headerView;
 - (void)didDeleteSection:(NSUInteger)section;
 
 @end

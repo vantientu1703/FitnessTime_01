@@ -10,6 +10,7 @@
 #import "UICKeyChainStore.h"
 #import "User.h"
 #import "UserManager.h"
+#import "Item.h"
 
 @interface DataStore : NSObject
 
@@ -20,6 +21,7 @@
 - (void)clearUser;
 - (void)updateProfile:(User *)user complete:(void(^)(BOOL success))complete;
 - (void)setItemsList:(NSArray *)items;
-- (NSArray *)getItemsList;
+- (NSArray *)getItemsListWithSelectedItemsList:(NSArray *)selectedItems;
+- (void)deleteItem:(Item *)item;
 
 @end
