@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSMutableArray *arrMeetings;
 @property (weak, nonatomic) IBOutlet UILabel *labelTimes;
 @property (strong, nonatomic) UIRefreshControl *refreshReloadData;
+@property (strong, nonatomic) UILabelNoData *labelNoData;
 
 @end
 
@@ -25,6 +26,7 @@
     NSIndexPath *_indexPath;
     NSDate *_dateSelected;
     BOOL _isRefresh;
+    Meeting *_meetingInstance;
 }
 #pragma mark - View's life
 - (void)viewDidLoad {
@@ -50,6 +52,20 @@
         name:kDeleteMeetingSuccess object:nil];
 }
 
+- (void)createLabelNoData {
+    if (!self.arrMeetings.count) {
+        if (!self.labelNoData) {
+            self.labelNoData = [UILabelNoData lableNoData];
+            [self.view addSubview:self.labelNoData];
+        }
+    } else {
+        if (self.labelNoData) {
+            [self.labelNoData removeFromSuperview];
+            self.labelNoData = nil;
+        }
+    }
+}
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -61,10 +77,11 @@
         for (Meeting *meetingItem in self.arrMeetings) {
             if (meeting.id == meetingItem.id) {
                 [self.arrMeetings removeObject:meetingItem];
-                return;
+                break;
             }
         }
         [self.tableView reloadData];
+        [self createLabelNoData];
     }
 }
 
@@ -76,6 +93,7 @@
             Meeting *meetingItem = (Meeting *)obj;
             if (meeting.id == meetingItem.id) {
                 [self.arrMeetings replaceObjectAtIndex:idx withObject:meeting];
+                *stop = YES;
             }
         }];
         [self.tableView reloadData];
@@ -109,7 +127,7 @@
             if (trainer.id == trainerInstance.id) {
                 meeting.trainer = trainer;
                 [self.arrMeetings replaceObjectAtIndex:idx withObject:meeting];
-                return;
+                *stop = YES;
             }
         }];
         [self.tableView reloadData];
@@ -131,6 +149,7 @@
         }
         [self.tableView reloadData];
     }
+    [self createLabelNoData];
 }
 
 - (void)getAllMeetngsWithDate:(NSDate *)date {
@@ -156,6 +175,7 @@
         self.arrMeetings = arrMeetings.mutableCopy;
         [self.tableView reloadData];
     }
+    [self createLabelNoData];
 }
 
 - (void)didResponseWithMessage:(NSString *)message withDate:(NSDate *)date withError:(NSError *)error returnArray:(NSArray *)arrMeetings {
@@ -170,18 +190,20 @@
         self.arrMeetings = arrMeetings.mutableCopy;
         [self.tableView reloadData];
     }
+    [self createLabelNoData];
 }
 
 - (void)didDeleteMeetingSuccess:(BOOL)success error:(NSError *)error {
     [MBProgressHUD hideHUDForView:self.view animated:true];
     if (success) {
-        [self.arrMeetings removeObjectAtIndex:_indexPath.row];
-        [self.tableView deleteRowsAtIndexPaths:@[_indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        NSDictionary *userInfo = @{@"meeting": _meetingInstance};
+        [[NSNotificationCenter defaultCenter] postNotificationName:kDeleteMeetingSuccess object:nil userInfo:userInfo];
     } else {
         [AlertManager showAlertWithTitle:kReminderTitle message:kDeleteMeetingFail
             viewControler:self okAction:^{
         }];
     }
+    [self createLabelNoData];
 }
 
 - (void)setupView {
@@ -305,7 +327,8 @@
         [MBProgressHUD showHUDAddedTo:self.view animated:true];
         MeetingManager *meetingManager = [[MeetingManager alloc] init];
         meetingManager.delegate = self;
-        [meetingManager deleteMeeting:self.arrMeetings[indexPath.row]];
+        _meetingInstance = self.arrMeetings[indexPath.row];
+        [meetingManager deleteMeeting:_meetingInstance];
         _indexPath = indexPath;
     }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:kCancelActionTitle style:UIAlertActionStyleDefault

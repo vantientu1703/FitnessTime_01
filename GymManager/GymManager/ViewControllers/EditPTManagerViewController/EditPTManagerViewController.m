@@ -27,7 +27,7 @@ NSString *const kSelectAvatar = @"Select avatar,please";
 @property (weak, nonatomic) IBOutlet UIButton *buttonDateOfBirth;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldAddress;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldEmail;
-@property (weak, nonatomic) IBOutlet UITextField *textFiledIncomeShif;
+@property (weak, nonatomic) IBOutlet DecimalTextField *textFiledIncomeShif;
 @property (weak, nonatomic) IBOutlet UILabel *labelNotes;
 
 @end
@@ -127,7 +127,7 @@ NSString *const kSelectAvatar = @"Select avatar,please";
         trainer.birthday = _dateOfBirth;
         trainer.address = self.textFieldAddress.text;
         trainer.email = self.textFieldEmail.text;
-        trainer.meetingMoney = self.textFiledIncomeShif.text.floatValue;
+        trainer.meetingMoney = self.textFiledIncomeShif.value;
         TrainerManager *trainerManager = [[TrainerManager alloc] init];
         trainerManager.delegate = self;
         if ([self.statusEditString isEqualToString:kEditTrainerTitle]) {
