@@ -700,7 +700,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ONt-k5-0BV">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ONt-k5-0BV" customClass="DecimalTextField">
                                                 <rect key="frame" x="100" y="59" width="160" height="30"/>
                                                 <color key="textColor" red="0.057294889129999999" green="0.8350560897" blue="0.050325691460000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -789,7 +789,7 @@
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="lbName" destination="p8a-fN-9LA" id="kwM-YD-wT5"/>
-                        <outlet property="lbPrice" destination="ONt-k5-0BV" id="Biv-0G-3kU"/>
+                        <outlet property="lbPrice" destination="ONt-k5-0BV" id="MoE-0c-0mv"/>
                         <outlet property="viewBackGround" destination="nmM-pf-JmJ" id="XF7-Al-efp"/>
                     </connections>
                 </viewController>
