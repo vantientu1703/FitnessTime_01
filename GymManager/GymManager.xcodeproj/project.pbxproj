@@ -73,8 +73,9 @@
 		EF635C081D6DD46F00BEB9A1 /* ProfileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF635C071D6DD46E00BEB9A1 /* ProfileManager.m */; };
 		EF74B2F71D6EA1AA00D17C52 /* MeetingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF74B2F61D6EA1AA00D17C52 /* MeetingManager.m */; };
 		EF74B2FB1D6EA86B00D17C52 /* ParseJson.m in Sources */ = {isa = PBXBuildFile; fileRef = EF74B2FA1D6EA86B00D17C52 /* ParseJson.m */; };
-		EF75E0001D83121B00FD8238 /* ic_circle_red.png in Resources */ = {isa = PBXBuildFile; fileRef = EF75DFFE1D83121B00FD8238 /* ic_circle_red.png */; };
-		EF75E0011D83121B00FD8238 /* ic_cirlce_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = EF75DFFF1D83121B00FD8238 /* ic_cirlce_blue.png */; };
+		EF75E0001D83121B00FD8238 /* ic_circle_red.png in Resources */ = {isa = PBXBuildFile; fileRef = EF75DFFE1D83121B00FD8238 /* ic_circle_red.png */; settings = {ASSET_TAGS = (); }; };
+		EF75E0011D83121B00FD8238 /* ic_cirlce_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = EF75DFFF1D83121B00FD8238 /* ic_cirlce_blue.png */; settings = {ASSET_TAGS = (); }; };
+		EF7D000E1D8666A1001B6814 /* UILabelNoData.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7D000D1D8666A1001B6814 /* UILabelNoData.m */; settings = {ASSET_TAGS = (); }; };
 		EF7D77EE1D752EAE00A6C63F /* messages.png in Resources */ = {isa = PBXBuildFile; fileRef = EF7D77EA1D752EAE00A6C63F /* messages.png */; };
 		EF7D77EF1D752EAE00A6C63F /* messages@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF7D77EB1D752EAE00A6C63F /* messages@2x.png */; };
 		EF7D77F01D752EAE00A6C63F /* news-feed.png in Resources */ = {isa = PBXBuildFile; fileRef = EF7D77EC1D752EAE00A6C63F /* news-feed.png */; };
@@ -236,6 +237,8 @@
 		EF74B2FA1D6EA86B00D17C52 /* ParseJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParseJson.m; path = ParseJson/ParseJson.m; sourceTree = "<group>"; };
 		EF75DFFE1D83121B00FD8238 /* ic_circle_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_circle_red.png; path = Resources/ic_circle_red.png; sourceTree = "<group>"; };
 		EF75DFFF1D83121B00FD8238 /* ic_cirlce_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_cirlce_blue.png; path = Resources/ic_cirlce_blue.png; sourceTree = "<group>"; };
+		EF7D000C1D8666A1001B6814 /* UILabelNoData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UILabelNoData.h; path = GymManagerConstant/UILabelNoData.h; sourceTree = "<group>"; };
+		EF7D000D1D8666A1001B6814 /* UILabelNoData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UILabelNoData.m; path = GymManagerConstant/UILabelNoData.m; sourceTree = "<group>"; };
 		EF7D77EA1D752EAE00A6C63F /* messages.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = messages.png; path = Resources/messages.png; sourceTree = "<group>"; };
 		EF7D77EB1D752EAE00A6C63F /* messages@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "messages@2x.png"; path = "Resources/messages@2x.png"; sourceTree = "<group>"; };
 		EF7D77EC1D752EAE00A6C63F /* news-feed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "news-feed.png"; path = "Resources/news-feed.png"; sourceTree = "<group>"; };
@@ -761,6 +764,8 @@
 				EF870A741D5DA11200118D7C /* GymManagerConstant.m */,
 				EF635C001D6D79BC00BEB9A1 /* UIImageConstant.h */,
 				EF635C011D6D79BC00BEB9A1 /* UIImageConstant.m */,
+				EF7D000C1D8666A1001B6814 /* UILabelNoData.h */,
+				EF7D000D1D8666A1001B6814 /* UILabelNoData.m */,
 			);
 			name = GymManagerConstant;
 			sourceTree = "<group>";
@@ -1125,6 +1130,7 @@
 				408933171D646B050081511C /* Trainer.m in Sources */,
 				408933151D646B050081511C /* Customer.m in Sources */,
 				408933161D646B050081511C /* Person.m in Sources */,
+				EF7D000E1D8666A1001B6814 /* UILabelNoData.m in Sources */,
 				4003754A1D6C241F008ACB3A /* GymManager.xcdatamodeld in Sources */,
 				4017EDF61D6175A30033E0AE /* AddTransactionViewController.m in Sources */,
 				409C76DD1D86531400ECDDF2 /* DecimalTextField.m in Sources */,

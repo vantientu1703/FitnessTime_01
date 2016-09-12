@@ -22,6 +22,7 @@ NSString *const kSelectDateTitle = @"Select date";
 @property (weak, nonatomic) IBOutlet UILabel *labelTimes;
 @property (strong, nonatomic) NSMutableArray *arrMeetingFilters;
 @property (strong, nonatomic) UIRefreshControl *refreshReloadData;
+@property (strong, nonatomic) UILabelNoData *labelNoData;
 
 @end
 
@@ -45,10 +46,57 @@ NSString *const kSelectDateTitle = @"Select date";
         name:kUpdateCustomer object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateMeetingToTabMeeting:)
         name:kUpdateMeeting object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteMeetingToDayMeetings:) name:kDeleteMeetingSuccess object:nil
+     ];
+}
+
+- (void)createLabelNoData {
+    if (!self.arrMeetings.count) {
+        if (!self.labelNoData) {
+            self.labelNoData = [UILabelNoData lableNoData];
+            [self.view addSubview:self.labelNoData];
+        }
+    } else {
+        if ([_filter isEqualToString:kFilterTitle]) {
+            if (!self.arrMeetingFilters.count) {
+                if (!self.labelNoData) {
+                    self.labelNoData = [[UILabelNoData alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 150.0f, 100.0f)];
+                    self.labelNoData.center = CGPointMake(CGRectGetWidth([UIScreen mainScreen].bounds) / 2.0f,
+                                                          CGRectGetHeight([UIScreen mainScreen].bounds) / 2.0f - 50.0f);
+                    [self.view addSubview:self.labelNoData];
+                }
+            }
+        }
+        if (self.labelNoData) {
+            [self.labelNoData removeFromSuperview];
+            self.labelNoData = nil;
+        }
+    }
 }
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)deleteMeetingToDayMeetings:(NSNotification *)notification {
+    if (notification) {
+        NSDictionary *userInfo = notification.userInfo;
+        Meeting *meeting = userInfo[@"meeting"];
+        for (Meeting *meetingItem in self.arrMeetingFilters) {
+            if (meeting.id == meetingItem.id) {
+                [self.arrMeetingFilters removeObject:meetingItem];
+                break;
+            }
+        }
+        for (Meeting *meetingItem in self.arrMeetings) {
+            if (meetingItem.id == meeting.id) {
+                [self.arrMeetings removeObject:meetingItem];
+                break;
+            }
+        }
+        [self.tableView reloadData];
+        [self createLabelNoData];
+    }
 }
 
 - (void)updateMeetingToTabMeeting:(NSNotification *)notifcation {
@@ -105,13 +153,16 @@ NSString *const kSelectDateTitle = @"Select date";
         }
         NSString *fromDateString = [[DateFormatter sharedInstance]
             dateWithDateMonthYearFormatterFromString:meeting.fromDate];
-        NSString *dateSelectedString = [[DateFormatter sharedInstance] dateFormatterDateMonthYear:_dateSelected];
-        if ([fromDateString isEqualToString:dateSelectedString] && [_filter isEqualToString:kFilterTitle]) {
-            [self.arrMeetingFilters addObject:meeting];
+        if (self.trainer.id == meeting.trainer.id) {
+            NSString *dateSelectedString = [[DateFormatter sharedInstance] dateFormatterDateMonthYear:_dateSelected];
+            if ([fromDateString isEqualToString:dateSelectedString] && [_filter isEqualToString:kFilterTitle]) {
+                [self.arrMeetingFilters addObject:meeting];
+            }
+            [self.arrMeetings addObject:meeting];
         }
-        [self.arrMeetings addObject:meeting];
         [self.tableView reloadData];
     }
+    [self createLabelNoData];
 }
 
 - (void)infoTrainerChanged:(NSNotification *)notification {
@@ -174,6 +225,7 @@ NSString *const kSelectDateTitle = @"Select date";
         self.arrMeetings = arrMeetings.mutableCopy;
         [self.tableView reloadData];
     }
+    [self createLabelNoData];
 }
 
 - (void)didDeleteMeetingSuccess:(BOOL)success error:(NSError *)error {
@@ -181,8 +233,14 @@ NSString *const kSelectDateTitle = @"Select date";
     if (success) {
         if ([_filter isEqualToString:kFilterTitle]) {
             [self.arrMeetingFilters removeObjectAtIndex:_indexPath.row];
+        } else {
+            for (Meeting *meeting in self.arrMeetings) {
+                if (meeting.id == _meetingInstance.id) {
+                    [self.arrMeetings removeObject:meeting];
+                    break;
+                }
+            }
         }
-        [self.arrMeetings removeObject:_meetingInstance];
         [self.tableView deleteRowsAtIndexPaths:@[_indexPath] withRowAnimation:UITableViewRowAnimationFade];
         NSDictionary *userInfo = @{@"meeting": _meetingInstance};
         [[NSNotificationCenter defaultCenter] postNotificationName:kDeleteMeetingSuccess object:nil
@@ -192,13 +250,14 @@ NSString *const kSelectDateTitle = @"Select date";
             viewControler:self okAction:^{
         }];
     }
+    [self createLabelNoData];
 }
 
 - (void)setupView {
     _dateSelected = [NSDate date];
     self.labelTimes.text = kAllMeetingTitle;
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.title = kDetailMeetingsTrainerVCTitle;
+    self.title = [NSString stringWithFormat:@"%@'s", self.trainer.fullName];
     self.buttonAddNewMeeting.layer.cornerRadius = kCornerRadiusButton;
     UIBarButtonItem *calendarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:kIconCalendar]
         style:UIBarButtonItemStylePlain target:self action:@selector(showAlertFilter)];
@@ -264,14 +323,16 @@ NSString *const kSelectDateTitle = @"Select date";
         }
     }
     [self.tableView reloadData];
+    [self createLabelNoData];
 }
 
 #pragma mark - UITableViewDataSources
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if ([_filter isEqualToString:kFilterTitle]) {
         return self.arrMeetingFilters.count;
+    } else {
+        return self.arrMeetings.count;
     }
-    return self.arrMeetings.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

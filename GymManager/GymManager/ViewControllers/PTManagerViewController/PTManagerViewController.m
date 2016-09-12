@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) NSMutableArray *arrTrainers;
 @property (strong, nonatomic) UIRefreshControl *refreshReloadData;
+@property (strong, nonatomic) UILabelNoData *labelNoData;
 
 @end
 
@@ -35,6 +36,20 @@
         name:kAddNewTrainerTitle object:nil];
 }
 
+- (void)createLabelNoData {
+    if (!self.arrTrainers.count) {
+        if (!self.labelNoData) {
+            self.labelNoData = [UILabelNoData lableNoData];
+            [self.view addSubview:self.labelNoData];
+        }
+    } else {
+        if (self.labelNoData) {
+            [self.labelNoData removeFromSuperview];
+            self.labelNoData = nil;
+        }
+    }
+}
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -50,6 +65,7 @@
         [self.arrTrainers addObject:trainer];
         [self.collectionView reloadData];
     }
+    [self createLabelNoData];
 }
 
 - (void)getAllTrainers {
@@ -99,6 +115,7 @@
             [self.collectionView reloadData];
         }
     }
+    [self createLabelNoData];
 }
 
 #pragma mark - UICollectionViewDataSources
@@ -133,6 +150,7 @@
     }
     [self.arrTrainers addObject:trainer];
     [self.collectionView reloadData];
+    [self createLabelNoData];
 }
 
 #pragma mark - DetailPTManagerViewControlerDelegate

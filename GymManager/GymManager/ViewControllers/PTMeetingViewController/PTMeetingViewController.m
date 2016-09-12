@@ -27,6 +27,7 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
 @property (strong, nonatomic) UIRefreshControl *refreshLoadMoreData;
 @property (weak, nonatomic) IBOutlet UIButton *buttonAddNewMeeting;
 @property (strong, nonatomic) NSMutableArray *arrTrainers;
+@property (strong, nonatomic) UILabelNoData *labelNoData;
 
 @end
 
@@ -51,6 +52,20 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (void)createLabelNoData {
+    if (!self.arrTrainers.count) {
+        if (!self.labelNoData) {
+            self.labelNoData = [UILabelNoData lableNoData];
+            [self.view addSubview:self.labelNoData];
+        }
+    } else {
+        if (self.labelNoData) {
+            [self.labelNoData removeFromSuperview];
+            self.labelNoData = nil;
+        }
+    }
+}
+
 #pragma mark - NSNotificationCenter
 - (void)addNewTrainer:(NSNotification *)notification {
     if (!self.arrTrainers) {
@@ -62,6 +77,7 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
         [self.arrTrainers addObject:trainer];
         [self.collectionView reloadData];
     }
+    [self createLabelNoData];
 }
 
 - (void)updateTrainers:(NSNotification *)notification {
@@ -116,6 +132,7 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
             [self.collectionView reloadData];
         }
     }
+    [self createLabelNoData];
 }
 
 #pragma mark - Load data from server
@@ -201,6 +218,7 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
     }
     [self.arrTrainers addObject:trainer];
     [self.collectionView reloadData];
+    [self createLabelNoData];
 }
 
 @end

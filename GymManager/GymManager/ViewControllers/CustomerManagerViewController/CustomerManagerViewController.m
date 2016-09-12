@@ -20,6 +20,7 @@ CGFloat const kCornerRadiusAddNewCustomer = 20.0f;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) NSMutableArray *arrCustomers;
 @property (strong, nonatomic) UIRefreshControl *refreshReloadData;
+@property (strong, nonatomic) UILabelNoData *labelNoData;
 
 @end
 
@@ -37,6 +38,20 @@ CGFloat const kCornerRadiusAddNewCustomer = 20.0f;
         name:kAddNEwCustomerVCTitle object:nil];
 }
 
+- (void)createLabelNoData {
+    if (!self.arrCustomers.count) {
+        if (!self.labelNoData) {
+            self.labelNoData = [UILabelNoData lableNoData];
+            [self.view addSubview:self.labelNoData];
+        }
+    } else {
+        if (self.labelNoData) {
+            [self.labelNoData removeFromSuperview];
+            self.labelNoData = nil;
+        }
+    }
+}
+
 - (void)createNewCustomer:(NSNotification *)notification {
     if (notification) {
         NSDictionary *userInfo = notification.userInfo;
@@ -47,6 +62,7 @@ CGFloat const kCornerRadiusAddNewCustomer = 20.0f;
         [self.arrCustomers addObject:customer];
         [self.collectionView reloadData];
     }
+    [self createLabelNoData];
 }
 
 - (void)dealloc {
@@ -75,6 +91,7 @@ CGFloat const kCornerRadiusAddNewCustomer = 20.0f;
         self.arrCustomers = arrCustomers.mutableCopy;
         [self.collectionView reloadData];
     }
+    [self createLabelNoData];
 }
 
 #pragma mark - Set up view
@@ -153,6 +170,7 @@ CGFloat const kCornerRadiusAddNewCustomer = 20.0f;
     }
     [self.arrCustomers addObject:customer];
     [self.collectionView reloadData];
+    [self createLabelNoData];
 }
 
 @end

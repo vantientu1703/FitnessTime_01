@@ -47,4 +47,5 @@
 #import "TrainerManager.h"
 #import "NumberFormatterDecimal.h"
 #import "DecimalTextField.h"
+#import "UILabelNoData.h"
 #endif /* GymManager_PrefixHeader_pch */
