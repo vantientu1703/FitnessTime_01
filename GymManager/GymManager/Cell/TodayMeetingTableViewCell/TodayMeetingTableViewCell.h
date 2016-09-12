@@ -16,5 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelNameTrainner;
 @property (weak, nonatomic) IBOutlet UILabel *labelNameTrainee;
 - (void)cellWithMeeting:(Meeting *)meeting;
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewStatus;
 
 @end

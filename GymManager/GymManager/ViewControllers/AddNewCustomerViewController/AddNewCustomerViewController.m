@@ -96,7 +96,11 @@ NSString *const kSelectImages = @"Select avatar,please";
     self.textFieldEmail.delegate = self;
     self.textFieldNameCustomer.delegate = self;
     self.textFieldPhoneNumber.delegate = self;
-    self.title = kAddNEwCustomerVCTitle;
+    if ([self.messageEditCustomer isEqualToString:kMessageEditCustomer]) {
+        self.title = kMessageEditCustomer;
+    } else {
+        self.title = kAddNEwCustomerVCTitle;
+    }
     self.viewBackgroundCustomer.layer.cornerRadius = kCornerRadiusViewBackground;
     self.imageViewCustomer.layer.cornerRadius = kCornerRadiusImageView;
     self.imageViewCustomer.layer.masksToBounds = YES;

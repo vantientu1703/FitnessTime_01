@@ -44,10 +44,42 @@
         name:kUpdateTrainerTitle object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(infoCustomerChanged:)
         name:kUpdateCustomer object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateMeetingToTabMeeting:)
+        name:kUpdateMeeting object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteMeetingToTabMeeting:)
+        name:kDeleteMeetingSuccess object:nil];
 }
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)deleteMeetingToTabMeeting:(NSNotification *)notification {
+    if (notification) {
+        NSDictionary *userInfo = notification.userInfo;
+        Meeting *meeting = userInfo[@"meeting"];
+        for (Meeting *meetingItem in self.arrMeetings) {
+            if (meeting.id == meetingItem.id) {
+                [self.arrMeetings removeObject:meetingItem];
+                return;
+            }
+        }
+        [self.tableView reloadData];
+    }
+}
+
+- (void)updateMeetingToTabMeeting:(NSNotification *)notifcation {
+    if (notifcation) {
+        NSDictionary *userInfo = notifcation.userInfo;
+        Meeting *meeting = userInfo[@"meeting"];
+        [self.arrMeetings enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            Meeting *meetingItem = (Meeting *)obj;
+            if (meeting.id == meetingItem.id) {
+                [self.arrMeetings replaceObjectAtIndex:idx withObject:meeting];
+            }
+        }];
+        [self.tableView reloadData];
+    }
 }
 
 - (void)infoCustomerChanged:(NSNotification *)notification {
@@ -91,11 +123,13 @@
         if (!self.arrMeetings) {
             self.arrMeetings = [NSMutableArray array];
         }
-        if ([[[DateFormatter sharedInstance] dateWithDateMonthYearFormatterFromString:meeting.fromDate] isEqualToString:
-        [[DateFormatter sharedInstance] dateFormatterDateMonthYear:[NSDate date]]]) {
-        [self.arrMeetings addObject:meeting];
+        NSString *fromDateStirng = [[DateFormatter sharedInstance]
+            dateWithDateMonthYearFormatterFromString:meeting.fromDate];
+        NSString *dateSelectedString = [[DateFormatter sharedInstance] dateFormatterDateMonthYear:_dateSelected];
+        if ([fromDateStirng isEqualToString:dateSelectedString]) {
+            [self.arrMeetings addObject:meeting];
+        }
         [self.tableView reloadData];
-        }   
     }
 }
 
@@ -227,7 +261,12 @@
         title:kDeleteActionTitle handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
         [self showAlertControllerWithIndexPath:indexPath];
     }];
-    return @[deleteAction, editAction];
+    BOOL check = [self checkMeeting:self.arrMeetings[indexPath.row]];
+    if (check) {
+        return @[deleteAction, editAction];
+    } else {
+        return @[deleteAction];
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -236,6 +275,17 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     //TODO
+}
+
+- (BOOL)checkMeeting:(Meeting *)meeting {
+    NSDate *fromDate = [[DateFormatter sharedInstance] dateWithMonthYearFormatterFromStringUTC:meeting.fromDate];
+    double fromDateTime = [fromDate timeIntervalSince1970];
+    double currentDateTime = [[NSDate date] timeIntervalSince1970];
+    if (currentDateTime < fromDateTime) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 #pragma mark - Button add new meeting
