@@ -12,7 +12,7 @@
 @interface PopoverEditItemViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *lbName;
-@property (weak, nonatomic) IBOutlet UITextField *lbPrice;
+@property (weak, nonatomic) IBOutlet DecimalTextField *lbPrice;
 @property (strong, nonatomic) Item *item;
 
 - (void)didEditItemWithCompletionBlock:(void(^)(Item *item))block;

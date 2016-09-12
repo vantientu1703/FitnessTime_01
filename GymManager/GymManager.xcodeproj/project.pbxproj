@@ -30,6 +30,7 @@
 		4089331C1D646B1D0081511C /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4089331B1D646B1D0081511C /* Transaction.m */; };
 		408933211D646B300081511C /* Meeting.m in Sources */ = {isa = PBXBuildFile; fileRef = 408933201D646B300081511C /* Meeting.m */; };
 		408933241D646B370081511C /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 408933231D646B370081511C /* Item.m */; };
+		409C76DD1D86531400ECDDF2 /* DecimalTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 409C76DC1D86531400ECDDF2 /* DecimalTextField.m */; };
 		40AB31241D5DB47400341359 /* Transaction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40AB31221D5DB47400341359 /* Transaction.storyboard */; };
 		40AB31311D5DD81000341359 /* ExpandableTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AB312E1D5DD81000341359 /* ExpandableTableView.m */; };
 		40B8A72B1D640C04007AB6BF /* ListCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B8A7281D640C04007AB6BF /* ListCategoryViewController.m */; };
@@ -57,12 +58,12 @@
 		EF0809931D5C954A007A8EAE /* PTMeetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0809921D5C954A007A8EAE /* PTMeetingViewController.m */; };
 		EF0809981D5C97B6007A8EAE /* TransactionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0809971D5C97B6007A8EAE /* TransactionsViewController.m */; };
 		EF08099B1D5C97C9007A8EAE /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF08099A1D5C97C9007A8EAE /* MenuViewController.m */; };
-		EF0D90891D7E80E500A2EE4A /* PTManager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF0D90871D7E80E500A2EE4A /* PTManager.storyboard */; settings = {ASSET_TAGS = (); }; };
-		EF0D908D1D7E814000A2EE4A /* PTManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0D908C1D7E814000A2EE4A /* PTManagerViewController.m */; settings = {ASSET_TAGS = (); }; };
-		EF0D90901D7EB29700A2EE4A /* DetailMeetingPT.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF0D908E1D7EB29700A2EE4A /* DetailMeetingPT.storyboard */; settings = {ASSET_TAGS = (); }; };
-		EF0D90941D7EB34900A2EE4A /* DetailMeetingPTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0D90931D7EB34900A2EE4A /* DetailMeetingPTViewController.m */; settings = {ASSET_TAGS = (); }; };
-		EF0D909A1D81216C00A2EE4A /* Income.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF0D90981D81216A00A2EE4A /* Income.storyboard */; settings = {ASSET_TAGS = (); }; };
-		EF0D909E1D8124CB00A2EE4A /* ShowPersonalIncomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0D909D1D8124CB00A2EE4A /* ShowPersonalIncomeViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EF0D90891D7E80E500A2EE4A /* PTManager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF0D90871D7E80E500A2EE4A /* PTManager.storyboard */; };
+		EF0D908D1D7E814000A2EE4A /* PTManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0D908C1D7E814000A2EE4A /* PTManagerViewController.m */; };
+		EF0D90901D7EB29700A2EE4A /* DetailMeetingPT.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF0D908E1D7EB29700A2EE4A /* DetailMeetingPT.storyboard */; };
+		EF0D90941D7EB34900A2EE4A /* DetailMeetingPTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0D90931D7EB34900A2EE4A /* DetailMeetingPTViewController.m */; };
+		EF0D909A1D81216C00A2EE4A /* Income.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF0D90981D81216A00A2EE4A /* Income.storyboard */; };
+		EF0D909E1D8124CB00A2EE4A /* ShowPersonalIncomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0D909D1D8124CB00A2EE4A /* ShowPersonalIncomeViewController.m */; };
 		EF0D90A01D815F4F00A2EE4A /* AddNewCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7E23E61D672A3600B613FD /* AddNewCategoryViewController.m */; };
 		EF0D90A11D815FB900A2EE4A /* EditNumberOfCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7E23EA1D6740A400B613FD /* EditNumberOfCategoryViewController.m */; };
 		EF5FA7AE1D6AE22200E4B95F /* DataValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5FA7AD1D6AE22200E4B95F /* DataValidation.m */; };
@@ -72,8 +73,8 @@
 		EF635C081D6DD46F00BEB9A1 /* ProfileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF635C071D6DD46E00BEB9A1 /* ProfileManager.m */; };
 		EF74B2F71D6EA1AA00D17C52 /* MeetingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF74B2F61D6EA1AA00D17C52 /* MeetingManager.m */; };
 		EF74B2FB1D6EA86B00D17C52 /* ParseJson.m in Sources */ = {isa = PBXBuildFile; fileRef = EF74B2FA1D6EA86B00D17C52 /* ParseJson.m */; };
-		EF75E0001D83121B00FD8238 /* ic_circle_red.png in Resources */ = {isa = PBXBuildFile; fileRef = EF75DFFE1D83121B00FD8238 /* ic_circle_red.png */; settings = {ASSET_TAGS = (); }; };
-		EF75E0011D83121B00FD8238 /* ic_cirlce_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = EF75DFFF1D83121B00FD8238 /* ic_cirlce_blue.png */; settings = {ASSET_TAGS = (); }; };
+		EF75E0001D83121B00FD8238 /* ic_circle_red.png in Resources */ = {isa = PBXBuildFile; fileRef = EF75DFFE1D83121B00FD8238 /* ic_circle_red.png */; };
+		EF75E0011D83121B00FD8238 /* ic_cirlce_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = EF75DFFF1D83121B00FD8238 /* ic_cirlce_blue.png */; };
 		EF7D77EE1D752EAE00A6C63F /* messages.png in Resources */ = {isa = PBXBuildFile; fileRef = EF7D77EA1D752EAE00A6C63F /* messages.png */; };
 		EF7D77EF1D752EAE00A6C63F /* messages@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF7D77EB1D752EAE00A6C63F /* messages@2x.png */; };
 		EF7D77F01D752EAE00A6C63F /* news-feed.png in Resources */ = {isa = PBXBuildFile; fileRef = EF7D77EC1D752EAE00A6C63F /* news-feed.png */; };
@@ -91,7 +92,7 @@
 		EF870A871D5DBA9F00118D7C /* ic_user.png in Resources */ = {isa = PBXBuildFile; fileRef = EF870A851D5DBA9F00118D7C /* ic_user.png */; };
 		EF870A8B1D5DC69400118D7C /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF870A8A1D5DC69400118D7C /* RegisterViewController.m */; };
 		EF870A971D5DFEFE00118D7C /* PTMeetingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF870A961D5DFEFE00118D7C /* PTMeetingCollectionViewCell.m */; };
-		EFEBAC2F1D829211005C0AEE /* ic_call.png in Resources */ = {isa = PBXBuildFile; fileRef = EFEBAC2E1D829211005C0AEE /* ic_call.png */; settings = {ASSET_TAGS = (); }; };
+		EFEBAC2F1D829211005C0AEE /* ic_call.png in Resources */ = {isa = PBXBuildFile; fileRef = EFEBAC2E1D829211005C0AEE /* ic_call.png */; };
 		EFF19FA21D61ED8400EAD1D1 /* ic_customer.png in Resources */ = {isa = PBXBuildFile; fileRef = EFF19F9E1D61ED8400EAD1D1 /* ic_customer.png */; };
 		EFF19FA31D61ED8400EAD1D1 /* ic_logout.png in Resources */ = {isa = PBXBuildFile; fileRef = EFF19F9F1D61ED8400EAD1D1 /* ic_logout.png */; };
 		EFF19FA41D61ED8400EAD1D1 /* ic_myprofile.png in Resources */ = {isa = PBXBuildFile; fileRef = EFF19FA01D61ED8400EAD1D1 /* ic_myprofile.png */; };
@@ -161,6 +162,8 @@
 		408933201D646B300081511C /* Meeting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Meeting.m; path = Modal/Meeing/Meeting.m; sourceTree = "<group>"; };
 		408933221D646B370081511C /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Item.h; path = Modal/Category/Item.h; sourceTree = "<group>"; };
 		408933231D646B370081511C /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Item.m; path = Modal/Category/Item.m; sourceTree = "<group>"; };
+		409C76DB1D86531400ECDDF2 /* DecimalTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DecimalTextField.h; path = Library/DecimalTextField.h; sourceTree = "<group>"; };
+		409C76DC1D86531400ECDDF2 /* DecimalTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DecimalTextField.m; path = Library/DecimalTextField.m; sourceTree = "<group>"; };
 		40AB31231D5DB47400341359 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Transaction.storyboard; sourceTree = "<group>"; };
 		40AB312D1D5DD81000341359 /* ExpandableTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpandableTableView.h; path = Library/ExpandableTableView/ExpandableTableView.h; sourceTree = "<group>"; };
 		40AB312E1D5DD81000341359 /* ExpandableTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpandableTableView.m; path = Library/ExpandableTableView/ExpandableTableView.m; sourceTree = "<group>"; };
@@ -424,6 +427,8 @@
 				40AB312C1D5DD80600341359 /* ExpandableTableView */,
 				40DF88111D81A382003F98F2 /* ClipButton.h */,
 				40DF88121D81A382003F98F2 /* ClipButton.m */,
+				409C76DB1D86531400ECDDF2 /* DecimalTextField.h */,
+				409C76DC1D86531400ECDDF2 /* DecimalTextField.m */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -1122,6 +1127,7 @@
 				408933161D646B050081511C /* Person.m in Sources */,
 				4003754A1D6C241F008ACB3A /* GymManager.xcdatamodeld in Sources */,
 				4017EDF61D6175A30033E0AE /* AddTransactionViewController.m in Sources */,
+				409C76DD1D86531400ECDDF2 /* DecimalTextField.m in Sources */,
 				404241271D65888C00111B97 /* LoginManager.m in Sources */,
 				40EA22EC1D5E27C700B08942 /* HeaderViewContent.m in Sources */,
 				408933211D646B300081511C /* Meeting.m in Sources */,

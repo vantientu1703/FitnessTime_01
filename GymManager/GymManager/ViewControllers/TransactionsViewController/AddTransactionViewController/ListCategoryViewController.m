@@ -171,7 +171,7 @@ NSString *const kShowEditSegue = @"ShowEditSegue";
         [self.manager showAlertByMessage:message title:@"Error"];
     } else {
         [self.arrCategory addObject:item];
-        [self.dataStore setItemsList:self.arrCategory];
+        [self.dataStore addItem:item];
         [self.tableView reloadData];
     }
     [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -182,7 +182,7 @@ NSString *const kShowEditSegue = @"ShowEditSegue";
         [self.manager showAlertByMessage:message title:@"Error"];
     } else {
         self.arrCategory[indexPath.row] = item;
-        [self.dataStore setItemsList:self.arrCategory];
+        [self.dataStore updateItem:item];
         [self.tableView reloadData];
     }
     [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -192,11 +192,11 @@ NSString *const kShowEditSegue = @"ShowEditSegue";
     if (error) {
         [self.manager showAlertByMessage:message title:@"Error"];
     } else {
-        [self.arrCategory removeObjectAtIndex:indexPath.row];
         [self.dataStore deleteItem:self.arrCategory[indexPath.row]];
+        [self.arrCategory removeObjectAtIndex:indexPath.row];
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
     }
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [MBProgressHUD hideHUDForView:[self.tableView cellForRowAtIndexPath:indexPath] animated:YES];
 }
 
 #pragma mark - navigation

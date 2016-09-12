@@ -133,4 +133,23 @@ NSString *const kUserDefaultLoginCheck = @"loged";
     }
 }
 
+- (void)addItem:(Item *)item {
+    dispatch_sync(self.transactionQueue, ^{
+        [self.arrItems addObject:item];
+    });
+}
+
+- (void)updateItem:(Item *)item {
+    for (Item *curItem in self.arrItems) {
+        if ([curItem.id isEqualToString:item.id]) {
+            dispatch_sync(self.transactionQueue, ^{
+                curItem.name = item.name;
+                curItem.price = item.price;
+                curItem.quantity = item.quantity;
+            });
+            break;
+        }
+    }
+}
+
 @end

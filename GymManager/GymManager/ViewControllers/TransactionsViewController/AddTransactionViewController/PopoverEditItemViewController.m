@@ -25,7 +25,7 @@
     [self.viewBackGround addGestureRecognizer:tap];
     if (self.item) {
         self.lbName.text = self.item.name;
-        self.lbPrice.text = [NSString stringWithFormat:@"%.0f", self.item.price];
+        self.lbPrice.value = self.item.price;
     }
 }
 
@@ -47,7 +47,7 @@
 }
 
 - (BOOL)itemIsChanged {
-    if (![self.lbName.text isEqualToString:self.item.name] || self.lbPrice.text.doubleValue != self.item.price) {
+    if (![self.lbName.text isEqualToString:self.item.name] || self.lbPrice.value != self.item.price) {
         return YES;
     }
     return NO;
@@ -55,7 +55,7 @@
 
 - (void)updateItem {
     self.item.name = self.lbName.text;
-    self.item.price = self.lbPrice.text.doubleValue;
+    self.item.price = self.lbPrice.value;
     self.completionBlock(self.item);
 }
 

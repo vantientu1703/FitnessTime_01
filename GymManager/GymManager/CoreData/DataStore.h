@@ -23,5 +23,7 @@
 - (void)setItemsList:(NSArray *)items;
 - (NSArray *)getItemsListWithSelectedItemsList:(NSArray *)selectedItems;
 - (void)deleteItem:(Item *)item;
+- (void)addItem:(Item *)item;
+- (void)updateItem:(Item *)item;
 
 @end
