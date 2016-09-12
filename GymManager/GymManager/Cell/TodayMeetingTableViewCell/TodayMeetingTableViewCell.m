@@ -28,10 +28,7 @@ NSString *const kIconCircleRed = @"ic_circle_red";
     self.labelNameTrainee.text = meeting.customer.fullName;
     self.labelNameTrainner.text = meeting.trainer.fullName;
     NSDate *fromDate = [[DateFormatter sharedInstance] dateWithMonthYearFormatterFromStringUTC:meeting.fromDate];
-    double fromDateTime = [fromDate timeIntervalSince1970];
-    NSDate *currentDate = [NSDate date];
-    double currentTime = [currentDate timeIntervalSince1970];
-    if (currentTime < fromDateTime) {
+    if ([fromDate compare:[NSDate date]] == NSOrderedDescending) {
         self.imageViewStatus.image = [UIImage imageNamed:kIconCircleBlue];
     } else {
         self.imageViewStatus.image = [UIImage imageNamed:kIconCircleRed];

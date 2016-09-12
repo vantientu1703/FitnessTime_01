@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CYI-yB-Rfz">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CYI-yB-Rfz">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="p0b-lU-Be2">
@@ -133,7 +133,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_user.png" translatesAutoresizingMaskIntoConstraints="NO" id="XeE-RW-B76">
-                                                        <rect key="frame" x="162" y="60" width="50" height="50"/>
+                                                        <rect key="frame" x="167" y="65" width="40" height="40"/>
                                                         <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="IxS-fr-kBn"/>
@@ -948,6 +948,6 @@
         <image name="ic_down.png" width="50" height="50"/>
         <image name="ic_threedots.png" width="30" height="30"/>
         <image name="ic_up.png" width="50" height="50"/>
-        <image name="ic_user.png" width="50" height="50"/>
+        <image name="ic_user.png" width="40" height="40"/>
     </resources>
 </document>

@@ -11,6 +11,7 @@
 @interface CustomerOrTrainnerTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *labelNameCustomOrTrainer;
-- (void)configCellWithName:(NSString *)name;
+@property (weak, nonatomic) IBOutlet UILabel *labelTrainerOrCustomerType;
+- (void)configCellWithName:(NSString *)name type:(NSString *)string;
 
 @end

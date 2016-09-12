@@ -14,8 +14,9 @@
     // Initialization code
 }
 
-- (void)configCellWithName:(NSString *)name {
+- (void)configCellWithName:(NSString *)name type:(NSString *)string {
     self.labelNameCustomOrTrainer.text = name;
+    self.labelTrainerOrCustomerType.text = string;
 }
 
 @end
