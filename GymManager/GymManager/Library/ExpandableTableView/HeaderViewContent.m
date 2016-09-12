@@ -10,13 +10,14 @@
 
 @interface HeaderViewContent () <UIActionSheetDelegate>
 
-@property (nonatomic, strong) UIView *containerView;
+
 @property (nonatomic, strong) NSMutableArray *customConstraints;
 @property (nonatomic, assign) NSInteger section;
 @property (nonatomic, assign) NSInteger totalRows;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, assign) BOOL isCollapsed;
 @property (weak, nonatomic) IBOutlet UIView *viewLoading;
+@property (weak, nonatomic) IBOutlet UIView *viewContent;
 
 @end
 
@@ -26,7 +27,6 @@
     
     if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
         self.frame = frame;
-        [self addHeaderButton];
     }
     return self;
 }
@@ -37,7 +37,7 @@
 
 - (void)addHeaderButton {
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headerButtonAction:)];
-    [self addGestureRecognizer:tap];
+    [self.viewContent addGestureRecognizer:tap];
 }
 
 - (void)headerButtonAction:(UIButton *)headerButton {
@@ -70,6 +70,7 @@
         view.frame = self.contentView.bounds;
         [self.contentView addSubview:view];
     }
+    [self addHeaderButton];
     [self hideLoadingView:YES];
 }
 

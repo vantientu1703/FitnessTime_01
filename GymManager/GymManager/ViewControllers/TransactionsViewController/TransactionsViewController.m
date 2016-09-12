@@ -73,6 +73,7 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
 #pragma mark - Load Data 
 - (void)reloadDataForWholeView {
     [self.manager fetchAllTransactionByUser:[[DataStore sharedDataStore] getUserManage]];
+    self.lbOverviewDetail.text = @"All";
     [self.refresh beginRefreshing];
 }
 
@@ -106,6 +107,7 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CategoryCell *cell = (CategoryCell*)[tableView dequeueReusableCellWithIdentifier:kTransactionCellIndentifier
         forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     Transaction *tran = self.arrTrans[indexPath.section];
     Item *item = tran.items[indexPath.row];
     NSString *name;
@@ -134,11 +136,12 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
 }
 
 #pragma mark - actionsheet in tableview delegate
-- (void)didEditSection:(NSUInteger)section {
+- (void)didEditSection:(NSUInteger)section withHeaderView:(HeaderViewContent *)headerView {
     [self performSegueWithIdentifier:kAddTransactionSegue sender:@(section)];
 }
 
 - (void)didDeleteSection:(NSUInteger)section {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self.manager deleteTransaction:self.arrTrans[section] byUser:[[DataStore sharedDataStore] getUserManage]
         atSection:section];
 }
@@ -153,13 +156,6 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
         //TODO
     }];
     return @[ac2, ac1];
-}
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void)didEndAnimationWithNumberOffCellChange:(NSInteger)numberOfCell{
@@ -215,6 +211,7 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
             self.contraintTableViewCell.constant = self.tableView.contentSize.height;
             [self.view layoutIfNeeded];
             [self reloadOverView];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
         }];
     });
 }

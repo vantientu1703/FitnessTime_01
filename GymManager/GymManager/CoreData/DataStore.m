@@ -15,7 +15,7 @@ NSString *const kUserDefaultLoginCheck = @"loged";
 
 @property (strong, nonatomic) dispatch_queue_t transactionQueue;
 @property (strong, nonatomic) UICKeyChainStore *keychain;
-@property (strong, nonatomic) NSArray *arrItems;
+@property (strong, nonatomic) NSMutableArray *arrItems;
 
 @end
 
@@ -24,7 +24,7 @@ NSString *const kUserDefaultLoginCheck = @"loged";
 - (instancetype)init {
     if (self = [super init]) {
         self.keychain = [UICKeyChainStore keyChainStoreWithService:kBundleID];
-        self.arrItems = @[];
+        self.arrItems = @[].mutableCopy;
         self.transactionQueue = dispatch_queue_create("transaction_queue", DISPATCH_QUEUE_SERIAL);
     }
     return self;
@@ -98,12 +98,39 @@ NSString *const kUserDefaultLoginCheck = @"loged";
 
 - (void)setItemsList:(NSArray *)items {
     dispatch_sync(self.transactionQueue, ^{
-        self.arrItems = items;
+        self.arrItems = items.mutableCopy;
     });
 }
 
-- (NSArray *)getItemsList {
+- (NSArray *)getItemsListWithSelectedItemsList:(NSArray *)selectedItems {
+    if (selectedItems) {
+        NSMutableArray *returnItems = @[].mutableCopy;
+        for (Item *item in self.arrItems) {
+            BOOL contain = NO;
+            for (Item *curItem in selectedItems) {
+                if ([curItem.id isEqualToString:item.id]) {
+                    contain = YES;
+                    break;
+                }
+            }
+            if (!contain) {
+                [returnItems addObject:item];
+            }
+        }
+        return returnItems;
+    }
     return self.arrItems;
+}
+
+- (void)deleteItem:(Item *)item {
+    for (Item *curItem in self.arrItems) {
+        if ([curItem.id isEqualToString:item.id]) {
+            dispatch_sync(self.transactionQueue, ^{
+                [self.arrItems removeObject:curItem];
+            });
+            break;
+        }
+    }
 }
 
 @end
