@@ -175,11 +175,8 @@
 - (void)didDeleteMeetingSuccess:(BOOL)success error:(NSError *)error {
     [MBProgressHUD hideHUDForView:self.view animated:true];
     if (success) {
-        [AlertManager showAlertWithTitle:kReminderTitle message:kDeleteMeetingSuccess
-            viewControler:self okAction:^{
-            [self.arrMeetings removeObjectAtIndex:_indexPath.row];
-            [self.tableView deleteRowsAtIndexPaths:@[_indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        }];
+        [self.arrMeetings removeObjectAtIndex:_indexPath.row];
+        [self.tableView deleteRowsAtIndexPaths:@[_indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else {
         [AlertManager showAlertWithTitle:kReminderTitle message:kDeleteMeetingFail
             viewControler:self okAction:^{

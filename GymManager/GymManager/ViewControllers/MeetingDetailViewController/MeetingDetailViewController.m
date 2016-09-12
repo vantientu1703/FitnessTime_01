@@ -96,14 +96,14 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
             trainerCell.selectionStyle = UITableViewCellSelectionStyleNone;
             trainerCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             if ([self.statusEditMeeting isEqualToString:kEditMeetingTitle]) {
-                [trainerCell configCellWithName:_trainerInstance.fullName];
+                [trainerCell configCellWithName:_trainerInstance.fullName type:kTrainnerTitle];
             } else {
                 if (self.trainer) {
                     _trainerInstance = self.trainer;
-                    [trainerCell configCellWithName:self.trainer.fullName];
+                    [trainerCell configCellWithName:self.trainer.fullName type:kTrainnerTitle];
                     trainerCell.selectionStyle = UITableViewCellSelectionStyleNone;
                 } else {
-                    [trainerCell configCellWithName:kTrainnerTitle];
+                    [trainerCell configCellWithName:@"" type:[NSString stringWithFormat:@"%@:", kTrainnerTitle]];
                 }
             }
             return trainerCell;
@@ -115,9 +115,9 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
             customerCell.selectionStyle = UITableViewCellSelectionStyleNone;
             customerCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             if ([self.statusEditMeeting isEqualToString:kEditMeetingTitle]) {
-                [customerCell configCellWithName:_customer.fullName];
+                [customerCell configCellWithName:_customer.fullName type:kCustomerTitle];
             } else {
-                [customerCell configCellWithName:kCustomerTitle];
+                [customerCell configCellWithName:@"" type:[NSString stringWithFormat:@"%@:", kCustomerTitle]];
             }
             return customerCell;
         }

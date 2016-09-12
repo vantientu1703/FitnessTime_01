@@ -179,17 +179,14 @@ NSString *const kSelectDateTitle = @"Select date";
 - (void)didDeleteMeetingSuccess:(BOOL)success error:(NSError *)error {
     [MBProgressHUD hideHUDForView:self.view animated:true];
     if (success) {
-        [AlertManager showAlertWithTitle:kReminderTitle message:kDeleteMeetingSuccess
-            viewControler:self okAction:^{
-            if ([_filter isEqualToString:kFilterTitle]) {
-                [self.arrMeetingFilters removeObjectAtIndex:_indexPath.row];
-            }
-            [self.arrMeetings removeObject:_meetingInstance];
-            [self.tableView deleteRowsAtIndexPaths:@[_indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            NSDictionary *userInfo = @{@"meeting": _meetingInstance};
-            [[NSNotificationCenter defaultCenter] postNotificationName:kDeleteMeetingSuccess object:nil
-                userInfo:userInfo];
-        }];
+        if ([_filter isEqualToString:kFilterTitle]) {
+            [self.arrMeetingFilters removeObjectAtIndex:_indexPath.row];
+        }
+        [self.arrMeetings removeObject:_meetingInstance];
+        [self.tableView deleteRowsAtIndexPaths:@[_indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        NSDictionary *userInfo = @{@"meeting": _meetingInstance};
+        [[NSNotificationCenter defaultCenter] postNotificationName:kDeleteMeetingSuccess object:nil
+            userInfo:userInfo];
     } else {
         [AlertManager showAlertWithTitle:kReminderTitle message:kDeleteMeetingFail
             viewControler:self okAction:^{
