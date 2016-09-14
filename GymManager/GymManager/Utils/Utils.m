@@ -11,8 +11,22 @@
 @implementation Utils
 
 + (UIImage *)convertImageToThumbnailImage:(UIImage *)image withSize:(CGSize)size {
-    UIGraphicsBeginImageContext(size);
-    [image drawInRect:CGRectMake(0.0f, 0.0f, size.width, size.height)];
+    CGFloat x0 = size.width * 5.f;
+    CGFloat y0 = size.height * 5.f;
+    CGFloat x1 = image.size.width;
+    CGFloat y1 = image.size.height;
+    CGFloat x2 = 0.f;
+    CGFloat y2 = 0.f;
+    if (x1 > y1) {
+        x2 = x0;
+        y2 = (x2 * y1) / x1;
+    } else {
+        y2 = y0;
+        x2 = (y2 * x1) / y1;
+    }
+    CGSize viewSize = CGSizeMake(x2, y2);
+    UIGraphicsBeginImageContext(viewSize);
+    [image drawInRect:CGRectMake(0.0f, 0.0f, viewSize.width, viewSize.height)];
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return newImage;

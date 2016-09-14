@@ -260,6 +260,7 @@ NSString *const kAddTransactionSegue = @"AddTransactionSegue";
                     returnTran.createdAt = transaction.createdAt;
                     self.arrTrans[index.integerValue] = returnTran;
                     [self.tableView reloadData];
+                    self.contraintTableViewCell.constant = self.tableView.contentSize.height;
                     [self reloadOverView];
                 });
             }];

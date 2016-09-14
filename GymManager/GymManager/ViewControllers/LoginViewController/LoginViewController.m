@@ -104,4 +104,9 @@ NSString *const kErrorEmailOrPassword = @"Incorrect email or password";
         }];
     }
 }
+
+- (IBAction)tapBackground:(id)sender {
+    [self.view endEditing:YES];
+}
+
 @end

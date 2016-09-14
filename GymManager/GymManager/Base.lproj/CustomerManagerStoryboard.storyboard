@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -132,11 +133,13 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JJ9-Kg-6re">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_user.png" translatesAutoresizingMaskIntoConstraints="NO" id="XeE-RW-B76">
-                                                        <rect key="frame" x="167" y="65" width="40" height="40"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_user.png" translatesAutoresizingMaskIntoConstraints="NO" id="XeE-RW-B76">
+                                                        <rect key="frame" x="148" y="45" width="80" height="80"/>
                                                         <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="width" secondItem="XeE-RW-B76" secondAttribute="height" multiplier="1:1" id="7ZM-VO-Bkd"/>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="IxS-fr-kBn"/>
+                                                            <constraint firstAttribute="width" constant="80" id="JdM-em-yVH"/>
                                                         </constraints>
                                                         <variation key="default">
                                                             <mask key="constraints">
@@ -432,14 +435,8 @@
                                                     <constraint firstAttribute="width" constant="80" id="zy3-36-KSW"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngo Van Duong Duong Duong" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SEF-p9-nkH">
-                                                <rect key="frame" x="72" y="112" width="231" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01668 9474 585" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oc4-UV-b4Q">
-                                                <rect key="frame" x="124" y="141" width="127" height="21"/>
+                                                <rect key="frame" x="124" y="115" width="127" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -448,12 +445,10 @@
                                         <color key="backgroundColor" red="0.1450980392" green="0.63137254899999995" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="HeJ-Cn-Ysg" firstAttribute="centerX" secondItem="rEI-Q6-9hr" secondAttribute="centerX" id="0HH-u7-DH0"/>
-                                            <constraint firstItem="SEF-p9-nkH" firstAttribute="centerX" secondItem="rEI-Q6-9hr" secondAttribute="centerX" id="DES-dg-d18"/>
+                                            <constraint firstItem="oc4-UV-b4Q" firstAttribute="top" secondItem="HeJ-Cn-Ysg" secondAttribute="bottom" constant="10" id="3vH-Ng-A8x"/>
                                             <constraint firstItem="oc4-UV-b4Q" firstAttribute="centerX" secondItem="rEI-Q6-9hr" secondAttribute="centerX" id="OvY-Pv-m7E"/>
                                             <constraint firstAttribute="height" constant="170" id="RDJ-O4-7wC"/>
-                                            <constraint firstItem="SEF-p9-nkH" firstAttribute="top" secondItem="HeJ-Cn-Ysg" secondAttribute="bottom" constant="7" id="Vs7-ha-5MZ"/>
                                             <constraint firstItem="HeJ-Cn-Ysg" firstAttribute="centerY" secondItem="rEI-Q6-9hr" secondAttribute="centerY" constant="-20" id="j62-i1-eHK"/>
-                                            <constraint firstItem="oc4-UV-b4Q" firstAttribute="top" secondItem="SEF-p9-nkH" secondAttribute="bottom" constant="8" id="uE0-Fb-YLQ"/>
                                         </constraints>
                                     </view>
                                 </subviews>
