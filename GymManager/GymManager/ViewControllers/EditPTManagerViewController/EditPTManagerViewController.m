@@ -130,16 +130,16 @@ NSString *const kSelectAvatar = @"Select avatar,please";
         trainer.meetingMoney = self.textFiledIncomeShif.value;
         TrainerManager *trainerManager = [[TrainerManager alloc] init];
         trainerManager.delegate = self;
-        if ([self.statusEditString isEqualToString:kEditTrainerTitle]) {
-            if (_modifier) {
+        if (_modifier) {
+            if ([self.statusEditString isEqualToString:kEditTrainerTitle]) {
                 trainer.avatar = _imageString;
                 [MBProgressHUD showHUDAddedTo:self.view animated:true];
                 [trainerManager updateTrainer:trainer];
+            } else {
+                [MBProgressHUD showHUDAddedTo:self.view animated:true];
+                trainer.avatar = _imageString;
+                [trainerManager createNewTrainer:trainer];
             }
-        } else {
-            [MBProgressHUD showHUDAddedTo:self.view animated:true];
-            trainer.avatar = _imageString;
-            [trainerManager createNewTrainer:trainer];
         }
     }
 }
@@ -147,6 +147,7 @@ NSString *const kSelectAvatar = @"Select avatar,please";
 #pragma mark - TrainerManagerDelegate
 - (void)createdTrainerWithMessage:(BOOL)success withError:(NSError *)error returnTrainer:(Trainer *)trainer {
     [MBProgressHUD hideHUDForView:self.view animated:true];
+    _modifier = false;
     if (success) {
         self.labelNotes.text = kCreateSuccess;
         self.labelNotes.textColor = [GymManagerConstant themeColor];
@@ -163,6 +164,7 @@ NSString *const kSelectAvatar = @"Select avatar,please";
 
 - (void)updateTrainerWithMessage:(BOOL)success withError:(NSError *)error returnTrainer:(Trainer *)trainer {
     [MBProgressHUD hideHUDForView:self.view animated:true];
+    _modifier = false;
     if (success) {
         self.labelNotes.text = kUpdateSuccess;
         self.labelNotes.textColor = [GymManagerConstant themeColor];

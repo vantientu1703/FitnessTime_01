@@ -46,7 +46,8 @@ NSString *const kFillAddress = @"Fill address";
         [self.buttonSelecDateOfBirth setTitle:kSelectDate forState:UIControlStateNormal];
     }
     self.viewContainButtonSelectDate.layer.cornerRadius = kCornerRadiusViewBackground;
-    self.navigationController.navigationBar.barTintColor = [UIColor grayColor];
+    self.navigationController.navigationBar.barTintColor = [UIColor
+        colorWithPatternImage:[UIImage imageNamed:@"1_gym_view_bg.png"]];
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     [self.navigationController.navigationBar

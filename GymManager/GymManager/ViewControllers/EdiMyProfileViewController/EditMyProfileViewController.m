@@ -142,6 +142,7 @@ NSString *const kUpdateFailTitle = @"Update fail";
 
 #pragma mark - ProfileManagerDelegate 
 - (void)updateProfile:(User *)user success:(BOOL)success error:(NSError *)error {
+    _modifier = false;
     [MBProgressHUD hideHUDForView:self.view animated:true];
     if (success) {
         [[DataStore sharedDataStore] updateProfile:user complete:^(BOOL success) {
@@ -214,6 +215,10 @@ NSString *const kUpdateFailTitle = @"Update fail";
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     _modifier = true;
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     return YES;
 }
 

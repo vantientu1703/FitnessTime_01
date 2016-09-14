@@ -228,19 +228,20 @@ NSString *const kSelectImages = @"Select avatar,please";
         customer.avatar = _imageAvatar;
         CustomerManager *customerManager = [[CustomerManager alloc] init];
         customerManager.delegate = self;
-        if ([self.messageEditCustomer isEqualToString:kMessageEditCustomer]) {
-            if (_modifier) {
+        if (_modifier) {
+            if ([self.messageEditCustomer isEqualToString:kMessageEditCustomer]) {
                 [MBProgressHUD showHUDAddedTo:self.view animated:true];
                 self.navigationItem.rightBarButtonItem.enabled = NO;
                 [customerManager updateTrainer:customer];
-            }
-        } else {
-            if (currentTime > registerDateTime || currentTime > expityDateTime) {
-                self.labelNotes.text = kDateRegisterAndExpityTitle;
+            
             } else {
-                [MBProgressHUD showHUDAddedTo:self.view animated:true];
-                self.navigationItem.rightBarButtonItem.enabled = NO;
-                [customerManager createCustomer:customer];
+                if (currentTime > registerDateTime || currentTime > expityDateTime) {
+                    self.labelNotes.text = kDateRegisterAndExpityTitle;
+                } else {
+                    [MBProgressHUD showHUDAddedTo:self.view animated:true];
+                    self.navigationItem.rightBarButtonItem.enabled = NO;
+                    [customerManager createCustomer:customer];
+                }
             }
         }
     }
@@ -250,6 +251,7 @@ NSString *const kSelectImages = @"Select avatar,please";
 - (void)createdCustomerWithMessage:(BOOL)success withError:(NSError *)error returnCustomer:(Customer *)customer {
     [MBProgressHUD hideHUDForView:self.view animated:true];
     self.navigationItem.rightBarButtonItem.enabled = YES;
+    _modifier = false;
     if (success) {
         NSDictionary *userInfo = @{@"newcustomer": customer};
         [[NSNotificationCenter defaultCenter] postNotificationName:kAddNEwCustomerVCTitle object:nil userInfo:userInfo];
@@ -266,6 +268,7 @@ NSString *const kSelectImages = @"Select avatar,please";
 - (void)updateCustomerWithMessage:(BOOL)success withError:(NSError *)error returnCustomer:(Customer *)customer {
     self.navigationItem.rightBarButtonItem.enabled = YES;
     [MBProgressHUD hideHUDForView:self.view animated:true];
+    _modifier = false;
     if (success) {
         self.labelNotes.text = kUpdateSuccess;
         self.labelNotes.textColor = [GymManagerConstant themeColor];
