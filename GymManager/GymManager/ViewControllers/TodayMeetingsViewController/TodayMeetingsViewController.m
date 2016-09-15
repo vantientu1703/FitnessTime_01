@@ -32,13 +32,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupView];
-    if ([self.statusDetailMeeting isEqualToString:kDetailMeetingsTrainerVCTitle]) {
-        [MBProgressHUD showHUDAddedTo:self.view animated:true];
-        MeetingManager *meetingManager = [[MeetingManager alloc] init];
-        meetingManager.delegate = self;
-        [meetingManager getMeetingsWithTrainer:self.trainer];
-    } else {
-        [self getAllMeetngsWithDate:[NSDate date]];
+    if (![FBSDKAccessToken currentAccessToken]) {
+        if ([self.statusDetailMeeting isEqualToString:kDetailMeetingsTrainerVCTitle]) {
+            [MBProgressHUD showHUDAddedTo:self.view animated:true];
+            MeetingManager *meetingManager = [[MeetingManager alloc] init];
+            meetingManager.delegate = self;
+            [meetingManager getMeetingsWithTrainer:self.trainer];
+        } else {
+            [self getAllMeetngsWithDate:[NSDate date]];
+        }
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getAllMeetingsToday:)
         name:kAddNewMeetingTitle object:nil];

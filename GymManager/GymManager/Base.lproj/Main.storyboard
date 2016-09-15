@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -367,6 +367,41 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gym_ic.png" translatesAutoresizingMaskIntoConstraints="NO" id="RLK-eb-rI9">
                                                 <rect key="frame" x="138" y="29" width="100" height="100"/>
                                             </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="31G-ed-dGC">
+                                                <rect key="frame" x="83" y="430" width="210" height="40"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Login with facebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YE8-4k-Seg">
+                                                        <rect key="frame" x="48" y="9" width="184" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_facebook.png" translatesAutoresizingMaskIntoConstraints="NO" id="xlw-vk-c8s">
+                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="40" id="LEx-4p-Vwm"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.20000000000000001" green="0.2666666667" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="xlw-vk-c8s" firstAttribute="leading" secondItem="31G-ed-dGC" secondAttribute="leading" id="2LT-OS-bqt"/>
+                                                    <constraint firstAttribute="height" constant="40" id="6Mc-xY-PnB"/>
+                                                    <constraint firstAttribute="trailing" secondItem="YE8-4k-Seg" secondAttribute="trailing" constant="8" id="Eg1-cQ-EVy"/>
+                                                    <constraint firstAttribute="bottom" secondItem="YE8-4k-Seg" secondAttribute="bottom" constant="10" id="Io7-wD-cwL"/>
+                                                    <constraint firstItem="YE8-4k-Seg" firstAttribute="leading" secondItem="xlw-vk-c8s" secondAttribute="trailing" constant="8" id="JxL-Lz-4Jw"/>
+                                                    <constraint firstItem="YE8-4k-Seg" firstAttribute="leading" secondItem="xlw-vk-c8s" secondAttribute="trailing" constant="8" id="Meb-0e-iz7"/>
+                                                    <constraint firstItem="xlw-vk-c8s" firstAttribute="top" secondItem="31G-ed-dGC" secondAttribute="top" id="Nm1-5x-EFG"/>
+                                                    <constraint firstAttribute="width" constant="210" id="fiY-xv-iV3"/>
+                                                    <constraint firstAttribute="bottom" secondItem="xlw-vk-c8s" secondAttribute="bottom" id="niZ-Q6-rxm"/>
+                                                    <constraint firstItem="YE8-4k-Seg" firstAttribute="top" secondItem="31G-ed-dGC" secondAttribute="top" constant="9" id="sjh-hH-7bC"/>
+                                                </constraints>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="JxL-Lz-4Jw"/>
+                                                    </mask>
+                                                </variation>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
@@ -387,9 +422,11 @@
                                             <constraint firstItem="dud-NM-cRZ" firstAttribute="top" secondItem="J6J-Hi-ddX" secondAttribute="bottom" constant="8" id="T9h-py-HG7"/>
                                             <constraint firstItem="RLK-eb-rI9" firstAttribute="top" secondItem="m6W-1Q-U9H" secondAttribute="top" constant="29" id="VHn-J1-0Sy"/>
                                             <constraint firstItem="7rd-fG-bGq" firstAttribute="centerX" secondItem="m6W-1Q-U9H" secondAttribute="centerX" id="XlS-NS-UIx"/>
+                                            <constraint firstItem="31G-ed-dGC" firstAttribute="top" secondItem="RI5-MI-Xsh" secondAttribute="bottom" constant="20" id="YDG-ZP-uhM"/>
                                             <constraint firstItem="aPN-Xt-qd1" firstAttribute="top" secondItem="m6W-1Q-U9H" secondAttribute="top" constant="143" id="aA5-M1-51X"/>
                                             <constraint firstItem="7rd-fG-bGq" firstAttribute="top" secondItem="vfd-yZ-qeg" secondAttribute="bottom" constant="10" id="bnb-oX-OkB"/>
                                             <constraint firstItem="wNH-tR-xya" firstAttribute="top" secondItem="J6J-Hi-ddX" secondAttribute="bottom" constant="27" id="bp5-Qz-Hhs"/>
+                                            <constraint firstItem="31G-ed-dGC" firstAttribute="centerX" secondItem="m6W-1Q-U9H" secondAttribute="centerX" id="dph-Ju-bUf"/>
                                             <constraint firstItem="vfd-yZ-qeg" firstAttribute="top" secondItem="bIS-sI-AH0" secondAttribute="bottom" constant="16" id="hmE-p6-umW"/>
                                             <constraint firstItem="RI5-MI-Xsh" firstAttribute="top" secondItem="7rd-fG-bGq" secondAttribute="bottom" constant="8" id="uif-jj-q7o"/>
                                             <constraint firstItem="RLK-eb-rI9" firstAttribute="centerX" secondItem="m6W-1Q-U9H" secondAttribute="centerX" id="vVb-6m-JFu"/>
@@ -458,6 +495,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="buttonLoginWithFB" destination="31G-ed-dGC" id="1yz-wv-pi5"/>
                         <outlet property="labelNotes" destination="vfd-yZ-qeg" id="24X-sy-e8w"/>
                         <outlet property="textFieldPassword" destination="bIS-sI-AH0" id="QMc-3T-AdW"/>
                         <outlet property="textFieldUserName" destination="J6J-Hi-ddX" id="kWV-T7-4ld"/>
@@ -1990,6 +2028,7 @@
         <image name="ic_calendar.png" width="30" height="30"/>
         <image name="ic_call.png" width="100" height="100"/>
         <image name="ic_circle_red.png" width="48" height="48"/>
+        <image name="ic_facebook.png" width="40" height="40"/>
         <image name="ic_key.png" width="40" height="40"/>
         <image name="ic_user.png" width="40" height="40"/>
     </resources>

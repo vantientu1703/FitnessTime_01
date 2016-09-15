@@ -26,6 +26,7 @@ NSString *const kErrorEmailOrPassword = @"Incorrect email or password";
 @property (weak, nonatomic) IBOutlet UITextField *textFieldPassword;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldUserName;
 @property (weak, nonatomic) IBOutlet UILabel *labelNotes;
+@property (weak, nonatomic) IBOutlet UIView *buttonLoginWithFB;
 
 @end
 
@@ -35,12 +36,31 @@ NSString *const kErrorEmailOrPassword = @"Incorrect email or password";
     [super viewDidLoad];
     self.textFieldPassword.delegate = self;
     self.textFieldUserName.delegate = self;
+    self.buttonLoginWithFB.layer.cornerRadius = kCornerRadiusViewBackground;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(loginWithFBPress:)];
+    [self.buttonLoginWithFB addGestureRecognizer:tap];
+    self.buttonLoginWithFB.userInteractionEnabled = YES;
 }
 
 #pragma mark - Login
 - (IBAction)loginPress:(id)sender {
     [self.view endEditing:true];
     [self doLogin];
+}
+
+- (IBAction)loginWithFBPress:(id)sender {
+    __block LoginViewController *weakSelf = self;
+    [FacebookService login:self completion:^(NSDictionary *userData) {
+        if (userData) {
+            [[DataStore sharedDataStore] setUserLoginWithFB:userData];
+            [weakSelf login];
+        }
+    }];
+}
+
+- (void)login {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate loadTabbarController];
 }
 
 - (void)doLogin {
@@ -93,8 +113,7 @@ NSString *const kErrorEmailOrPassword = @"Incorrect email or password";
         self.labelNotes.text = @"";
         [[DataStore sharedDataStore] setNewUserManagefromUser:user WithCompletionblock:^(BOOL success) {
             if (success) {
-                AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-                [appDelegate loadTabbarController];
+                [self login];
             } else {
                 [AlertManager showAlertWithTitle:kReminderTitle message:kMessageFailLogin
                     viewControler:self reloadAction:^{

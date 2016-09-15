@@ -12,4 +12,7 @@ target 'GymManager' do
   pod "SRMonthPicker"
   pod "MagicalRecord"
   pod "SDWebImage"
+  pod "FBSDKLoginKit"
+  pod "FBSDKCoreKit"
+  pod "FBSDKShareKit"
 end
