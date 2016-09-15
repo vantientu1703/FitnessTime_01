@@ -56,6 +56,29 @@ NSString *const kUserDefaultLoginCheck = @"loged";
     }];
 }
 
+- (void)setUserLoginWithFB:(NSDictionary *)userData {
+    NSString *name = userData[@"name"];
+    NSString *urlAvartar = [[[userData objectForKey:@"picture"] objectForKey:@"data"] objectForKey:@"url"];
+    NSString *ID = userData[@"id"];
+    NSString *email = userData[@"email"];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:name forKey:@"name"];
+    [defaults setObject:urlAvartar forKey:@"url"];
+    [defaults setObject:ID forKey:@"id"];
+    [defaults setObject:email forKey:@"email"];
+    [defaults synchronize];
+}
+
+- (User *)getUSerLoginWithFB {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    User *user = [[User alloc] init];
+    user.id = [defaults objectForKey:@"id"];
+    user.fullName = [defaults objectForKey:@"name"];
+    user.email = [defaults objectForKey:@"email"];
+    user.avatar = [defaults objectForKey:@"url"];
+    return user;
+}
+
 - (User*)getUserManage {
     UserManager *mangerManage = [UserManager MR_findFirst];
     User *user = [[User alloc] init];

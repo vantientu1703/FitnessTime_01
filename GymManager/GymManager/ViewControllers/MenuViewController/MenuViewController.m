@@ -105,7 +105,6 @@ static NSString *const kCellDefault = @"CellDefault";
             break;
         }
         case MenuDetailRowCategory: {
-            //TODO
             UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboardTransaction bundle:nil];
             ListCategoryViewController *listCategoryVC = [st
                 instantiateViewControllerWithIdentifier:kTransactionListCategoryIdentifier];
@@ -114,12 +113,19 @@ static NSString *const kCellDefault = @"CellDefault";
             break;
         }
         case MenuDetailRowLogOut: {
-            ProfileManager *profileManager = [[ProfileManager alloc] init];
-            profileManager.delegate = self;
-            [profileManager logout];
-            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-            [appDelegate loadLoginViewController];
-            [[DataStore sharedDataStore] clearUser];
+            if ([FBSDKAccessToken currentAccessToken]) {
+                FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
+                [loginManager logOut];
+                AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                [appDelegate loadLoginViewController];
+            } else {
+                ProfileManager *profileManager = [[ProfileManager alloc] init];
+                profileManager.delegate = self;
+                [profileManager logout];
+                AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                [appDelegate loadLoginViewController];
+                [[DataStore sharedDataStore] clearUser];
+            }
             break;
         }
         default:

@@ -25,5 +25,7 @@
 - (void)deleteItem:(Item *)item;
 - (void)addItem:(Item *)item;
 - (void)updateItem:(Item *)item;
+- (void)setUserLoginWithFB:(NSDictionary *)userData;
+- (User *)getUSerLoginWithFB;
 
 @end
