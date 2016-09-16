@@ -23,7 +23,7 @@ NSString *const kSelectToDates = @"Select expiry date,please!";
 NSString *const kSelectDateOfBirths = @"Select date of birth,please!";
 NSString *const kSelectImages = @"Select avatar,please";
 
-@interface AddNewCustomerViewController ()<UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CustomerManagerDelegate>
+@interface AddNewCustomerViewController ()<UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CustomerManagerDelegate, FBSDKSharingDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewCustomer;
 @property (weak, nonatomic) IBOutlet UILabel *labelNameCustomer;
@@ -166,11 +166,11 @@ NSString *const kSelectImages = @"Select avatar,please";
 #pragma mark - UIImagePickerViewControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     _modifier = true;
-    UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
+    UIImage *choosenImage = info[UIImagePickerControllerOriginalImage];
     CGFloat x0 = self.imageViewCustomer.frame.size.width;
     CGFloat y0 = self.imageViewCustomer.frame.size.height;
     CGSize viewSize = CGSizeMake(x0, y0);
-    UIImage *newImage = [Utils convertImageToThumbnailImage:chosenImage withSize:viewSize];
+    UIImage *newImage = [Utils convertImageToThumbnailImage:choosenImage withSize:viewSize];
     self.imageViewCustomer.image = newImage;
     if (newImage) {
         _imageAvatar = [UIImageJPEGRepresentation(newImage, 0.4f)
