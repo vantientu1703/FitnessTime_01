@@ -35,12 +35,17 @@
 }
 
 + (void)shareImage:(UIImage *)image message:(NSString *)message withViewController:(UIViewController *)viewController {
+    FBSDKLoginManager *fbLoginManager = [[FBSDKLoginManager alloc] init];
+    [fbLoginManager logInWithPublishPermissions:@[@"publish_actions"] fromViewController:viewController
+        handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+    }];
     if ([[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
         if ([FBSDKAccessToken currentAccessToken]) {
             NSData *imageData = UIImagePNGRepresentation(image);
-            NSDictionary *params = @{@"source":imageData,@"message":message};
+            NSDictionary *params = @{@"source": imageData,@"message": message};
             NSString *graphPath = @"/me/photos/";
-            FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:graphPath parameters:params HTTPMethod:@"POST"];
+            FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:graphPath
+                parameters:params HTTPMethod:@"POST"];
             [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
                 if (error) {
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"

@@ -50,5 +50,6 @@
 #import "UILabelNoData.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
 #import "FacebookService.h"
 #endif /* GymManager_PrefixHeader_pch */
