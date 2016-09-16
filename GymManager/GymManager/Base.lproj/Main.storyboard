@@ -367,41 +367,17 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gym_ic.png" translatesAutoresizingMaskIntoConstraints="NO" id="RLK-eb-rI9">
                                                 <rect key="frame" x="138" y="29" width="100" height="100"/>
                                             </imageView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="31G-ed-dGC">
-                                                <rect key="frame" x="83" y="430" width="210" height="40"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Login with facebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YE8-4k-Seg">
-                                                        <rect key="frame" x="48" y="9" width="184" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_facebook.png" translatesAutoresizingMaskIntoConstraints="NO" id="xlw-vk-c8s">
-                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="40" id="LEx-4p-Vwm"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                </subviews>
-                                                <color key="backgroundColor" red="0.20000000000000001" green="0.2666666667" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZXk-yh-mL8">
+                                                <rect key="frame" x="88" y="418" width="200" height="40"/>
                                                 <constraints>
-                                                    <constraint firstItem="xlw-vk-c8s" firstAttribute="leading" secondItem="31G-ed-dGC" secondAttribute="leading" id="2LT-OS-bqt"/>
-                                                    <constraint firstAttribute="height" constant="40" id="6Mc-xY-PnB"/>
-                                                    <constraint firstAttribute="trailing" secondItem="YE8-4k-Seg" secondAttribute="trailing" constant="8" id="Eg1-cQ-EVy"/>
-                                                    <constraint firstAttribute="bottom" secondItem="YE8-4k-Seg" secondAttribute="bottom" constant="10" id="Io7-wD-cwL"/>
-                                                    <constraint firstItem="YE8-4k-Seg" firstAttribute="leading" secondItem="xlw-vk-c8s" secondAttribute="trailing" constant="8" id="JxL-Lz-4Jw"/>
-                                                    <constraint firstItem="YE8-4k-Seg" firstAttribute="leading" secondItem="xlw-vk-c8s" secondAttribute="trailing" constant="8" id="Meb-0e-iz7"/>
-                                                    <constraint firstItem="xlw-vk-c8s" firstAttribute="top" secondItem="31G-ed-dGC" secondAttribute="top" id="Nm1-5x-EFG"/>
-                                                    <constraint firstAttribute="width" constant="210" id="fiY-xv-iV3"/>
-                                                    <constraint firstAttribute="bottom" secondItem="xlw-vk-c8s" secondAttribute="bottom" id="niZ-Q6-rxm"/>
-                                                    <constraint firstItem="YE8-4k-Seg" firstAttribute="top" secondItem="31G-ed-dGC" secondAttribute="top" constant="9" id="sjh-hH-7bC"/>
+                                                    <constraint firstAttribute="height" constant="40" id="4Pb-4A-CXx"/>
+                                                    <constraint firstAttribute="width" constant="200" id="ebo-Pv-shO"/>
                                                 </constraints>
-                                                <variation key="default">
-                                                    <mask key="constraints">
-                                                        <exclude reference="JxL-Lz-4Jw"/>
-                                                    </mask>
-                                                </variation>
-                                            </view>
+                                                <state key="normal" title="Button" image="ic_button_loginfb.png"/>
+                                                <connections>
+                                                    <action selector="loginWithFBPress:" destination="HeL-Ic-hXl" eventType="touchUpInside" id="fGo-nC-ep2"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
@@ -410,6 +386,7 @@
                                             <constraint firstItem="bIS-sI-AH0" firstAttribute="top" secondItem="dud-NM-cRZ" secondAttribute="bottom" constant="8" id="2cJ-vy-bNn"/>
                                             <constraint firstItem="TNu-AY-mWB" firstAttribute="leading" secondItem="aPN-Xt-qd1" secondAttribute="trailing" constant="8" id="3Rj-pU-rod"/>
                                             <constraint firstItem="aPN-Xt-qd1" firstAttribute="leading" secondItem="J6J-Hi-ddX" secondAttribute="leading" id="4jt-PE-fry"/>
+                                            <constraint firstItem="ZXk-yh-mL8" firstAttribute="centerX" secondItem="m6W-1Q-U9H" secondAttribute="centerX" id="54V-rU-CsM"/>
                                             <constraint firstItem="J6J-Hi-ddX" firstAttribute="top" secondItem="TNu-AY-mWB" secondAttribute="bottom" constant="8" id="5iH-SY-xy5"/>
                                             <constraint firstItem="vfd-yZ-qeg" firstAttribute="centerX" secondItem="m6W-1Q-U9H" secondAttribute="centerX" id="5xa-Qx-Ijm"/>
                                             <constraint firstItem="J6J-Hi-ddX" firstAttribute="centerX" secondItem="m6W-1Q-U9H" secondAttribute="centerX" id="5yX-lJ-d3n"/>
@@ -422,12 +399,11 @@
                                             <constraint firstItem="dud-NM-cRZ" firstAttribute="top" secondItem="J6J-Hi-ddX" secondAttribute="bottom" constant="8" id="T9h-py-HG7"/>
                                             <constraint firstItem="RLK-eb-rI9" firstAttribute="top" secondItem="m6W-1Q-U9H" secondAttribute="top" constant="29" id="VHn-J1-0Sy"/>
                                             <constraint firstItem="7rd-fG-bGq" firstAttribute="centerX" secondItem="m6W-1Q-U9H" secondAttribute="centerX" id="XlS-NS-UIx"/>
-                                            <constraint firstItem="31G-ed-dGC" firstAttribute="top" secondItem="RI5-MI-Xsh" secondAttribute="bottom" constant="20" id="YDG-ZP-uhM"/>
                                             <constraint firstItem="aPN-Xt-qd1" firstAttribute="top" secondItem="m6W-1Q-U9H" secondAttribute="top" constant="143" id="aA5-M1-51X"/>
                                             <constraint firstItem="7rd-fG-bGq" firstAttribute="top" secondItem="vfd-yZ-qeg" secondAttribute="bottom" constant="10" id="bnb-oX-OkB"/>
                                             <constraint firstItem="wNH-tR-xya" firstAttribute="top" secondItem="J6J-Hi-ddX" secondAttribute="bottom" constant="27" id="bp5-Qz-Hhs"/>
-                                            <constraint firstItem="31G-ed-dGC" firstAttribute="centerX" secondItem="m6W-1Q-U9H" secondAttribute="centerX" id="dph-Ju-bUf"/>
                                             <constraint firstItem="vfd-yZ-qeg" firstAttribute="top" secondItem="bIS-sI-AH0" secondAttribute="bottom" constant="16" id="hmE-p6-umW"/>
+                                            <constraint firstItem="ZXk-yh-mL8" firstAttribute="top" secondItem="RI5-MI-Xsh" secondAttribute="bottom" constant="8" id="pf1-VS-V0r"/>
                                             <constraint firstItem="RI5-MI-Xsh" firstAttribute="top" secondItem="7rd-fG-bGq" secondAttribute="bottom" constant="8" id="uif-jj-q7o"/>
                                             <constraint firstItem="RLK-eb-rI9" firstAttribute="centerX" secondItem="m6W-1Q-U9H" secondAttribute="centerX" id="vVb-6m-JFu"/>
                                             <constraint firstItem="RI5-MI-Xsh" firstAttribute="centerX" secondItem="m6W-1Q-U9H" secondAttribute="centerX" id="woA-Yv-lir"/>
@@ -495,7 +471,6 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="buttonLoginWithFB" destination="31G-ed-dGC" id="1yz-wv-pi5"/>
                         <outlet property="labelNotes" destination="vfd-yZ-qeg" id="24X-sy-e8w"/>
                         <outlet property="textFieldPassword" destination="bIS-sI-AH0" id="QMc-3T-AdW"/>
                         <outlet property="textFieldUserName" destination="J6J-Hi-ddX" id="kWV-T7-4ld"/>
@@ -813,6 +788,7 @@
                         <outlet property="buttonRegister" destination="g36-RQ-spc" id="AGh-qp-eTp"/>
                         <outlet property="buttonSelecDateOfBirth" destination="U6w-Jz-kx5" id="qs1-th-84B"/>
                         <outlet property="labelNotes" destination="lTX-Q2-2mP" id="Tvs-aR-ix4"/>
+                        <outlet property="scrollView" destination="sZ7-Xl-gfA" id="gT6-uz-WC8"/>
                         <outlet property="textFieldAddress" destination="ay7-0k-BSb" id="SIF-pa-PZm"/>
                         <outlet property="textFieldConfirmPassword" destination="YJD-au-HO2" id="nJb-9P-Mwi"/>
                         <outlet property="textFieldEmail" destination="2do-8G-qLb" id="p5p-Xz-u7a"/>
@@ -1513,19 +1489,22 @@
                                                             <action selector="selectDateOfBirthPress:" destination="Cyd-GU-iZu" eventType="touchUpInside" id="ZBx-ii-5JB"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bqr-Qf-Pbu">
-                                                        <rect key="frame" x="276" y="31" width="84" height="30"/>
-                                                        <state key="normal" title="Button" image="ic_calendar.png"/>
-                                                        <connections>
-                                                            <action selector="selectCalendarPress:" destination="Cyd-GU-iZu" eventType="touchUpInside" id="BmI-9U-GVk"/>
-                                                        </connections>
-                                                    </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of birth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRW-WW-iR7">
                                                         <rect key="frame" x="15" y="5" width="97" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bqr-Qf-Pbu">
+                                                        <rect key="frame" x="330" y="31" width="30" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="30" id="1fR-DA-AyX"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button" image="ic_calendar.png"/>
+                                                        <connections>
+                                                            <action selector="selectCalendarPress:" destination="Cyd-GU-iZu" eventType="touchUpInside" id="BmI-9U-GVk"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -1539,7 +1518,7 @@
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHf-ne-VbZ">
                                                 <rect key="frame" x="188" y="541" width="0.0" height="0.0"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -1601,6 +1580,7 @@
                         <outlet property="buttonDateOfBirth" destination="Cs5-lU-0e3" id="JnD-mU-dEy"/>
                         <outlet property="imageViewOfUser" destination="Hj7-DT-rRl" id="OlY-ja-Ybk"/>
                         <outlet property="labelNotes" destination="SHf-ne-VbZ" id="uAs-Bb-ezz"/>
+                        <outlet property="scrollView" destination="J1I-NC-Zjo" id="6o6-xj-QCp"/>
                         <outlet property="textFieldAddress" destination="BsU-N7-TIG" id="Hj5-AY-Grf"/>
                         <outlet property="textFieldEmail" destination="ZZz-ML-PmE" id="bjf-uj-AiL"/>
                         <outlet property="textFieldFullName" destination="aWG-jH-54e" id="ff4-CI-Oft"/>
@@ -2010,6 +1990,7 @@
                         <outlet property="buttonDateOfBirth" destination="91B-xb-aNX" id="od8-dW-NaT"/>
                         <outlet property="imageViewPT" destination="ecH-ZN-PMW" id="LY5-fn-ykF"/>
                         <outlet property="labelNotes" destination="3NP-0J-WaZ" id="f7V-r0-9To"/>
+                        <outlet property="scrollView" destination="Vic-uG-QMx" id="6dZ-0a-B3Q"/>
                         <outlet property="textFieldAddress" destination="wG3-zj-r54" id="NVb-ny-OjQ"/>
                         <outlet property="textFieldFullName" destination="hdI-Wf-CaG" id="eUJ-pT-NYO"/>
                         <outlet property="textFieldPhoneNumber" destination="uHw-HY-nQA" id="WSw-KW-tFr"/>
@@ -2025,10 +2006,10 @@
         <image name="1_gym_view_bg.png" width="400" height="400"/>
         <image name="Plus-96.png" width="96" height="96"/>
         <image name="gym_ic.png" width="100" height="100"/>
+        <image name="ic_button_loginfb.png" width="354" height="69"/>
         <image name="ic_calendar.png" width="30" height="30"/>
         <image name="ic_call.png" width="100" height="100"/>
         <image name="ic_circle_red.png" width="48" height="48"/>
-        <image name="ic_facebook.png" width="40" height="40"/>
         <image name="ic_key.png" width="40" height="40"/>
         <image name="ic_user.png" width="40" height="40"/>
     </resources>

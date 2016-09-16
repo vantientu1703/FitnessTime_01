@@ -27,6 +27,7 @@ NSString *const kFillAddress = @"Fill address";
 @property (weak, nonatomic) IBOutlet UILabel *labelNotes;
 @property (weak, nonatomic) IBOutlet UIButton *buttonRegister;
 @property (weak, nonatomic) IBOutlet UIView *viewContainButtonSelectDate;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -83,6 +84,8 @@ NSString *const kFillAddress = @"Fill address";
 }
 
 - (User *)setUser {
+    CGFloat height = self.scrollView.contentSize.height - self.scrollView.bounds.size.height;
+    self.scrollView.contentOffset = CGPointMake(0.0f, height);
     User *user = [[User alloc] init];
     NSString *isValidEmail = [DataValidation isValidEmailAddress:self.textFieldEmail.text];
     NSString *isConfirmPassword = [DataValidation isValidConfirmedPassword:self.textFieldConfirmPassword.text

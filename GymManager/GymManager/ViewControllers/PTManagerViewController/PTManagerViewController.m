@@ -31,7 +31,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setupView];
-    [self getAllTrainers];
+    if (![FBSDKAccessToken currentAccessToken]) {
+        [self getAllTrainers];
+    }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addNewTrainer:)
         name:kAddNewTrainerTitle object:nil];
 }

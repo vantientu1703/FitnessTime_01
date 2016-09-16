@@ -69,6 +69,7 @@
 		EF0D909E1D8124CB00A2EE4A /* ShowPersonalIncomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0D909D1D8124CB00A2EE4A /* ShowPersonalIncomeViewController.m */; };
 		EF0D90A01D815F4F00A2EE4A /* AddNewCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7E23E61D672A3600B613FD /* AddNewCategoryViewController.m */; };
 		EF0D90A11D815FB900A2EE4A /* EditNumberOfCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7E23EA1D6740A400B613FD /* EditNumberOfCategoryViewController.m */; };
+		EF394B6B1D8F87FD00E2A9B9 /* ic_button_loginfb.png in Resources */ = {isa = PBXBuildFile; fileRef = EF394B6A1D8F87FD00E2A9B9 /* ic_button_loginfb.png */; settings = {ASSET_TAGS = (); }; };
 		EF5422DB1D8A7B7E001DF8F9 /* ic_facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = EF5422DA1D8A7B7E001DF8F9 /* ic_facebook.png */; settings = {ASSET_TAGS = (); }; };
 		EF5FA7AE1D6AE22200E4B95F /* DataValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5FA7AD1D6AE22200E4B95F /* DataValidation.m */; };
 		EF635BFF1D6CB21900BEB9A1 /* TrainerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF635BFE1D6CB21900BEB9A1 /* TrainerManager.m */; };
@@ -224,6 +225,7 @@
 		EF0D90991D81216B00A2EE4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Income.storyboard; sourceTree = "<group>"; };
 		EF0D909C1D8124CB00A2EE4A /* ShowPersonalIncomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShowPersonalIncomeViewController.h; path = ViewControllers/ShowPersonalIncomeViewController/ShowPersonalIncomeViewController.h; sourceTree = "<group>"; };
 		EF0D909D1D8124CB00A2EE4A /* ShowPersonalIncomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShowPersonalIncomeViewController.m; path = ViewControllers/ShowPersonalIncomeViewController/ShowPersonalIncomeViewController.m; sourceTree = "<group>"; };
+		EF394B6A1D8F87FD00E2A9B9 /* ic_button_loginfb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_button_loginfb.png; path = Resources/ic_button_loginfb.png; sourceTree = "<group>"; };
 		EF5422DA1D8A7B7E001DF8F9 /* ic_facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_facebook.png; path = Resources/ic_facebook.png; sourceTree = "<group>"; };
 		EF5FA7AC1D6AE22200E4B95F /* DataValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataValidation.h; path = DataValidation/DataValidation.h; sourceTree = "<group>"; };
 		EF5FA7AD1D6AE22200E4B95F /* DataValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataValidation.m; path = DataValidation/DataValidation.m; sourceTree = "<group>"; };
@@ -573,6 +575,7 @@
 		EF0809781D5C8743007A8EAE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EF394B6A1D8F87FD00E2A9B9 /* ic_button_loginfb.png */,
 				EF5422DA1D8A7B7E001DF8F9 /* ic_facebook.png */,
 				40B23ED81D87B72E00A84D43 /* gym_ic.png */,
 				404650B71D86AF6B005229AD /* 1_bg_gym.png */,
@@ -1052,6 +1055,7 @@
 				40EA22E91D5E26FF00B08942 /* HeaderViewContent.xib in Resources */,
 				40AB31241D5DB47400341359 /* Transaction.storyboard in Resources */,
 				EF7D77FA1D752EBC00A6C63F /* news-feed@2x.png in Resources */,
+				EF394B6B1D8F87FD00E2A9B9 /* ic_button_loginfb.png in Resources */,
 				40B23ED91D87B72E00A84D43 /* gym_ic.png in Resources */,
 				404650B91D86AF6B005229AD /* 1_bg_gym.png in Resources */,
 				EFF28BB31D655C10000F9B27 /* ic_calendar.png in Resources */,

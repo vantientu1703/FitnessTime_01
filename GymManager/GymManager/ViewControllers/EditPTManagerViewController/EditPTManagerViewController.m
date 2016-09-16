@@ -29,6 +29,7 @@ NSString *const kSelectAvatar = @"Select avatar,please";
 @property (weak, nonatomic) IBOutlet UITextField *textFieldEmail;
 @property (weak, nonatomic) IBOutlet DecimalTextField *textFiledIncomeShif;
 @property (weak, nonatomic) IBOutlet UILabel *labelNotes;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -98,6 +99,8 @@ NSString *const kSelectAvatar = @"Select avatar,please";
 
 #pragma mark - Set info for trainer
 - (void)createTrainer {
+    CGFloat height = self.scrollView.contentSize.height - self.scrollView.bounds.size.height;
+    self.scrollView.contentOffset = CGPointMake(0.0f, height);
     NSString *phoneNumber = [DataValidation isValidPhoneNumber:(NSMutableString *)self.textFieldPhoneNumber.text];
     double currentTime = [[NSDate date] timeIntervalSince1970];
     double dateBirthTime = [_dateOfBirth timeIntervalSince1970];
