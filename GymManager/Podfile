@@ -15,4 +15,5 @@ target 'GymManager' do
   pod "FBSDKLoginKit"
   pod "FBSDKCoreKit"
   pod "FBSDKShareKit"
+  pod "QBImagePickerController"
 end

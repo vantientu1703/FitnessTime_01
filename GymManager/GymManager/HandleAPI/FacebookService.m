@@ -68,4 +68,21 @@
     }
 }
 
++ (void)shareImages:(NSArray *)images withViewController:(UIViewController *)viewController {
+    FBSDKLoginManager *fbLoginManager = [[FBSDKLoginManager alloc] init];
+    [fbLoginManager logInWithPublishPermissions:@[@"publish_actions"] fromViewController:viewController
+        handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+    }];
+    NSMutableArray *photos = [NSMutableArray array];
+    for (UIImage *image in images) {
+        FBSDKSharePhoto *photo = [[FBSDKSharePhoto alloc] init];
+        photo.image = image;
+        photo.userGenerated = YES;
+        [photos addObject:photo];
+    }
+    FBSDKSharePhotoContent *content = [[FBSDKSharePhotoContent alloc] init];
+    content.photos = photos;
+    [FBSDKShareAPI shareWithContent:content delegate:viewController];
+}
+
 @end
