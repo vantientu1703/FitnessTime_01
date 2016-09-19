@@ -113,19 +113,14 @@ static NSString *const kCellDefault = @"CellDefault";
             break;
         }
         case MenuDetailRowLogOut: {
-            if ([FBSDKAccessToken currentAccessToken]) {
-                FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
-                [loginManager logOut];
-                AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-                [appDelegate loadLoginViewController];
-            } else {
-                ProfileManager *profileManager = [[ProfileManager alloc] init];
-                profileManager.delegate = self;
-                [profileManager logout];
-                AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-                [appDelegate loadLoginViewController];
-                [[DataStore sharedDataStore] clearUser];
-            }
+            FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
+            [loginManager logOut];
+            ProfileManager *profileManager = [[ProfileManager alloc] init];
+            profileManager.delegate = self;
+            [profileManager logout];
+            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            [appDelegate loadLoginViewController];
+            [[DataStore sharedDataStore] clearUser];
             break;
         }
         default:

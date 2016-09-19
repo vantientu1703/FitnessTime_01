@@ -33,9 +33,7 @@ CGFloat const kCornerRadiusAddNewCustomer = 20.0f;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setupView];
-    if (![FBSDKAccessToken currentAccessToken]) {
-        [self getAllCustomers];
-    }
+    [self getAllCustomers];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(createNewCustomer:)
         name:kAddNEwCustomerVCTitle object:nil];
 }

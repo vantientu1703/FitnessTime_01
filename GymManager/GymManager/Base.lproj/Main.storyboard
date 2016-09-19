@@ -367,17 +367,6 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gym_ic.png" translatesAutoresizingMaskIntoConstraints="NO" id="RLK-eb-rI9">
                                                 <rect key="frame" x="138" y="29" width="100" height="100"/>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZXk-yh-mL8">
-                                                <rect key="frame" x="88" y="418" width="200" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="4Pb-4A-CXx"/>
-                                                    <constraint firstAttribute="width" constant="200" id="ebo-Pv-shO"/>
-                                                </constraints>
-                                                <state key="normal" title="Button" image="ic_button_loginfb.png"/>
-                                                <connections>
-                                                    <action selector="loginWithFBPress:" destination="HeL-Ic-hXl" eventType="touchUpInside" id="fGo-nC-ep2"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
@@ -386,7 +375,6 @@
                                             <constraint firstItem="bIS-sI-AH0" firstAttribute="top" secondItem="dud-NM-cRZ" secondAttribute="bottom" constant="8" id="2cJ-vy-bNn"/>
                                             <constraint firstItem="TNu-AY-mWB" firstAttribute="leading" secondItem="aPN-Xt-qd1" secondAttribute="trailing" constant="8" id="3Rj-pU-rod"/>
                                             <constraint firstItem="aPN-Xt-qd1" firstAttribute="leading" secondItem="J6J-Hi-ddX" secondAttribute="leading" id="4jt-PE-fry"/>
-                                            <constraint firstItem="ZXk-yh-mL8" firstAttribute="centerX" secondItem="m6W-1Q-U9H" secondAttribute="centerX" id="54V-rU-CsM"/>
                                             <constraint firstItem="J6J-Hi-ddX" firstAttribute="top" secondItem="TNu-AY-mWB" secondAttribute="bottom" constant="8" id="5iH-SY-xy5"/>
                                             <constraint firstItem="vfd-yZ-qeg" firstAttribute="centerX" secondItem="m6W-1Q-U9H" secondAttribute="centerX" id="5xa-Qx-Ijm"/>
                                             <constraint firstItem="J6J-Hi-ddX" firstAttribute="centerX" secondItem="m6W-1Q-U9H" secondAttribute="centerX" id="5yX-lJ-d3n"/>
@@ -403,7 +391,6 @@
                                             <constraint firstItem="7rd-fG-bGq" firstAttribute="top" secondItem="vfd-yZ-qeg" secondAttribute="bottom" constant="10" id="bnb-oX-OkB"/>
                                             <constraint firstItem="wNH-tR-xya" firstAttribute="top" secondItem="J6J-Hi-ddX" secondAttribute="bottom" constant="27" id="bp5-Qz-Hhs"/>
                                             <constraint firstItem="vfd-yZ-qeg" firstAttribute="top" secondItem="bIS-sI-AH0" secondAttribute="bottom" constant="16" id="hmE-p6-umW"/>
-                                            <constraint firstItem="ZXk-yh-mL8" firstAttribute="top" secondItem="RI5-MI-Xsh" secondAttribute="bottom" constant="8" id="pf1-VS-V0r"/>
                                             <constraint firstItem="RI5-MI-Xsh" firstAttribute="top" secondItem="7rd-fG-bGq" secondAttribute="bottom" constant="8" id="uif-jj-q7o"/>
                                             <constraint firstItem="RLK-eb-rI9" firstAttribute="centerX" secondItem="m6W-1Q-U9H" secondAttribute="centerX" id="vVb-6m-JFu"/>
                                             <constraint firstItem="RI5-MI-Xsh" firstAttribute="centerX" secondItem="m6W-1Q-U9H" secondAttribute="centerX" id="woA-Yv-lir"/>
@@ -2006,7 +1993,6 @@
         <image name="1_gym_view_bg.png" width="400" height="400"/>
         <image name="Plus-96.png" width="96" height="96"/>
         <image name="gym_ic.png" width="100" height="100"/>
-        <image name="ic_button_loginfb.png" width="354" height="69"/>
         <image name="ic_calendar.png" width="30" height="30"/>
         <image name="ic_call.png" width="100" height="100"/>
         <image name="ic_circle_red.png" width="48" height="48"/>
