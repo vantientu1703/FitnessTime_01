@@ -74,6 +74,7 @@
     if (notification) {
         NSDictionary *userInfo = notification.userInfo;
         Meeting *meeting = userInfo[@"meeting"];
+        [[NotificationManager sharedManager] removeMeeting:meeting];
         for (Meeting *meetingItem in self.arrMeetings) {
             if (meeting.id == meetingItem.id) {
                 [self.arrMeetings removeObject:meetingItem];
@@ -81,6 +82,7 @@
             }
         }
         [self.tableView reloadData];
+        [[NotificationManager sharedManager] removeMeeting:meeting];
         [self createLabelNoData];
     }
 }

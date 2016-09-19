@@ -53,4 +53,5 @@
 #import <FBSDKShareKit/FBSDKShareKit.h>
 #import "FacebookService.h"
 #import "QBImagePickerController.h"
+#import "NotificationManager.h"
 #endif /* GymManager_PrefixHeader_pch */
