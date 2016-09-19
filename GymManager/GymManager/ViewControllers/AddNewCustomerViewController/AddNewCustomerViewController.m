@@ -38,6 +38,7 @@ NSString *const kSelectImages = @"Select avatar,please";
 @property (strong, nonatomic) UIImagePickerController *imagePickerController;
 @property (weak, nonatomic) IBOutlet UIView *viewBackgroundCustomer;
 @property (weak, nonatomic) IBOutlet UILabel *labelNotes;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -187,6 +188,8 @@ NSString *const kSelectImages = @"Select avatar,please";
 
 #pragma mark - Set info customer
 - (void)setupInfoNewCustomer {
+    CGFloat height = self.scrollView.contentSize.height - self.scrollView.bounds.size.height;
+    self.scrollView.contentOffset = CGPointMake(0.f, height);
     NSString *name = [DataValidation isValidName:self.textFieldNameCustomer.text];
     NSString *phoneNumber = [DataValidation isValidPhoneNumber:(NSMutableString *)self.textFieldPhoneNumber.text];
     double currentTime = [[NSDate date] timeIntervalSince1970];

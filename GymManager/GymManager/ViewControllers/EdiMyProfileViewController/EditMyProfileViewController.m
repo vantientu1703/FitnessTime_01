@@ -30,6 +30,7 @@ NSString *const kUpdateFailTitle = @"Update fail";
 @property (strong, nonatomic) UIImagePickerController *imagePickerController;
 @property (weak, nonatomic) IBOutlet UILabel *labelNotes;
 @property (weak, nonatomic) IBOutlet UIButton *buttonDateOfBirth;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -89,6 +90,8 @@ NSString *const kUpdateFailTitle = @"Update fail";
 }
 
 - (void)saveUser {
+    CGFloat height = self.scrollView.contentSize.height - self.scrollView.bounds.size.height;
+    self.scrollView.contentOffset = CGPointMake(0.0f, height);
     double currentTime = [[NSDate date] timeIntervalSince1970];
     double dateBirthTime = [_fromDate timeIntervalSince1970];
     NSString *phoneNumber = [DataValidation isValidPhoneNumber:(NSMutableString *)self.textFieldPhoneNumber.text];

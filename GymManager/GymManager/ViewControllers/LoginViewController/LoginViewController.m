@@ -37,9 +37,6 @@ NSString *const kErrorEmailOrPassword = @"Incorrect email or password";
     self.textFieldPassword.delegate = self;
     self.textFieldUserName.delegate = self;
     self.buttonLoginWithFB.layer.cornerRadius = kCornerRadiusViewBackground;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(loginWithFBPress:)];
-    [self.buttonLoginWithFB addGestureRecognizer:tap];
-    self.buttonLoginWithFB.userInteractionEnabled = YES;
 }
 
 #pragma mark - Login
