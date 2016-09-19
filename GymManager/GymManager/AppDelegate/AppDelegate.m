@@ -28,11 +28,6 @@
         [self loadLoginViewController];
     }
     [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
-    if ([FBSDKAccessToken currentAccessToken]) {
-        [self loadTabbarController];
-    } else {
-        [self loadLoginViewController];
-    }
     [self.window makeKeyAndVisible];
     return YES;
 }

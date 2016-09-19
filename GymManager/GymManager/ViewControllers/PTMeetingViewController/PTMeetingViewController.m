@@ -41,9 +41,7 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setupView];
-    if (![FBSDKAccessToken currentAccessToken]) {
-        [self getAllTrainers];
-    }
+    [self getAllTrainers];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addNewTrainer:)
         name:kAddNewTrainerTitle object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTrainers:)
