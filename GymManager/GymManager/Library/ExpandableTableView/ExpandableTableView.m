@@ -64,6 +64,8 @@
     if (customer.fullName) {
         headerView.lbCusName.text = customer.fullName;
     }
+    NSURL *url = transaction.user.avatarURL;
+    [headerView.imgAvatar sd_setImageWithURL:url];
     return headerView;
 }
 

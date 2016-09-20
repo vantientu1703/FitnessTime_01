@@ -70,6 +70,8 @@
         view.frame = self.contentView.bounds;
         [self.contentView addSubview:view];
     }
+    self.imgAvatar.layer.masksToBounds = YES;
+    self.imgAvatar.layer.cornerRadius = 25.0f;
     [self addHeaderButton];
     [self hideLoadingView:YES];
 }
