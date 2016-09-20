@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbCusName;
 @property (weak, nonatomic) IBOutlet UILabel *lbTotalCost;
 @property (weak, nonatomic) IBOutlet UILabel *lbDate;
+@property (weak, nonatomic) IBOutlet UIImageView *imgAvatar;
 
 - (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier andFrame:(CGRect)frame;
 - (void)drawView;
