@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "QBImagePickerController.h"
 
 @protocol AlertManagerDelegate <NSObject>
 - (void)showImagePickerController:(UIImagePickerController *)imagePickerController;
+- (void)showQBImagePikcerController:(QBImagePickerController *)qbImagePickerController;
 @end
 
 @interface AlertManager : NSObject<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
@@ -24,4 +26,5 @@
     viewControler:(UIViewController *)viewController reloadAction:(void(^)())complete;
 + (void)showAlertWithTitle:(NSString *)title message:(NSString *)message
     viewControler:(UIViewController *)viewController okAction:(void(^)())complete;
+- (void)showChooseImageAlertWithTitle:(NSString *)title vieController:(UIViewController *)viewController;
 @end

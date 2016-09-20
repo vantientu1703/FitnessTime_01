@@ -14,24 +14,28 @@
 #import "CategoryViewController.h"
 #import "PTManagerViewController.h"
 #import "ListCategoryViewController.h"
+#import "ShareFBViewController.h"
 
 typedef NS_ENUM(NSInteger, MenuDetailRows) {
     MenuDetailRowMyProfile,
     MenuDetailRowPTManager,
     MenuDetailRowCustomerManager,
     MenuDetailRowCategory,
+    MenuDetailRowShareFB,
     MenuDetailRowLogOut
 };
 
 NSString *const kPTManagerTitle = @"PT Manager";
 NSString *const kLogoutTitle = @"Logout";
 NSString *const kCategoryTitle = @"Category";
+NSString *const kShareTitle = @"Share with Facebook";
 NSString *const kIconMyProfile = @"ic_myprofile";
 NSString *const kIconPTManager = @"ic_ptmanager";
 NSString *const kIconCustomerManager = @"ic_customer";
 NSString *const kIconLogout = @"ic_logout";
 NSString *const kIconCategory = @"ic_category";
-NSInteger const kNumberOfRowsInSectionMenu = 5;
+NSString *const kIconShareFB = @"ic_share";
+NSInteger const kNumberOfRowsInSectionMenu = 6;
 CGFloat const kHeightCellMenu = 50.0f;
 static NSString *const kCellDefault = @"CellDefault";
 
@@ -42,6 +46,7 @@ static NSString *const kCellDefault = @"CellDefault";
 @property (strong, nonatomic) PTMeetingViewController *ptPTMeetingVC;
 @property (strong, nonatomic) CustomerManagerViewController *customerManagerVC;
 @property (strong, nonatomic) PTManagerViewController *ptManagerVC;
+@property (strong, nonatomic) ShareFBViewController *shareFBViewController;
 
 @end
 
@@ -112,6 +117,14 @@ static NSString *const kCellDefault = @"CellDefault";
             [self.navigationController pushViewController:listCategoryVC animated:true];
             break;
         }
+        case MenuDetailRowShareFB: {
+            if (![FBSDKAccessToken currentAccessToken]) {
+                [self loginWithFB];
+            } else {
+                [self pushShareFBVC];
+            }
+            break;
+        }
         case MenuDetailRowLogOut: {
             FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
             [loginManager logOut];
@@ -128,7 +141,28 @@ static NSString *const kCellDefault = @"CellDefault";
     }
 }
 
-#pragma mark - ProfileManagerDelegate 
+- (void)loginWithFB {
+    __block MenuViewController *weakSelf = self;
+    [FacebookService login:self completion:^(NSDictionary *userData) {
+        if (userData) {
+            [[DataStore sharedDataStore] setUserLoginWithFB:userData];
+            [weakSelf pushShareFBVC];
+        }
+    }];
+}
+
+- (void)pushShareFBVC {
+    if (!self.shareFBViewController) {
+        UIStoryboard *st = [UIStoryboard storyboardWithName:kShareStoryboard bundle:nil];
+        self.shareFBViewController = [st
+            instantiateViewControllerWithIdentifier:kShareFBViewControllerIdentifier];
+    }
+    User *user = [[DataStore sharedDataStore] getUSerLoginWithFB];
+    self.shareFBViewController.user = user;
+    [self.navigationController pushViewController:self.shareFBViewController animated:true];
+}
+
+#pragma mark - ProfileManagerDelegate
 - (void)logoutSuccess:(BOOL)success error:(NSError *)error {
     //TODO
 }
@@ -144,6 +178,8 @@ static NSString *const kCellDefault = @"CellDefault";
             return kCustomerManagerTitle;
         case MenuDetailRowCategory:
             return kCategoryTitle;
+        case MenuDetailRowShareFB:
+            return kShareTitle;
         case MenuDetailRowLogOut:
             return kLogoutTitle;
         default:
@@ -162,6 +198,8 @@ static NSString *const kCellDefault = @"CellDefault";
             return kIconCustomerManager;
         case MenuDetailRowCategory:
             return kIconCategory;
+        case MenuDetailRowShareFB:
+            return kIconShareFB;
         case MenuDetailRowLogOut:
             return kIconLogout;
         default:

@@ -62,6 +62,34 @@ NSString *const kActionQuit = @"Quit";
     [viewController presentViewController:alertController animated:true completion:nil];
 }
 
+- (void)showChooseImageAlertWithTitle:(NSString *)title vieController:(UIViewController *)viewController {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@""
+        message:kChoosenTypeTitle preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *chooseFromLibrary = [UIAlertAction actionWithTitle:kChoseFromLibraryTitle
+        style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self takePhotoQBImagePickerController];
+    }];
+    UIAlertAction *chooseFromCamera = [UIAlertAction actionWithTitle:kChoseFromCameraTitle
+        style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self takePhotoFromCamera:viewController];
+    }];
+    UIAlertAction *cancelButton = [UIAlertAction actionWithTitle:kCancelTitle
+        style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alertController addAction:chooseFromCamera];
+    [alertController addAction:chooseFromLibrary];
+    [alertController addAction:cancelButton];
+    [viewController presentViewController:alertController animated:true completion:nil];
+}
+
+#pragma mark - Take photo from QBImagePickerController
+- (void)takePhotoQBImagePickerController {
+    QBImagePickerController *imagePickerController = [QBImagePickerController new];
+    if ([self.delegate respondsToSelector:@selector(showQBImagePikcerController:)]) {
+        [self.delegate showQBImagePikcerController:imagePickerController];
+    }
+}
+
 #pragma mark - Take photo
 - (void)takePhotoFromLibrary {
     _imagePickerController = [[UIImagePickerController alloc] init];

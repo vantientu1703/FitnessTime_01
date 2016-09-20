@@ -320,52 +320,6 @@
     [self.navigationController pushViewController:meetingDetailVC animated:true];
 }
 
-- (void)showQBImagePickerController {
-    QBImagePickerController *imagePickerController = [QBImagePickerController new];
-    imagePickerController.delegate = self;
-    imagePickerController.allowsMultipleSelection = YES;
-    imagePickerController.maximumNumberOfSelection = 6;
-    imagePickerController.showsNumberOfSelectedAssets = YES;
-    [self presentViewController:imagePickerController animated:YES completion:NULL];
-}
-
-#pragma mark - QBImagePickerControllerDelegate
-- (void)qb_imagePickerController:(QBImagePickerController *)imagePickerController didFinishPickingAssets:(NSArray *)assets {
-    PHImageRequestOptions *requestOptions = [[PHImageRequestOptions alloc] init];
-    requestOptions.resizeMode   = PHImageRequestOptionsResizeModeExact;
-    requestOptions.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
-    // this one is key
-    requestOptions.synchronous = true;
-    PHImageManager *manager = [PHImageManager defaultManager];
-    NSMutableArray *images = [NSMutableArray arrayWithCapacity:[assets count]];
-    // assets contains PHAsset objects.
-    __block UIImage *ima;
-    for (PHAsset *asset in assets) {
-        [manager requestImageForAsset:asset targetSize:PHImageManagerMaximumSize
-            contentMode:PHImageContentModeDefault options:requestOptions
-            resultHandler:^void(UIImage *image, NSDictionary *info) {
-            ima = image;
-            [images addObject:ima];
-        }];
-    }
-    [self dismissViewControllerAnimated:YES completion:nil];
-    // Post album into facebook
-    [FacebookService shareImages:images withViewController:self];
-}
-
-#pragma FBSDKSharingDelegate
-- (void)sharer:(id<FBSDKSharing>)sharer didCompleteWithResults:(NSDictionary *)results {
-    // TODO
-}
-
-- (void)sharer:(id<FBSDKSharing>)sharer didFailWithError:(NSError *)error {
-    // TODO
-}
-
-- (void)qb_imagePickerControllerDidCancel:(QBImagePickerController *)imagePickerController {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 #pragma mark - Show alert controller
 - (void)showAlertControllerWithIndexPath:(NSIndexPath *)indexPath {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:kReminderTitle

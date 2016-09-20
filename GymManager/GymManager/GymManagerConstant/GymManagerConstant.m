@@ -105,6 +105,10 @@ NSString *const kFromDateToDateTitle = @"registerDate just before expiryDate!";
 NSString *const kDateRegisterAndExpityTitle = @"Date register or expity just before current time!";
 NSString *const kUpdateMeeting = @"Update meeting";
 NSString *const kFilterTitle = @"Filter";
+NSString *const kShareStoryboard = @"ShareFB";
+NSString *const kShareFBViewControllerIdentifier = @"ShareFBViewController";
+NSString *const kUploadPhotoSuccess = @"Upload photo to facebook success";
+NSString *const kUploadPhotoFail = @"Upload photo to facebook fail";
 
 #pragma mark - CoreData
 NSString *const kCoreDataModel = @"GymManager";
