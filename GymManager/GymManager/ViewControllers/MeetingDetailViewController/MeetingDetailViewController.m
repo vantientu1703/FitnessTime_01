@@ -268,6 +268,7 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
         NSDictionary *userInfo = @{@"meeting": meeting};
         [[NSNotificationCenter defaultCenter] postNotificationName:kAddNewMeetingTitle
             object:self userInfo:userInfo];
+        [[NotificationManager sharedManager] addNewMeeting:meeting];
     } else {
         self.labelNotes.text = error.localizedDescription;
     }
@@ -282,6 +283,7 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
         self.labelNotes.textColor = [GymManagerConstant themeColor];
         NSDictionary *userInfo = @{@"meeting": meeting};
         [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateMeeting object:nil userInfo:userInfo];
+        [[NotificationManager sharedManager] editMeeting:meeting];
     } else {
         [AlertManager showAlertWithTitle:kRegisterRequest message:error.localizedDescription
             viewControler:self okAction:^{

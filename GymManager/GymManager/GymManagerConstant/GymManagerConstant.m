@@ -110,6 +110,13 @@ NSString *const kFilterTitle = @"Filter";
 NSString *const kCoreDataModel = @"GymManager";
 NSString *const kBundleID = @"com.vantientu.GymManager";
 
+#pragma mark - Notification Register
+NSString *const kNotiCallActionIdent = @"NotiCallAction";
+NSString *const kNotiDictKeyId = @"id";
+NSString *const kNotiDictKeyTrainer = @"trainer";
+NSString *const kNotiDictKeyCustomer = @"customer";
+NSString *const kNotiDictKeyTrainerPhone = @"trainer_phone";
+
 #pragma mark - API
 NSString *const URLRequest = @"https://fit-ness-backend.herokuapp.com/api/"; //@"http://172.16.0.131:3000/api/";
 NSString *const URLRequestTransaction = @"https://fit-ness-backend.herokuapp.com/api/orders";

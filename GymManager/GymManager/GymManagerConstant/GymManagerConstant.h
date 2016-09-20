@@ -110,6 +110,13 @@ extern NSString *const kFilterTitle;
 extern NSString *const kCoreDataModel;
 extern NSString *const kBundleID;
 
+#pragma mark - Notification Register
+extern NSString *const kNotiCallActionIdent;
+extern NSString *const kNotiDictKeyId;
+extern NSString *const kNotiDictKeyTrainer;
+extern NSString *const kNotiDictKeyCustomer;
+extern NSString *const kNotiDictKeyTrainerPhone;
+
 #pragma mark - API
 extern NSString *const URLRequest;
 extern NSString *const URLRequestItem;

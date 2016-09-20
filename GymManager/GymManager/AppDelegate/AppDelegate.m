@@ -14,13 +14,15 @@
 #import "LoginViewController.h"
 
 @interface AppDelegate ()
-
 @end
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     //Setup Coredata
     [MagicalRecord setupCoreDataStackWithStoreNamed:kCoreDataModel];
+    //Register local notification
+    [self setupLocalNotification];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     if ([[DataStore sharedDataStore] isLoged]) {
         [self loadTabbarController];
@@ -66,6 +68,38 @@
         obj.image = [UIImage imageNamed:arrImages[idx]];
     }];
     self.window.rootViewController = tabVC;
+}
+
+- (void)setupLocalNotification {
+    //Button call trainer
+    UIMutableUserNotificationAction *callAction = [[UIMutableUserNotificationAction alloc] init];
+    callAction.title = @"Call Trainer";
+    callAction.identifier = kNotiCallActionIdent;
+    callAction.destructive = NO;
+    callAction.activationMode = UIUserNotificationActivationModeForeground;
+    callAction.authenticationRequired = NO;
+    //Category buttons
+    UIMutableUserNotificationCategory *category = [[UIMutableUserNotificationCategory alloc] init];
+    category.identifier = kNotiCallActionIdent;
+    [category setActions:@[callAction]
+        forContext:UIUserNotificationActionContextDefault|UIUserNotificationActionContextMinimal];
+    //Settings
+    UIUserNotificationSettings *setting = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|
+        UIUserNotificationTypeSound categories:[NSSet setWithObjects:category, nil]];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:setting];
+}
+
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void (^)())completionHandler {
+    completionHandler();
+    if ([kNotiCallActionIdent isEqualToString:notification.category]) {
+        if ([kNotiCallActionIdent isEqualToString:identifier]) {
+            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",
+                notification.userInfo[kNotiDictKeyTrainerPhone]]];
+            if ([application canOpenURL:url]) {
+                [application openURL:url];
+            }
+        }
+    }
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
