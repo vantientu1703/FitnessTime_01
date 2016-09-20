@@ -105,6 +105,10 @@ extern NSString *const kFromDateToDateTitle;
 extern NSString *const kDateRegisterAndExpityTitle;
 extern NSString *const kUpdateMeeting;
 extern NSString *const kFilterTitle;
+extern NSString *const kShareStoryboard;
+extern NSString *const kShareFBViewControllerIdentifier;
+extern NSString *const kUploadPhotoSuccess;
+extern NSString *const kUploadPhotoFail;
 
 #pragma mark - CoreData
 extern NSString *const kCoreDataModel;
