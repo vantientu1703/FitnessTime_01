@@ -78,6 +78,9 @@
 		EF0DD5671D8FDE4A00F9C311 /* ic_share@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF0DD5651D8FDE4A00F9C311 /* ic_share@3x.png */; settings = {ASSET_TAGS = (); }; };
 		EF0DD56B1D8FE01500F9C311 /* ShareFBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0DD56A1D8FE01500F9C311 /* ShareFBViewController.m */; settings = {ASSET_TAGS = (); }; };
 		EF0DD5701D904C5100F9C311 /* DisplayImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF0DD56F1D904C5000F9C311 /* DisplayImageView.xib */; settings = {ASSET_TAGS = (); }; };
+		EF30EF831D91281500019439 /* ic_touch_me.png in Resources */ = {isa = PBXBuildFile; fileRef = EF30EF821D91281500019439 /* ic_touch_me.png */; settings = {ASSET_TAGS = (); }; };
+		EF30EF871D912DB100019439 /* PhototShareManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF30EF861D912DB100019439 /* PhototShareManagerViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EF30EF8B1D912F8200019439 /* PhotoShareManagerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF30EF8A1D912F8200019439 /* PhotoShareManagerCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		EF394B6B1D8F87FD00E2A9B9 /* ic_button_loginfb.png in Resources */ = {isa = PBXBuildFile; fileRef = EF394B6A1D8F87FD00E2A9B9 /* ic_button_loginfb.png */; settings = {ASSET_TAGS = (); }; };
 		EF5422DB1D8A7B7E001DF8F9 /* ic_facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = EF5422DA1D8A7B7E001DF8F9 /* ic_facebook.png */; settings = {ASSET_TAGS = (); }; };
 		EF5FA7AE1D6AE22200E4B95F /* DataValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5FA7AD1D6AE22200E4B95F /* DataValidation.m */; };
@@ -245,6 +248,11 @@
 		EF0DD5691D8FE01500F9C311 /* ShareFBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShareFBViewController.h; path = ViewControllers/ShareFBViewController/ShareFBViewController.h; sourceTree = "<group>"; };
 		EF0DD56A1D8FE01500F9C311 /* ShareFBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShareFBViewController.m; path = ViewControllers/ShareFBViewController/ShareFBViewController.m; sourceTree = "<group>"; };
 		EF0DD56F1D904C5000F9C311 /* DisplayImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DisplayImageView.xib; path = Xib/DisplayImageView.xib; sourceTree = "<group>"; };
+		EF30EF821D91281500019439 /* ic_touch_me.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_touch_me.png; path = Resources/ic_touch_me.png; sourceTree = "<group>"; };
+		EF30EF851D912DB100019439 /* PhototShareManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhototShareManagerViewController.h; path = ViewControllers/PhotoShareManagerViewController/PhototShareManagerViewController.h; sourceTree = "<group>"; };
+		EF30EF861D912DB100019439 /* PhototShareManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhototShareManagerViewController.m; path = ViewControllers/PhotoShareManagerViewController/PhototShareManagerViewController.m; sourceTree = "<group>"; };
+		EF30EF891D912F8200019439 /* PhotoShareManagerCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoShareManagerCollectionViewCell.h; path = Cell/PhotoShareManagerCollectionViewCell/PhotoShareManagerCollectionViewCell.h; sourceTree = "<group>"; };
+		EF30EF8A1D912F8200019439 /* PhotoShareManagerCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoShareManagerCollectionViewCell.m; path = Cell/PhotoShareManagerCollectionViewCell/PhotoShareManagerCollectionViewCell.m; sourceTree = "<group>"; };
 		EF394B6A1D8F87FD00E2A9B9 /* ic_button_loginfb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_button_loginfb.png; path = Resources/ic_button_loginfb.png; sourceTree = "<group>"; };
 		EF5422DA1D8A7B7E001DF8F9 /* ic_facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_facebook.png; path = Resources/ic_facebook.png; sourceTree = "<group>"; };
 		EF5FA7AC1D6AE22200E4B95F /* DataValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataValidation.h; path = DataValidation/DataValidation.h; sourceTree = "<group>"; };
@@ -580,6 +588,7 @@
 				EF0809941D5C975E007A8EAE /* TransactionsViewController */,
 				EF0809951D5C976D007A8EAE /* MenuViewController */,
 				EF0DD5681D8FDFEC00F9C311 /* ShareFBViewController */,
+				EF30EF841D912D7E00019439 /* PhotoShareManagerViewController */,
 				EFFD8D5D1D66FB1300994CC5 /* CategoryViewController */,
 				EF7E23E81D67404700B613FD /* EditNumberOfCategoryViewController */,
 				EF7E23E41D672A0000B613FD /* AddNewCategoryViewController */,
@@ -595,6 +604,7 @@
 		EF0809781D5C8743007A8EAE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EF30EF821D91281500019439 /* ic_touch_me.png */,
 				EF0DD5641D8FDE4A00F9C311 /* ic_share@2x.png */,
 				EF0DD5651D8FDE4A00F9C311 /* ic_share@3x.png */,
 				EF0DD5621D8FD76100F9C311 /* ic_share.png */,
@@ -768,6 +778,24 @@
 			name = Xib;
 			sourceTree = "<group>";
 		};
+		EF30EF841D912D7E00019439 /* PhotoShareManagerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EF30EF851D912DB100019439 /* PhototShareManagerViewController.h */,
+				EF30EF861D912DB100019439 /* PhototShareManagerViewController.m */,
+			);
+			name = PhotoShareManagerViewController;
+			sourceTree = "<group>";
+		};
+		EF30EF881D912F4E00019439 /* PhotoShareManagerCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				EF30EF891D912F8200019439 /* PhotoShareManagerCollectionViewCell.h */,
+				EF30EF8A1D912F8200019439 /* PhotoShareManagerCollectionViewCell.m */,
+			);
+			name = PhotoShareManagerCollectionViewCell;
+			sourceTree = "<group>";
+		};
 		EF74B2F81D6EA84000D17C52 /* ParseJson */ = {
 			isa = PBXGroup;
 			children = (
@@ -845,6 +873,7 @@
 		EF870A941D5DFE9B00118D7C /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				EF30EF881D912F4E00019439 /* PhotoShareManagerCollectionViewCell */,
 				EFFD8D611D66FF9900994CC5 /* CategoryCell */,
 				EFFD8D431D66BAB700994CC5 /* CustomerTableViewCell */,
 				EFF28BD31D65732B000F9B27 /* DateMeetingTableViewCell */,
@@ -1113,6 +1142,7 @@
 				40B8A7321D640C12007AB6BF /* CategoryCell.xib in Resources */,
 				EF7D77FC1D752EBC00A6C63F /* notifications@2x.png in Resources */,
 				EF7D77F91D752EBC00A6C63F /* friends@2x.png in Resources */,
+				EF30EF831D91281500019439 /* ic_touch_me.png in Resources */,
 				40EDFA6F1D7D48DB006EDD5D /* Plus-96.png in Resources */,
 				EF0DD5661D8FDE4A00F9C311 /* ic_share@2x.png in Resources */,
 				EF7D77F81D752EBC00A6C63F /* friends.png in Resources */,
@@ -1217,6 +1247,7 @@
 				EF0D908D1D7E814000A2EE4A /* PTManagerViewController.m in Sources */,
 				EF870A831D5DB66700118D7C /* LoginViewController.m in Sources */,
 				EF635C081D6DD46F00BEB9A1 /* ProfileManager.m in Sources */,
+				EF30EF8B1D912F8200019439 /* PhotoShareManagerCollectionViewCell.m in Sources */,
 				EF74B2F71D6EA1AA00D17C52 /* MeetingManager.m in Sources */,
 				40B8A72B1D640C04007AB6BF /* ListCategoryViewController.m in Sources */,
 				40DB605E1D826B8F009B223F /* NumberFormatterDecimal.m in Sources */,
@@ -1234,6 +1265,7 @@
 				4026372F1D6D9FB0006E71AD /* AddTransactionManager.m in Sources */,
 				EFFD8D4E1D66BB9C00994CC5 /* InfoCustomerManagerViewController.m in Sources */,
 				40AB31311D5DD81000341359 /* ExpandableTableView.m in Sources */,
+				EF30EF871D912DB100019439 /* PhototShareManagerViewController.m in Sources */,
 				EFF28BDC1D657640000F9B27 /* CustomerOrTrainnerTableViewCell.m in Sources */,
 				4042412A1D65BA4D00111B97 /* RegisterManager.m in Sources */,
 				406E24811D62C7AD00F013FB /* CalendarViewController.m in Sources */,

@@ -7,11 +7,12 @@
 //
 
 #import "ShareFBViewController.h"
+#import "PhototShareManagerViewController.h"
 
 NSString *const kShareWithFB = @"Share with facebook";
 NSInteger const kLabelTag = 100000;
 
-@interface ShareFBViewController ()<UITextFieldDelegate, QBImagePickerControllerDelegate, FBSDKSharingDelegate, AlertManagerDelegate, UIImagePickerControllerDelegate>
+@interface ShareFBViewController ()<UITextFieldDelegate, QBImagePickerControllerDelegate, FBSDKSharingDelegate, AlertManagerDelegate, UIImagePickerControllerDelegate, PhototShareManagerViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewAvatarFB;
 @property (weak, nonatomic) IBOutlet UILabel *labelName;
@@ -56,9 +57,20 @@ NSInteger const kLabelTag = 100000;
 }
 
 - (IBAction)selectImages:(id)sender {
-    AlertManager *alert = [[AlertManager alloc] init];
-    alert.delegate = self;
-    [alert showChooseImageAlertWithTitle:kReminderTitle vieController:self];
+    UIStoryboard *st = [UIStoryboard storyboardWithName:kShareStoryboard bundle:nil];
+    PhototShareManagerViewController *photoShareManagerVC = [st
+        instantiateViewControllerWithIdentifier:kPhototShareManagerViewControllerIdentifier];
+    photoShareManagerVC.delegate = self;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:photoShareManagerVC];
+    [self presentViewController:nav animated:true completion:nil];
+}
+
+#pragma mark - PhototShareManagerViewControllerDelehate
+- (void)fillImageToViewWithArrayImages:(NSArray *)images {
+    if (images.count) {
+        self.arrImages = (NSMutableArray *)images;
+        [self openImageViewWithIndex:images.count images:images];
+    }
 }
 
 #pragma mark - AlertManagerDelegate
@@ -68,58 +80,15 @@ NSInteger const kLabelTag = 100000;
     qbImagePickerController.showsNumberOfSelectedAssets = YES;
     [self presentViewController:qbImagePickerController animated:YES completion:NULL];
 }
-#pragma mark - UIImagePickerControllerDelegate
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
-    self.arrImages = [NSMutableArray array];
-    [self.arrImages addObject:chosenImage];
-    [self openImageViewWithIndex:self.arrImages.count images:self.arrImages];
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-#pragma mark - QBImagePickerControllerDelegate
-- (void)qb_imagePickerController:(QBImagePickerController *)imagePickerController didFinishPickingAssets:(NSArray *)assets {
-    PHImageRequestOptions *requestOptions = [[PHImageRequestOptions alloc] init];
-    requestOptions.resizeMode   = PHImageRequestOptionsResizeModeExact;
-    requestOptions.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
-    // this one is key
-    requestOptions.synchronous = true;
-    PHImageManager *manager = [PHImageManager defaultManager];
-    __block NSMutableArray *images = [NSMutableArray arrayWithCapacity:[assets count]];
-    // assets contains PHAsset objects.
-    __block UIImage *ima;
-    for (PHAsset *asset in assets) {
-        [manager requestImageForAsset:asset targetSize:PHImageManagerMaximumSize
-            contentMode:PHImageContentModeDefault options:requestOptions
-            resultHandler:^void(UIImage *image, NSDictionary *info) {
-            ima = image;
-            [images addObject:ima];
-        }];
-    }
-    self.arrImages = images;
-    [self openImageViewWithIndex:images.count images:images];
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-#pragma FBSDKSharingDelegate
-- (void)sharer:(id<FBSDKSharing>)sharer didCompleteWithResults:(NSDictionary *)results {
-    [AlertManager showAlertWithTitle:kReminderTitle message:kUploadPhotoSuccess viewControler:self okAction:^{}];
-}
-
-- (void)sharer:(id<FBSDKSharing>)sharer didFailWithError:(NSError *)error {
-    [AlertManager showAlertWithTitle:kReminderTitle message:kUploadPhotoFail viewControler:self okAction:^{}];
-}
-
-- (void)qb_imagePickerControllerDidCancel:(QBImagePickerController *)imagePickerController {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
 - (IBAction)sharePress:(id)sender {
     // Post album into facebook
-    if (self.arrImages.count > 1) {
-        [FacebookService shareImages:self.arrImages withViewController:self];
-    } else {
-        [FacebookService shareImage:self.arrImages[0] message:self.textFieldTitle.text withViewController:self];
+    if (self.arrImages.count) {
+        if (self.arrImages.count > 1) {
+            [FacebookService shareImages:self.arrImages withViewController:self];
+        } else {
+            [FacebookService shareImage:self.arrImages[0] message:self.textFieldTitle.text withViewController:self];
+        }
     }
 }
 
@@ -168,7 +137,7 @@ NSInteger const kLabelTag = 100000;
     if (labelView && [labelView isMemberOfClass:[UILabel class]]) {
         UILabel *label = (UILabel *)labelView;
         if (count > 5) {
-            label.text = [NSString stringWithFormat:@"%ld", (count - 4)];
+            label.text = [NSString stringWithFormat:@"+%ld", (count - 4)];
             label.hidden = NO;
         } else {
             label.hidden = YES;

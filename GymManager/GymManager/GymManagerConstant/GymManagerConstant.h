@@ -109,6 +109,7 @@ extern NSString *const kShareStoryboard;
 extern NSString *const kShareFBViewControllerIdentifier;
 extern NSString *const kUploadPhotoSuccess;
 extern NSString *const kUploadPhotoFail;
+extern NSString *const kPhototShareManagerViewControllerIdentifier;
 
 #pragma mark - CoreData
 extern NSString *const kCoreDataModel;
