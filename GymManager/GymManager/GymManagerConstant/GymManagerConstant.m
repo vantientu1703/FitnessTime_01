@@ -110,6 +110,7 @@ NSString *const kShareFBViewControllerIdentifier = @"ShareFBViewController";
 NSString *const kUploadPhotoSuccess = @"Upload photo to facebook success";
 NSString *const kUploadPhotoFail = @"Upload photo to facebook fail";
 NSString *const kPhototShareManagerViewControllerIdentifier = @"PhototShareManagerViewController";
+NSString *const kGoogleMapsViewControllerIdentifier = @"GoogleMapsViewController";
 
 #pragma mark - CoreData
 NSString *const kCoreDataModel = @"GymManager";

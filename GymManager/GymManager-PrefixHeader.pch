@@ -54,4 +54,6 @@
 #import "FacebookService.h"
 #import "QBImagePickerController.h"
 #import "NotificationManager.h"
+#import <GoogleMaps/GoogleMaps.h>
+#import "GoogleMapsViewController.h"
 #endif /* GymManager_PrefixHeader_pch */

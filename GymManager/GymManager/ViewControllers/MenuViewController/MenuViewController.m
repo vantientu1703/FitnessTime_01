@@ -22,6 +22,7 @@ typedef NS_ENUM(NSInteger, MenuDetailRows) {
     MenuDetailRowCustomerManager,
     MenuDetailRowCategory,
     MenuDetailRowShareFB,
+    MenuDetailRowLocation,
     MenuDetailRowLogOut
 };
 
@@ -35,9 +36,11 @@ NSString *const kIconCustomerManager = @"ic_customer";
 NSString *const kIconLogout = @"ic_logout";
 NSString *const kIconCategory = @"ic_category";
 NSString *const kIconShareFB = @"ic_share";
-NSInteger const kNumberOfRowsInSectionMenu = 6;
+NSInteger const kNumberOfRowsInSectionMenu = 7;
 CGFloat const kHeightCellMenu = 50.0f;
 static NSString *const kCellDefault = @"CellDefault";
+NSString *const kLocationTtile = @"Location";
+NSString *const kIconLocation = @"ic_location";
 
 @interface MenuViewController ()<UITableViewDataSource,UITableViewDelegate, ProfileManagerDelegate>
 
@@ -47,6 +50,7 @@ static NSString *const kCellDefault = @"CellDefault";
 @property (strong, nonatomic) CustomerManagerViewController *customerManagerVC;
 @property (strong, nonatomic) PTManagerViewController *ptManagerVC;
 @property (strong, nonatomic) ShareFBViewController *shareFBViewController;
+@property (strong, nonatomic) GoogleMapsViewController *googleMapsViewController;
 
 @end
 
@@ -125,6 +129,15 @@ static NSString *const kCellDefault = @"CellDefault";
             }
             break;
         }
+        case MenuDetailRowLocation: {
+            if (!self.googleMapsViewController) {
+                UIStoryboard *st = [UIStoryboard storyboardWithName:kShareStoryboard bundle:nil];
+                self.googleMapsViewController = [st
+                    instantiateViewControllerWithIdentifier:kGoogleMapsViewControllerIdentifier];
+            }
+            [self.navigationController pushViewController:self.googleMapsViewController animated:YES];
+            break;
+        }
         case MenuDetailRowLogOut: {
             FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
             [loginManager logOut];
@@ -180,6 +193,8 @@ static NSString *const kCellDefault = @"CellDefault";
             return kCategoryTitle;
         case MenuDetailRowShareFB:
             return kShareTitle;
+        case MenuDetailRowLocation:
+            return kLocationTtile;
         case MenuDetailRowLogOut:
             return kLogoutTitle;
         default:
@@ -200,6 +215,8 @@ static NSString *const kCellDefault = @"CellDefault";
             return kIconCategory;
         case MenuDetailRowShareFB:
             return kIconShareFB;
+        case MenuDetailRowLocation:
+            return kIconLocation;
         case MenuDetailRowLogOut:
             return kIconLogout;
         default:
