@@ -13,6 +13,8 @@
 #import "TransactionsViewController.h"
 #import "LoginViewController.h"
 
+NSString *const kMapAPIKey = @"AIzaSyAO6QZDAo1MgcBy92CoF8_7dqbKjln0A20";
+
 @interface AppDelegate ()
 @end
 
@@ -30,6 +32,7 @@
         [self loadLoginViewController];
     }
     [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+    [GMSServices provideAPIKey:kMapAPIKey];
     [self.window makeKeyAndVisible];
     return YES;
 }

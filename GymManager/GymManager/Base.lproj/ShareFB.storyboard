@@ -262,6 +262,67 @@
             </objects>
             <point key="canvasLocation" x="1022" y="245"/>
         </scene>
+        <!--Google Maps View Controller-->
+        <scene sceneID="b5j-KF-lYg">
+            <objects>
+                <viewController storyboardIdentifier="GoogleMapsViewController" id="Hk3-cd-JPf" customClass="GoogleMapsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nRb-Yd-faU"/>
+                        <viewControllerLayoutGuide type="bottom" id="eTk-hg-jbk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7wr-C1-oME">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ffD-A6-auU">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xpm-Hc-U2w">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M7i-uJ-dCf" userLabel="Map View">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="568" id="IEn-rl-GSg"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="M7i-uJ-dCf" secondAttribute="bottom" id="Oob-6P-okv"/>
+                                            <constraint firstItem="M7i-uJ-dCf" firstAttribute="leading" secondItem="xpm-Hc-U2w" secondAttribute="leading" id="XY8-gy-lLM"/>
+                                            <constraint firstItem="M7i-uJ-dCf" firstAttribute="top" secondItem="xpm-Hc-U2w" secondAttribute="top" id="e14-7G-dMU"/>
+                                            <constraint firstAttribute="trailing" secondItem="M7i-uJ-dCf" secondAttribute="trailing" id="zYi-V1-HN3"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="xpm-Hc-U2w" firstAttribute="leading" secondItem="ffD-A6-auU" secondAttribute="leading" id="Cbz-qI-ZDf"/>
+                                    <constraint firstItem="xpm-Hc-U2w" firstAttribute="top" secondItem="ffD-A6-auU" secondAttribute="top" id="OD7-Ph-8Cy"/>
+                                    <constraint firstAttribute="bottom" secondItem="xpm-Hc-U2w" secondAttribute="bottom" id="ahb-Jb-g4M"/>
+                                    <constraint firstAttribute="trailing" secondItem="xpm-Hc-U2w" secondAttribute="trailing" id="th0-AO-7h8"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ffD-A6-auU" secondAttribute="trailing" id="KJX-KQ-pZE"/>
+                            <constraint firstItem="xpm-Hc-U2w" firstAttribute="width" secondItem="7wr-C1-oME" secondAttribute="width" id="WD5-Fh-M6a"/>
+                            <constraint firstItem="eTk-hg-jbk" firstAttribute="top" secondItem="ffD-A6-auU" secondAttribute="bottom" id="b03-7A-I3d"/>
+                            <constraint firstItem="ffD-A6-auU" firstAttribute="leading" secondItem="7wr-C1-oME" secondAttribute="leading" id="fQY-cm-lC2"/>
+                            <constraint firstItem="ffD-A6-auU" firstAttribute="top" secondItem="7wr-C1-oME" secondAttribute="top" id="vq3-Kg-fap"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="containtView" destination="M7i-uJ-dCf" id="7bH-bC-Mhi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QH3-DC-wgM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1409" y="245"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ic_logout_fb.png" width="312" height="40"/>
