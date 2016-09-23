@@ -28,13 +28,13 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.15.1):
     - FBSDKCoreKit
-  - GoogleMaps (2.0.1):
-    - GoogleMaps/Maps (= 2.0.1)
-  - GoogleMaps/Base (2.0.1)
-  - GoogleMaps/Maps (2.0.1):
-    - GoogleMaps/Base (= 2.0.1)
-  - GooglePlaces (2.0.1):
-    - GoogleMaps/Base (= 2.0.1)
+  - GoogleMaps (2.1.0):
+    - GoogleMaps/Maps (= 2.1.0)
+  - GoogleMaps/Base (2.1.0)
+  - GoogleMaps/Maps (2.1.0):
+    - GoogleMaps/Base (= 2.1.0)
+  - GooglePlaces (2.1.0):
+    - GoogleMaps/Base (= 2.1.0)
   - JSONModel (1.5.1)
   - MagicalRecord (2.3.2):
     - MagicalRecord/Core (= 2.3.2)
@@ -75,8 +75,8 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: fc7fa53d16b095ee3fd53f0cd59f1df8bcbb634d
   FBSDKLoginKit: 073f79b3b2e762fc6f54a283fe15f45372d59f5f
   FBSDKShareKit: 11cbb5a4d7b5fda8143cc95b76188147e6725736
-  GoogleMaps: f09da64fc987c1aa29394567c3cab5a3df83c402
-  GooglePlaces: 72fab1d1651c6df0322f2aad245ffb15b80d3c56
+  GoogleMaps: 06589b9a38097bce0cd6e90f0fd9b5e4b4a9344c
+  GooglePlaces: 16e96266483b8010e9f275399403647978523c86
   JSONModel: fd2553dc9e6608a3f35bfc956a14be35395d3852
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2

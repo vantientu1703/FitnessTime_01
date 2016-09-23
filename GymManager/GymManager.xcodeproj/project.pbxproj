@@ -16,6 +16,7 @@
 		400463301D90F51200E08A96 /* UILabelNoData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4004632F1D90F51200E08A96 /* UILabelNoData.m */; };
 		400C78DB1D67465F00CEE19B /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 400C78D91D67465F00CEE19B /* Calendar.storyboard */; };
 		4017EDF61D6175A30033E0AE /* AddTransactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4017EDF51D6175A30033E0AE /* AddTransactionViewController.m */; };
+		401AF3F81D94FEC000700287 /* CustomLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 401AF3F71D94FEC000700287 /* CustomLoadingView.m */; };
 		4022D4BF1D7D6CEB00EEF21A /* green_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4022D4BE1D7D6CEB00EEF21A /* green_bg.jpg */; };
 		402637261D6CA68E006E71AD /* PopoverEditItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402637251D6CA68E006E71AD /* PopoverEditItemViewController.m */; };
 		4026372C1D6CA945006E71AD /* CategoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4026372B1D6CA945006E71AD /* CategoryManager.m */; };
@@ -42,6 +43,7 @@
 		40B8A7311D640C12007AB6BF /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B8A72F1D640C12007AB6BF /* CategoryCell.m */; };
 		40B8A7321D640C12007AB6BF /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40B8A7301D640C12007AB6BF /* CategoryCell.xib */; };
 		40BF38031D6AB35200793CEB /* TransactionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BF38021D6AB35200793CEB /* TransactionManager.m */; };
+		40C5637D1D94C7A300363BFD /* arm.png in Resources */ = {isa = PBXBuildFile; fileRef = 40C5637C1D94C7A200363BFD /* arm.png */; };
 		40DB605E1D826B8F009B223F /* NumberFormatterDecimal.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DB605D1D826B8F009B223F /* NumberFormatterDecimal.m */; };
 		40DF88131D81A382003F98F2 /* ClipButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DF88121D81A382003F98F2 /* ClipButton.m */; };
 		40DF88151D81B04D003F98F2 /* ic_increase.png in Resources */ = {isa = PBXBuildFile; fileRef = 40DF88141D81B04D003F98F2 /* ic_increase.png */; };
@@ -71,20 +73,21 @@
 		EF0D909E1D8124CB00A2EE4A /* ShowPersonalIncomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0D909D1D8124CB00A2EE4A /* ShowPersonalIncomeViewController.m */; };
 		EF0D90A01D815F4F00A2EE4A /* AddNewCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7E23E61D672A3600B613FD /* AddNewCategoryViewController.m */; };
 		EF0D90A11D815FB900A2EE4A /* EditNumberOfCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7E23EA1D6740A400B613FD /* EditNumberOfCategoryViewController.m */; };
-		EF0DD55F1D8FD23A00F9C311 /* ShareFB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF0DD55D1D8FD23A00F9C311 /* ShareFB.storyboard */; settings = {ASSET_TAGS = (); }; };
-		EF0DD5611D8FD45B00F9C311 /* ic_logout_fb.png in Resources */ = {isa = PBXBuildFile; fileRef = EF0DD5601D8FD45B00F9C311 /* ic_logout_fb.png */; settings = {ASSET_TAGS = (); }; };
-		EF0DD5631D8FD76100F9C311 /* ic_share.png in Resources */ = {isa = PBXBuildFile; fileRef = EF0DD5621D8FD76100F9C311 /* ic_share.png */; settings = {ASSET_TAGS = (); }; };
-		EF0DD5661D8FDE4A00F9C311 /* ic_share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF0DD5641D8FDE4A00F9C311 /* ic_share@2x.png */; settings = {ASSET_TAGS = (); }; };
-		EF0DD5671D8FDE4A00F9C311 /* ic_share@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF0DD5651D8FDE4A00F9C311 /* ic_share@3x.png */; settings = {ASSET_TAGS = (); }; };
-		EF0DD56B1D8FE01500F9C311 /* ShareFBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0DD56A1D8FE01500F9C311 /* ShareFBViewController.m */; settings = {ASSET_TAGS = (); }; };
-		EF0DD5701D904C5100F9C311 /* DisplayImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF0DD56F1D904C5000F9C311 /* DisplayImageView.xib */; settings = {ASSET_TAGS = (); }; };
-		EF30EF831D91281500019439 /* ic_touch_me.png in Resources */ = {isa = PBXBuildFile; fileRef = EF30EF821D91281500019439 /* ic_touch_me.png */; settings = {ASSET_TAGS = (); }; };
-		EF30EF871D912DB100019439 /* PhototShareManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF30EF861D912DB100019439 /* PhototShareManagerViewController.m */; settings = {ASSET_TAGS = (); }; };
-		EF30EF8B1D912F8200019439 /* PhotoShareManagerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF30EF8A1D912F8200019439 /* PhotoShareManagerCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		EF394B6B1D8F87FD00E2A9B9 /* ic_button_loginfb.png in Resources */ = {isa = PBXBuildFile; fileRef = EF394B6A1D8F87FD00E2A9B9 /* ic_button_loginfb.png */; settings = {ASSET_TAGS = (); }; };
-		EF5422DB1D8A7B7E001DF8F9 /* ic_facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = EF5422DA1D8A7B7E001DF8F9 /* ic_facebook.png */; settings = {ASSET_TAGS = (); }; };
+		EF0DD55F1D8FD23A00F9C311 /* ShareFB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF0DD55D1D8FD23A00F9C311 /* ShareFB.storyboard */; };
+		EF0DD5611D8FD45B00F9C311 /* ic_logout_fb.png in Resources */ = {isa = PBXBuildFile; fileRef = EF0DD5601D8FD45B00F9C311 /* ic_logout_fb.png */; };
+		EF0DD5631D8FD76100F9C311 /* ic_share.png in Resources */ = {isa = PBXBuildFile; fileRef = EF0DD5621D8FD76100F9C311 /* ic_share.png */; };
+		EF0DD5661D8FDE4A00F9C311 /* ic_share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF0DD5641D8FDE4A00F9C311 /* ic_share@2x.png */; };
+		EF0DD5671D8FDE4A00F9C311 /* ic_share@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF0DD5651D8FDE4A00F9C311 /* ic_share@3x.png */; };
+		EF0DD56B1D8FE01500F9C311 /* ShareFBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0DD56A1D8FE01500F9C311 /* ShareFBViewController.m */; };
+		EF0DD5701D904C5100F9C311 /* DisplayImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF0DD56F1D904C5000F9C311 /* DisplayImageView.xib */; };
+		EF30EF831D91281500019439 /* ic_touch_me.png in Resources */ = {isa = PBXBuildFile; fileRef = EF30EF821D91281500019439 /* ic_touch_me.png */; };
+		EF30EF871D912DB100019439 /* PhototShareManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF30EF861D912DB100019439 /* PhototShareManagerViewController.m */; };
+		EF30EF8B1D912F8200019439 /* PhotoShareManagerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF30EF8A1D912F8200019439 /* PhotoShareManagerCollectionViewCell.m */; };
+		EF394B6B1D8F87FD00E2A9B9 /* ic_button_loginfb.png in Resources */ = {isa = PBXBuildFile; fileRef = EF394B6A1D8F87FD00E2A9B9 /* ic_button_loginfb.png */; };
+		EF5422DB1D8A7B7E001DF8F9 /* ic_facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = EF5422DA1D8A7B7E001DF8F9 /* ic_facebook.png */; };
 		EF5FA7AE1D6AE22200E4B95F /* DataValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5FA7AD1D6AE22200E4B95F /* DataValidation.m */; };
-		EF623F3D1D9379D900DC994F /* GoogleMapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF623F3C1D9379D900DC994F /* GoogleMapsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EF623F3D1D9379D900DC994F /* GoogleMapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF623F3C1D9379D900DC994F /* GoogleMapsViewController.m */; };
+		EF623F3F1D937CA500DC994F /* ic_location.png in Resources */ = {isa = PBXBuildFile; fileRef = EF623F3E1D937CA500DC994F /* ic_location.png */; };
 		EF635BFF1D6CB21900BEB9A1 /* TrainerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF635BFE1D6CB21900BEB9A1 /* TrainerManager.m */; };
 		EF635C021D6D79BC00BEB9A1 /* UIImageConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = EF635C011D6D79BC00BEB9A1 /* UIImageConstant.m */; };
 		EF635C051D6D878000BEB9A1 /* CustomerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF635C041D6D878000BEB9A1 /* CustomerManager.m */; };
@@ -149,6 +152,8 @@
 		400C78DA1D67465F00CEE19B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Calendar.storyboard; sourceTree = "<group>"; };
 		4017EDF41D6175A30033E0AE /* AddTransactionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddTransactionViewController.h; path = ViewControllers/TransactionsViewController/AddTransactionViewController/AddTransactionViewController.h; sourceTree = "<group>"; };
 		4017EDF51D6175A30033E0AE /* AddTransactionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddTransactionViewController.m; path = ViewControllers/TransactionsViewController/AddTransactionViewController/AddTransactionViewController.m; sourceTree = "<group>"; };
+		401AF3F61D94FEC000700287 /* CustomLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomLoadingView.h; path = Library/CustomLoadingView/CustomLoadingView.h; sourceTree = "<group>"; };
+		401AF3F71D94FEC000700287 /* CustomLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomLoadingView.m; path = Library/CustomLoadingView/CustomLoadingView.m; sourceTree = "<group>"; };
 		4022D4BE1D7D6CEB00EEF21A /* green_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = green_bg.jpg; sourceTree = "<group>"; };
 		402637241D6CA68E006E71AD /* PopoverEditItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopoverEditItemViewController.h; path = ViewControllers/TransactionsViewController/AddTransactionViewController/PopoverEditItemViewController.h; sourceTree = "<group>"; };
 		402637251D6CA68E006E71AD /* PopoverEditItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopoverEditItemViewController.m; path = ViewControllers/TransactionsViewController/AddTransactionViewController/PopoverEditItemViewController.m; sourceTree = "<group>"; };
@@ -195,6 +200,7 @@
 		40B8A7301D640C12007AB6BF /* CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CategoryCell.xib; path = ViewControllers/TransactionsViewController/AddTransactionViewController/CategoryCell/CategoryCell.xib; sourceTree = "<group>"; };
 		40BF38011D6AB35200793CEB /* TransactionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransactionManager.h; path = HandleAPI/TransactionManager.h; sourceTree = "<group>"; };
 		40BF38021D6AB35200793CEB /* TransactionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransactionManager.m; path = HandleAPI/TransactionManager.m; sourceTree = "<group>"; };
+		40C5637C1D94C7A200363BFD /* arm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arm.png; sourceTree = "<group>"; };
 		40DB605C1D826B8F009B223F /* NumberFormatterDecimal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NumberFormatterDecimal.h; path = Utils/NumberFormatterDecimal.h; sourceTree = "<group>"; };
 		40DB605D1D826B8F009B223F /* NumberFormatterDecimal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NumberFormatterDecimal.m; path = Utils/NumberFormatterDecimal.m; sourceTree = "<group>"; };
 		40DF88111D81A382003F98F2 /* ClipButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClipButton.h; path = Library/ClipButton.h; sourceTree = "<group>"; };
@@ -459,6 +465,7 @@
 		40AB312B1D5DD7D800341359 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				40C563821D94CA4600363BFD /* CustomLoadingView */,
 				40AB312C1D5DD80600341359 /* ExpandableTableView */,
 				40DF88111D81A382003F98F2 /* ClipButton.h */,
 				40DF88121D81A382003F98F2 /* ClipButton.m */,
@@ -488,6 +495,15 @@
 				40B8A7301D640C12007AB6BF /* CategoryCell.xib */,
 			);
 			name = CategoryCell;
+			sourceTree = "<group>";
+		};
+		40C563821D94CA4600363BFD /* CustomLoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				401AF3F61D94FEC000700287 /* CustomLoadingView.h */,
+				401AF3F71D94FEC000700287 /* CustomLoadingView.m */,
+			);
+			name = CustomLoadingView;
 			sourceTree = "<group>";
 		};
 		EF0809501D5C8261007A8EAE = {
@@ -608,6 +624,8 @@
 		EF0809781D5C8743007A8EAE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				40C5637C1D94C7A200363BFD /* arm.png */,
+				EF623F3E1D937CA500DC994F /* ic_location.png */,
 				EF30EF821D91281500019439 /* ic_touch_me.png */,
 				EF0DD5641D8FDE4A00F9C311 /* ic_share@2x.png */,
 				EF0DD5651D8FDE4A00F9C311 /* ic_share@3x.png */,
@@ -1154,6 +1172,7 @@
 				4022D4BF1D7D6CEB00EEF21A /* green_bg.jpg in Resources */,
 				40B8A7321D640C12007AB6BF /* CategoryCell.xib in Resources */,
 				EF7D77FC1D752EBC00A6C63F /* notifications@2x.png in Resources */,
+				40C5637D1D94C7A300363BFD /* arm.png in Resources */,
 				EF7D77F91D752EBC00A6C63F /* friends@2x.png in Resources */,
 				EF30EF831D91281500019439 /* ic_touch_me.png in Resources */,
 				40EDFA6F1D7D48DB006EDD5D /* Plus-96.png in Resources */,
@@ -1267,6 +1286,7 @@
 				40DB605E1D826B8F009B223F /* NumberFormatterDecimal.m in Sources */,
 				EFFD8D5C1D66D9C000994CC5 /* EditPTManagerViewController.m in Sources */,
 				40B8A72C1D640C04007AB6BF /* PopoverQuatityViewController.m in Sources */,
+				401AF3F81D94FEC000700287 /* CustomLoadingView.m in Sources */,
 				EFFD8D641D66FFB900994CC5 /* CategoryTableViewCell.m in Sources */,
 				EF0809981D5C97B6007A8EAE /* TransactionsViewController.m in Sources */,
 				40DF88131D81A382003F98F2 /* ClipButton.m in Sources */,
