@@ -85,7 +85,6 @@
 		EF5422DB1D8A7B7E001DF8F9 /* ic_facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = EF5422DA1D8A7B7E001DF8F9 /* ic_facebook.png */; settings = {ASSET_TAGS = (); }; };
 		EF5FA7AE1D6AE22200E4B95F /* DataValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5FA7AD1D6AE22200E4B95F /* DataValidation.m */; };
 		EF623F3D1D9379D900DC994F /* GoogleMapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF623F3C1D9379D900DC994F /* GoogleMapsViewController.m */; settings = {ASSET_TAGS = (); }; };
-		EF623F3F1D937CA500DC994F /* ic_location.png in Resources */ = {isa = PBXBuildFile; fileRef = EF623F3E1D937CA500DC994F /* ic_location.png */; settings = {ASSET_TAGS = (); }; };
 		EF635BFF1D6CB21900BEB9A1 /* TrainerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF635BFE1D6CB21900BEB9A1 /* TrainerManager.m */; };
 		EF635C021D6D79BC00BEB9A1 /* UIImageConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = EF635C011D6D79BC00BEB9A1 /* UIImageConstant.m */; };
 		EF635C051D6D878000BEB9A1 /* CustomerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF635C041D6D878000BEB9A1 /* CustomerManager.m */; };
@@ -261,7 +260,6 @@
 		EF5FA7AD1D6AE22200E4B95F /* DataValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataValidation.m; path = DataValidation/DataValidation.m; sourceTree = "<group>"; };
 		EF623F3B1D9379D900DC994F /* GoogleMapsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GoogleMapsViewController.h; path = ViewControllers/GoogleMapsViewController/GoogleMapsViewController.h; sourceTree = "<group>"; };
 		EF623F3C1D9379D900DC994F /* GoogleMapsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GoogleMapsViewController.m; path = ViewControllers/GoogleMapsViewController/GoogleMapsViewController.m; sourceTree = "<group>"; };
-		EF623F3E1D937CA500DC994F /* ic_location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_location.png; path = Resources/ic_location.png; sourceTree = "<group>"; };
 		EF635BFD1D6CB21900BEB9A1 /* TrainerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrainerManager.h; path = HandleAPI/TrainerManager.h; sourceTree = "<group>"; };
 		EF635BFE1D6CB21900BEB9A1 /* TrainerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrainerManager.m; path = HandleAPI/TrainerManager.m; sourceTree = "<group>"; };
 		EF635C001D6D79BC00BEB9A1 /* UIImageConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIImageConstant.h; path = GymManagerConstant/UIImageConstant.h; sourceTree = "<group>"; };
@@ -610,7 +608,6 @@
 		EF0809781D5C8743007A8EAE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				EF623F3E1D937CA500DC994F /* ic_location.png */,
 				EF30EF821D91281500019439 /* ic_touch_me.png */,
 				EF0DD5641D8FDE4A00F9C311 /* ic_share@2x.png */,
 				EF0DD5651D8FDE4A00F9C311 /* ic_share@3x.png */,
@@ -1135,7 +1132,6 @@
 				EF0809671D5C8261007A8EAE /* Main.storyboard in Resources */,
 				40DF88171D81B084003F98F2 /* ic_decrease.png in Resources */,
 				EFEBAC2F1D829211005C0AEE /* ic_call.png in Resources */,
-				EF623F3F1D937CA500DC994F /* ic_location.png in Resources */,
 				EF870A871D5DBA9F00118D7C /* ic_user.png in Resources */,
 				EFF28BB41D655C10000F9B27 /* ic_threedots.png in Resources */,
 				EF0DD5611D8FD45B00F9C311 /* ic_logout_fb.png in Resources */,

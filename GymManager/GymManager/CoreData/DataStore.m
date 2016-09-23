@@ -39,6 +39,19 @@ NSString *const kUserDefaultLoginCheck = @"loged";
     return sharedDataStore;
 }
 
+- (void)setMylocation:(CLLocationCoordinate2D)coordinate {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setFloat:coordinate.latitude forKey:@"lat"];
+    [defaults setFloat:coordinate.longitude forKey:@"long"];
+}
+
+- (CLLocationCoordinate2D)getCoordinateMylocation {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    CGFloat lat = [defaults floatForKey:@"lat"];
+    CGFloat longtitude = [defaults floatForKey:@"long"];
+    return CLLocationCoordinate2DMake(lat, longtitude);
+}
+
 - (void)updateProfile:(User *)user complete:(void(^)(BOOL success))complete {
     UserManager *userManager = [UserManager MR_findFirst];
     userManager.id = user.id;
