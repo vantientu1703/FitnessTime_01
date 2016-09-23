@@ -27,5 +27,7 @@
 - (void)updateItem:(Item *)item;
 - (void)setUserLoginWithFB:(NSDictionary *)userData;
 - (User *)getUSerLoginWithFB;
+- (void)setMylocation:(CLLocationCoordinate2D)coordinate;
+- (CLLocationCoordinate2D)getCoordinateMylocation;
 
 @end

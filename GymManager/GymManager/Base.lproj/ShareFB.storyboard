@@ -290,11 +290,17 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="M7i-uJ-dCf" firstAttribute="top" secondItem="xpm-Hc-U2w" secondAttribute="top" id="Jmg-5D-qJA"/>
                                             <constraint firstAttribute="bottom" secondItem="M7i-uJ-dCf" secondAttribute="bottom" id="Oob-6P-okv"/>
                                             <constraint firstItem="M7i-uJ-dCf" firstAttribute="leading" secondItem="xpm-Hc-U2w" secondAttribute="leading" id="XY8-gy-lLM"/>
-                                            <constraint firstItem="M7i-uJ-dCf" firstAttribute="top" secondItem="xpm-Hc-U2w" secondAttribute="top" id="e14-7G-dMU"/>
+                                            <constraint firstItem="M7i-uJ-dCf" firstAttribute="top" secondItem="xpm-Hc-U2w" secondAttribute="top" constant="40" id="e14-7G-dMU"/>
                                             <constraint firstAttribute="trailing" secondItem="M7i-uJ-dCf" secondAttribute="trailing" id="zYi-V1-HN3"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="e14-7G-dMU"/>
+                                            </mask>
+                                        </variation>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -317,9 +323,18 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="containtView" destination="M7i-uJ-dCf" id="7bH-bC-Mhi"/>
+                        <outlet property="searchDisplayController" destination="V1t-HO-tIg" id="985-YD-4rF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QH3-DC-wgM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="V1t-HO-tIg">
+                    <connections>
+                        <outlet property="delegate" destination="Hk3-cd-JPf" id="ZWl-Aa-xbx"/>
+                        <outlet property="searchContentsController" destination="Hk3-cd-JPf" id="HWP-pn-YAV"/>
+                        <outlet property="searchResultsDataSource" destination="Hk3-cd-JPf" id="fSD-HC-BPq"/>
+                        <outlet property="searchResultsDelegate" destination="Hk3-cd-JPf" id="yQo-ZK-NQ8"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1409" y="245"/>
         </scene>
