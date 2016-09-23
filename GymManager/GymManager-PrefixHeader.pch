@@ -56,4 +56,5 @@
 #import "NotificationManager.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import "GoogleMapsViewController.h"
+#import "CustomLoadingView.h"
 #endif /* GymManager_PrefixHeader_pch */
