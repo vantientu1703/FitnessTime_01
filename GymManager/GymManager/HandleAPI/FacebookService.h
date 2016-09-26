@@ -10,7 +10,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
-@interface FacebookService : NSObject<FBSDKSharingDelegate>
+@interface FacebookService : NSObject
 
 + (void)login:(UIViewController *)viewController completion:(void (^)(NSDictionary *userData))handlerBlock;
 + (void)shareImage:(UIImage *)image message:(NSString *)message withViewController:(UIViewController *)viewController;

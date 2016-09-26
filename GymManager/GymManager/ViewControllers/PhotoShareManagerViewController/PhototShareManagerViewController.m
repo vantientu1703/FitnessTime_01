@@ -97,19 +97,6 @@ NSString *const kPhotoShareManagerCollectionViewCellIdentifier = @"PhotoShareMan
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma FBSDKSharingDelegate
-- (void)sharer:(id<FBSDKSharing>)sharer didCompleteWithResults:(NSDictionary *)results {
-    [AlertManager showAlertWithTitle:kReminderTitle message:kUploadPhotoSuccess viewControler:self okAction:^{}];
-}
-
-- (void)sharer:(id<FBSDKSharing>)sharer didFailWithError:(NSError *)error {
-    [AlertManager showAlertWithTitle:kReminderTitle message:kUploadPhotoFail viewControler:self okAction:^{}];
-}
-
-- (void)qb_imagePickerControllerDidCancel:(QBImagePickerController *)imagePickerController {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 #pragma  mark - UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.arrImages.count;
