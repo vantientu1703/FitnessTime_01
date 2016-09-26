@@ -109,6 +109,8 @@ NSString *const kUserDefaultLoginCheck = @"loged";
 
 - (void)setNewUserManagefromUser:(User *)user WithCompletionblock:(void(^)(BOOL success))completion{
     [self clearUser];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:true forKey:@"isloged"];
     [UserManager MR_importFromObject:user];
     [[NSManagedObjectContext MR_defaultContext]
         MR_saveToPersistentStoreWithCompletion:^(BOOL contextDidSave, NSError * _Nullable error) {
@@ -129,7 +131,8 @@ NSString *const kUserDefaultLoginCheck = @"loged";
 }
 
 - (BOOL)isLoged {
-    return [self.keychain stringForKey:kTokenChainKey].length;
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    return [userDefaults boolForKey:@"isloged"];
 }
 
 - (void)setItemsList:(NSArray *)items {

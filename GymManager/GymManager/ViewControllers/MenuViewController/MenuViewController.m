@@ -49,8 +49,6 @@ NSString *const kIconLocation = @"ic_location";
 @property (strong, nonatomic) PTMeetingViewController *ptPTMeetingVC;
 @property (strong, nonatomic) CustomerManagerViewController *customerManagerVC;
 @property (strong, nonatomic) PTManagerViewController *ptManagerVC;
-@property (strong, nonatomic) ShareFBViewController *shareFBViewController;
-@property (strong, nonatomic) GoogleMapsViewController *googleMapsViewController;
 
 @end
 
@@ -131,12 +129,10 @@ NSString *const kIconLocation = @"ic_location";
             break;
         }
         case MenuDetailRowLocation: {
-            if (!self.googleMapsViewController) {
-                UIStoryboard *st = [UIStoryboard storyboardWithName:kShareStoryboard bundle:nil];
-                self.googleMapsViewController = [st
-                    instantiateViewControllerWithIdentifier:kGoogleMapsViewControllerIdentifier];
-            }
-            [self.navigationController pushViewController:self.googleMapsViewController animated:YES];
+            UIStoryboard *st = [UIStoryboard storyboardWithName:kShareStoryboard bundle:nil];
+             GoogleMapsViewController *googleMapsViewController = [st
+                instantiateViewControllerWithIdentifier:kGoogleMapsViewControllerIdentifier];
+            [self.navigationController pushViewController:googleMapsViewController animated:YES];
             break;
         }
         case MenuDetailRowLogOut: {
@@ -166,14 +162,12 @@ NSString *const kIconLocation = @"ic_location";
 }
 
 - (void)pushShareFBVC {
-    if (!self.shareFBViewController) {
-        UIStoryboard *st = [UIStoryboard storyboardWithName:kShareStoryboard bundle:nil];
-        self.shareFBViewController = [st
-            instantiateViewControllerWithIdentifier:kShareFBViewControllerIdentifier];
-    }
+    UIStoryboard *st = [UIStoryboard storyboardWithName:kShareStoryboard bundle:nil];
+    ShareFBViewController *shareFBViewController = [st
+        instantiateViewControllerWithIdentifier:kShareFBViewControllerIdentifier];
     User *user = [[DataStore sharedDataStore] getUSerLoginWithFB];
-    self.shareFBViewController.user = user;
-    [self.navigationController pushViewController:self.shareFBViewController animated:true];
+    shareFBViewController.user = user;
+    [self.navigationController pushViewController:shareFBViewController animated:true];
 }
 
 #pragma mark - ProfileManagerDelegate

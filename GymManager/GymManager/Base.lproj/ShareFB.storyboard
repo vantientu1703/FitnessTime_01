@@ -36,7 +36,7 @@
                                                     <constraint firstAttribute="height" constant="21" id="yx1-l3-Ew9"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Write something..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fb5-Xb-3SQ">
@@ -86,7 +86,7 @@
                                                         </constraints>
                                                     </imageView>
                                                 </subviews>
-                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="dWO-RV-WO8" firstAttribute="centerY" secondItem="Kcc-78-jVt" secondAttribute="centerY" id="1KG-Yg-ejZ"/>
                                                     <constraint firstAttribute="height" constant="286" id="BIl-9X-4ZC"/>
@@ -185,7 +185,7 @@
                             </toolbar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5lj-J0-5jp">
                                 <rect key="frame" x="0.0" y="130" width="320" height="153"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="153" id="XQh-Fx-PVS"/>
                                 </constraints>
@@ -213,6 +213,7 @@
                                                         <constraint firstAttribute="width" constant="30" id="2QP-f1-zuf"/>
                                                         <constraint firstAttribute="height" constant="30" id="9gy-c1-N5n"/>
                                                     </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                                     <state key="normal" title="x">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
