@@ -70,7 +70,7 @@
 
 - (void)getAllTrainers {
     if (!_isRefresh) {
-        [MBProgressHUD showHUDAddedTo:self.view animated:true];
+        [CustomLoadingView showInView:self.view];
         _isRefresh = false;
     }
     TrainerManager *trainerManager = [[TrainerManager alloc] init];
@@ -103,7 +103,7 @@
 
 #pragma mark - TrainerManagerDelegate
 - (void)didResponseWithMessage:(NSString *)message withError:(NSError *)error returnArray:(NSArray *)arrTrainer {
-    [MBProgressHUD hideHUDForView:self.view animated:true];
+    [CustomLoadingView hideLoadingInView:self.view];
     [self.refreshReloadData endRefreshing];
     if (error) {
         [AlertManager showAlertWithTitle:kReminderTitle message:message viewControler:self reloadAction:^{

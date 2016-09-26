@@ -58,7 +58,6 @@ NSString *const kEdiCustomerTitle = @"Edit customer";
 
 #pragma mark - Setup view
 - (void)setupView {
-    //TODO
     self.title = kInfoCustomerVCTitle;
     self.viewBackgroudInfoCustomer.layer.cornerRadius = kCornerRadiusViewBackgroundCustomer;
     self.imageViewCustomer.layer.cornerRadius = kCornerRadiusImageViewCustomers;

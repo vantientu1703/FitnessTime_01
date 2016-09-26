@@ -71,6 +71,7 @@ NSString *const kIconLocation = @"ic_location";
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellDefault];
     }
+    cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
     cell.imageView.image = [UIImage imageNamed:[self cellWithImage:indexPath.row]];
     cell.textLabel.text = [self cellWithTitle:indexPath.row];
     return cell;

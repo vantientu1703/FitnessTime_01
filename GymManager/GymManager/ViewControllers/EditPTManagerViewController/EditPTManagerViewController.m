@@ -136,10 +136,10 @@ NSString *const kSelectAvatar = @"Select avatar,please";
         if (_modifier) {
             if ([self.statusEditString isEqualToString:kEditTrainerTitle]) {
                 trainer.avatar = _imageString;
-                [MBProgressHUD showHUDAddedTo:self.view animated:true];
+                [CustomLoadingView showInView:self.view];
                 [trainerManager updateTrainer:trainer];
             } else {
-                [MBProgressHUD showHUDAddedTo:self.view animated:true];
+                [CustomLoadingView showInView:self.view];
                 trainer.avatar = _imageString;
                 [trainerManager createNewTrainer:trainer];
             }
@@ -149,7 +149,7 @@ NSString *const kSelectAvatar = @"Select avatar,please";
 
 #pragma mark - TrainerManagerDelegate
 - (void)createdTrainerWithMessage:(BOOL)success withError:(NSError *)error returnTrainer:(Trainer *)trainer {
-    [MBProgressHUD hideHUDForView:self.view animated:true];
+    [CustomLoadingView hideLoadingInView:self.view];
     _modifier = false;
     if (success) {
         self.labelNotes.text = kCreateSuccess;
@@ -166,7 +166,7 @@ NSString *const kSelectAvatar = @"Select avatar,please";
 }
 
 - (void)updateTrainerWithMessage:(BOOL)success withError:(NSError *)error returnTrainer:(Trainer *)trainer {
-    [MBProgressHUD hideHUDForView:self.view animated:true];
+    [CustomLoadingView hideLoadingInView:self.view];
     _modifier = false;
     if (success) {
         self.labelNotes.text = kUpdateSuccess;

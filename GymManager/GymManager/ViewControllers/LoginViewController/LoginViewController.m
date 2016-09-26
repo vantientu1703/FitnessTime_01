@@ -75,7 +75,7 @@ NSString *const kErrorEmailOrPassword = @"Incorrect email or password";
         self.labelNotes.text = passWord;
     } else {
         [loginManager doLoginWithEmail:emailLogin password:self.textFieldPassword.text];
-        [MBProgressHUD showHUDAddedTo:self.view animated:true];
+        [CustomLoadingView showInView:self.view];
     }
 }
 
@@ -100,7 +100,7 @@ NSString *const kErrorEmailOrPassword = @"Incorrect email or password";
 
 #pragma mark - LoginManagerDelegate
 - (void)didResponseWithMessage:(NSString *)message withError:(NSError *)error returnUser:(User *)user {
-    [MBProgressHUD hideHUDForView:self.view animated:true];
+    [CustomLoadingView hideLoadingInView:self.view];
     if (error) {
         [AlertManager showAlertWithTitle:kReminderTitle message:message
             viewControler:self okAction:^{

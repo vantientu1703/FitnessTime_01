@@ -33,7 +33,7 @@
     [super viewDidLoad];
     [self setupView];
     if ([self.statusDetailMeeting isEqualToString:kDetailMeetingsTrainerVCTitle]) {
-        [MBProgressHUD showHUDAddedTo:self.view animated:true];
+        [CustomLoadingView showInView:self.view];
         MeetingManager *meetingManager = [[MeetingManager alloc] init];
         meetingManager.delegate = self;
         [meetingManager getMeetingsWithTrainer:self.trainer];
@@ -156,7 +156,7 @@
 
 - (void)getAllMeetngsWithDate:(NSDate *)date {
     if (!_isRefresh) {
-        [MBProgressHUD showHUDAddedTo:self.view animated:true];
+        [CustomLoadingView showInView:self.view];
         _isRefresh = false;
     }
     MeetingManager *meetingManager = [[MeetingManager alloc] init];
@@ -166,7 +166,7 @@
 
 #pragma mark - MeetingManagerDelegate
 - (void)didResponseWithMessage:(NSString *)message withError:(NSError *)error returnArray:(NSArray *)arrMeetings {
-    [MBProgressHUD hideHUDForView:self.view animated:true];
+    [CustomLoadingView hideLoadingInView:self.view];
     [self.refreshReloadData endRefreshing];
     if (error) {
         [AlertManager showAlertWithTitle:kRegisterRequest message:message
@@ -181,7 +181,7 @@
 }
 
 - (void)didResponseWithMessage:(NSString *)message withDate:(NSDate *)date withError:(NSError *)error returnArray:(NSArray *)arrMeetings {
-    [MBProgressHUD hideHUDForView:self.view animated:true];
+    [CustomLoadingView hideLoadingInView:self.view];
     [self.refreshReloadData endRefreshing];
     if (error) {
         [AlertManager showAlertWithTitle:kRegisterRequest message:message
@@ -196,7 +196,7 @@
 }
 
 - (void)didDeleteMeetingSuccess:(BOOL)success error:(NSError *)error {
-    [MBProgressHUD hideHUDForView:self.view animated:true];
+    [CustomLoadingView hideLoadingInView:self.view];
     if (success) {
         NSDictionary *userInfo = @{@"meeting": _meetingInstance};
         [[NSNotificationCenter defaultCenter] postNotificationName:kDeleteMeetingSuccess object:nil userInfo:userInfo];
@@ -326,7 +326,7 @@
         message:kMessageReminder preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:kOkActionTitle style:UIAlertActionStyleDefault
         handler:^(UIAlertAction * _Nonnull action) {
-        [MBProgressHUD showHUDAddedTo:self.view animated:true];
+        [CustomLoadingView showInView:self.view];
         MeetingManager *meetingManager = [[MeetingManager alloc] init];
         meetingManager.delegate = self;
         _meetingInstance = self.arrMeetings[indexPath.row];
