@@ -10,6 +10,7 @@
 #import "PhotoShareManagerCollectionViewCell.h"
 
 NSString *const kPhotoShareManagerCollectionViewCellIdentifier = @"PhotoShareManagerCollectionViewCell";
+NSString *const kImageKeys = @"imagekey%ld";
 
 @interface PhototShareManagerViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, AlertManagerDelegate, QBImagePickerControllerDelegate, PhotoShareManagerCollectionViewCellDelegate>
 
@@ -19,7 +20,9 @@ NSString *const kPhotoShareManagerCollectionViewCellIdentifier = @"PhotoShareMan
 @end
 
 @implementation PhototShareManagerViewController
-
+{
+    NSInteger _totalKeys;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupView];
@@ -27,6 +30,7 @@ NSString *const kPhotoShareManagerCollectionViewCellIdentifier = @"PhotoShareMan
 }
 
 - (void)setupView {
+    _totalKeys = 0;
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]
         initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelPress:)];
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]
@@ -41,7 +45,17 @@ NSString *const kPhotoShareManagerCollectionViewCellIdentifier = @"PhotoShareMan
 
 - (IBAction)donePress:(id)sender {
     if ([self.delegate respondsToSelector:@selector(fillImageToViewWithArrayImages:)]) {
-        [self.delegate fillImageToViewWithArrayImages:self.arrImages];
+        __block NSMutableArray *images = [NSMutableArray array];
+        if (self.arrImages.count) {
+            for (NSInteger idx = 0; idx < _totalKeys; idx++) {
+                NSString *key = [NSString stringWithFormat:kImageKeys, idx];
+                UIImage *image = [[SDImageCache sharedImageCache] imageFromMemoryCacheForKey:key];
+                if (image) {
+                    [images addObject:image];
+                }
+            };
+        }
+        [self.delegate fillImageToViewWithArrayImages:images];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -84,14 +98,18 @@ NSString *const kPhotoShareManagerCollectionViewCellIdentifier = @"PhotoShareMan
     if (!self.arrImages) {
         self.arrImages = [NSMutableArray array];
     }
-    for (PHAsset *asset in assets) {
-        [manager requestImageForAsset:asset targetSize:PHImageManagerMaximumSize
+    [assets enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [manager requestImageForAsset:obj targetSize:PHImageManagerMaximumSize
             contentMode:PHImageContentModeDefault options:requestOptions
             resultHandler:^void(UIImage *image, NSDictionary *info) {
-            ima = image;
+            ima = [Utils convertImageToThumbnailImage:image withSize:CGSizeMake(200.f, 100.f)];
             [images addObject:ima];
+            NSInteger index = idx + self.arrImages.count;
+            NSString *key = [NSString stringWithFormat:kImageKeys, index];
+            [[SDImageCache sharedImageCache] storeImage:ima forKey:key];
         }];
-    }
+    }];
+    _totalKeys += images.count;
     [self.arrImages addObjectsFromArray:images];
     [self.collectionView reloadData];
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -113,6 +131,8 @@ NSString *const kPhotoShareManagerCollectionViewCellIdentifier = @"PhotoShareMan
 }
 
 - (void)didDeleteImage:(NSIndexPath *)indexPath {
+    NSString *key = [NSString stringWithFormat:kImageKeys, indexPath.row];
+    [[SDImageCache sharedImageCache] removeImageForKey:key];
     [self.arrImages removeObjectAtIndex:indexPath.row];
     [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
     [self.collectionView reloadData];
