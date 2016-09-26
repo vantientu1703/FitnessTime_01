@@ -12,6 +12,7 @@
 #import "MenuViewController.h"
 #import "TransactionsViewController.h"
 #import "LoginViewController.h"
+#import "AnimationTabbarController.h"
 
 NSString *const kMapAPIKey = @"AIzaSyAO6QZDAo1MgcBy92CoF8_7dqbKjln0A20";
 
@@ -47,7 +48,7 @@ NSString *const kMapAPIKey = @"AIzaSyAO6QZDAo1MgcBy92CoF8_7dqbKjln0A20";
     [[UITabBar appearance] setBarTintColor:[UIColor whiteColor]];
     [[UITabBar appearance] setTintColor:[UIColor greenColor]];
     UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
-    UITabBarController *tabVC = [[UITabBarController alloc] init];
+    AnimationTabbarController *tabVC = [[AnimationTabbarController alloc] init];
     TodayMeetingsViewController *todayMeetingsVC = [st instantiateViewControllerWithIdentifier:
         kTodayMeetinViewControllerIdentifier];
     todayMeetingsVC.title = kTodayViewControllerTitle;
@@ -69,7 +70,9 @@ NSString *const kMapAPIKey = @"AIzaSyAO6QZDAo1MgcBy92CoF8_7dqbKjln0A20";
     NSArray *arrImages = @[kIconNewsFeed, kIconFriends, kIconTransactions, kIconSetting];
     [tabVC.tabBar.items enumerateObjectsUsingBlock:^(UITabBarItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         obj.image = [UIImage imageNamed:arrImages[idx]];
+        obj.tag = idx;
     }];
+    tabVC.animated = YES;
     self.window.rootViewController = tabVC;
 }
 

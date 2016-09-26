@@ -35,6 +35,7 @@
 		408933211D646B300081511C /* Meeting.m in Sources */ = {isa = PBXBuildFile; fileRef = 408933201D646B300081511C /* Meeting.m */; };
 		408933241D646B370081511C /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 408933231D646B370081511C /* Item.m */; };
 		409C76DD1D86531400ECDDF2 /* DecimalTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 409C76DC1D86531400ECDDF2 /* DecimalTextField.m */; };
+		40A1CF851D952462008CAE15 /* AnimationTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CF841D952461008CAE15 /* AnimationTabbarController.m */; };
 		40AB31241D5DB47400341359 /* Transaction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40AB31221D5DB47400341359 /* Transaction.storyboard */; };
 		40AB31311D5DD81000341359 /* ExpandableTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AB312E1D5DD81000341359 /* ExpandableTableView.m */; };
 		40B23ED91D87B72E00A84D43 /* gym_ic.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B23ED81D87B72E00A84D43 /* gym_ic.png */; };
@@ -187,6 +188,8 @@
 		408933231D646B370081511C /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Item.m; path = Modal/Category/Item.m; sourceTree = "<group>"; };
 		409C76DB1D86531400ECDDF2 /* DecimalTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DecimalTextField.h; path = Library/DecimalTextField.h; sourceTree = "<group>"; };
 		409C76DC1D86531400ECDDF2 /* DecimalTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DecimalTextField.m; path = Library/DecimalTextField.m; sourceTree = "<group>"; };
+		40A1CF831D952461008CAE15 /* AnimationTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationTabbarController.h; path = Library/AnimationTabBar/AnimationTabbarController.h; sourceTree = "<group>"; };
+		40A1CF841D952461008CAE15 /* AnimationTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimationTabbarController.m; path = Library/AnimationTabBar/AnimationTabbarController.m; sourceTree = "<group>"; };
 		40AB31231D5DB47400341359 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Transaction.storyboard; sourceTree = "<group>"; };
 		40AB312D1D5DD81000341359 /* ExpandableTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpandableTableView.h; path = Library/ExpandableTableView/ExpandableTableView.h; sourceTree = "<group>"; };
 		40AB312E1D5DD81000341359 /* ExpandableTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpandableTableView.m; path = Library/ExpandableTableView/ExpandableTableView.m; sourceTree = "<group>"; };
@@ -471,6 +474,8 @@
 				40DF88121D81A382003F98F2 /* ClipButton.m */,
 				409C76DB1D86531400ECDDF2 /* DecimalTextField.h */,
 				409C76DC1D86531400ECDDF2 /* DecimalTextField.m */,
+				40A1CF831D952461008CAE15 /* AnimationTabbarController.h */,
+				40A1CF841D952461008CAE15 /* AnimationTabbarController.m */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -1258,6 +1263,7 @@
 				408933211D646B300081511C /* Meeting.m in Sources */,
 				EF870A751D5DA11200118D7C /* GymManagerConstant.m in Sources */,
 				EF0809891D5C8D3F007A8EAE /* BaseViewController.m in Sources */,
+				40A1CF851D952462008CAE15 /* AnimationTabbarController.m in Sources */,
 				408933181D646B050081511C /* User.m in Sources */,
 				400375771D6C3574008ACB3A /* DataStore.m in Sources */,
 				EF0809931D5C954A007A8EAE /* PTMeetingViewController.m in Sources */,

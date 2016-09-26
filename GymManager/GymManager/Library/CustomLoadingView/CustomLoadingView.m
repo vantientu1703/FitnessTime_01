@@ -20,7 +20,7 @@
 }
 
 - (void)commonInit {
-    self.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.8f];
+    self.backgroundColor = [UIColor colorWithWhite:1.0f alpha:1.0f];
     CGPoint center = CGPointMake(self.center.x, self.center.y - 40.0f);
     CGFloat fixSize = self.bounds.size.width / 4.0f;
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, fixSize, fixSize)];
