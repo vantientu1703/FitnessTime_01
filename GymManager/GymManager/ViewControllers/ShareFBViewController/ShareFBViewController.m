@@ -12,7 +12,7 @@
 NSString *const kShareWithFB = @"Share with facebook";
 NSInteger const kLabelTag = 100000;
 
-@interface ShareFBViewController ()<UITextFieldDelegate, QBImagePickerControllerDelegate, FBSDKSharingDelegate, AlertManagerDelegate, UIImagePickerControllerDelegate, PhototShareManagerViewControllerDelegate>
+@interface ShareFBViewController ()<UITextFieldDelegate, QBImagePickerControllerDelegate, AlertManagerDelegate, UIImagePickerControllerDelegate, PhototShareManagerViewControllerDelegate, FBSDKSharingDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewAvatarFB;
 @property (weak, nonatomic) IBOutlet UILabel *labelName;
@@ -90,6 +90,23 @@ NSInteger const kLabelTag = 100000;
             [FacebookService shareImage:self.arrImages[0] message:self.textFieldTitle.text withViewController:self];
         }
     }
+}
+
+#pragma FBSDKSharingDelegate
+- (void)sharer:(id<FBSDKSharing>)sharer didCompleteWithResults:(NSDictionary *)results {
+    [AlertManager showAlertWithTitle:kReminderTitle message:kUploadPhotoSuccess viewControler:self okAction:^{}];
+}
+
+- (void)sharer:(id<FBSDKSharing>)sharer didFailWithError:(NSError *)error {
+    [AlertManager showAlertWithTitle:kReminderTitle message:kUploadPhotoFail viewControler:self okAction:^{}];
+}
+
+- (void)qb_imagePickerControllerDidCancel:(QBImagePickerController *)imagePickerController {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)sharerDidCancel:(id<FBSDKSharing>)sharer {
+    //TODO
 }
 
 - (IBAction)logoutFBPress:(id)sender {

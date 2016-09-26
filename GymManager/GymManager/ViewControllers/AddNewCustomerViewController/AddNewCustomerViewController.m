@@ -23,7 +23,7 @@ NSString *const kSelectToDates = @"Select expiry date,please!";
 NSString *const kSelectDateOfBirths = @"Select date of birth,please!";
 NSString *const kSelectImages = @"Select avatar,please";
 
-@interface AddNewCustomerViewController ()<UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CustomerManagerDelegate, FBSDKSharingDelegate>
+@interface AddNewCustomerViewController ()<UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CustomerManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewCustomer;
 @property (weak, nonatomic) IBOutlet UILabel *labelNameCustomer;

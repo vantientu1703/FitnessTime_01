@@ -10,7 +10,7 @@
 #import "TodayMeetingTableViewCell.h"
 #import "MeetingDetailViewController.h"
 
-@interface TodayMeetingsViewController ()<UITableViewDelegate, UITableViewDataSource, MeetingManagerDelegate, MeetingDetailViewControllerDelegate, QBImagePickerControllerDelegate, FBSDKSharingDelegate>
+@interface TodayMeetingsViewController ()<UITableViewDelegate, UITableViewDataSource, MeetingManagerDelegate, MeetingDetailViewControllerDelegate, QBImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonAddMeeting;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

@@ -10,6 +10,7 @@
 #import "QBImagePickerController.h"
 
 @protocol AlertManagerDelegate <NSObject>
+@optional
 - (void)showImagePickerController:(UIImagePickerController *)imagePickerController;
 - (void)showQBImagePikcerController:(QBImagePickerController *)qbImagePickerController;
 @end
