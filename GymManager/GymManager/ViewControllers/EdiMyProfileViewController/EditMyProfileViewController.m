@@ -118,7 +118,7 @@ NSString *const kUpdateFailTitle = @"Update fail";
         self.user.birthday = _fromDate;
         ProfileManager *profileManager = [[ProfileManager alloc] init];
         profileManager.delegate = self;
-        [MBProgressHUD showHUDAddedTo:self.view animated:true];
+        [CustomLoadingView showInView:self.view];
         [profileManager updateProfile:self.user];
     }
 }
@@ -146,7 +146,7 @@ NSString *const kUpdateFailTitle = @"Update fail";
 #pragma mark - ProfileManagerDelegate 
 - (void)updateProfile:(User *)user success:(BOOL)success error:(NSError *)error {
     _modifier = false;
-    [MBProgressHUD hideHUDForView:self.view animated:true];
+    [CustomLoadingView hideLoadingInView:self.view];
     if (success) {
         [[DataStore sharedDataStore] updateProfile:user complete:^(BOOL success) {
             if (success) {

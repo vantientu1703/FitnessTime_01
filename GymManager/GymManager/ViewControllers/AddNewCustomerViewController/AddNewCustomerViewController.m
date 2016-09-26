@@ -233,7 +233,7 @@ NSString *const kSelectImages = @"Select avatar,please";
         customerManager.delegate = self;
         if (_modifier) {
             if ([self.messageEditCustomer isEqualToString:kMessageEditCustomer]) {
-                [MBProgressHUD showHUDAddedTo:self.view animated:true];
+                [CustomLoadingView showInView:self.view];
                 self.navigationItem.rightBarButtonItem.enabled = NO;
                 [customerManager updateTrainer:customer];
             
@@ -241,7 +241,7 @@ NSString *const kSelectImages = @"Select avatar,please";
                 if (currentTime > registerDateTime || currentTime > expityDateTime) {
                     self.labelNotes.text = kDateRegisterAndExpityTitle;
                 } else {
-                    [MBProgressHUD showHUDAddedTo:self.view animated:true];
+                    [CustomLoadingView showInView:self.view];
                     self.navigationItem.rightBarButtonItem.enabled = NO;
                     [customerManager createCustomer:customer];
                 }
@@ -252,7 +252,7 @@ NSString *const kSelectImages = @"Select avatar,please";
 
 #pragma mark - CustomerManagerDelegate 
 - (void)createdCustomerWithMessage:(BOOL)success withError:(NSError *)error returnCustomer:(Customer *)customer {
-    [MBProgressHUD hideHUDForView:self.view animated:true];
+    [CustomLoadingView hideLoadingInView:self.view];
     self.navigationItem.rightBarButtonItem.enabled = YES;
     _modifier = false;
     if (success) {
@@ -270,7 +270,7 @@ NSString *const kSelectImages = @"Select avatar,please";
 
 - (void)updateCustomerWithMessage:(BOOL)success withError:(NSError *)error returnCustomer:(Customer *)customer {
     self.navigationItem.rightBarButtonItem.enabled = YES;
-    [MBProgressHUD hideHUDForView:self.view animated:true];
+    [CustomLoadingView hideLoadingInView:self.view];
     _modifier = false;
     if (success) {
         self.labelNotes.text = kUpdateSuccess;
@@ -290,6 +290,7 @@ NSString *const kSelectImages = @"Select avatar,please";
 
 #pragma mark - Implement all buttons
 - (IBAction)buttonDateOfBirthPress:(id)sender {
+    [self.view endEditing:YES];
     UIStoryboard *st = [UIStoryboard storyboardWithName:kCalendarIdentifier bundle:nil];
     CalendarViewController *calendarVC = [st instantiateInitialViewController];
     [calendarVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {
@@ -303,6 +304,7 @@ NSString *const kSelectImages = @"Select avatar,please";
 }
 
 - (IBAction)buttonRegisterDatePress:(id)sender {
+    [self.view endEditing:YES];
     UIStoryboard *st = [UIStoryboard storyboardWithName:kCalendarIdentifier bundle:nil];
     CalendarViewController *calendarVC = [st instantiateInitialViewController];
     [calendarVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {
@@ -316,6 +318,7 @@ NSString *const kSelectImages = @"Select avatar,please";
 }
 
 - (IBAction)buttonExpityDatePress:(id)sender {
+    [self.view endEditing:YES];
     UIStoryboard *st = [UIStoryboard storyboardWithName:kCalendarIdentifier bundle:nil];
     CalendarViewController *calendarVC = [st instantiateInitialViewController];
     [calendarVC didPickDateWithCompletionBlock:^(NSDate *dateSelected, CalendarPickerState state) {

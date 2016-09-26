@@ -36,7 +36,7 @@
 }
 
 - (void)getAllMeetingsTrainer {
-    [MBProgressHUD showHUDAddedTo:self.view animated:true];
+    [CustomLoadingView showInView:self.view];
     MeetingManager *meetingManager = [[MeetingManager alloc] init];
     meetingManager.delegate = self;
     [meetingManager getMeetingsWithTrainer:self.trainer];
@@ -44,7 +44,7 @@
 
 #pragma mark - MeetingManagerDelegate
 - (void)didResponseWithMessage:(NSString *)message withError:(NSError *)error returnArray:(NSArray *)arrMeetings {
-    [MBProgressHUD hideHUDForView:self.view animated:true];
+    [CustomLoadingView hideLoadingInView:self.view];
     if (error) {
         [AlertManager showAlertWithTitle:kRegisterRequest message:message
             viewControler:self reloadAction:^{

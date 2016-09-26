@@ -114,7 +114,7 @@ NSString *const kFillAddress = @"Fill address";
         self.labelNotes.text = @"";
         [self.view endEditing:YES];
         self.buttonRegister.enabled = NO;
-        [MBProgressHUD showHUDAddedTo:self.view animated:true];
+        [CustomLoadingView showInView:self.view];
         user.fullName = self.textFieldUserName.text;
         user.email = self.textFieldEmail.text;
         user.address = self.textFieldAddress.text;
@@ -132,7 +132,7 @@ NSString *const kFillAddress = @"Fill address";
 
 #pragma mark - RegisterManagerDelegate
 - (void)didResponseWithMessage:(NSString *)message withError:(NSError *)error returnUser:(User *)user {
-    [MBProgressHUD hideHUDForView:self.view animated:true];
+    [CustomLoadingView hideLoadingInView:self.view];
     self.buttonRegister.enabled = YES;
     if (error) {
         [AlertManager showAlertWithTitle:kReminderTitle message:message

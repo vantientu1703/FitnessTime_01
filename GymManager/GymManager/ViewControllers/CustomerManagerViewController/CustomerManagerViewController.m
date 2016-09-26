@@ -71,7 +71,7 @@ CGFloat const kCornerRadiusAddNewCustomer = 20.0f;
 
 - (void)getAllCustomers {
     if (!_isRefresh) {
-        [MBProgressHUD showHUDAddedTo:self.view animated:true];
+        [CustomLoadingView showInView:self.view];
         _isRefresh = false;
     }
     CustomerManager *customerManager = [[CustomerManager alloc] init];
@@ -82,7 +82,7 @@ CGFloat const kCornerRadiusAddNewCustomer = 20.0f;
 #pragma mark - CustomerManagerDelegate 
 - (void)didResponseWithMessage:(NSString *)message withError:(NSError *)error returnArray:(NSArray *)arrCustomers {
     [self.refreshReloadData endRefreshing];
-    [MBProgressHUD hideHUDForView:self.view animated:true];
+    [CustomLoadingView hideLoadingInView:self.view];
     if (error) {
         [AlertManager showAlertWithTitle:kRegisterRequest message:message viewControler:self reloadAction:^{
             [self getAllCustomers];

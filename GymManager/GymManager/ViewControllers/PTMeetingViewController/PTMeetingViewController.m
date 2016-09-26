@@ -97,7 +97,7 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
 
 - (void)getAllTrainers {
     if (!_isRefresh) {
-        [MBProgressHUD showHUDAddedTo:self.view animated:true];
+        [CustomLoadingView showInView:self.view];
         _isRefresh = false;
     }
     TrainerManager *trainerManager = [[TrainerManager alloc] init];
@@ -121,7 +121,7 @@ NSString *const kNameTrainer = @"Nguyen Van Van Duong";
 #pragma mark - TrainerManagerDelegate
 - (void)didResponseWithMessage:(NSString *)message withError:(NSError *)error returnArray:(NSArray *)arrTrainer {
     [self.refreshReloadData endRefreshing];
-    [MBProgressHUD hideHUDForView:self.view animated:true];
+    [CustomLoadingView hideLoadingInView:self.view];
     if (error) {
         [AlertManager showAlertWithTitle:kReminderTitle message:message viewControler:self reloadAction:^{
             [self getAllTrainers];

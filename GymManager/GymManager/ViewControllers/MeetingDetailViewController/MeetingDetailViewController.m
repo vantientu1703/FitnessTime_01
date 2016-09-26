@@ -244,12 +244,12 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
         if (_modifier) {
             if ([self.statusEditMeeting isEqualToString:kEditMeetingTitle]) {
                 self.navigationItem.rightBarButtonItem.enabled = NO;
-                [MBProgressHUD showHUDAddedTo:self.view animated:true];
+                [CustomLoadingView showInView:self.view];
                 [meetingManager updateMeetingItem:self.meeting withTrainer:_trainerInstance
                     withCustomer:_customer fromDate:_fromDate toDate:_toDate];
             } else {
                 self.navigationItem.rightBarButtonItem.enabled = NO;
-                [MBProgressHUD showHUDAddedTo:self.view animated:true];
+                [CustomLoadingView showInView:self.view];
                 [meetingManager createMeetingWithTrainer:_trainerInstance withTrainee:_customer
                     fromDate:_fromDate toDate:_toDate];
             }
@@ -259,7 +259,7 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
 
 #pragma mark - MeetingManagerDelegate
 - (void)createMeetingItem:(Meeting *)meeting success:(BOOL)success error:(NSError *)error {
-    [MBProgressHUD hideHUDForView:self.view animated:true];
+    [CustomLoadingView hideLoadingInView:self.view];
     self.navigationItem.rightBarButtonItem.enabled = YES;
     if (success) {
         _modifier = false;
@@ -275,7 +275,7 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
 }
 
 - (void)updateMeetingItem:(Meeting *)meeting success:(BOOL)success error:(NSError *)error {
-    [MBProgressHUD hideHUDForView:self.view animated:true];
+    [CustomLoadingView hideLoadingInView:self.view];
     self.navigationItem.rightBarButtonItem.enabled = YES;
     if (success) {
         _modifier = false;
@@ -294,7 +294,7 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
 - (void)createMeetingFaileWithMessage:(NSString *)message {
     //TODO: handle create meeting fail
     self.navigationItem.rightBarButtonItem.enabled = YES;
-    [MBProgressHUD hideHUDForView:self.view animated:true];
+    [CustomLoadingView hideLoadingInView:self.view];
     if (message) {
         self.labelNotes.text = message;
     }
@@ -303,7 +303,7 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
 - (void)updateMeetingFailWithMessage:(NSString *)message {
     //TODO: handle update meeting fail
     self.navigationItem.rightBarButtonItem.enabled = YES;
-    [MBProgressHUD hideHUDForView:self.view animated:true];
+    [CustomLoadingView hideLoadingInView:self.view];
     if (message) {
         self.labelNotes.text = message;
     }

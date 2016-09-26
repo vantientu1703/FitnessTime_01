@@ -205,7 +205,7 @@ NSString *const kSelectDateTitle = @"Select date";
 
 - (void)getAllMeetingsOfTrainer {
     if (!_isRefresh) {
-        [MBProgressHUD showHUDAddedTo:self.view animated:true];
+        [CustomLoadingView showInView:self.view];
         _isRefresh = false;
     }
     MeetingManager *meetingManager = [[MeetingManager alloc] init];
@@ -216,7 +216,7 @@ NSString *const kSelectDateTitle = @"Select date";
 #pragma mark - MeetingManagerDelegate
 - (void)didResponseWithMessage:(NSString *)message withError:(NSError *)error returnArray:(NSArray *)arrMeetings {
     [self.refreshReloadData endRefreshing];
-    [MBProgressHUD hideHUDForView:self.view animated:true];
+    [CustomLoadingView hideLoadingInView:self.view];
     if (error) {
         [AlertManager showAlertWithTitle:kRegisterRequest message:message
             viewControler:self reloadAction:^{
@@ -229,7 +229,7 @@ NSString *const kSelectDateTitle = @"Select date";
 }
 
 - (void)didDeleteMeetingSuccess:(BOOL)success error:(NSError *)error {
-    [MBProgressHUD hideHUDForView:self.view animated:true];
+    [CustomLoadingView hideLoadingInView:self.view];
     if (success) {
         if ([_filter isEqualToString:kFilterTitle]) {
             [self.arrMeetingFilters removeObjectAtIndex:_indexPath.row];
@@ -403,7 +403,7 @@ NSString *const kSelectDateTitle = @"Select date";
         message:kMessageReminder preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:kOkActionTitle style:UIAlertActionStyleDefault
         handler:^(UIAlertAction * _Nonnull action) {
-        [MBProgressHUD showHUDAddedTo:self.view animated:true];
+        [CustomLoadingView showInView:self.view];
         MeetingManager *meetingManager = [[MeetingManager alloc] init];
         meetingManager.delegate = self;
         if ([_filter isEqualToString:kFilterTitle]) {
