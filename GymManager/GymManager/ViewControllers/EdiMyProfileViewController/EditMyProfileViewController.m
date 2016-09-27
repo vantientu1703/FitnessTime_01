@@ -169,6 +169,7 @@ NSString *const kUpdateFailTitle = @"Update fail";
 
 #pragma mark - Select photo
 - (IBAction)buttonSelectImagePress:(id)sender {
+    [self.view endEditing:YES];
     [AlertManager showAlertWithTitle:kMessageReminder message:kChoosenTypeTitle
         viewControler:self takePhotoFromLibrary:^{
         [self takePhotoFromLibrary];

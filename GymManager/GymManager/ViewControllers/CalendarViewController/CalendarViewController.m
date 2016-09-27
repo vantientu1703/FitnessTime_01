@@ -57,11 +57,11 @@ NSInteger const kYearPickerRange = 20;
 }
 
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return [NSString stringWithFormat:@"%d", (self.startYear + row)];
+    return [NSString stringWithFormat:@"%ld", (self.startYear + row)];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    self.dateSelected = [self.formatter dateFromYearString:[NSString stringWithFormat:@"%d", (self.startYear + row)]];
+    self.dateSelected = [self.formatter dateFromYearString:[NSString stringWithFormat:@"%ld", (self.startYear + row)]];
 }
 
 #pragma mark - Day picker implementation
@@ -129,7 +129,7 @@ NSInteger const kYearPickerRange = 20;
     NSDate *startYearDate = [cal dateByAddingUnit:NSCalendarUnitYear value:-(kYearPickerRange / 2) toDate:[NSDate date]
         options:0];
     self.startYear = [self.formatter yearStringFromDate:startYearDate].integerValue;
-    self.dateSelected = [self.formatter dateFromYearString:[NSString stringWithFormat:@"%d", self.startYear]];
+    self.dateSelected = [self.formatter dateFromYearString:[NSString stringWithFormat:@"%ld", self.startYear]];
     self.yearPicker.dataSource = self;
     self.yearPicker.delegate = self;
     self.datePickerView.hidden = YES;

@@ -186,6 +186,7 @@ NSString *const kSelectAvatar = @"Select avatar,please";
 
 #pragma mark - Button select date
 - (IBAction)buttonSelectDatePress:(id)sender {
+    [self.view endEditing:YES];
     UIStoryboard *st = [UIStoryboard storyboardWithName:kCalendarIdentifier bundle:nil];
     CalendarViewController *calendarVC = [st instantiateInitialViewController];
     [self.navigationController pushViewController:calendarVC animated:true];

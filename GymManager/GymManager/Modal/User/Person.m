@@ -12,7 +12,7 @@
 @implementation Person
 
 + (JSONKeyMapper *)keyMapper {
-    return [JSONKeyMapper mapperFromUnderscoreCaseToCamelCase];
+    return [JSONKeyMapper mapperForSnakeCase];
 }
 
 - (void)setBirthdayWithNSString:(NSString *)string {
