@@ -11,7 +11,7 @@
 @implementation Trainer
 
 + (JSONKeyMapper*)keyMapper {
-    return [JSONKeyMapper mapperFromUnderscoreCaseToCamelCase];
+    return [JSONKeyMapper mapperForSnakeCase];
 }
 
 - (NSURL *)avatarURL {

@@ -11,7 +11,7 @@
 @implementation Customer
 
 + (JSONKeyMapper *)keyMapper {
-    return [JSONKeyMapper mapperFromUnderscoreCaseToCamelCase];
+    return [JSONKeyMapper mapperForSnakeCase];
 }
 
 - (void)setRegistryDateWithNSString:(NSString *)string {

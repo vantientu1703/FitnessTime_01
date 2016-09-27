@@ -12,7 +12,7 @@
 @implementation Transaction
 
 + (JSONKeyMapper *)keyMapper {
-    return [JSONKeyMapper mapperFromUnderscoreCaseToCamelCase];
+    return [JSONKeyMapper mapperForSnakeCase];
 }
 
 - (void)setCreatedAtWithNSString:(NSString *)string {
