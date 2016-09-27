@@ -10,6 +10,8 @@
 
 NSString *const kTokenChainKey = @"auth_token";
 NSString *const kUserDefaultLoginCheck = @"loged";
+NSString *const kMessageDuplicate = @"Duplicate Location";
+NSString *const kMessageReachLimit = @"Reach to maximun number of location";
 
 @interface DataStore ()
 
@@ -39,17 +41,35 @@ NSString *const kUserDefaultLoginCheck = @"loged";
     return sharedDataStore;
 }
 
-- (void)setMylocation:(CLLocationCoordinate2D)coordinate {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setFloat:coordinate.latitude forKey:@"lat"];
-    [defaults setFloat:coordinate.longitude forKey:@"long"];
+- (void)setNewGymLocation:(NSString *)address lat:(NSNumber *)latitue long:(NSNumber *)longitue complete:(void(^)(BOOL success, NSString *message, GymLocation *location))complete {
+    NSPredicate *predict = [NSPredicate
+        predicateWithFormat:@"(latitue == %@) AND (longtitue == %@)", latitue, longitue];
+    NSArray *arrLocation = [GymLocation MR_findAll];
+    if (arrLocation.count >= 5) { // Limit to 5
+        complete(NO, kMessageReachLimit, nil);
+        return;
+    }
+    GymLocation *tempLocation = [GymLocation MR_findFirstWithPredicate:predict sortedBy:nil ascending:NO];
+    if (tempLocation) {
+        complete(NO, kMessageDuplicate, nil);
+        return;
+    }
+    GymLocation *newLocation = [GymLocation MR_createEntity];
+    newLocation.latitue = latitue;
+    newLocation.longtitue = longitue;
+    newLocation.address = address;
+    [[NSManagedObjectContext MR_defaultContext]
+    MR_saveToPersistentStoreWithCompletion:^(BOOL contextDidSave, NSError * _Nullable error) {
+        complete(contextDidSave, error.localizedDescription, newLocation);
+    }];
 }
 
-- (CLLocationCoordinate2D)getCoordinateMylocation {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    CGFloat lat = [defaults floatForKey:@"lat"];
-    CGFloat longtitude = [defaults floatForKey:@"long"];
-    return CLLocationCoordinate2DMake(lat, longtitude);
+- (void)removeGymLocation:(GymLocation *)location complete:(void(^)(BOOL success))complete {
+    [location MR_deleteEntity];
+    [[NSManagedObjectContext MR_defaultContext]
+        MR_saveToPersistentStoreWithCompletion:^(BOOL contextDidSave, NSError * _Nullable error) {
+        complete(contextDidSave);
+    }];
 }
 
 - (void)updateProfile:(User *)user complete:(void(^)(BOOL success))complete {

@@ -11,6 +11,7 @@
 #import "User.h"
 #import "UserManager.h"
 #import "Item.h"
+#import "GymLocation.h"
 
 @interface DataStore : NSObject
 
@@ -27,7 +28,7 @@
 - (void)updateItem:(Item *)item;
 - (void)setUserLoginWithFB:(NSDictionary *)userData;
 - (User *)getUSerLoginWithFB;
-- (void)setMylocation:(CLLocationCoordinate2D)coordinate;
-- (CLLocationCoordinate2D)getCoordinateMylocation;
+- (void)setNewGymLocation:(NSString *)address lat:(NSNumber *)latitue long:(NSNumber *)longitue complete:(void(^)(BOOL success, NSString *message, GymLocation *location))complete;
+- (void)removeGymLocation:(GymLocation *)location complete:(void(^)(BOOL success))complete;
 
 @end

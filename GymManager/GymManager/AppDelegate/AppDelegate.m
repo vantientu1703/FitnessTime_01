@@ -25,6 +25,7 @@ NSString *const kMapAPIKey = @"AIzaSyAO6QZDAo1MgcBy92CoF8_7dqbKjln0A20";
     //Setup Coredata
     [MagicalRecord setupCoreDataStackWithStoreNamed:kCoreDataModel];
     //Register local notification
+    [self setupLocation];
     [self setupLocalNotification];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     if ([[DataStore sharedDataStore] isLoged]) {
@@ -47,6 +48,7 @@ NSString *const kMapAPIKey = @"AIzaSyAO6QZDAo1MgcBy92CoF8_7dqbKjln0A20";
 - (void)loadTabbarController {
     [[UITabBar appearance] setBarTintColor:[UIColor whiteColor]];
     [[UITabBar appearance] setTintColor:[UIColor greenColor]];
+    [[UITabBar appearance] setTranslucent:NO];
     UIStoryboard *st = [UIStoryboard storyboardWithName:kNameStoryboard bundle:nil];
     AnimationTabbarController *tabVC = [[AnimationTabbarController alloc] init];
     TodayMeetingsViewController *todayMeetingsVC = [st instantiateViewControllerWithIdentifier:
@@ -106,6 +108,12 @@ NSString *const kMapAPIKey = @"AIzaSyAO6QZDAo1MgcBy92CoF8_7dqbKjln0A20";
             }
         }
     }
+}
+
+- (void)setupLocation {
+    self.locationManager = [[CLLocationManager alloc] init];
+    [self.locationManager requestWhenInUseAuthorization];
+    [self.locationManager startUpdatingLocation];
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
