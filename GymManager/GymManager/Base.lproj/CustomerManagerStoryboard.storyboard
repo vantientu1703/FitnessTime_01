@@ -380,6 +380,7 @@
                         <outlet property="buttonRegisterDate" destination="56O-KW-0HK" id="p93-Im-Trt"/>
                         <outlet property="imageViewCustomer" destination="XeE-RW-B76" id="dDx-98-j1t"/>
                         <outlet property="labelNotes" destination="CZE-u9-bWK" id="Fj1-pr-qHT"/>
+                        <outlet property="scrollView" destination="pwB-HG-kAI" id="Y0Z-VO-mJS"/>
                         <outlet property="textFieldAddress" destination="CwZ-Ib-EHB" id="kko-JK-fbl"/>
                         <outlet property="textFieldNameCustomer" destination="uVt-2R-cdC" id="GbV-4y-syt"/>
                         <outlet property="textFieldPhoneNumber" destination="KVD-HL-kdH" id="J4E-cZ-R7Q"/>
@@ -594,7 +595,7 @@
                         <outlet property="labelDateOfBirth" destination="CI7-kA-hxL" id="nNY-JY-e2c"/>
                         <outlet property="labelExprityDate" destination="783-Ok-vXT" id="ROm-FK-Z4c"/>
                         <outlet property="labelNameCustomer" destination="3Fg-3H-5Vw" id="iCv-jv-yIQ"/>
-                        <outlet property="labelPhoneNumber" destination="QEK-B7-E9R" id="YY6-XI-avW"/>
+                        <outlet property="labelPhoneNumber" destination="oc4-UV-b4Q" id="SXe-EC-aP2"/>
                         <outlet property="labelRegisterDate" destination="s42-kM-eSh" id="kxV-tD-q9h"/>
                         <outlet property="viewBackgroudInfoCustomer" destination="TcF-Ua-bVW" id="b9k-u0-cyf"/>
                     </connections>
