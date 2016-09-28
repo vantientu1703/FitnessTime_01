@@ -12,7 +12,7 @@
 NSString *const kPhotoShareManagerCollectionViewCellIdentifier = @"PhotoShareManagerCollectionViewCell";
 NSString *const kImageKeys = @"imagekey%ld";
 
-@interface PhototShareManagerViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, AlertManagerDelegate, QBImagePickerControllerDelegate, PhotoShareManagerCollectionViewCellDelegate>
+@interface PhototShareManagerViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, AlertManagerDelegate, PhotoShareManagerCollectionViewCellDelegate, ELCImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) NSMutableArray *arrImages;
@@ -67,50 +67,54 @@ NSString *const kImageKeys = @"imagekey%ld";
 }
 
 #pragma mark - AlertManagerDelegate
-- (void)showQBImagePikcerController:(QBImagePickerController *)qbImagePickerController {
-    qbImagePickerController.delegate = self;
-    qbImagePickerController.allowsMultipleSelection = YES;
-    qbImagePickerController.showsNumberOfSelectedAssets = YES;
+- (void)showQBImagePikcerController:(ELCImagePickerController *)qbImagePickerController {
+    qbImagePickerController.imagePickerDelegate = self;
     [self presentViewController:qbImagePickerController animated:YES completion:NULL];
 }
+
+#pragma mark - ELCImagePickerControllerDelegate
+- (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info {
+    for (NSDictionary *dict in info) {
+        UIImage *choosenImage = dict[UIImagePickerControllerOriginalImage];
+        if (!self.arrImages) {
+            self.arrImages = [NSMutableArray array];
+        }
+        UIImage *ima = [Utils convertImageToThumbnailImage:choosenImage withSize:CGSizeMake(200.f, 100.f)];
+        NSInteger index;
+        if (!self.arrImages.count) {
+            index = 0;
+        } else {
+            index = self.arrImages.count;
+        }
+        _totalKeys += 1;
+        NSString *key = [NSString stringWithFormat:kImageKeys, index];
+        [[SDImageCache sharedImageCache] storeImage:choosenImage forKey:key];
+        [self.arrImages addObject:ima];
+    }
+    [self.collectionView reloadData];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
     if (!self.arrImages) {
         self.arrImages = [NSMutableArray array];
     }
-    [self.arrImages addObject:chosenImage];
-    [self.collectionView reloadData];
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-#pragma mark - QBImagePickerControllerDelegate
-- (void)qb_imagePickerController:(QBImagePickerController *)imagePickerController didFinishPickingAssets:(NSArray *)assets {
-    PHImageRequestOptions *requestOptions = [[PHImageRequestOptions alloc] init];
-    requestOptions.resizeMode   = PHImageRequestOptionsResizeModeExact;
-    requestOptions.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
-    // this one is key
-    requestOptions.synchronous = true;
-    PHImageManager *manager = [PHImageManager defaultManager];
-    __block NSMutableArray *images = [NSMutableArray arrayWithCapacity:[assets count]];
-    // assets contains PHAsset objects.
-    __block UIImage *ima;
-    if (!self.arrImages) {
-        self.arrImages = [NSMutableArray array];
+    UIImage *ima = [Utils convertImageToThumbnailImage:chosenImage withSize:CGSizeMake(200.f, 100.f)];
+    NSInteger index;
+    if (!self.arrImages.count) {
+        index = 0;
+    } else {
+        index = self.arrImages.count;
     }
-    [assets enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [manager requestImageForAsset:obj targetSize:PHImageManagerMaximumSize
-            contentMode:PHImageContentModeDefault options:requestOptions
-            resultHandler:^void(UIImage *image, NSDictionary *info) {
-            ima = [Utils convertImageToThumbnailImage:image withSize:CGSizeMake(200.f, 100.f)];
-            [images addObject:ima];
-            NSInteger index = idx + self.arrImages.count;
-            NSString *key = [NSString stringWithFormat:kImageKeys, index];
-            [[SDImageCache sharedImageCache] storeImage:ima forKey:key];
-        }];
-    }];
-    _totalKeys += images.count;
-    [self.arrImages addObjectsFromArray:images];
+    _totalKeys += 1;
+    NSString *key = [NSString stringWithFormat:kImageKeys, index];
+    [[SDImageCache sharedImageCache] storeImage:chosenImage forKey:key];
+    [self.arrImages addObject:ima];
     [self.collectionView reloadData];
     [self dismissViewControllerAnimated:YES completion:nil];
 }

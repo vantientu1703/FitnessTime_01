@@ -146,6 +146,7 @@ NSInteger const kLabelTag = 100000;
         UIView *detailView = [view viewWithTag:i];
         if (detailView && [detailView isMemberOfClass:[UIImageView class]]) {
             UIImageView *imageView = (UIImageView *)detailView;
+            [imageView setContentMode:UIViewContentModeScaleToFill];
             imageView.image = [Utils convertImageToThumbnailImage:images[i -1] withSize:imageView.bounds.size];
         }
     }

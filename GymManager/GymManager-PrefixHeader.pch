@@ -60,4 +60,5 @@
 #import "ShareFBViewController.h"
 #import "PhototShareManagerViewController.h"
 #import "GymLocation.h"
+#import "ELCImagePickerController.h"
 #endif /* GymManager_PrefixHeader_pch */

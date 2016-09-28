@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "QBImagePickerController.h"
+#import "ELCImagePickerController.h"
 
 @protocol AlertManagerDelegate <NSObject>
 @optional
 - (void)showImagePickerController:(UIImagePickerController *)imagePickerController;
-- (void)showQBImagePikcerController:(QBImagePickerController *)qbImagePickerController;
+- (void)showQBImagePikcerController:(ELCImagePickerController *)qbImagePickerController;
 @end
 
 @interface AlertManager : NSObject<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
