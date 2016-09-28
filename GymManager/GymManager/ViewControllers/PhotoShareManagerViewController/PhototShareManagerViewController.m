@@ -129,6 +129,8 @@ NSString *const kImageKeys = @"imagekey%ld";
         dequeueReusableCellWithReuseIdentifier:kPhotoShareManagerCollectionViewCellIdentifier forIndexPath:indexPath];
     cell.imageViewShare.image = [Utils convertImageToThumbnailImage:self.arrImages[indexPath.row]
         withSize:cell.imageViewShare.bounds.size];
+    cell.imageViewShare.contentMode = UIViewContentModeScaleAspectFill;
+    cell.imageViewShare.clipsToBounds = YES;
     cell.collectionView = collectionView;
     cell.delegate = self;
     return cell;

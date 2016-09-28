@@ -230,6 +230,7 @@ NSString *const kRequestFailTitle = @"Resquest failed: unacceptable (406)";
 
 #pragma mark - Implement button done
 - (IBAction)saveNewMeetingPress:(id)sender {
+    self.labelNotes.text = kNothingToUpdate;
     if (!_trainerInstance) {
         self.labelNotes.text = kNotificationNoSelectTrainer;
     } else if (!_customer) {

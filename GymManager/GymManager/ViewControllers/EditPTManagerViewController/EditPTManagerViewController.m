@@ -104,6 +104,7 @@ NSString *const kSelectAvatar = @"Select avatar,please";
     NSString *phoneNumber = [DataValidation isValidPhoneNumber:(NSMutableString *)self.textFieldPhoneNumber.text];
     double currentTime = [[NSDate date] timeIntervalSince1970];
     double dateBirthTime = [_dateOfBirth timeIntervalSince1970];
+    self.labelNotes.text = kNothingToUpdate;
     if (!self.textFieldAddress.text.length) {
         self.labelNotes.text = kNoFillAddressTitle;
     } else if (!self.textFieldFullName.text.length) {
