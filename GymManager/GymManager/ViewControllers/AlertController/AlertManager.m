@@ -84,7 +84,8 @@ NSString *const kActionQuit = @"Quit";
 
 #pragma mark - Take photo from QBImagePickerController
 - (void)takePhotoQBImagePickerController {
-    QBImagePickerController *imagePickerController = [QBImagePickerController new];
+    ELCImagePickerController *imagePickerController = [ELCImagePickerController new];
+    imagePickerController.maximumImagesCount = 100;
     if ([self.delegate respondsToSelector:@selector(showQBImagePikcerController:)]) {
         [self.delegate showQBImagePikcerController:imagePickerController];
     }

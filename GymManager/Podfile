@@ -17,5 +17,6 @@ target 'GymManager' do
   pod "FBSDKShareKit"
   pod "QBImagePickerController"
   pod 'GoogleMaps'
-   pod 'GooglePlaces'
+  pod 'GooglePlaces'
+  pod 'ELCImagePickerController'
 end

@@ -22,11 +22,12 @@ PODS:
   - Bolts/Tasks (1.8.4)
   - CCBottomRefreshControl (0.5.1):
     - Masonry (~> 0.6.2)
-  - FBSDKCoreKit (4.15.1):
+  - ELCImagePickerController (0.2.0)
+  - FBSDKCoreKit (4.16.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.15.1):
+  - FBSDKLoginKit (4.16.0):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.15.1):
+  - FBSDKShareKit (4.16.0):
     - FBSDKCoreKit
   - GoogleMaps (2.1.0):
     - GoogleMaps/Maps (= 2.1.0)
@@ -53,6 +54,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - CCBottomRefreshControl
+  - ELCImagePickerController
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
@@ -72,9 +74,10 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   CCBottomRefreshControl: 57a596348855260f627ffc2b311328ed15b94877
-  FBSDKCoreKit: fc7fa53d16b095ee3fd53f0cd59f1df8bcbb634d
-  FBSDKLoginKit: 073f79b3b2e762fc6f54a283fe15f45372d59f5f
-  FBSDKShareKit: 11cbb5a4d7b5fda8143cc95b76188147e6725736
+  ELCImagePickerController: b1b7084434a7d49f2cfc916bde1f3ba353d38de9
+  FBSDKCoreKit: 7a6baaed4a2b2a244ba253346713bdbc74df135b
+  FBSDKLoginKit: 9a514a55a7d05190f64d4ef09502737588b5b561
+  FBSDKShareKit: e81505de17fc0624cbaa87b83cccc9f2a786e6cb
   GoogleMaps: 06589b9a38097bce0cd6e90f0fd9b5e4b4a9344c
   GooglePlaces: 16e96266483b8010e9f275399403647978523c86
   JSONModel: fd2553dc9e6608a3f35bfc956a14be35395d3852
@@ -88,6 +91,6 @@ SPEC CHECKSUMS:
   TPKeyboardAvoiding: a5138f318c06fb3e151f886e18ce4a72695d9cbe
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
 
-PODFILE CHECKSUM: f5733235418e99d6fc183ab692f35de0c1c98d74
+PODFILE CHECKSUM: dcae244ae1257444ab1c7c72122f86abac34babc
 
 COCOAPODS: 1.0.1
