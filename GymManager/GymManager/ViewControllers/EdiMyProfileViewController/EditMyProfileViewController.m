@@ -95,6 +95,7 @@ NSString *const kUpdateFailTitle = @"Update fail";
     double currentTime = [[NSDate date] timeIntervalSince1970];
     double dateBirthTime = [_fromDate timeIntervalSince1970];
     NSString *phoneNumber = [DataValidation isValidPhoneNumber:(NSMutableString *)self.textFieldPhoneNumber.text];
+    self.labelNotes.text = kNothingToUpdate;
     if (phoneNumber) {
         self.labelNotes.text = phoneNumber;
     } else if (currentTime < dateBirthTime) {

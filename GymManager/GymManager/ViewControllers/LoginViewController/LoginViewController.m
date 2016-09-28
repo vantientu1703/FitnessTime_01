@@ -100,7 +100,6 @@ NSString *const kErrorEmailOrPassword = @"Incorrect email or password";
 
 #pragma mark - LoginManagerDelegate
 - (void)didResponseWithMessage:(NSString *)message withError:(NSError *)error returnUser:(User *)user {
-    [CustomLoadingView hideLoadingInView:self.view];
     if (error) {
         [AlertManager showAlertWithTitle:kReminderTitle message:message
             viewControler:self okAction:^{
@@ -119,6 +118,7 @@ NSString *const kErrorEmailOrPassword = @"Incorrect email or password";
             }
         }];
     }
+    [CustomLoadingView hideLoadingInView:self.view];
 }
 
 - (IBAction)tapBackground:(id)sender {

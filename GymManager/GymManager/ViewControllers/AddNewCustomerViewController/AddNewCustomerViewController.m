@@ -196,6 +196,7 @@ NSString *const kSelectImages = @"Select avatar,please";
     double registerDateTime = [_fromDate timeIntervalSince1970];
     double expityDateTime = [_toDate timeIntervalSince1970];
     double dateBirhtTime = [_dateOfBirth timeIntervalSinceNow];
+    self.labelNotes.text = kNothingToUpdate;
     if (dateBirhtTime > currentTime) {
         self.labelNotes.text = kDateBirthTitle;
     } else if (registerDateTime > expityDateTime) {
@@ -215,7 +216,6 @@ NSString *const kSelectImages = @"Select avatar,please";
     } else if (!_imageAvatar) {
         self.labelNotes.text = kSelectImages;
     } else {
-        self.labelNotes.text = @"";
         Customer *customer;
         if ([self.messageEditCustomer isEqualToString:kMessageEditCustomer]) {
             customer = self.customer;

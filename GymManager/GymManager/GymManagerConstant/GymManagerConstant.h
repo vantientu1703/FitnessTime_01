@@ -111,6 +111,7 @@ extern NSString *const kUploadPhotoSuccess;
 extern NSString *const kUploadPhotoFail;
 extern NSString *const kPhototShareManagerViewControllerIdentifier;
 extern NSString *const kGoogleMapsViewControllerIdentifier;
+extern NSString *const kNothingToUpdate;
 
 #pragma mark - CoreData
 extern NSString *const kCoreDataModel;
